@@ -33,15 +33,19 @@ export default {
             value: 'https://github.com/MAU-Estate/sanity-gatsby-blog',
             category: 'Code'
           },
-          { title: 'Frontend', value: 'https://sanity-gatsby-blog-web-3unry6a9.netlify.app', category: 'apps' }
+          {
+            title: 'Frontend',
+            value: 'https://sanity-gatsby-blog-web-3unry6a9.netlify.app',
+            category: 'apps'
+          }
         ]
       }
     },
-    { name: 'project-users', layout: { height: 'auto' } },
-    {
-      name: 'document-list',
-      options: { title: 'Recent blog posts', order: '_createdAt desc', types: ['post'] },
-      layout: { width: 'medium' }
-    }
+    { name: 'project-users', layout: { height: 'auto' } }
+    // {
+    //   name: 'document-list',
+    //   options: { title: 'Recent Wor', order: '_createdAt desc', types: ['work'] },
+    //   layout: { width: 'medium' }
+    // }
   ]
-}
+};

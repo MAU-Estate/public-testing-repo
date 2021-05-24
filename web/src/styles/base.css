@@ -1,0 +1,427 @@
+@tailwind base;
+
+@layer base {
+  :root {
+    --bp-sm: 568px;
+    --bp-md: 896px;
+    --bp-lg: 1200px;
+
+    --unit: 4px;
+
+    --gap: calc(var(--unit) * 8);
+
+    --font-primary: 'times';
+    --font-primary--light: 'times';
+    --font-secondary: 'Helvetica';
+    --font-secondary--bold: 'Helvetica';
+    --font-secondary--black: 'Helvetica';
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body,
+  #root {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body {
+    font-weight: 300;
+    /* color: var(--c-black-70); */
+  }
+
+  main,
+  #root {
+    flex: 1 0 auto;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    /* color: var(--c-black); */
+  }
+
+  img {
+    width: 100%;
+  }
+
+  label {
+    @apply w-full;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 300;
+  }
+
+  a:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1000px;
+      @apply px-8;
+    }
+
+    .container--lg {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1500px;
+      @apply px-8;
+    }
+
+    /* .f-1 {
+      font: var(--font-secondary) 53px/52px;
+      letter-spacing: -1.5px;
+
+      @screen lg {
+        font: var(--font-secondary) 93px/88px;
+        letter-spacing: -2px;
+      }
+    } */
+
+    .f-1 {
+      font-family: var(--font-secondary);
+      font-size: 53px;
+      line-height: 52px;
+      letter-spacing: -1.5px;
+
+      @screen lg {
+        font-size: 93px;
+        line-height: 88px;
+        letter-spacing: -2px;
+      }
+    }
+
+    .f-2 {
+      font-family: var(--font-primary--light);
+      font-size: 20px;
+      line-height: 29px;
+
+      @screen lg {
+        line-height: 26px;
+      }
+    }
+
+    .f-3 {
+      font-family: var(--font-primary--light);
+      font-size: 20px;
+      line-height: 25px;
+
+      @screen lg {
+        font-size: 22px;
+        line-height: 27px;
+      }
+    }
+
+    .f-4 {
+      font-family: var(--font-primary--light);
+      font-size: 14px;
+      font-size: 13px;
+      line-height: 17px;
+
+      @screen lg {
+        line-height: 18px;
+        letter-spacing: 1.33px;
+      }
+    }
+
+    .f-5 {
+      font-family: var(--font-secondary--bold);
+      font-size: 63px;
+      line-height: 54px;
+      letter-spacing: -2px;
+
+      @screen lg {
+        font-size: 170px;
+        line-height: 135px;
+        letter-spacing: -6px;
+      }
+    }
+
+    .f-6 {
+      font-family: var(--font-secondary--light);
+      font-size: 19px;
+      line-height: 26px;
+
+      @screen lg {
+        font-size: 21px;
+        line-height: 28px;
+      }
+    }
+
+    .f-7 {
+      font-family: var(--font-secondary--black);
+      font-size: 17px;
+      line-height: 26px;
+
+      @screen lg {
+        font-size: 19px;
+        line-height: 28px;
+      }
+    }
+
+    .f-8 {
+      font-family: var(--font-primary--light);
+      font-size: 16px;
+      line-height: 21px;
+
+      @screen lg {
+        font-size: 15px;
+        line-height: 19px;
+      }
+    }
+
+    .f-9 {
+      font-family: var(--font-secondary--bold);
+      font-size: 20px;
+      line-height: 25px;
+
+      @screen lg {
+        font-size: 17px;
+        line-height: 20px;
+      }
+    }
+
+    /* Minus 1 from the below */
+
+    .f-10 {
+      font-family: var(--font-secondary--bold);
+      font-size: 24px;
+      line-height: 27px;
+
+      @screen lg {
+        font-size: 34px;
+        line-height: 25px;
+      }
+    }
+
+    .f-11 {
+      font-family: var(--font-secondary--bold);
+      font-size: 39px;
+      line-height: 36px;
+      letter-spacing: -0.6px;
+
+      @screen lg {
+        font-size: 62px;
+        line-height: 59px;
+        letter-spacing: -1.05px;
+      }
+    }
+
+    .f-12 {
+      font-family: var(--font-secondary--black);
+      font-size: 15px;
+      line-height: 18px;
+
+      @screen lg {
+        font-size: 16px;
+        line-height: 19px;
+      }
+    }
+
+    .f-13 {
+      font-family: var(--font-primary--light);
+      font-size: 19px;
+      line-height: 26px;
+
+      @screen lg {
+        font-size: 25px;
+        line-height: 32px;
+      }
+    }
+
+    .f-14 {
+      font-family: var(--font-primary--light);
+      font-size: 19px;
+      line-height: 26px;
+
+      @screen lg {
+        font-size: 23px;
+        line-height: 32px;
+      }
+    }
+
+    .f-15 {
+      font-family: var(--font-secondary--bold);
+      font-size: 33px;
+      line-height: 32px;
+      letter-spacing: -0.4px;
+
+      @screen lg {
+        font-size: 57px;
+        line-height: 54px;
+        letter-spacing: -0.7px;
+      }
+    }
+
+    .f-16 {
+      font-family: var(--font-secondary--black);
+      font-size: 17px;
+      line-height: 19px;
+      letter-spacing: -0.3px;
+
+      @screen lg {
+        font-size: 19px;
+        line-height: 23px;
+        letter-spacing: -0.7px;
+      }
+    }
+
+    .f-17 {
+      font-family: var(--font-secondary--black);
+      font-size: 23px;
+      line-height: 25px;
+    }
+
+    .f-18 {
+      font-family: var(--font-primary--light);
+      font-size: 17px;
+      line-height: 21px;
+    }
+
+    .f-19 {
+      font-family: var(--font-secondary--black);
+      font-size: 19px;
+      line-height: 22px;
+
+      @screen lg {
+        font-size: 23px;
+        line-height: 25px;
+      }
+    }
+
+    .f-20 {
+      font-family: var(--font-secondary--black);
+      font-size: 15px;
+      line-height: 17px;
+    }
+
+    .f-21 {
+      font-family: var(--font-primary--light);
+      font-size: 19px;
+      line-height: 28px;
+
+      @screen lg {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    .f-22 {
+      font-family: var(--font-secondary--bold);
+      font-size: 38px;
+      line-height: 36px;
+      letter-spacing: -1.25px;
+
+      @screen lg {
+        font-size: 75px;
+        line-height: 68px;
+        letter-spacing: -2.5px;
+      }
+    }
+
+    .f-23 {
+      font-family: var(--font-secondary--black);
+      font-size: 18px;
+      line-height: 19px;
+      letter-spacing: -0.4px;
+
+      @screen lg {
+        font-size: 18px;
+        line-height: 29px;
+      }
+    }
+
+    .f-24 {
+      font-family: var(--font-secondary--black);
+      font-size: 27px;
+      line-height: 29px;
+      letter-spacing: -0.6px;
+
+      @screen lg {
+        font-size: 27px;
+        line-height: 29px;
+      }
+    }
+
+    .f-24 {
+      font-family: var(--font-secondary--bold);
+      font-size: 38px;
+      line-height: 36px;
+      letter-spacing: -1.25px;
+
+      @screen lg {
+        font-size: 51px;
+        line-height: 48px;
+        letter-spacing: -1.7px;
+      }
+    }
+
+    .f-25 {
+      font-family: var(--font-secondary--bold);
+      font-size: 27px;
+      line-height: 29px;
+      letter-spacing: -0.9px;
+
+      @screen lg {
+        font-size: 31px;
+        line-height: 33px;
+        letter-spacing: -1px;
+      }
+    }
+
+    .f-26 {
+      font-family: var(--font-secondary--black);
+      font-size: 25px;
+      line-height: 27px;
+      letter-spacing: -0.5px;
+    }
+
+    .f-27 {
+      font-family: var(--font-secondary--bold);
+      font-size: 29px;
+      line-height: 30px;
+      letter-spacing: -0.4px;
+
+      @screen lg {
+        font-size: 33px;
+        line-height: 35px;
+      }
+    }
+
+    .f-28 {
+      font-family: var(--font-secondary--black);
+      font-size: 26px;
+      line-height: 30px;
+      letter-spacing: -0.5px;
+
+      @screen lg {
+        font-size: 28px;
+        line-height: 30px;
+      }
+    }
+
+    .f-29 {
+      font-family: var(--font-primary--light);
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+}
+
+@tailwind components;

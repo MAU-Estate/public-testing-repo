@@ -1,6 +1,6 @@
 // Load variables from `.env` as soon as possible
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
+  path: `.env.${process.env.NODE_ENV || 'development'}`,
 })
 
 const clientConfig = require('./client-config')
@@ -11,14 +11,23 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: false,
+        tailwind: true,
+      },
+    },
     {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
-        overlayDrafts: !isProd
-      }
-    }
-  ]
+        overlayDrafts: !isProd,
+      },
+    },
+  ],
 }
