@@ -35,6 +35,7 @@
   "dependencies": {
     "gatsby-cli": "^3.4.1",
     "gatsby-plugin-image": "^1.4.0",
-    "postcss": "^8.2.14"
+    "postcss": "^8.2.14",
+    "gatsby-plugin-modal-routing-3": "^3.0.0"
   }
 }

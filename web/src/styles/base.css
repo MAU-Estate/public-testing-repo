@@ -8,13 +8,70 @@
 
     --unit: 4px;
 
-    --gap: calc(var(--unit) * 8);
+    --gap: calc(var(--unit) * 6);
 
-    --font-primary: 'times';
-    --font-primary--light: 'times';
-    --font-secondary: 'Helvetica';
-    --font-secondary--bold: 'Helvetica';
-    --font-secondary--black: 'Helvetica';
+    --font-primary: 'signifier-web-light';
+    --font-primary--italic: 'signifier-web-light-italic';
+    --font-secondary: 'LetteraTextLLSub-RegularSubset';
+    --font-secondary--bold: 'LetteraTextLLSub-BoldSubset';
+    --font-secondary--black: 'LetteraTextLLSub-BlackSubset';
+
+    --unit-a: calc(var(--unit) * 6);
+    --unit-a2: calc(var(--unit) * 14);
+    --unit-a3: calc(var(--unit) * 4);
+    --unit-b: calc(var(--unit) * 18);
+    --unit-c: calc(var(--unit) * 4);
+    --unit-d: calc(var(--unit) * 15);
+    --unit-d2: calc(var(--unit) * 35);
+    --unit-d3: calc(var(--unit) * 16);
+    --unit-e: calc(var(--unit) * 16);
+    --unit-f: calc(var(--unit) * 7);
+    --unit-g: calc(var(--unit) * 26);
+    --unit-h: calc(var(--unit) * 16);
+    --unit-i: calc(var(--unit) * 30);
+    --unit-j: calc(var(--unit) * 9);
+    --unit-k: calc(var(--unit) * 6);
+    --unit-l: calc(var(--unit) * 17);
+    --unit-m: calc(var(--unit) * 32);
+    --unit-n: calc(var(--unit) * 18);
+    --unit-o: calc(var(--unit) * 14);
+    --unit-p: calc(var(--unit) * 24);
+    --unit-q: calc(var(--unit) * 6);
+    --unit-r: calc(var(--unit) * 14);
+    --unit-s: calc(var(--unit) * 28);
+    --unit-t: calc(var(--unit) * 3);
+    --unit-u: calc(var(--unit) * 4);
+    --unit-v: calc(var(--unit) * 3);
+  }
+
+  @screen md {
+    :root {
+      --unit-a: calc(var(--unit) * 11);
+      --unit-a2: calc(var(--unit) * 26);
+      --unit-a3: calc(var(--unit) * 8);
+      --unit-b: calc(var(--unit) * 20);
+
+      --unit-d: calc(var(--unit) * 39);
+      --unit-d2: calc(var(--unit) * 47);
+      --unit-d3: calc(var(--unit) * 35);
+      --unit-e: calc(var(--unit) * 33);
+      --unit-f: calc(var(--unit) * 8);
+      --unit-g: calc(var(--unit) * 53);
+      --unit-h: calc(var(--unit) * 31);
+      --unit-i: calc(var(--unit) * 58);
+      --unit-j: calc(var(--unit) * 10);
+      --unit-k: calc(var(--unit) * 7);
+
+      --unit-m: calc(var(--unit) * 56);
+      --unit-n: calc(var(--unit) * 24);
+      --unit-o: calc(var(--unit) * 18);
+      --unit-p: calc(var(--unit) * 34);
+      --unit-q: calc(var(--unit) * 8);
+      --unit-r: calc(var(--unit) * 16);
+      --unit-s: calc(var(--unit) * 48);
+      --unit-t: calc(var(--unit) * 5);
+      --unit-u: calc(var(--unit) * 7);
+    }
   }
 
   html,
@@ -30,11 +87,23 @@
 
   body {
     font-weight: 300;
-    /* color: var(--c-black-70); */
+    -webkit-font-smoothing: antialiased;
   }
 
-  main,
-  #root {
+  #___gatsby,
+  #gatsby-focus-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+  }
+
+  .grid,
+  .lg\:grid,
+  .md\:grid {
+    grid-column-gap: var(--gap);
+  }
+
+  main {
     flex: 1 0 auto;
   }
 
@@ -45,6 +114,7 @@
   }
 
   img {
+    display: block;
     width: 100%;
   }
 
@@ -73,13 +143,6 @@
     .container {
       margin-left: auto;
       margin-right: auto;
-      max-width: 1000px;
-      @apply px-8;
-    }
-
-    .container--lg {
-      margin-left: auto;
-      margin-right: auto;
       max-width: 1500px;
       @apply px-8;
     }
@@ -99,37 +162,52 @@
       font-size: 53px;
       line-height: 52px;
       letter-spacing: -1.5px;
+      position: relative;
+      bottom: -0.15em;
+      margin-top: -0.28em;
 
       @screen lg {
         font-size: 93px;
         line-height: 88px;
         letter-spacing: -2px;
+        bottom: -0.125em;
+        margin-top: -0.23em;
       }
     }
 
     .f-2 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 20px;
       line-height: 29px;
+      position: relative;
+      bottom: -0.4em;
+      margin-top: -0.725em;
 
       @screen lg {
         line-height: 26px;
+        bottom: -0.325em;
+        margin-top: -0.575em;
       }
     }
 
     .f-3 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 20px;
       line-height: 25px;
+      position: relative;
+      bottom: -0.275em;
+      margin-top: -0.5em;
 
       @screen lg {
         font-size: 22px;
         line-height: 27px;
+        bottom: -0.275em;
+        margin-top: -0.53em;
       }
     }
 
     .f-4 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 14px;
       font-size: 13px;
       line-height: 17px;
@@ -141,15 +219,20 @@
     }
 
     .f-5 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary);
       font-size: 63px;
       line-height: 54px;
       letter-spacing: -2px;
+      position: relative;
+      bottom: -0.085em;
+      margin-top: -0.125em;
 
       @screen lg {
         font-size: 170px;
         line-height: 135px;
         letter-spacing: -6px;
+        bottom: -0.05em;
+        margin-top: -0.075em;
       }
     }
 
@@ -157,10 +240,15 @@
       font-family: var(--font-secondary--light);
       font-size: 19px;
       line-height: 26px;
+      position: relative;
+      bottom: -0.3em;
+      margin-top: -0.675em;
 
       @screen lg {
         font-size: 21px;
         line-height: 28px;
+        bottom: -0.3em;
+        margin-top: -0.6em;
       }
     }
 
@@ -168,21 +256,31 @@
       font-family: var(--font-secondary--black);
       font-size: 17px;
       line-height: 26px;
+      position: relative;
+      bottom: -0.45em;
+      margin-top: -0.825em;
 
       @screen lg {
         font-size: 19px;
         line-height: 28px;
+        bottom: -0.375em;
+        margin-top: -0.725em;
       }
     }
 
     .f-8 {
-      font-family: var(--font-primary--light);
-      font-size: 16px;
-      line-height: 21px;
+      font-family: var(--font-primary);
+      font-size: 15px;
+      line-height: 19px;
+      bottom: -0.325em;
+      margin-top: -0.525em;
+      position: relative;
 
       @screen lg {
-        font-size: 15px;
-        line-height: 19px;
+        font-size: 16px;
+        line-height: 21px;
+        bottom: -0.345em;
+        margin-top: -0.575em;
       }
     }
 
@@ -197,16 +295,19 @@
       }
     }
 
-    /* Minus 1 from the below */
-
     .f-10 {
       font-family: var(--font-secondary--bold);
       font-size: 24px;
       line-height: 27px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
 
       @screen lg {
         font-size: 34px;
         line-height: 25px;
+        bottom: -0.02em;
+        margin-top: 0.01em;
       }
     }
 
@@ -215,11 +316,16 @@
       font-size: 39px;
       line-height: 36px;
       letter-spacing: -0.6px;
+      position: relative;
+      bottom: -0.115em;
+      margin-top: -0.2em;
 
       @screen lg {
         font-size: 62px;
         line-height: 59px;
         letter-spacing: -1.05px;
+        bottom: -0.125em;
+        margin-top: -0.225em;
       }
     }
 
@@ -227,32 +333,59 @@
       font-family: var(--font-secondary--black);
       font-size: 15px;
       line-height: 18px;
+      position: relative;
+      bottom: -0.25em;
+      margin-top: -0.475em;
 
       @screen lg {
         font-size: 16px;
         line-height: 19px;
+        bottom: -0.225em;
+        margin-top: -0.425em;
       }
     }
 
     .f-13 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
+      position: relative;
+      bottom: -0.275em;
+      margin-top: -0.55em;
 
       @screen lg {
         font-size: 25px;
         line-height: 32px;
+        bottom: -0.3em;
+        margin-top: -0.525em;
+      }
+    }
+
+    .f-13 + .f-13 {
+      margin-top: 26px;
+      @screen md {
+        margin-top: 32px;
       }
     }
 
     .f-14 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
+      position: relative;
+      bottom: -0.35em;
+      margin-top: -0.625em;
 
       @screen lg {
         font-size: 23px;
         line-height: 32px;
+      }
+    }
+
+    .f-14 + .f-14 {
+      margin-top: 26px;
+      @screen lg {
+        margin-top: 32px;
       }
     }
 
@@ -261,11 +394,16 @@
       font-size: 33px;
       line-height: 32px;
       letter-spacing: -0.4px;
+      position: relative;
+      bottom: -0.125em;
+      margin-top: -0.25em;
 
       @screen lg {
         font-size: 57px;
         line-height: 54px;
         letter-spacing: -0.7px;
+        bottom: -0.125em;
+        margin-top: -0.215em;
       }
     }
 
@@ -274,11 +412,16 @@
       font-size: 17px;
       line-height: 19px;
       letter-spacing: -0.3px;
+      position: relative;
+      bottom: -0.2em;
+      margin-top: -0.4em;
 
       @screen lg {
         font-size: 19px;
         line-height: 23px;
         letter-spacing: -0.7px;
+        bottom: -0.25em;
+        margin-top: -0.45em;
       }
     }
 
@@ -286,22 +429,33 @@
       font-family: var(--font-secondary--black);
       font-size: 23px;
       line-height: 25px;
+      position: relative;
+      bottom: -0.2em;
+      margin-top: -0.35em;
     }
 
     .f-18 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 17px;
       line-height: 21px;
+      position: relative;
+      bottom: -0.3em;
+      margin-top: -0.475em;
     }
 
     .f-19 {
       font-family: var(--font-secondary--black);
       font-size: 19px;
       line-height: 22px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
 
       @screen lg {
         font-size: 23px;
         line-height: 25px;
+        bottom: -0.2em;
+        margin-top: -0.35em;
       }
     }
 
@@ -309,16 +463,24 @@
       font-family: var(--font-secondary--black);
       font-size: 15px;
       line-height: 17px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
     }
 
     .f-21 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 19px;
       line-height: 28px;
+      position: relative;
+      bottom: -0.4em;
+      margin-top: -0.7em;
 
       @screen lg {
         font-size: 20px;
         line-height: 27px;
+        bottom: -0.35em;
+        margin-top: -0.585em;
       }
     }
 
@@ -327,11 +489,16 @@
       font-size: 38px;
       line-height: 36px;
       letter-spacing: -1.25px;
+      position: relative;
+      bottom: -0.15em;
+      margin-top: -0.25em;
 
       @screen lg {
         font-size: 75px;
         line-height: 68px;
         letter-spacing: -2.5px;
+        bottom: -0.115em;
+        margin-top: -0.2em;
       }
     }
 
@@ -340,10 +507,15 @@
       font-size: 18px;
       line-height: 19px;
       letter-spacing: -0.4px;
+      position: relative;
+      bottom: -0.175em;
+      margin-top: -0.3em;
 
       @screen lg {
         font-size: 18px;
         line-height: 29px;
+        bottom: -0.45em;
+        margin-top: -0.875em;
       }
     }
 
@@ -352,6 +524,9 @@
       font-size: 27px;
       line-height: 29px;
       letter-spacing: -0.6px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
 
       @screen lg {
         font-size: 27px;
@@ -364,11 +539,16 @@
       font-size: 38px;
       line-height: 36px;
       letter-spacing: -1.25px;
+      position: relative;
+      bottom: -0.125em;
+      margin-top: -0.21em;
 
       @screen lg {
         font-size: 51px;
         line-height: 48px;
         letter-spacing: -1.7px;
+        bottom: -0.125em;
+        margin-top: -0.215em;
       }
     }
 
@@ -377,11 +557,16 @@
       font-size: 27px;
       line-height: 29px;
       letter-spacing: -0.9px;
+      position: relative;
+      bottom: -0.2em;
+      margin-top: -0.35em;
 
       @screen lg {
         font-size: 31px;
         line-height: 33px;
         letter-spacing: -1px;
+        bottom: -0.185em;
+        margin-top: -0.325em;
       }
     }
 
@@ -390,6 +575,9 @@
       font-size: 25px;
       line-height: 27px;
       letter-spacing: -0.5px;
+      position: relative;
+      bottom: -0.2em;
+      margin-top: -0.35em;
     }
 
     .f-27 {
@@ -397,6 +585,9 @@
       font-size: 29px;
       line-height: 30px;
       letter-spacing: -0.4px;
+      position: relative;
+      bottom: -0.175em;
+      margin-top: -0.315em;
 
       @screen lg {
         font-size: 33px;
@@ -409,17 +600,25 @@
       font-size: 26px;
       line-height: 30px;
       letter-spacing: -0.5px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
 
       @screen lg {
         font-size: 28px;
         line-height: 30px;
+        bottom: -0.185em;
+        margin-top: -0.325em;
       }
     }
 
     .f-29 {
-      font-family: var(--font-primary--light);
+      font-family: var(--font-primary);
       font-size: 18px;
       line-height: 22px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
     }
   }
 }

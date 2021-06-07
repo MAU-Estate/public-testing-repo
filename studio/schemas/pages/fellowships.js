@@ -1,5 +1,5 @@
 export default {
-  name: 'fellowship',
+  name: 'fellowships',
   title: 'Fellowships',
   __experimental_actions: ['update', 'publish'],
   type: 'document',
@@ -20,9 +20,14 @@ export default {
       type: 'string'
     },
     {
-      name: 'header',
-      title: 'Intro Text',
-      type: 'textColumns'
+      name: 'headerBodyLeft',
+      title: 'Intro Text - Left Column',
+      type: 'richText'
+    },
+    {
+      name: 'headerBodyRight',
+      title: 'Intro Text - Right Column',
+      type: 'richText'
     },
     {
       name: 'recipientLabel',
@@ -30,4 +35,4 @@ export default {
       type: 'string'
     }
   ]
-};
+}

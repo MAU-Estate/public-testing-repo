@@ -1,4 +1,6 @@
 {
-  "printWidth": 100,
-  "singleQuote": true
+  "arrowParens": "avoid",
+  "semi": false,
+  "singleQuote": true,
+  "htmlWhitespaceSensitivity": "ignore"
 }

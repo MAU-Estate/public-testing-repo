@@ -3,7 +3,8 @@ export default {
   title: 'Image',
   type: 'object',
   options: {
-    collapsible: true
+    collapsible: true,
+    collapsed: true
   },
   fields: [
     {
@@ -19,12 +20,9 @@ export default {
       type: 'string'
     },
     {
-      name: 'caption',
+      name: 'figcaption',
       title: 'Caption',
-      type: 'richText',
-      options: {
-        collapsible: true
-      }
+      type: 'caption'
     }
   ]
 };

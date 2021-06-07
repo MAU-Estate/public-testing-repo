@@ -1,4 +1,4 @@
-import { BiPaint } from 'react-icons/bi';
+import { BiPaint } from 'react-icons/bi'
 
 export default {
   name: 'project',
@@ -15,6 +15,14 @@ export default {
       type: 'string',
       name: 'title',
       title: 'Project Title'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title'
+      }
     },
     {
       name: 'date',
@@ -52,7 +60,7 @@ export default {
   initialValue: {
     date: '1999-01-01 00:00'
   }
-};
+}
 
 // label
 // relationship

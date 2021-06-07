@@ -18,12 +18,12 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string'
-    }
+    },
     {
       name: 'body',
       title: 'Body',
       type: 'richText'
-    },
+    }
     // Estate Address
     // Gallery Address
     // Currently on view (does this link to exhibition page?)

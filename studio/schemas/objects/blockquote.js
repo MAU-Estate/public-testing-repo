@@ -19,6 +19,11 @@ export default {
       name: 'author',
       title: 'Author',
       type: 'string'
+    },
+    {
+      name: 'citation',
+      title: 'Citation',
+      type: 'string'
     }
   ]
 };

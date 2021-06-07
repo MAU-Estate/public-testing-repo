@@ -13,12 +13,17 @@ export const bioSection1 = {
       type: 'figure'
     },
     {
-      name: 'textCols1',
-      title: 'Text Columns',
-      type: 'textColumns'
+      name: 'section1bodyLeft',
+      title: 'Column Left',
+      type: 'richText'
+    },
+    {
+      name: 'section1bodyRight',
+      title: 'Column Right',
+      type: 'richText'
     }
   ]
-};
+}
 
 export const bioSection2 = {
   name: 'bioSection2',
@@ -42,7 +47,7 @@ export const bioSection2 = {
     {
       name: 'gallery1',
       title: 'Gallery 1',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'richText2',
@@ -57,10 +62,10 @@ export const bioSection2 = {
     {
       name: 'gallery2',
       title: 'Gallery 2',
-      type: 'gallery'
+      type: 'galleryObj'
     }
   ]
-};
+}
 
 export const bioSection3 = {
   name: 'bioSection3',
@@ -79,17 +84,17 @@ export const bioSection3 = {
     {
       name: 'gallery1',
       title: 'Gallery',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'gallery2',
       title: 'Gallery Left',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'gallery3',
       title: 'Gallery Right',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'richText2',
@@ -97,7 +102,7 @@ export const bioSection3 = {
       type: 'richText'
     }
   ]
-};
+}
 
 export const bioSection4 = {
   name: 'bioSection4',
@@ -111,7 +116,7 @@ export const bioSection4 = {
     {
       name: 'gallery1',
       title: 'Gallery',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'richText1',
@@ -124,7 +129,7 @@ export const bioSection4 = {
       type: 'blockquote'
     }
   ]
-};
+}
 
 export const bioSection5 = {
   name: 'bioSection5',
@@ -148,7 +153,7 @@ export const bioSection5 = {
     {
       name: 'gallery1',
       title: 'Gallery',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'richText2',
@@ -166,7 +171,7 @@ export const bioSection5 = {
       type: 'figure'
     }
   ]
-};
+}
 
 export const bioSection6 = {
   name: 'bioSection6',
@@ -200,15 +205,15 @@ export const bioSection6 = {
     {
       name: 'gallery1',
       title: 'Gallery Left',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'gallery2',
       title: 'Gallery Right',
-      type: 'gallery'
+      type: 'galleryObj'
     }
   ]
-};
+}
 
 export const bioSection7 = {
   name: 'bioSection7',
@@ -227,7 +232,7 @@ export const bioSection7 = {
     {
       name: 'gallery1',
       title: 'Gallery 1',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'blockquote1',
@@ -245,7 +250,7 @@ export const bioSection7 = {
       type: 'figure'
     }
   ]
-};
+}
 
 export const bioCta = {
   name: 'bioCta',
@@ -267,14 +272,9 @@ export const bioCta = {
       type: 'string'
     },
     {
-      name: 'icon',
-      title: 'Icon',
-      type: 'image'
-    },
-    {
       name: 'image1',
-      title: 'Image',
+      title: 'Background Image',
       type: 'figure'
     }
   ]
-};
+}

@@ -8,6 +8,9 @@ const clientConfig = require('./client-config')
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+  },
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
@@ -20,6 +23,7 @@ module.exports = {
         tailwind: true,
       },
     },
+    `gatsby-plugin-modal-routing-3`,
     {
       resolve: 'gatsby-source-sanity',
       options: {

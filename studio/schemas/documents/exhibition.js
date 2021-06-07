@@ -9,10 +9,19 @@ export default {
       type: 'string'
     },
     {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title'
+      }
+    },
+    {
       name: 'date',
       title: 'Year',
       type: 'date',
-      description: 'Year will be displayed but month & day will be used for ordering',
+      description:
+        'Year will be displayed but month & day will be used for ordering',
       options: {
         dateFormat: 'MM-DD-YYYY'
       }
@@ -52,8 +61,9 @@ export default {
     {
       name: 'details',
       title: 'Details',
-      description: 'Additional information to be in parenthesis after exhibition name in CV',
+      description:
+        'Additional information to be in parenthesis after exhibition name in CV',
       type: 'string'
     }
   ]
-};
+}

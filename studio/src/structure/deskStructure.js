@@ -83,9 +83,9 @@
 //       )
 //     ])
 
-import S from '@sanity/desk-tool/structure-builder';
-import { AiFillTags } from 'react-icons/ai';
-import { GrDocument } from 'react-icons/gr';
+import S from '@sanity/desk-tool/structure-builder'
+import { AiFillTags } from 'react-icons/ai'
+import { GrDocument } from 'react-icons/gr'
 
 export default () =>
   S.list()
@@ -128,11 +128,11 @@ export default () =>
                     .documentId('exhibitions')
                 ),
               S.listItem()
-                .title('Fellowship')
+                .title('Fellowships')
                 .child(
                   S.document()
-                    .schemaType('fellowship')
-                    .documentId('fellowship')
+                    .schemaType('fellowships')
+                    .documentId('fellowships')
                 ),
               S.listItem()
                 .title('Press')
@@ -197,4 +197,4 @@ export default () =>
             .schemaType('siteSettings')
             .documentId('siteSettings')
         )
-    ]);
+    ])

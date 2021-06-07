@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'LetteraTextLLSub-BlackSubset';
+  src: local('LetteraTextLLSub-BlackSubset'),
+    url(../assets/fonts/LetteraTextLLSub-BlackSubset.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-BlackSubset.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'LetteraTextLLSub-BoldSubset';
+  src: local('LetteraTextLLSub-BoldSubset'),
+    url(../assets/fonts/LetteraTextLLSub-BoldSubset.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-BoldSubset.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'LetteraTextLLSub-RegularSubset';
+  src: local('LetteraTextLLSub-RegularSubset'),
+    url(../assets/fonts/LetteraTextLLSub-RegularSubset.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-RegularSubset.woff2) format('woff2');
+}
+
+/* Signifier */
+
+@font-face {
+  font-family: 'signifier-web-light';
+  src: local('signifier-web-light'),
+    url(../assets/fonts/signifier-web-light.woff) format('woff'),
+    url(../assets/fonts/signifier-web-light.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'signifier-web-light-italic';
+  src: local('signifier-web-light-italic'),
+    url(../assets/fonts/signifier-web-light-italic.woff) format('woff'),
+    url(../assets/fonts/signifier-web-light-italic.woff2) format('woff2');
+}

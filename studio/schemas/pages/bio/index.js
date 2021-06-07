@@ -17,7 +17,7 @@ export default {
     {
       name: 'hero',
       title: 'Hero Gallery',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'section1',
@@ -31,7 +31,7 @@ export default {
     },
     {
       name: 'section3',
-      title: 'Dignosis',
+      title: 'Diagnosis',
       type: 'bioSection3'
     },
     {
@@ -60,4 +60,4 @@ export default {
       type: 'bioCta'
     }
   ]
-};
+}
