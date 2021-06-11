@@ -14,7 +14,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
           <div className="aspect-w-16 aspect-h-9 border border-white">
             <img
               className="object-contain"
-              src="https://via.placeholder.com/640x480"
+              src="https://via.placeholder.com/480x640"
               alt=""
             />
           </div>
@@ -28,20 +28,6 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
       </div>
 
       <section className="container mt-e">
-        {/* <div className="grid grid-cols-12">
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-          <div className="col-span-1 border h-14"></div>
-        </div> */}
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3">
             <img src="https://via.placeholder.com/1115x300" />
@@ -243,9 +229,9 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
           </div>
         </div>
       </section>
-      {/* <Link to="/gallery/placeholder-gallery" state={{ modal: true }}>
+      <Link to="/gallery/placeholder-gallery" state={{ modal: true }}>
         Placeholder Gallery link
-      </Link> */}
+      </Link>
     </>
   )
 }

@@ -8,13 +8,14 @@
 
     --unit: 4px;
 
-    --gap: calc(var(--unit) * 6);
+    --gap: 45px;
 
     --font-primary: 'signifier-web-light';
     --font-primary--italic: 'signifier-web-light-italic';
-    --font-secondary: 'LetteraTextLLSub-RegularSubset';
-    --font-secondary--bold: 'LetteraTextLLSub-BoldSubset';
-    --font-secondary--black: 'LetteraTextLLSub-BlackSubset';
+    --font-secondary: 'LetteraTextLLSub-Light';
+    --font-secondary--light: 'LetteraTextLLSub-Light';
+    --font-secondary--regular: 'LetteraTextLLSub-Regular';
+    --font-secondary--medium: 'LetteraTextLLSub-Medium';
 
     --unit-a: calc(var(--unit) * 6);
     --unit-a2: calc(var(--unit) * 14);
@@ -143,7 +144,7 @@
     .container {
       margin-left: auto;
       margin-right: auto;
-      max-width: 1500px;
+      max-width: 1600px;
       @apply px-8;
     }
 
@@ -253,7 +254,7 @@
     }
 
     .f-7 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 17px;
       line-height: 26px;
       position: relative;
@@ -285,7 +286,7 @@
     }
 
     .f-9 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 20px;
       line-height: 25px;
 
@@ -296,7 +297,7 @@
     }
 
     .f-10 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 24px;
       line-height: 27px;
       position: relative;
@@ -312,7 +313,7 @@
     }
 
     .f-11 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 39px;
       line-height: 36px;
       letter-spacing: -0.6px;
@@ -330,7 +331,7 @@
     }
 
     .f-12 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 15px;
       line-height: 18px;
       position: relative;
@@ -390,7 +391,7 @@
     }
 
     .f-15 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 33px;
       line-height: 32px;
       letter-spacing: -0.4px;
@@ -408,7 +409,7 @@
     }
 
     .f-16 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 17px;
       line-height: 19px;
       letter-spacing: -0.3px;
@@ -426,7 +427,7 @@
     }
 
     .f-17 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 23px;
       line-height: 25px;
       position: relative;
@@ -444,7 +445,7 @@
     }
 
     .f-19 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 19px;
       line-height: 22px;
       position: relative;
@@ -460,7 +461,7 @@
     }
 
     .f-20 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 15px;
       line-height: 17px;
       position: relative;
@@ -485,7 +486,7 @@
     }
 
     .f-22 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 38px;
       line-height: 36px;
       letter-spacing: -1.25px;
@@ -503,7 +504,7 @@
     }
 
     .f-23 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 18px;
       line-height: 19px;
       letter-spacing: -0.4px;
@@ -520,7 +521,7 @@
     }
 
     .f-24 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 27px;
       line-height: 29px;
       letter-spacing: -0.6px;
@@ -535,7 +536,7 @@
     }
 
     .f-24 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 38px;
       line-height: 36px;
       letter-spacing: -1.25px;
@@ -553,7 +554,7 @@
     }
 
     .f-25 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 27px;
       line-height: 29px;
       letter-spacing: -0.9px;
@@ -571,7 +572,7 @@
     }
 
     .f-26 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 25px;
       line-height: 27px;
       letter-spacing: -0.5px;
@@ -581,7 +582,7 @@
     }
 
     .f-27 {
-      font-family: var(--font-secondary--bold);
+      font-family: var(--font-secondary--regular);
       font-size: 29px;
       line-height: 30px;
       letter-spacing: -0.4px;
@@ -596,7 +597,7 @@
     }
 
     .f-28 {
-      font-family: var(--font-secondary--black);
+      font-family: var(--font-secondary--medium);
       font-size: 26px;
       line-height: 30px;
       letter-spacing: -0.5px;

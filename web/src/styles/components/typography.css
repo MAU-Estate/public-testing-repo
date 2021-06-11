@@ -1,20 +1,20 @@
 @font-face {
-  font-family: 'LetteraTextLLSub-BlackSubset';
-  src: local('LetteraTextLLSub-BlackSubset'),
-    url(../assets/fonts/LetteraTextLLSub-BlackSubset.woff) format('woff'),
-    url(../assets/fonts/LetteraTextLLSub-BlackSubset.woff2) format('woff2');
+  font-family: 'LetteraTextLLSub-Medium';
+  src: local('LetteraTextLLSub-Medium'),
+    url(../assets/fonts/LetteraTextLLSub-Medium.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-Medium.woff2) format('woff2');
 }
 @font-face {
-  font-family: 'LetteraTextLLSub-BoldSubset';
-  src: local('LetteraTextLLSub-BoldSubset'),
-    url(../assets/fonts/LetteraTextLLSub-BoldSubset.woff) format('woff'),
-    url(../assets/fonts/LetteraTextLLSub-BoldSubset.woff2) format('woff2');
+  font-family: 'LetteraTextLLSub-Regular';
+  src: local('LetteraTextLLSub-Regular'),
+    url(../assets/fonts/LetteraTextLLSub-Regular.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-Regular.woff2) format('woff2');
 }
 @font-face {
-  font-family: 'LetteraTextLLSub-RegularSubset';
-  src: local('LetteraTextLLSub-RegularSubset'),
-    url(../assets/fonts/LetteraTextLLSub-RegularSubset.woff) format('woff'),
-    url(../assets/fonts/LetteraTextLLSub-RegularSubset.woff2) format('woff2');
+  font-family: 'LetteraTextLLSub-Light';
+  src: local('LetteraTextLLSub-Light'),
+    url(../assets/fonts/LetteraTextLLSub-Light.woff) format('woff'),
+    url(../assets/fonts/LetteraTextLLSub-Light.woff2) format('woff2');
 }
 
 /* Signifier */
