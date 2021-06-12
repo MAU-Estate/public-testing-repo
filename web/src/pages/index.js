@@ -1,29 +1,77 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import Slider from 'react-slick'
 
-// const IndexPage = ({ location, data: { sanityBio: pageData } }) => (
+const Slide = ({ height, width, caption }) => (
+  <figure className="relative flex-1">
+    <div className="absolute inset-0 flex flex-col">
+      <div className="flex-1 flex" style={{ minHeight: 0 }}>
+        <img
+          className="object-contain pointer-events-auto"
+          src={`https://via.placeholder.com/${width}x${height}`}
+          alt=""
+        />
+      </div>
+      <figcaption className="mt-c ">
+        <div className="f-8 text-white">{caption}</div>
+      </figcaption>
+    </div>
+  </figure>
+)
+
+const SliderArrow = ({ type = 'previous', className, style, onClick }) => {
+  const isPrevious = type === 'previous'
+  return (
+    <div
+      className={`
+      absolute
+      top-0
+      bottom-0
+      flex
+      items-center
+      text-white
+      ${isPrevious ? 'left-0 right-1/2' : 'right-0 left-1/2'}
+    `}
+    >
+      <button
+        onClick={onClick}
+        className={`
+          focus:outline-none
+          flex-1
+          h-full
+          flex
+          items-center
+          ${isPrevious ? 'justify-start ' : 'justify-end'}
+        `}
+      >
+        {isPrevious ? `<` : '>'}
+      </button>
+    </div>
+  )
+}
 const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
+  const settings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    fade: true,
+    nextArrow: <SliderArrow />,
+    prevArrow: <SliderArrow type="next" />,
+  }
   return (
     <>
       {/* gallery */}
-      <div className="w-full h-screen bg-black-b relative flex justify-center items-center p-24">
-        <div className="absolute left-0 right-1/2 top-0 bottom-0 border border-white flex items-center z-10 text-white">
-          <div className="p-10">{`<`}</div>
-        </div>
-        <figure className="w-full max-w-7xl">
-          <div className="aspect-w-16 aspect-h-9 border border-white">
-            <img
-              className="object-contain"
-              src="https://via.placeholder.com/480x640"
-              alt=""
-            />
+      <div className="w-full h-screen bg-black-b relative flex py-24">
+        <div className="relative z-10 w-full h-full flex">
+          <div className="container w-full h-full flex flex-1">
+            <Slider {...settings} className="flex flex-1">
+              <Slide width="1200" height="500" caption="Test this caption" />
+              <Slide width="800" height="600" caption="Caption test" />
+              <Slide width="1000" height="1000" caption="awesome" />
+              <Slide width="1000" height="500" caption="Cool beans" />
+            </Slider>
           </div>
-          <figcaption className="mt-c">
-            <div className="f-8 text-white">Caption about the photo</div>
-          </figcaption>
-        </figure>
-        <div className="absolute right-0 left-1/2 top-0 bottom-0 flex items-center justify-end border border-white text-white">
-          <div className="p-10">{`>`}</div>
         </div>
       </div>
 
@@ -60,7 +108,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         <div className="container">
           <div className="grid grid-cols-12 mb-e">
             <div className="col-span-5 ">
-              <div className="border border-white">
+              <div className="">
                 <img src="https:/via.placeholder.com/320x180" alt="" />
               </div>
             </div>

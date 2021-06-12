@@ -26,10 +26,15 @@ export default {
       }
     },
     {
+      name: 'menuBgImage',
+      title: 'Menu Background Image',
+      type: 'image'
+    },
+    {
       name: 'backToTopButtonLabel',
       title: 'Back to top button label',
       type: 'string'
     }
     // social - will this ever grow?
   ]
-};
+}

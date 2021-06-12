@@ -34,8 +34,11 @@
   },
   "dependencies": {
     "gatsby-cli": "^3.4.1",
-    "gatsby-plugin-image": "^1.4.0",
+    "gatsby-plugin-image": "^1.7.1",
+    "gatsby-plugin-modal-routing-3": "^3.0.0",
     "postcss": "^8.2.14",
-    "gatsby-plugin-modal-routing-3": "^3.0.0"
+    "react-slick": "^0.28.1",
+    "@svgr/webpack": "^5.5.0",
+    "gatsby-plugin-svgr": "^3.0.0-beta.0"
   }
 }

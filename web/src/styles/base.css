@@ -91,6 +91,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  .no-scroll {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
   #___gatsby,
   #gatsby-focus-wrapper {
     display: flex;

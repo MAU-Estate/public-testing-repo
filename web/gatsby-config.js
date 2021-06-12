@@ -14,13 +14,25 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: false,
         tailwind: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-svgr',
+      options: {
+        prettier: true,
+        svgo: true,
+        replaceAttrValues: {
+          '#000000': 'currentColor',
+          '#000': 'currentColor',
+        },
       },
     },
     `gatsby-plugin-modal-routing-3`,
