@@ -12,7 +12,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
-    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/image-url": "^0.140.19",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/line-clamp": "^0.2.0",
@@ -33,12 +33,13 @@
     "twin.macro": "^2.4.1"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "gatsby-cli": "^3.4.1",
     "gatsby-plugin-image": "^1.7.1",
     "gatsby-plugin-modal-routing-3": "^3.0.0",
+    "gatsby-plugin-svgr": "^3.0.0-beta.0",
     "postcss": "^8.2.14",
-    "react-slick": "^0.28.1",
-    "@svgr/webpack": "^5.5.0",
-    "gatsby-plugin-svgr": "^3.0.0-beta.0"
+    "query-string": "^7.0.0",
+    "react-slick": "^0.28.1"
   }
 }

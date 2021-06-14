@@ -80,6 +80,10 @@
     height: 100%;
   }
 
+  em {
+    font-family: var(--font-primary--italic);
+  }
+
   body,
   #root {
     display: flex;
@@ -627,6 +631,10 @@
       position: relative;
       bottom: -0.225em;
       margin-top: -0.4em;
+    }
+
+    .font-italic {
+      font-family: var(--font-primary--italic);
     }
   }
 }

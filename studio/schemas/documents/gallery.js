@@ -2,19 +2,29 @@ export default {
   name: 'gallery',
   title: 'Galleries',
   type: 'document',
+  preview: {
+    select: {
+      title: 'seo.title'
+    }
+  },
   fields: [
     {
-      title: 'Name of Gallery',
-      type: 'string',
-      name: 'title'
+      title: 'SEO',
+      type: 'seo',
+      name: 'seo'
     },
     {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
       options: {
-        source: 'title'
+        source: 'seo.title'
       }
+    },
+    {
+      name: 'backUrl',
+      type: 'string',
+      title: 'Route to path on close'
     },
     {
       name: 'images',

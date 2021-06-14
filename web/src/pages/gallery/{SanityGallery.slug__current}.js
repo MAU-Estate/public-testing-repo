@@ -2,26 +2,34 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
 
+import Gallery from '../../components/Gallery'
+
 export default function gallery({
   data: {
-    sanityGallery: { title },
+    sanityGallery: { images, slug, backUrl },
   },
 }) {
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
         <div>
-          <h2>Gallery - {title}</h2>
           {modal ? (
             <>
               <h2>Gallery loaded in a modal</h2>
               <Link to={closeTo}>Close</Link>
             </>
           ) : (
-            <header>
-              <h2>Gallery loaded in a page</h2>
-              <Link to={'/'}>Go Home</Link>
-            </header>
+            <div className="fixed inset-0 py-h z-30 bg-white flex">
+              <Link
+                to={`${backUrl}#${slug.current}`}
+                className="absolute z-20 top-0 right-0"
+              >
+                Close
+              </Link>
+              <div className="container flex flex-1">
+                <Gallery slides={images} theme="light" inline={false} />
+              </div>
+            </div>
           )}
         </div>
       )}
@@ -30,9 +38,28 @@ export default function gallery({
 }
 
 export const galleryQuery = graphql`
-  query($id: String) {
+  query ($id: String) {
     sanityGallery(id: { eq: $id }) {
-      title
+      slug {
+        current
+      }
+      backUrl
+      images {
+        _key
+        alt
+        src {
+          asset {
+            _key
+            gatsbyImageData
+          }
+        }
+        figcaption {
+          body {
+            _rawText
+          }
+          credit
+        }
+      }
     }
   }
 `

@@ -1,4 +1,4 @@
-import { AiFillTags } from 'react-icons/ai';
+import { AiFillTags } from 'react-icons/ai'
 
 export default {
   name: 'collections',
@@ -7,7 +7,7 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'collections',
+      name: 'title',
       title: 'Collection name',
       type: 'string'
     },
@@ -18,4 +18,4 @@ export default {
       hidden: true
     }
   ]
-};
+}

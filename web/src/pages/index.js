@@ -1,76 +1,20 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import Slider from 'react-slick'
+import Gallery from '../components/Gallery'
 
-const Slide = ({ height, width, caption }) => (
-  <figure className="relative flex-1">
-    <div className="absolute inset-0 flex flex-col">
-      <div className="flex-1 flex" style={{ minHeight: 0 }}>
-        <img
-          className="object-contain pointer-events-auto"
-          src={`https://via.placeholder.com/${width}x${height}`}
-          alt=""
-        />
-      </div>
-      <figcaption className="mt-c ">
-        <div className="f-8 text-white">{caption}</div>
-      </figcaption>
-    </div>
-  </figure>
-)
-
-const SliderArrow = ({ type = 'previous', className, style, onClick }) => {
-  const isPrevious = type === 'previous'
-  return (
-    <div
-      className={`
-      absolute
-      top-0
-      bottom-0
-      flex
-      items-center
-      text-white
-      ${isPrevious ? 'left-0 right-1/2' : 'right-0 left-1/2'}
-    `}
-    >
-      <button
-        onClick={onClick}
-        className={`
-          focus:outline-none
-          flex-1
-          h-full
-          flex
-          items-center
-          ${isPrevious ? 'justify-start ' : 'justify-end'}
-        `}
-      >
-        {isPrevious ? `<` : '>'}
-      </button>
-    </div>
-  )
-}
 const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
-  const settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    fade: true,
-    nextArrow: <SliderArrow />,
-    prevArrow: <SliderArrow type="next" />,
-  }
   return (
     <>
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div className="relative z-10 w-full h-full flex">
           <div className="container w-full h-full flex flex-1">
-            <Slider {...settings} className="flex flex-1">
-              <Slide width="1200" height="500" caption="Test this caption" />
-              <Slide width="800" height="600" caption="Caption test" />
-              <Slide width="1000" height="1000" caption="awesome" />
-              <Slide width="1000" height="500" caption="Cool beans" />
-            </Slider>
+            <Gallery
+              inline={false}
+              cover={false}
+              slides={pageData.hero.galleryRef.images}
+              slug={pageData.hero.galleryRef.slug}
+            />
           </div>
         </div>
       </div>
@@ -146,7 +90,12 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
 
         {/* Full Gallery */}
-        <div className="mb-e">
+        <Gallery
+          slides={pageData.section2.gallery1.galleryRef.images}
+          slug={pageData.section2.gallery1.galleryRef.slug}
+          className="mb-e aspect-w-16 aspect-h-9"
+        />
+        {/* <div className="mb-e" id="placeholder-gallery">
           <div className="aspect-w-5 aspect-h-3 mb-c">
             <img
               className="object-cover"
@@ -166,7 +115,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
               <p className="ml-20 f-8">1 / 5</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="container grid grid-cols-12">
           <div className="col-start-7 col-span-5 text-white mb-e">
@@ -291,6 +240,14 @@ export const query = graphql`
     sanityBio {
       seo {
         title
+      }
+      hero {
+        ...gallery
+      }
+      section2 {
+        gallery1 {
+          ...gallery
+        }
       }
     }
   }

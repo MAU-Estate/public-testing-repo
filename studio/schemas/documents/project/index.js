@@ -35,8 +35,14 @@ export default {
       type: 'string'
     },
     {
+      title: 'Collection',
+      name: 'collections',
+      type: 'reference',
+      to: [{ type: 'collections' }]
+    },
+    {
       title: 'Medium',
-      name: 'medium',
+      name: 'mediums',
       type: 'reference',
       to: [{ type: 'mediums' }]
     },
@@ -58,7 +64,7 @@ export default {
     // // add single image / add image grid
   ],
   initialValue: {
-    date: '1999-01-01 00:00'
+    date: '1990-01-01 00:00'
   }
 }
 
