@@ -59,6 +59,7 @@ const Work = ({
   const handleResetFilters = () => {
     const defaultFilters = { featured: activeFilters.featured }
     setActiveFilters(defaultFilters)
+    setFilteredProjects(getFilteredProjects(defaultFilters))
     setUrlParams(defaultFilters)
   }
 
