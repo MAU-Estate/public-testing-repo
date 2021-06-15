@@ -41,12 +41,16 @@ import textColumn from './objects/textColumn'
 import textColumns from './objects/textColumns'
 
 // Documents
-import collections from './documents/collections'
+import collection from './documents/collection'
 import galleries from './documents/gallery'
 import project from './documents/project/'
-import { projectMaterials } from './documents/project/objects'
-import mediums from './documents/mediums'
-import materials from './documents/materials'
+import {
+  projectCollections,
+  projectMaterials,
+  projectMediums
+} from './documents/project/objects'
+import medium from './documents/medium'
+import material from './documents/material'
 import exhibition from './documents/exhibition'
 import awards from './documents/awards'
 import bibliographies from './documents/bibliographies'
@@ -87,15 +91,17 @@ export default createSchema({
     article,
     awards,
     bibliographies,
-    collections,
+    collection,
     education,
     exhibition,
     galleries,
-    materials,
+    material,
     // mainNav,
-    mediums,
+    medium,
     project,
     projectMaterials,
+    projectMediums,
+    projectCollections,
     publicCollections,
     siteSettings
   ])

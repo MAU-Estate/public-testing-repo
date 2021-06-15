@@ -9,8 +9,4 @@ export default {
       type: 'string'
     }
   ]
-};
-
-// label
-// relationship
-// slug of page
+}

@@ -169,9 +169,9 @@ export default () =>
                     'press',
                     'work',
                     'siteSettings',
-                    'mediums',
-                    'materials',
-                    'collections'
+                    'medium',
+                    'material',
+                    'collection'
                   ].includes(listItem.getId())
               )
             ])
@@ -184,9 +184,9 @@ export default () =>
             .title('Filters')
             .showIcons(false)
             .items([
-              S.documentTypeListItem('collections'),
-              S.documentTypeListItem('materials'),
-              S.documentTypeListItem('mediums')
+              S.documentTypeListItem('collection'),
+              S.documentTypeListItem('material'),
+              S.documentTypeListItem('medium')
             ])
         ),
       S.divider(),

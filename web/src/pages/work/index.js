@@ -4,6 +4,19 @@ import queryString from 'query-string'
 
 import FilterList from '../../components/FilterList'
 
+const filterProject = (project, filters, type) => {
+  const filterOptions = filters[type]
+  if (!filterOptions || !filterOptions.length) return true
+  const projectFilterTypeOptions = project[type]
+  if (!projectFilterTypeOptions) return false
+
+  return filterOptions.some(filter => {
+    return projectFilterTypeOptions
+      .map(option => option.slug.current)
+      .includes(filter)
+  })
+}
+
 const Work = ({
   location,
   data: {
@@ -14,6 +27,17 @@ const Work = ({
     collections,
   },
 }) => {
+  const getFilteredProjects = filters => {
+    return projects.nodes.filter(project => {
+      return (
+        filterProject(project, filters, 'medium') &&
+        filterProject(project, filters, 'collection') &&
+        filterProject(project, filters, 'material')
+      )
+      // filterProject(project, filters, 'era') &&
+    })
+  }
+
   const [activeFilters, setActiveFilters] = useState(
     location.search
       ? queryString.parse(location.search, { arrayFormat: 'comma' })
@@ -21,44 +45,30 @@ const Work = ({
           featured: true,
         }
   )
+
+  const [filteredProjects, setFilteredProjects] = useState(
+    getFilteredProjects(activeFilters)
+  )
+
   const setUrlParams = state => {
     const params = queryString.stringify(state, { arrayFormat: 'comma' })
-    const updatedUrl = '?' + location.pathname + params
-    window.location.replace(updatedUrl)
+    const updatedUrl = location.pathname + '?' + params
+    window.history.pushState({ path: updatedUrl }, '', updatedUrl)
   }
 
-  // const [showFeatured, setShowFeatured] = useState(!!params.featured || true)
-  // const [activeEras, setActiveEras] = useState(params.eras)
-  // const [activeCollections, setActiveCollections] = useState(params.collections)
-  // const [activeMaterials, setActiveMaterials] = useState(params.materials)
-
   const handleResetFilters = () => {
-    setActiveFilters({ featured: activeFilters.featured })
-    setUrlParams()
+    const defaultFilters = { featured: activeFilters.featured }
+    setActiveFilters(defaultFilters)
+    setUrlParams(defaultFilters)
   }
 
   const handleSetActiveFilter = (filter, value) => {
     const result = activeFilters
     result[filter] = value
     setActiveFilters({ ...result })
+    setFilteredProjects(getFilteredProjects({ ...result }))
     setUrlParams({ ...result })
   }
-
-  // console.log('active filters', activeFilters)
-
-  // const setParam = (param, value) => {}
-
-  // look at all projects and create what years are available
-  // filter if featured is selected
-  // if no filter active don't filter
-  // if filter is active get a list of projects
-  // if filter is active get a list of filters that would return no result
-  // // for ceach filter look at the projects and create an array of available filters and check against that list
-
-  // run the filter function onChange
-  // set url params ?featured=true&mediums=first,second,thirds&collections&eras&materials
-
-  // useEffect on urlParam change triggers state changes
 
   return (
     <div className="container pt-25">
@@ -106,13 +116,13 @@ const Work = ({
             onSelect={filters => handleSetActiveFilter('medium', filters)}
             items={mediums.nodes}
           />
-          <FilterList
+          {/* <FilterList
             title="Era"
             className="flex-1 ml-12"
             activeItems={activeFilters.eras}
             onSelect={filters => handleSetActiveFilter('era', filters)}
-            items={[{ title: '1990' }]}
-          />
+            items={[{ label: '1990', slug: '1990' }]}
+          /> */}
           <FilterList
             title="Collection"
             activeItems={activeFilters.collection}
@@ -135,8 +145,8 @@ const Work = ({
         </div>
       </div>
       <ul className="mt-b grid grid-cols-3 gap-x-11 gap-y-h">
-        {projects &&
-          projects.nodes.map(({ title, slug, date }, i) => (
+        {filteredProjects &&
+          filteredProjects.map(({ title, slug, date }, i) => (
             <li key={slug.current}>
               <Link to={slug.current}>
                 <div className="aspect-w-1 aspect-h-1 mb-a3">
@@ -172,23 +182,47 @@ export const workQuery = graphql`
         slug {
           current
         }
+        material {
+          slug {
+            current
+          }
+        }
+        medium {
+          slug {
+            current
+          }
+        }
+        collection {
+          slug {
+            current
+          }
+        }
       }
     }
-    materials: allSanityMaterials {
+    materials: allSanityMaterial {
       nodes {
-        title
+        label
+        slug {
+          current
+        }
         id
       }
     }
-    mediums: allSanityMediums {
+    mediums: allSanityMedium {
       nodes {
-        title
+        label
+        slug {
+          current
+        }
         id
       }
     }
-    collections: allSanityCollections {
+    collections: allSanityCollection {
       nodes {
-        title
+        label
+        slug {
+          current
+        }
         id
       }
     }

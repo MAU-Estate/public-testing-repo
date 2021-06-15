@@ -22,23 +22,24 @@ export default function FilterList({
       </h3>
       <ul>
         {items.map((item, i) => {
-          const isChecked = activeItems.indexOf(item.title) !== -1
+          const slug = item.slug.current
+          const isChecked = activeItems.indexOf(slug) !== -1
           return (
-            <li key={`${title}-filter-${i}`} className="mb-3 ">
+            <li key={`${slug}-filter-${i}`} className="mb-3 ">
               <label
-                htmlFor={item.title}
-                className="filterItem flex f-21 relative cursor-pointer text-grey-b"
+                htmlFor={slug}
+                className="filterItem flex f-21 relative  text-grey-b"
               >
                 <input
                   type="checkbox"
-                  name={item.title}
-                  id={item.title}
-                  className="filterItem-checkbox absolute inset-0 opacity-0"
+                  name={slug}
+                  id={slug}
+                  className="filterItem-checkbox absolute cursor-pointer inset-0 opacity-0 h-full"
                   checked={isChecked}
-                  onChange={e => handleOnSelect(item.title, e.target.checked)}
+                  onChange={e => handleOnSelect(slug, e.target.checked)}
                 />
                 <div className="filterItem-title flex items-center whitespace-nowrap">
-                  {item.title}
+                  {item.label}
                 </div>
               </label>
             </li>

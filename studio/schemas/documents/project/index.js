@@ -35,21 +35,24 @@ export default {
       type: 'string'
     },
     {
-      title: 'Collection',
-      name: 'collections',
-      type: 'reference',
-      to: [{ type: 'collections' }]
-    },
-    {
-      title: 'Medium',
-      name: 'mediums',
-      type: 'reference',
-      to: [{ type: 'mediums' }]
-    },
-    {
-      name: 'materials',
+      title: 'Collections',
+      name: 'collection',
       type: 'array',
-      validation: Rule => Rule.unique().required(),
+      validation: Rule => Rule.required(),
+      of: [{ type: 'projectCollections' }]
+    },
+    {
+      title: 'Mediums',
+      name: 'medium',
+      type: 'array',
+      validation: Rule => Rule.required(),
+      of: [{ type: 'projectMediums' }]
+    },
+    {
+      title: 'Materials',
+      name: 'material',
+      type: 'array',
+      validation: Rule => Rule.required(),
       of: [{ type: 'projectMaterials' }]
     }
 
