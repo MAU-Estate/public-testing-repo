@@ -10,11 +10,50 @@ const filterProject = (project, filters, type) => {
   const projectFilterTypeOptions = project[type]
   if (!projectFilterTypeOptions) return false
 
-  return filterOptions.some(filter => {
+  if (typeof filterOptions === 'string') {
     return projectFilterTypeOptions
       .map(option => option.slug.current)
-      .includes(filter)
+      .includes(filterOptions)
+  } else {
+    return filterOptions.some(filter => {
+      return projectFilterTypeOptions
+        .map(option => option.slug.current)
+        .includes(filter)
+    })
+  }
+}
+
+const getAvailableFilters = projects => {
+  const result = {
+    medium: [],
+    collection: [],
+    material: [],
+  }
+  // need an array of filters
+  projects.forEach(project => {
+    if (project.medium) {
+      project['medium'].forEach(option => {
+        if (result.medium.indexOf(option) === -1) {
+          result.medium.push(option.slug.current)
+        }
+      })
+    }
+    if (project.collection) {
+      project['collection'].forEach(option => {
+        if (result.collection.indexOf(option) === -1) {
+          result.collection.push(option.slug.current)
+        }
+      })
+    }
+    if (project.material) {
+      project['material'].forEach(option => {
+        if (result.material.indexOf(option) === -1) {
+          result.material.push(option.slug.current)
+        }
+      })
+    }
   })
+  return result
 }
 
 const Work = ({
@@ -28,14 +67,21 @@ const Work = ({
   },
 }) => {
   const getFilteredProjects = filters => {
-    return projects.nodes.filter(project => {
-      return (
+    const filterResult = []
+    const filterRejects = []
+    projects.nodes.forEach(project => {
+      if (
         filterProject(project, filters, 'medium') &&
         filterProject(project, filters, 'collection') &&
         filterProject(project, filters, 'material')
-      )
-      // filterProject(project, filters, 'era') &&
+        // filterProject(project, filters, 'era') &&
+      ) {
+        filterResult.push(project)
+      } else {
+        filterRejects.push(project)
+      }
     })
+    return { filterResult, filterRejects }
   }
 
   const [activeFilters, setActiveFilters] = useState(
@@ -46,9 +92,9 @@ const Work = ({
         }
   )
 
-  const [filteredProjects, setFilteredProjects] = useState(
-    getFilteredProjects(activeFilters)
-  )
+  const { filterResult, filterRejects } = getFilteredProjects(activeFilters)
+  const availableFilters = getAvailableFilters(filterResult)
+  const [filteredProjects, setFilteredProjects] = useState(filterResult)
 
   const setUrlParams = state => {
     const params = queryString.stringify(state, { arrayFormat: 'comma' })
@@ -59,15 +105,17 @@ const Work = ({
   const handleResetFilters = () => {
     const defaultFilters = { featured: activeFilters.featured }
     setActiveFilters(defaultFilters)
-    setFilteredProjects(getFilteredProjects(defaultFilters))
+    const { filterResult, filterRejects } = getFilteredProjects(defaultFilters)
+    setFilteredProjects(filterResult)
     setUrlParams(defaultFilters)
   }
 
   const handleSetActiveFilter = (filter, value) => {
     const result = activeFilters
     result[filter] = value
+    const { filterResult, filterRejects } = getFilteredProjects({ ...result })
+    setFilteredProjects(filterResult)
     setActiveFilters({ ...result })
-    setFilteredProjects(getFilteredProjects({ ...result }))
     setUrlParams({ ...result })
   }
 
@@ -114,6 +162,7 @@ const Work = ({
             title="Medium"
             className="flex-1"
             activeItems={activeFilters.medium}
+            availableFilters={availableFilters.medium}
             onSelect={filters => handleSetActiveFilter('medium', filters)}
             items={mediums.nodes}
           />
@@ -127,6 +176,7 @@ const Work = ({
           <FilterList
             title="Collection"
             activeItems={activeFilters.collection}
+            availableFilters={availableFilters.collection}
             className="flex-1 ml-12"
             onSelect={filters => handleSetActiveFilter('collection', filters)}
             items={collections.nodes}
@@ -134,6 +184,7 @@ const Work = ({
           <FilterList
             title="Materials"
             activeItems={activeFilters.material}
+            availableFilters={availableFilters.material}
             className="flex-1 ml-12"
             onSelect={filters => handleSetActiveFilter('material', filters)}
             items={materials.nodes}

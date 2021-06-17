@@ -5,6 +5,7 @@ export default function FilterList({
   title,
   className = '',
   activeItems = [],
+  availableFilters,
   onSelect,
 }) {
   const handleOnSelect = (filter, checked) => {
@@ -24,17 +25,23 @@ export default function FilterList({
         {items.map((item, i) => {
           const slug = item.slug.current
           const isChecked = activeItems.indexOf(slug) !== -1
+          const isAvailable = availableFilters.indexOf(slug) !== -1
           return (
             <li key={`${slug}-filter-${i}`} className="mb-3 ">
               <label
                 htmlFor={slug}
-                className="filterItem flex f-21 relative  text-grey-b"
+                className={`filterItem flex f-21 relative  text-grey-b ${
+                  isAvailable ? '' : 'opacity-50'
+                }`}
               >
                 <input
                   type="checkbox"
                   name={slug}
                   id={slug}
-                  className="filterItem-checkbox absolute cursor-pointer inset-0 opacity-0 h-full"
+                  disabled={!isAvailable}
+                  className={`${
+                    isAvailable ? '' : 'cursor-not-allowed'
+                  } filterItem-checkbox absolute cursor-pointer inset-0 opacity-0 h-full`}
                   checked={isChecked}
                   onChange={e => handleOnSelect(slug, e.target.checked)}
                 />
