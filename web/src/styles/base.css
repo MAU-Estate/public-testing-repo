@@ -159,6 +159,30 @@
       @apply px-8;
     }
 
+    .sectionGradient-lg {
+      position: relative;
+      --height: calc(var(--unit) * 20);
+      --color: #1f1f1f;
+    }
+
+    .sectionGradient-lg:before,
+    .sectionGradient-lg:after {
+      height: var(--height);
+      position: absolute;
+      left: 0;
+      right: 0;
+      content: '';
+    }
+
+    .sectionGradient-lg:before {
+      top: calc(var(--height) * -1);
+      background-image: linear-gradient(rgba(0, 0, 0, 0), var(--color));
+    }
+    .sectionGradient-lg:after {
+      bottom: calc(var(--height) * -1);
+      background-image: linear-gradient(var(--color), rgba(0, 0, 0, 0));
+    }
+
     /* .f-1 {
       font: var(--font-secondary) 53px/52px;
       letter-spacing: -1.5px;
@@ -220,11 +244,11 @@
 
     .f-4 {
       font-family: var(--font-primary);
-      font-size: 14px;
       font-size: 13px;
       line-height: 17px;
 
       @screen lg {
+        font-size: 14px;
         line-height: 18px;
         letter-spacing: 1.33px;
       }
@@ -298,32 +322,21 @@
 
     .f-9 {
       font-family: var(--font-secondary--regular);
-      font-size: 20px;
-      line-height: 25px;
+      font-size: 17px;
+      line-height: 20px;
 
       @screen lg {
-        font-size: 17px;
-        line-height: 20px;
+        font-size: 20px;
+        line-height: 25px;
       }
+    }
+
+    .f-9--light {
+      @apply f-9;
+      font-family: var(--font-secondary--light);
     }
 
     .f-10 {
-      font-family: var(--font-secondary--regular);
-      font-size: 24px;
-      line-height: 27px;
-      position: relative;
-      bottom: -0.225em;
-      margin-top: -0.4em;
-
-      @screen lg {
-        font-size: 34px;
-        line-height: 25px;
-        bottom: -0.02em;
-        margin-top: 0.01em;
-      }
-    }
-
-    .f-11 {
       font-family: var(--font-secondary--regular);
       font-size: 39px;
       line-height: 36px;
@@ -341,7 +354,7 @@
       }
     }
 
-    .f-12 {
+    .f-11 {
       font-family: var(--font-secondary--medium);
       font-size: 15px;
       line-height: 18px;
@@ -357,7 +370,7 @@
       }
     }
 
-    .f-13 {
+    .f-12 {
       font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
@@ -373,14 +386,15 @@
       }
     }
 
-    .f-13 + .f-13 {
+    .f-12 + .f-12,
+    .f-12 p + p {
       margin-top: 26px;
       @screen md {
         margin-top: 32px;
       }
     }
 
-    .f-14 {
+    .f-13 {
       font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
@@ -394,14 +408,15 @@
       }
     }
 
-    .f-14 + .f-14 {
+    .f-13 + .f-13,
+    .f-13 p + p {
       margin-top: 26px;
       @screen lg {
         margin-top: 32px;
       }
     }
 
-    .f-15 {
+    .f-14 {
       font-family: var(--font-secondary--regular);
       font-size: 33px;
       line-height: 32px;
@@ -419,7 +434,7 @@
       }
     }
 
-    .f-16 {
+    .f-15 {
       font-family: var(--font-secondary--medium);
       font-size: 17px;
       line-height: 19px;
@@ -437,7 +452,7 @@
       }
     }
 
-    .f-17 {
+    .f-16 {
       font-family: var(--font-secondary--medium);
       font-size: 23px;
       line-height: 25px;
@@ -446,7 +461,12 @@
       margin-top: -0.35em;
     }
 
-    .f-18 {
+    .f-16--light {
+      @apply f-16;
+      font-family: var(--font-secondary--light);
+    }
+
+    .f-17 {
       font-family: var(--font-primary);
       font-size: 17px;
       line-height: 21px;
@@ -455,7 +475,7 @@
       margin-top: -0.475em;
     }
 
-    .f-19 {
+    .f-18 {
       font-family: var(--font-secondary--medium);
       font-size: 19px;
       line-height: 22px;
@@ -471,7 +491,7 @@
       }
     }
 
-    .f-20 {
+    .f-19 {
       font-family: var(--font-secondary--medium);
       font-size: 15px;
       line-height: 17px;
@@ -480,7 +500,7 @@
       margin-top: -0.4em;
     }
 
-    .f-21 {
+    .f-20 {
       font-family: var(--font-primary);
       font-size: 19px;
       line-height: 28px;
@@ -496,7 +516,7 @@
       }
     }
 
-    .f-22 {
+    .f-21 {
       font-family: var(--font-secondary--regular);
       font-size: 38px;
       line-height: 36px;
@@ -514,7 +534,7 @@
       }
     }
 
-    .f-23 {
+    .f-22 {
       font-family: var(--font-secondary--medium);
       font-size: 18px;
       line-height: 19px;
@@ -531,7 +551,7 @@
       }
     }
 
-    .f-24 {
+    .f-23 {
       font-family: var(--font-secondary--medium);
       font-size: 27px;
       line-height: 29px;
@@ -631,6 +651,22 @@
       position: relative;
       bottom: -0.225em;
       margin-top: -0.4em;
+    }
+
+    .f-30 {
+      font-family: var(--font-secondary--regular);
+      font-size: 24px;
+      line-height: 27px;
+      position: relative;
+      bottom: -0.225em;
+      margin-top: -0.4em;
+
+      @screen lg {
+        font-size: 34px;
+        line-height: 25px;
+        bottom: -0.02em;
+        margin-top: 0.01em;
+      }
     }
 
     .font-italic {

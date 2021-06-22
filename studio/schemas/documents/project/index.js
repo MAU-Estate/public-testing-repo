@@ -54,6 +54,11 @@ export default {
       type: 'array',
       validation: Rule => Rule.required(),
       of: [{ type: 'projectMaterials' }]
+    },
+    {
+      name: 'era',
+      type: 'string'
+      // hidden: true
     }
 
     // year

@@ -1,4 +1,4 @@
-.filterItem-title:before {
+/* .filterItem-title:before {
   content: '';
   display: inline-block;
   border: 1px solid currentColor;
@@ -9,6 +9,6 @@
   margin-bottom: 1px;
 }
 
-.filterItem-checkbox:checked + .filterItem-title {
-  color: red;
-}
+.filterItem-checkbox:checked + .filterItem-title:before {
+  content: 'x';
+} */

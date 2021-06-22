@@ -4,7 +4,32 @@ import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import RichText from './RichText'
+import Icon from './Icon'
 
+const SlideImage = ({ route, src, alt, cover, inline }) => {
+  if (!inline) {
+    return (
+      <GatsbyImage
+        image={src}
+        objectFit={cover ? 'cover' : 'contain'}
+        objectPosition="center"
+        alt={alt}
+        // imgClassName="pointer-events-auto"
+      />
+    )
+  }
+  return (
+    <Link to={route} className="flex-1 flex" style={{ minHeight: 0 }}>
+      <GatsbyImage
+        image={src}
+        objectFit={cover ? 'cover' : 'contain'}
+        objectPosition="center"
+        alt={alt}
+        imgClassName="pointer-events-auto"
+      />
+    </Link>
+  )
+}
 const Slide = ({
   data,
   theme,
@@ -20,17 +45,15 @@ const Slide = ({
   return (
     <figure className="relative flex-1">
       <div className="absolute inset-0 flex flex-col">
-        <Link to={route} className="flex-1 flex" style={{ minHeight: 0 }}>
-          <GatsbyImage
-            image={data.src.asset.gatsbyImageData}
-            objectFit={cover ? 'cover' : 'contain'}
-            objectPosition="center"
-            alt={data.src.asset.altText}
-            imgClassName="pointer-events-auto"
-          />
-        </Link>
+        <SlideImage
+          inline={inline}
+          route={route}
+          src={data.src.asset.gatsbyImageData}
+          cover={cover}
+          alt={data.src.asset.altText}
+        />
         <div
-          className={`realtive z-10 pointer-events-auto container w-full flex mt-c ${
+          className={`relative z-10 pointer-events-auto container w-full flex mt-c ${
             isDark ? 'text-white' : 'text-black'
           }`}
         >
@@ -69,29 +92,24 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`
-      absolute
-      top-0
-      bottom-0
-      flex
-      items-center
-      text-white
-      ${isPrevious ? 'left-0 right-1/2' : 'right-0 left-1/2'}
-    `}
+      className={`absolute inset-0 container flex flex-1 h-full pointer-events-none ${
+        isPrevious ? 'justify-start ' : 'justify-end'
+      }`}
     >
       <button
         onClick={onClick}
         className={`
-          focus:outline-none
-          flex-1
-          h-full
-          flex
-          items-center
-          ${isDark ? 'text-white' : 'text-black'}
-          ${isPrevious ? 'justify-start ' : 'justify-end'}
-        `}
+            focus:outline-none
+            pointer-events-auto
+            h-full
+            flex
+            w-1/2
+            items-center
+            ${isDark ? 'text-white' : 'text-black'}
+            ${isPrevious ? 'justify-start ' : 'justify-end'}
+          `}
       >
-        {isPrevious ? `<` : '>'}
+        <Icon name={isPrevious ? 'arrowLeft' : 'arrowRight'} />
       </button>
     </div>
   )
