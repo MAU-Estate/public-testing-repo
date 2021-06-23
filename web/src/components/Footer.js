@@ -7,27 +7,36 @@ export default function Footer() {
     <div className="bg-black-b pt-d pb-d3">
       <div className="container text-white">
         <div className="flex justify-between mb-d2">
-          <Icon name="logo" className="w-96" />
-          <div className="flex">
+          <Icon name="logo" className="w-[520px]" />
+          <div className="flex items-end">
             <p className="f-3 w-72 mr-20">
               Keep in touch with the estate through our newsletter:
             </p>
             <div className="w-72">
-              <label className="block w-full f-4 relative border-b border-grey-b flex">
+              <label className="h-14 block w-full f-4 relative border-b border-grey-b flex">
                 <input
                   type="text"
                   className="bg-transparent"
                   placeholder="ENTER YOUR EMAIL ADDRESS"
                 />
-                <Icon name="arrowRight" />
+                <Icon name="arrowSignUp" className="text-grey-b" />
               </label>
             </div>
           </div>
         </div>
         <div className="grid grid-cols-4 border-t border-grey-b flex pt-4">
           <div>
-            <button className="flex f-2">
-              Back to top <Icon name="arrowRight" />
+            <button
+              className="flex f-2"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                })
+              }}
+            >
+              Back to top ↑
             </button>
           </div>
           <div>

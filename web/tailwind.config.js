@@ -12,6 +12,8 @@ module.exports = {
   purge: {
     enabled: false,
   },
+  purge: ['./src/**/*.{js,jsx,ts,tsx,mdx}', './public/index.html'],
+  mode: 'jit',
   theme: {
     extend: {
       fontFamily: {},
@@ -21,19 +23,6 @@ module.exports = {
       height: {
         'screen-80': '80vh',
         'screen-50': '50vh',
-      },
-      colors: {
-        black: '#121212',
-        'black-b': '#1F1F1F',
-        'grey-a': '#878787',
-        'grey-b': '#979797',
-        'grey-c': '#B0B0B0',
-        'grey-d': '#CDCDCD',
-        'grey-e': '#DDDDDD',
-        'bio-a': '#10262B',
-        'bio-b': '#EDEDED',
-        'bio-c': '#234988',
-        white: '#FFFFFF',
       },
       spacing: {
         ...createSpacingUnits(25),
@@ -63,6 +52,19 @@ module.exports = {
         t: 'var(--unit-t)',
         u: 'var(--unit-u)',
         v: 'var(--unit-v)',
+      },
+      colors: {
+        black: 'var(--black)',
+        'black-b': 'var(--black-b)',
+        'grey-a': 'var(--grey-a)',
+        'grey-b': 'var(--grey-a)',
+        'grey-c': 'var(--grey-c)',
+        'grey-d': 'var(--grey-d)',
+        'grey-d': 'var(--grey-d)',
+        'bio-a': 'var(--bio-a)',
+        'bio-b': 'var(--bio-b)',
+        'bio-c': 'var(--bio-c)',
+        white: 'var(--white)',
       },
     },
     screens: {

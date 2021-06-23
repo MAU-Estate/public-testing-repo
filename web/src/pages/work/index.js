@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import queryString from 'query-string'
 
 import FilterList from '../../components/FilterList'
@@ -262,17 +263,19 @@ const Work = ({
           </div>
         </div>
       )}
+
       {filteredProjects && filteredProjects.length ? (
-        <ul className="mt-b grid grid-cols-3 gap-x-11 gap-y-h">
-          {filteredProjects.map(({ title, slug, date }, i) => (
+        <ul className="mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
+          {filteredProjects.map(({ title, slug, date, previewImage }, i) => (
             <li key={slug.current}>
               <Link to={slug.current}>
-                <div className="aspect-w-1 aspect-h-1 mb-a3">
-                  <img
-                    className="object-contain"
-                    src="https://via.placeholder.com/480x640"
-                  />
-                </div>
+                {/* <div className="aspect-w-1 aspect-h-1 mb-a3"> */}
+                <GatsbyImage
+                  image={previewImage.src.asset.gatsbyImageData}
+                  alt={previewImage.alt}
+                  objectFit="contain"
+                  className="aspect-h-1 aspect-w-1 mb-a3"
+                />
                 <p className="f-17 mb-2">{title}</p>
                 <p className="f-17 font-italic">{date}</p>
               </Link>
@@ -280,8 +283,8 @@ const Work = ({
           ))}
         </ul>
       ) : (
-        <div>
-          Your search returned no results
+        <div className="mt-b mb-e">
+          Your search returned no results<br></br>
           <button onClick={handleResetFilters}>Reset Filters</button>
         </div>
       )}
@@ -315,6 +318,9 @@ export const workQuery = graphql`
           slug {
             current
           }
+        }
+        previewImage {
+          ...figure
         }
         medium {
           slug {

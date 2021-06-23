@@ -53,9 +53,12 @@ const Slide = ({
           alt={data.src.asset.altText}
         />
         <div
-          className={`relative z-10 pointer-events-auto container w-full flex mt-c ${
-            isDark ? 'text-white' : 'text-black'
-          }`}
+          className={`relative z-10 pointer-events-auto w-full flex mt-c
+            max-w-[1508px]
+            mx-auto
+            ${isDark ? 'text-white' : 'text-black'}
+            ${inline ? '' : 'container'}
+          `}
         >
           <figcaption className={`flex-1`}>
             {data.figcaption?.body && (
@@ -92,7 +95,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`absolute inset-0 container flex flex-1 h-full pointer-events-none ${
+      classNqame={`absolute z-20 inset-0 container flex flex-1 h-full pointer-events-none ${
         isPrevious ? 'justify-start ' : 'justify-end'
       }`}
     >
@@ -109,7 +112,10 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
             ${isPrevious ? 'justify-start ' : 'justify-end'}
           `}
       >
-        <Icon name={isPrevious ? 'arrowLeft' : 'arrowRight'} />
+        <Icon
+          name={isPrevious ? 'arrowRight' : 'arrowLeft'}
+          className="h-10 w-10"
+        />
       </button>
     </div>
   )

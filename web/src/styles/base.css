@@ -17,6 +17,18 @@
     --font-secondary--regular: 'LetteraTextLLSub-Regular';
     --font-secondary--medium: 'LetteraTextLLSub-Medium';
 
+    --black: #121212;
+    --black-b: #1f1f1f;
+    --grey-a: #878787;
+    --grey-b: #979797;
+    --grey-c: #b0b0b0;
+    --grey-d: #cdcdcd;
+    --grey-e: #dddddd;
+    --bio-a: #10262b;
+    --bio-b: #ededed;
+    --bio-c: #234988;
+    --white: #ffffff;
+
     --unit-a: calc(var(--unit) * 6);
     --unit-a2: calc(var(--unit) * 14);
     --unit-a3: calc(var(--unit) * 4);
@@ -146,6 +158,30 @@
   a:focus:not(:focus-visible) {
     outline: none;
   }
+
+  .sectionGradient-lg.bg-bio-c,
+  .sectionGradient-t-lg.bg-bio-c,
+  .sectionGradient-b-lg.bg-bio-c {
+    --color: var(--bio-c);
+  }
+
+  .sectionGradient-lg.bg-black-b,
+  .sectionGradient-t-lg.bg-black-b,
+  .sectionGradient-b-lg.bg-black-b {
+    --color: var(--black-b);
+  }
+
+  .sectionGradient-lg.bg-bio-b,
+  .sectionGradient-t-lg.bg-bio-b,
+  .sectionGradient-b-lg.bg-bio-b {
+    --color: var(--bio-b);
+  }
+
+  .sectionGradient-lg.bg-bio-a,
+  .sectionGradient-t-lg.bg-bio-a,
+  .sectionGradient-b-lg.bg-bio-a {
+    --color: var(--bio-a);
+  }
 }
 
 @tailwind utilities;
@@ -156,17 +192,20 @@
       margin-left: auto;
       margin-right: auto;
       max-width: 1600px;
-      @apply px-8;
+      @apply px-12;
     }
 
-    .sectionGradient-lg {
+    .sectionGradient-lg,
+    .sectionGradient-t-lg,
+    .sectionGradient-b-lg {
       position: relative;
       --height: calc(var(--unit) * 20);
-      --color: #1f1f1f;
     }
 
     .sectionGradient-lg:before,
-    .sectionGradient-lg:after {
+    .sectionGradient-t-lg:before,
+    .sectionGradient-lg:after,
+    .sectionGradient-b-lg:after {
       height: var(--height);
       position: absolute;
       left: 0;
@@ -174,11 +213,14 @@
       content: '';
     }
 
+    .sectionGradient-t-lg:before,
     .sectionGradient-lg:before {
       top: calc(var(--height) * -1);
       background-image: linear-gradient(rgba(0, 0, 0, 0), var(--color));
     }
-    .sectionGradient-lg:after {
+
+    .sectionGradient-lg:after,
+    .sectionGradient-b-lg:before {
       bottom: calc(var(--height) * -1);
       background-image: linear-gradient(var(--color), rgba(0, 0, 0, 0));
     }
@@ -273,7 +315,7 @@
     }
 
     .f-6 {
-      font-family: var(--font-secondary--light);
+      font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
       position: relative;
@@ -285,6 +327,14 @@
         line-height: 28px;
         bottom: -0.3em;
         margin-top: -0.6em;
+      }
+    }
+
+    .f-6 + .f-6,
+    .f-6 p + p {
+      margin-top: 26px;
+      @screen md {
+        margin-top: 28px;
       }
     }
 
@@ -566,6 +616,11 @@
       }
     }
 
+    .f-23--light {
+      @apply f-23;
+      font-family: var(--font-secondary);
+    }
+
     .f-24 {
       font-family: var(--font-secondary--regular);
       font-size: 38px;
@@ -610,6 +665,11 @@
       position: relative;
       bottom: -0.2em;
       margin-top: -0.35em;
+    }
+
+    .f-26--light {
+      @apply f-26;
+      font-family: var(--font-secondary);
     }
 
     .f-27 {

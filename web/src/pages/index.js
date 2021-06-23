@@ -203,7 +203,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
 
       {/* Section 6 */}
 
-      <section className="py-g bg-bio-b">
+      <section className="py-g bg-bio-b sectionGradient-t-lg">
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
             <RichText className="f-13" content={section6.richText1._rawText} />
@@ -232,6 +232,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <Gallery
               slides={section6.gallery1.galleryRef.images}
               slug={section6.gallery1.galleryRef.slug}
+              theme="light"
               className="aspect-w-3 aspect-h-4"
             />
           </div>
@@ -239,6 +240,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <Gallery
               slides={section6.gallery1.galleryRef.images}
               slug={section6.gallery1.galleryRef.slug}
+              theme="light"
               className="aspect-w-4 aspect-h-3"
             />
           </div>
@@ -247,7 +249,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
 
       {/* Section 7 */}
 
-      <section className="py-g bg-bio-c sectionGradient-lg text-white">
+      <section className="py-g bg-bio-c sectionGradient-t-lg text-white">
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-5">
             <RichText className="f-13" content={section7.richText1._rawText} />

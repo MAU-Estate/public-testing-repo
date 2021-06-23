@@ -33,6 +33,11 @@ export default {
       initialValue: true
     },
     {
+      name: 'previewImage',
+      title: 'Preview Image',
+      type: 'figure'
+    },
+    {
       name: 'venue',
       title: 'Venue',
       type: 'string'

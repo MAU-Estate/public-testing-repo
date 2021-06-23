@@ -44,10 +44,13 @@ export default function Menu({ bgImage }) {
           className="z-10 flex-1 self-stretch bg-black"
         >
           <span
-            className="absolute top-11 text-white transform -translate-x-full origin-right -rotate-90"
+            className="absolute top-11 text-white left-[11px] transform -translate-x-full  origin-top-right -rotate-90 flex items-center"
             style={{ lineHeight: 0 }}
           >
-            EXPLORE
+            EXPLORE{' '}
+            <div className="transform rotate-90 ml-2">
+              <Icon name={isOpen ? 'menuClose' : 'menu'} className="w-4 h-4" />
+            </div>
           </span>
         </button>
 

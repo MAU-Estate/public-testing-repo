@@ -30,6 +30,16 @@ export default {
       type: 'datetime'
     },
     {
+      name: 'previewImage',
+      title: 'Preview Image',
+      type: 'figure'
+    },
+    {
+      name: 'gallery',
+      title: 'Images',
+      type: 'gallery'
+    },
+    {
       name: 'dimensions',
       title: 'Dimensions',
       type: 'string'
