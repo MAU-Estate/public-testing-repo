@@ -96,7 +96,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   return (
     <div
       classNqame={`absolute z-20 inset-0 container flex flex-1 h-full pointer-events-none ${
-        isPrevious ? 'justify-start ' : 'justify-end'
+        isPrevious ? 'justify-end' : 'justify-start '
       }`}
     >
       <button
@@ -109,7 +109,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
             w-1/2
             items-center
             ${isDark ? 'text-white' : 'text-black'}
-            ${isPrevious ? 'justify-start ' : 'justify-end'}
+            ${isPrevious ? 'justify-end' : 'justify-start '}
           `}
       >
         <Icon

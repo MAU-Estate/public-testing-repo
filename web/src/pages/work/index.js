@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import queryString from 'query-string'
+
+import useObserver from '../../hooks/useObserver'
 
 import FilterList from '../../components/FilterList'
 
@@ -135,8 +137,13 @@ const Work = ({
   const { filterResult, filterRejects } = getFilteredProjects(activeFilters)
   const [filteredProjects, setFilteredProjects] = useState(filterResult)
   const hasFiltering = getFiltersState(activeFilters)
-  // const availableFilters = getAvailableFilters(filterResult)
-  // console.log(availableFilters)
+  const filterRef = useRef()
+  const [filterHeight, setFilterHeight] = useState()
+  useObserver({
+    callback: val => setFilterHeight(val[0].borderBoxSize.blockSize),
+    element: filterRef,
+  })
+  console.log(filterHeight)
 
   const setUrlParams = state => {
     const params = queryString.stringify(state, { arrayFormat: 'comma' })
@@ -169,7 +176,7 @@ const Work = ({
 
   return (
     <div className="container pt-25">
-      <div className="pb-a3 border-b border-grey-b flex justify-between items-end">
+      <div className="pb-a3 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5">{title}</h1>
 
         {/* radios */}
@@ -211,8 +218,21 @@ const Work = ({
           </span>
         </button>
       </div>
-      {isFilterVisible && (
-        <div className="flex justify-between mt-j">
+      <div
+        className={`transform transition-transform pointer-events-none ${
+          isFilterVisible ? '!translate-y-0' : ''
+        }`}
+        style={{
+          transform: `translateY(-${isFilterVisible ? 0 : filterHeight}px)`,
+        }}
+      >
+        {/* Filter */}
+        <div
+          ref={filterRef}
+          className={`flex justify-between pt-j transition-opacity  ${
+            isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
+          }`}
+        >
           <div className="flex">
             <FilterList
               title="Medium"
@@ -262,32 +282,32 @@ const Work = ({
             </button>
           </div>
         </div>
-      )}
 
-      {filteredProjects && filteredProjects.length ? (
-        <ul className="mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
-          {filteredProjects.map(({ title, slug, date, previewImage }, i) => (
-            <li key={slug.current}>
-              <Link to={slug.current}>
-                {/* <div className="aspect-w-1 aspect-h-1 mb-a3"> */}
-                <GatsbyImage
-                  image={previewImage.src.asset.gatsbyImageData}
-                  alt={previewImage.alt}
-                  objectFit="contain"
-                  className="aspect-h-1 aspect-w-1 mb-a3"
-                />
-                <p className="f-17 mb-2">{title}</p>
-                <p className="f-17 font-italic">{date}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className="mt-b mb-e">
-          Your search returned no results<br></br>
-          <button onClick={handleResetFilters}>Reset Filters</button>
-        </div>
-      )}
+        {filteredProjects && filteredProjects.length ? (
+          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
+            {filteredProjects.map(({ title, slug, date, previewImage }, i) => (
+              <li key={slug.current}>
+                <Link to={slug.current}>
+                  {/* <div className="aspect-w-1 aspect-h-1 mb-a3"> */}
+                  <GatsbyImage
+                    image={previewImage.src.asset.gatsbyImageData}
+                    alt={previewImage.alt}
+                    objectFit="contain"
+                    className="aspect-h-1 aspect-w-1 mb-a3"
+                  />
+                  <p className="f-17 mb-2">{title}</p>
+                  <p className="f-17 font-italic">{date}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="mt-b mb-e">
+            Your search returned no results<br></br>
+            <button onClick={handleResetFilters}>Reset Filters</button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
