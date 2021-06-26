@@ -1,4 +1,4 @@
-import { IoPerson } from 'react-icons/io';
+import { IoPerson } from 'react-icons/io'
 
 export default {
   name: 'fellow',
@@ -25,20 +25,14 @@ export default {
       title: `Fellow's headshot image`
     },
     {
-      name: 'website',
-      title: 'Website',
-      type: 'url'
+      name: 'education',
+      title: 'Education',
+      type: 'richText'
     },
     {
       name: 'body',
       title: 'Body',
       type: 'richText'
-    },
-    {
-      name: 'education',
-      type: 'array',
-      title: 'Education',
-      of: [{ type: 'string' }]
     }
   ]
-};
+}

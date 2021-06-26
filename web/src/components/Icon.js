@@ -3,6 +3,8 @@ import { ReactComponent as Logo } from '../assets/icons/logo.svg'
 import { ReactComponent as ArrowLeft } from '../assets/icons/arrow-l.svg'
 import { ReactComponent as ArrowRight } from '../assets/icons/arrow-r.svg'
 import { ReactComponent as arrowCta } from '../assets/icons/arrowCta.svg'
+import { ReactComponent as filterActive } from '../assets/icons/filter-active.svg'
+import { ReactComponent as filterDefault } from '../assets/icons/filter-default.svg'
 import { ReactComponent as menu } from '../assets/icons/menu.svg'
 import { ReactComponent as menuClose } from '../assets/icons/menuClose.svg'
 import { ReactComponent as arrowSignUp } from '../assets/icons/arrowSignUp.svg'
@@ -14,6 +16,8 @@ const icons = {
   arrowSignUp,
   arrowRight: ArrowRight,
   arrowCta,
+  filterActive,
+  filterDefault,
   menu,
   menuClose,
   grid,

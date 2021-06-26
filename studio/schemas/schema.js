@@ -42,6 +42,7 @@ import textColumns from './objects/textColumns'
 
 // Documents
 import collection from './documents/collection'
+import fellow from './documents/fellow'
 import galleries from './documents/gallery'
 import project from './documents/project/'
 import {
@@ -94,6 +95,7 @@ export default createSchema({
     collection,
     education,
     exhibition,
+    fellow,
     galleries,
     material,
     // mainNav,

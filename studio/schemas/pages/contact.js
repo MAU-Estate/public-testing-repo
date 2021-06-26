@@ -20,8 +20,33 @@ export default {
       type: 'string'
     },
     {
+      name: 'headerImage',
+      title: 'Header background image',
+      type: 'image'
+    },
+    {
       name: 'body',
       title: 'Body',
+      type: 'richText'
+    },
+    {
+      name: 'infoBody',
+      title: 'Location Info',
+      type: 'richText'
+    },
+    {
+      name: 'survivedByBody',
+      title: 'Survived By',
+      type: 'richText'
+    },
+    {
+      name: 'directorBody',
+      title: 'Directors',
+      type: 'richText'
+    },
+    {
+      name: 'advisorsBody',
+      title: 'Advisors',
       type: 'richText'
     }
     // Estate Address
@@ -32,4 +57,4 @@ export default {
     // Advisors
     // CV (should be in site settings)
   ]
-};
+}

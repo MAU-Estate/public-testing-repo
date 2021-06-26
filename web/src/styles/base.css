@@ -19,6 +19,7 @@
 
     --black: #121212;
     --black-b: #1f1f1f;
+    --black-c: #2e2e2e;
     --grey-a: #878787;
     --grey-b: #979797;
     --grey-c: #b0b0b0;
@@ -315,6 +316,7 @@
     }
 
     .f-6 {
+      /* styles below with f-7 */
       font-family: var(--font-primary);
       font-size: 19px;
       line-height: 26px;
@@ -327,14 +329,6 @@
         line-height: 28px;
         bottom: -0.3em;
         margin-top: -0.6em;
-      }
-    }
-
-    .f-6 + .f-6,
-    .f-6 p + p {
-      margin-top: 26px;
-      @screen md {
-        margin-top: 28px;
       }
     }
 
@@ -354,6 +348,15 @@
       }
     }
 
+    .f-6 + .f-6,
+    .f-7 + .f-7,
+    .f-6 p + p,
+    .f-7 p + p {
+      margin-top: 26px;
+      @screen md {
+        margin-top: 28px;
+      }
+    }
     .f-8 {
       font-family: var(--font-primary);
       font-size: 15px;
@@ -687,6 +690,14 @@
       }
     }
 
+    .f-27 + .f-27,
+    .f-27 p + p {
+      margin-top: 30px;
+      @screen lg {
+        margin-top: 35px;
+      }
+    }
+
     .f-28 {
       font-family: var(--font-secondary--medium);
       font-size: 26px;
@@ -711,6 +722,11 @@
       position: relative;
       bottom: -0.225em;
       margin-top: -0.4em;
+    }
+
+    .f-29 + .f-29,
+    .f-29 p + p {
+      margin-top: 22px;
     }
 
     .f-30 {

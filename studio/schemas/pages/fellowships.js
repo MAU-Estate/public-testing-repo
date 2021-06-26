@@ -20,6 +20,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'headerImage',
+      title: 'Header background image',
+      type: 'image'
+    },
+    {
       name: 'headerBodyLeft',
       title: 'Intro Text - Left Column',
       type: 'richText'

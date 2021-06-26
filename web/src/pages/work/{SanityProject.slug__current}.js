@@ -1,27 +1,47 @@
-import React from 'react'
-import { graphql, Link, navigate } from 'gatsby'
+import React, { useContext } from 'react'
+import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+
+import { Context } from '../../context'
 
 import Icon from '../../components/Icon'
 
-export default function project({
+export default function Project({
   data: {
     sanityProject: { title, id, previewImage, collection, dimensions },
     allSanityProject: { edges },
   },
 }) {
-  const node = edges.find(edge => edge.node.id === id)
-  if (!node.next) node.next = edges[0].node
-  if (!node.previous) node.previous = edges[edges.length - 1].node
+  let node
+  const { projectEdges, projectFilterString } = useContext(Context)
+
+  // either grab the edges which is all projects or grab the projects from the store
+  if (projectEdges.length) {
+    const projectIndex = projectEdges.findIndex(project => project.id === id)
+    let nextIndex = projectIndex + 1
+    let prevIndex = projectIndex - 1
+    if (nextIndex >= projectEdges.length) nextIndex = 0
+    if (prevIndex < 0) prevIndex = projectEdges.length - 1
+    node = projectEdges[projectIndex]
+    node.next = projectEdges[nextIndex]
+    node.previous = projectEdges[prevIndex]
+  } else {
+    node = edges.find(edge => edge.node.id === id)
+    if (!node.next) node.next = edges[0].node
+    if (!node.previous) node.previous = edges[edges.length - 1].node
+  }
 
   return (
     <div className="container mt-a2">
       <div className="border-t border-grey-b pt-t flex justify-between items-end mb-h">
         <h1 className="f-21">{title}</h1>
         <div className="h-11 flex items-center">
-          <button onClick={() => navigate(-1)} className="flex">
+          <Link
+            to={`/work${projectFilterString ? projectFilterString : ''}`}
+            className="flex"
+          >
             <Icon name="grid" className="mx-6" />
-          </button>
+          </Link>
           <div className="border-r border-grey-b self-stretch"></div>
           <Link
             to={`/work/${node.previous.slug.current}`}

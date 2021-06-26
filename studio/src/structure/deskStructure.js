@@ -165,7 +165,7 @@ export default () =>
                     'cv',
                     'contact',
                     'exhibitions',
-                    'fellowship',
+                    'fellowships',
                     'press',
                     'work',
                     'siteSettings',

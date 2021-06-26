@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Icon from './Icon'
+
 export default function FilterList({
   items,
   title,
@@ -29,7 +31,7 @@ export default function FilterList({
             <li key={`${slug}-filter-${i}`} className="mb-3 ">
               <label
                 htmlFor={slug}
-                className={`filterItem flex f-20 relative pl-5
+                className={`filterItem flex items-center f-20 relative pl-5
                   ${isAvailable ? '' : 'opacity-50'}
                   ${isChecked ? 'text-black' : 'text-grey-b'}
                 `}
@@ -50,7 +52,9 @@ export default function FilterList({
                 >
                   {item.label}
                 </div>
-                <div className="absolute left-0">{isChecked ? 'x' : 'o'}</div>
+                <div className="absolute left-0">
+                  <Icon name={isChecked ? 'filterActive' : 'filterDefault'} />
+                </div>
               </label>
             </li>
           )

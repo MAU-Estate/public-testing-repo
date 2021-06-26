@@ -95,7 +95,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      classNqame={`absolute z-20 inset-0 container flex flex-1 h-full pointer-events-none ${
+      className={`absolute z-20 inset-0 container flex flex-1 h-full pointer-events-none ${
         isPrevious ? 'justify-end' : 'justify-start '
       }`}
     >

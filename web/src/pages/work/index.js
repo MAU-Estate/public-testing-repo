@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useContext, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import queryString from 'query-string'
 
+import { Context } from '../../context'
 import useObserver from '../../hooks/useObserver'
 
 import FilterList from '../../components/FilterList'
@@ -104,6 +105,7 @@ const Work = ({
     collections,
   },
 }) => {
+  const { setProjectEdges, setProjectFilterString } = useContext(Context)
   const getFilteredProjects = filters => {
     const filterResult = []
     const filterRejects = []
@@ -134,20 +136,27 @@ const Work = ({
         }
   )
   const [isFilterVisible, setIsFilterVisible] = useState(false)
-  const { filterResult, filterRejects } = getFilteredProjects(activeFilters)
+  const { filterResult } = getFilteredProjects(activeFilters)
   const [filteredProjects, setFilteredProjects] = useState(filterResult)
   const hasFiltering = getFiltersState(activeFilters)
+
+  useEffect(() => {
+    setProjectEdges(filteredProjects)
+  }, [filteredProjects])
+
+  // Setting filter height for drawer animation
   const filterRef = useRef()
-  const [filterHeight, setFilterHeight] = useState()
+  const [filterHeight, setFilterHeight] = useState(0)
+
   useObserver({
-    callback: val => setFilterHeight(val[0].borderBoxSize.blockSize),
+    callback: val => setFilterHeight(val[0].contentRect.bottom),
     element: filterRef,
   })
-  console.log(filterHeight)
 
   const setUrlParams = state => {
     const params = queryString.stringify(state, { arrayFormat: 'comma' })
     const updatedUrl = location.pathname + '?' + params
+    setProjectFilterString(`?${params}`)
     window.history.pushState({ path: updatedUrl }, '', updatedUrl)
   }
 
@@ -158,7 +167,7 @@ const Work = ({
   const handleResetFilters = () => {
     const defaultFilters = { featured: activeFilters.featured }
     setActiveFilters(defaultFilters)
-    const { filterResult, filterRejects } = getFilteredProjects(defaultFilters)
+    const { filterResult } = getFilteredProjects(defaultFilters)
     setFilteredProjects(filterResult)
     setUrlParams(defaultFilters)
   }
@@ -166,7 +175,7 @@ const Work = ({
   const handleSetActiveFilter = (filter, value) => {
     const result = activeFilters
     result[filter] = value
-    const { filterResult, filterRejects } = getFilteredProjects({ ...result })
+    const { filterResult } = getFilteredProjects({ ...result })
     setFilteredProjects(filterResult)
     setActiveFilters({ ...result })
     setUrlParams({ ...result })
@@ -219,10 +228,9 @@ const Work = ({
         </button>
       </div>
       <div
-        className={`transform transition-transform pointer-events-none ${
-          isFilterVisible ? '!translate-y-0' : ''
-        }`}
+        className={`transform transition-transform pointer-events-none`}
         style={{
+          marginBottom: `-${isFilterVisible ? 0 : filterHeight}px`,
           transform: `translateY(-${isFilterVisible ? 0 : filterHeight}px)`,
         }}
       >

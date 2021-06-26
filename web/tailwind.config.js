@@ -56,6 +56,7 @@ module.exports = {
       colors: {
         black: 'var(--black)',
         'black-b': 'var(--black-b)',
+        'black-c': 'var(--black-c)',
         'grey-a': 'var(--grey-a)',
         'grey-b': 'var(--grey-a)',
         'grey-c': 'var(--grey-c)',
