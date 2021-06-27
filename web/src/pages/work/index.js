@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import queryString from 'query-string'
 
@@ -38,44 +39,44 @@ const filterProject = (project, filters, type) => {
   }
 }
 
-const getAvailableFilters = projects => {
-  const result = {
-    medium: [],
-    collection: [],
-    material: [],
-    era: [],
-  }
-  projects.forEach(project => {
-    if (project.medium) {
-      project['medium'].forEach(option => {
-        if (result.medium.indexOf(option) === -1) {
-          result.medium.push(option.slug.current)
-        }
-      })
-    }
-    if (project.era) {
-      const era = project.era
-      if (result.era.indexOf(era) === -1) {
-        result.era.push(era)
-      }
-    }
-    if (project.collection) {
-      project['collection'].forEach(option => {
-        if (result.collection.indexOf(option) === -1) {
-          result.collection.push(option.slug.current)
-        }
-      })
-    }
-    if (project.material) {
-      project['material'].forEach(option => {
-        if (result.material.indexOf(option) === -1) {
-          result.material.push(option.slug.current)
-        }
-      })
-    }
-  })
-  return result
-}
+// const getAvailableFilters = projects => {
+//   const result = {
+//     medium: [],
+//     collection: [],
+//     material: [],
+//     era: [],
+//   }
+//   projects.forEach(project => {
+//     if (project.medium) {
+//       project['medium'].forEach(option => {
+//         if (result.medium.indexOf(option) === -1) {
+//           result.medium.push(option.slug.current)
+//         }
+//       })
+//     }
+//     if (project.era) {
+//       const era = project.era
+//       if (result.era.indexOf(era) === -1) {
+//         result.era.push(era)
+//       }
+//     }
+//     if (project.collection) {
+//       project['collection'].forEach(option => {
+//         if (result.collection.indexOf(option) === -1) {
+//           result.collection.push(option.slug.current)
+//         }
+//       })
+//     }
+//     if (project.material) {
+//       project['material'].forEach(option => {
+//         if (result.material.indexOf(option) === -1) {
+//           result.material.push(option.slug.current)
+//         }
+//       })
+//     }
+//   })
+//   return result
+// }
 
 const getProjectYearsByDecade = years => {
   const decades = years.map(year => {
@@ -142,7 +143,7 @@ const Work = ({
 
   useEffect(() => {
     setProjectEdges(filteredProjects)
-  }, [filteredProjects])
+  }, [filteredProjects, setProjectEdges])
 
   // Setting filter height for drawer animation
   const filterRef = useRef()
@@ -185,6 +186,7 @@ const Work = ({
 
   return (
     <div className="container pt-25">
+      <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="pb-a3 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5">{title}</h1>
 

@@ -58,6 +58,16 @@ export default {
       type: 'richText'
     },
     {
+      name: 'artistStatementBody',
+      title: 'Artist Statement',
+      type: 'richText'
+    },
+    {
+      name: 'quotedBody',
+      title: 'Quoted',
+      type: 'richText'
+    },
+    {
       name: 'media',
       title: 'Media',
       type: 'array',

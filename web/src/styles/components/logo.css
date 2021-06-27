@@ -1,0 +1,4 @@
+.theme--light #logo {
+  @apply transition-colors;
+  @apply text-black;
+}

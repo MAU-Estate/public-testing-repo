@@ -19,7 +19,7 @@ import BlockContent from '@sanity/block-content-to-react'
 //   },
 // }
 
-export default ({ content, className }) => {
+const RichText = ({ content, className }) => {
   return (
     <BlockContent
       className={`richText ${className}`}
@@ -29,3 +29,5 @@ export default ({ content, className }) => {
     />
   )
 }
+
+export default RichText

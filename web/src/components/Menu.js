@@ -39,7 +39,9 @@ export default function Menu({ bgImage }) {
               : 'opacity-0 pointer-events-none invisible'
           }`}
           onClick={() => setIsOpen(false)}
-        />
+        >
+          <span className="sr-only">Close menu</span>
+        </button>
         <div
           className={`flex flex-col justify-top pl-20 pr-96 transition-transform duration-300 transform ${
             isOpen ? '' : '-translate-x-full'

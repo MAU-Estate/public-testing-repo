@@ -39,6 +39,7 @@ import richText from './objects/richText'
 import seo from './objects/seo'
 import textColumn from './objects/textColumn'
 import textColumns from './objects/textColumns'
+import twoColImage from './objects/twoColImage'
 
 // Documents
 import collection from './documents/collection'
@@ -88,6 +89,7 @@ export default createSchema({
     textColumns,
     figure,
     address,
+    twoColImage,
     // documents
     article,
     awards,

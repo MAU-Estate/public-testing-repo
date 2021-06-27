@@ -1,7 +1,9 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+
 import RichText from '../components/RichText'
+import Seo from '../components/Seo'
 
 const FellowshipsPage = ({
   data: { sanityFellowships: pageData, allSanityFellow },
@@ -18,6 +20,7 @@ const FellowshipsPage = ({
   const { nodes: fellows } = allSanityFellow
   return (
     <>
+      <Seo {...seo} />
       <div className="relative pt-25 pb-b ">
         <div className="absolute inset-0 flex">
           <GatsbyImage

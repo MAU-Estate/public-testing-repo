@@ -140,6 +140,17 @@ export default function Gallery({
     prevArrow: !inline ? <SliderArrow theme={theme} type="next" /> : null,
   }
   const sliderRef = useRef()
+  const parsedSlides = []
+
+  // handle 2 Column images
+  slides.forEach(slide => {
+    if (slide._type === 'figure') parsedSlides.push(slide)
+    if (slide._type === 'twoColImage') {
+      parsedSlides.push(slide.imageL)
+      parsedSlides.push(slide.imageR)
+    }
+  })
+
   return (
     <div className={`Gallery flex flex-1 ${className}`} id={slug?.current}>
       <Slider
@@ -148,7 +159,7 @@ export default function Gallery({
         className="flex flex-1"
         id="test"
       >
-        {slides.map((slide, i) => (
+        {parsedSlides.map((slide, i) => (
           <Slide
             key={slide._key}
             index={i}

@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import { graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import { Context } from '../../context'
-
-import Icon from '../../components/Icon'
+import ProjectHeader from '../../components/ProjectHeader'
+import ProjectGallery from '../../components/ProjectGallery'
 
 export default function Project({
   data: {
-    sanityProject: { title, id, previewImage, collection, dimensions },
+    sanityProject: { title, id, previewImage, gallery, collection, dimensions },
     allSanityProject: { edges },
   },
 }) {
@@ -16,7 +16,7 @@ export default function Project({
   const { projectEdges, projectFilterString } = useContext(Context)
 
   // either grab the edges which is all projects or grab the projects from the store
-  if (projectEdges.length) {
+  if (projectEdges && projectEdges.length) {
     const projectIndex = projectEdges.findIndex(project => project.id === id)
     let nextIndex = projectIndex + 1
     let prevIndex = projectIndex - 1
@@ -33,36 +33,16 @@ export default function Project({
 
   return (
     <div className="container mt-a2">
-      <div className="border-t border-grey-b pt-t flex justify-between items-end mb-h">
-        <h1 className="f-21">{title}</h1>
-        <div className="h-11 flex items-center">
-          <Link
-            to={`/work${projectFilterString ? projectFilterString : ''}`}
-            className="flex"
-          >
-            <Icon name="grid" className="mx-6" />
-          </Link>
-          <div className="border-r border-grey-b self-stretch"></div>
-          <Link
-            to={`/work/${node.previous.slug.current}`}
-            className="flex pl-6 pr-3"
-          >
-            <Icon name="arrowLeft" className="w-[22px]" />
-          </Link>
-          <Link to={`/work/${node.next.slug.current}`} className="flex pl-3">
-            <Icon name="arrowRight" className="w-[22px]" />
-          </Link>
-        </div>
-      </div>
-      <div className="grid grid-cols-12 mb-i">
-        <div className="col-span-6">
-          <GatsbyImage
-            image={previewImage.src.asset.gatsbyImageData}
-            alt={previewImage.alt}
-            objectFit="contain"
-            className=""
-          />
-        </div>
+      <Helmet bodyAttributes={{ class: 'theme--light' }} />
+      <ProjectHeader
+        className={''}
+        title={title}
+        backPath={`/work${projectFilterString ? projectFilterString : ''}`}
+        nextPath={`/work/${node.next.slug.current}`}
+        prevPath={`/work/${node.previous.slug.current}`}
+      />
+      <div className="grid grid-cols-12 mt-20 mb-i">
+        <ProjectGallery data={gallery} className="col-span-8" />
         <div className="col-start-10 col-span-3">
           <dl className="mb-22">
             <dt className="f-7 mb-3 uppercase">Work Title</dt>
@@ -89,7 +69,6 @@ export default function Project({
           </p>
         </div>
       </div>
-      {/* <Link to={'/work'}>{'<- Back'}</Link> */}
     </div>
   )
 }
@@ -121,6 +100,9 @@ export const exhibitionQuery = graphql`
       title
       previewImage {
         ...figure
+      }
+      gallery {
+        ...gallery
       }
       collection {
         label

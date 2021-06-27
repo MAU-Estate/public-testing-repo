@@ -24,7 +24,7 @@ const Layout = ({ children, className = '' }) => {
         }
       `}
       render={({ sanitySiteSettings }) => (
-        <div className={`overflow-x-hidden flex flex-col flex-1`}>
+        <div className={`flex flex-col flex-1`}>
           <Menu
             bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
           />
@@ -34,7 +34,7 @@ const Layout = ({ children, className = '' }) => {
           >
             <header className="pt-a absolute z-10 left-0 right-0">
               <div className="container text-white">
-                <Icon name="logo" />
+                <Icon id="logo" name="logo" />
               </div>
             </header>
             <main className={`${className}`}>{children}</main>

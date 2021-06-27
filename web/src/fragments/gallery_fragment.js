@@ -8,16 +8,19 @@ export const GALLERY_FRAGMENT = graphql`
       }
       backUrl
       images {
-        _key
-        src {
-          asset {
-            gatsbyImageData
-          }
+        ... on SanityFigure {
+          _key
+          _type
+          ...figure
         }
-        figcaption {
-          credit
-          body {
-            _rawText
+        ... on SanityTwoColImage {
+          _key
+          _type
+          imageL {
+            ...figure
+          }
+          imageR {
+            ...figure
           }
         }
       }

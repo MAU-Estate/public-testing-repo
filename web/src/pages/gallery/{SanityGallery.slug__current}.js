@@ -21,7 +21,7 @@ export default function gallery({
           ) : (
             <div className="fixed inset-0 py-h z-30 bg-white flex">
               <Link
-                to={`${backUrl}#${slug.current}`}
+                to={`/${backUrl}#${slug.current}`}
                 className="absolute z-20 top-0 right-0"
               >
                 Close
@@ -45,19 +45,20 @@ export const galleryQuery = graphql`
       }
       backUrl
       images {
-        _key
-        alt
-        src {
-          asset {
-            _key
-            gatsbyImageData
-          }
+        ... on SanityFigure {
+          _key
+          _type
+          ...figure
         }
-        figcaption {
-          body {
-            _rawText
+        ... on SanityTwoColImage {
+          _key
+          _type
+          imageL {
+            ...figure
           }
-          credit
+          imageR {
+            ...figure
+          }
         }
       }
     }

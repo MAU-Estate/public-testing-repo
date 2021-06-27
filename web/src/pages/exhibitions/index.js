@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import { Helmet } from 'react-helmet'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const ExhibitionsPage = ({
@@ -7,10 +8,9 @@ const ExhibitionsPage = ({
 }) => {
   const { seo } = pageData
   const { nodes: exhibitions } = exhibitionNodes
-
-  console.log(exhibitions)
   return (
     <div className="container pt-25">
+      <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="mb-b pb-a3 border-b border-grey-b flex justify-between items-end">
         <h1 className="f-5">{seo.title}</h1>
       </div>

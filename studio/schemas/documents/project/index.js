@@ -37,7 +37,7 @@ export default {
     {
       name: 'gallery',
       title: 'Images',
-      type: 'gallery'
+      type: 'galleryObj'
     },
     {
       name: 'dimensions',

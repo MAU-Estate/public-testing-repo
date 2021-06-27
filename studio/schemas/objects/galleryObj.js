@@ -14,7 +14,7 @@ export default {
       weak: true,
       to: [{ type: 'gallery' }],
       description:
-        'Galleries must be published in the Documents section before showing below'
+        'Galleries must be created & published in the Documents section before adding below'
     }
   ]
 }

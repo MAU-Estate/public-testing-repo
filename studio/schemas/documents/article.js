@@ -1,4 +1,5 @@
-import { BsNewspaper } from 'react-icons/bs';
+import { BsNewspaper } from 'react-icons/bs'
+import ConditionalField from 'sanity-plugin-conditional-field'
 
 export default {
   name: 'article',
@@ -17,6 +18,31 @@ export default {
       type: 'figure'
     },
     {
+      name: 'external',
+      title: 'Is this article external?',
+      type: 'boolean',
+      validation: Rule => Rule.required(),
+      initialValue: true
+    },
+    {
+      name: 'gallery',
+      title: 'Gallery',
+      type: 'galleryObj',
+      inputComponent: ConditionalField,
+      options: {
+        condition: document => !document.external
+      }
+    },
+    {
+      name: 'url',
+      title: 'External Url',
+      type: 'url',
+      inputComponent: ConditionalField,
+      options: {
+        condition: document => document.external
+      }
+    },
+    {
       name: 'author',
       title: 'Author',
       type: 'string'
@@ -27,18 +53,14 @@ export default {
       type: 'string'
     },
     {
-      name: 'url',
-      title: 'External Url',
-      type: 'url'
-    },
-    {
       name: 'date',
       title: 'Year',
       type: 'date',
-      description: 'Year & month will be displayed but all will be used for ordering',
+      description:
+        'Year & month will be displayed but all will be used for ordering',
       options: {
         dateFormat: 'MM-DD-YYYY'
       }
     }
   ]
-};
+}

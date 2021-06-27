@@ -30,7 +30,7 @@ export default {
       name: 'images',
       type: 'array',
       title: 'Images',
-      of: [{ type: 'figure' }],
+      of: [{ type: 'figure' }, { type: 'twoColImage' }],
       options: {
         layout: 'grid'
       }

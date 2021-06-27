@@ -23,10 +23,12 @@ const icons = {
   grid,
 }
 
-export default props => {
+const Icon = props => {
   if (props.name in icons) {
     return <>{icons[props.name](props)}</>
   } else {
     return <>Undefined icon name: {props.name}</>
   }
 }
+
+export default Icon
