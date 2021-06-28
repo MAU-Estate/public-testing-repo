@@ -7,6 +7,11 @@ export const FIGURE_FRAGMENT = graphql`
     src {
       asset {
         gatsbyImageData(layout: FULL_WIDTH)
+        metadata {
+          dimensions {
+            aspectRatio
+          }
+        }
       }
     }
     figcaption {

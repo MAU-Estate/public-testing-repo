@@ -64,7 +64,7 @@ const Slide = ({
             {data.figcaption?.body && (
               <RichText
                 content={data.figcaption.body._rawText}
-                className={`py-1 f-8`}
+                className={`f-8`}
               />
             )}
           </figcaption>

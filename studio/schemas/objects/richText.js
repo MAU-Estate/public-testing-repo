@@ -1,4 +1,8 @@
-// import React from 'react';
+import React from 'react'
+
+const SerifStyle = props => (
+  <span style={{ fontFamily: 'times new roman' }}>{props.children}</span>
+)
 
 export default {
   name: 'richText',
@@ -16,26 +20,27 @@ export default {
       of: [
         {
           type: 'block',
-          lists: [
-            { title: 'Bullet', value: 'bullet' },
-            { title: 'Numbered', value: 'number' }
-          ],
+          lists: [],
+          styles: [],
           marks: {
             decorators: [
-              { title: 'Strong', value: 'strong' },
+              {
+                title: 'Serif',
+                value: 'serif',
+                blockEditor: {
+                  icon: () => 'S',
+                  render: ({ children }) => (
+                    <span style={{ fontFamily: 'times new roman' }}>
+                      {children}
+                    </span>
+                  )
+                }
+              },
               { title: 'Emphasis', value: 'em' }
-              // {
-              //   title: 'Superscript',
-              //   value: 'superscript',
-              //   blockEditor: {
-              //     icon: () => 'S',
-              //     render: ({ children }) => <sup>{children}</sup>
-              //   }
-              // }
             ]
           }
         }
       ]
     }
   ]
-};
+}

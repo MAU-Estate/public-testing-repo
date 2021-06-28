@@ -15,6 +15,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     educationBody,
     educationTitle,
     exhibitionsTitle,
+    exhibitionsBody,
     groupExhibitionsBody,
     groupExhibitionsTitle,
     headerImage,
@@ -85,10 +86,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 >
                   {exhibitionsTitle}
                 </h3>
-                <RichText
-                  className="f-6"
-                  content={groupExhibitionsBody._rawText}
-                />
+                <RichText className="f-6" content={exhibitionsBody._rawText} />
               </div>
               <div>
                 <h3
@@ -189,6 +187,9 @@ export const query = graphql`
       }
       educationTitle
       exhibitionsTitle
+      exhibitionsBody {
+        _rawText
+      }
       groupExhibitionsBody {
         _rawText
       }

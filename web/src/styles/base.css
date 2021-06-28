@@ -95,6 +95,7 @@
 
   em {
     font-family: var(--font-primary--italic);
+    font-style: normal;
   }
 
   body,
@@ -158,6 +159,14 @@
 
   a:focus:not(:focus-visible) {
     outline: none;
+  }
+
+  .richText a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .sectionGradient-lg.bg-bio-c,

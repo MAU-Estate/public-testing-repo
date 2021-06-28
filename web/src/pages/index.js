@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Blockquote from '../components/Blockquote'
 import Gallery from '../components/Gallery'
 import RichText from '../components/RichText'
 import Icon from '../components/Icon'
+import Figure from '../components/Figure'
 
 const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
   const {
@@ -37,10 +37,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
       <section className="container mt-e">
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3">
-            <GatsbyImage
-              image={section1.image1.src.asset.gatsbyImageData}
-              alt={section1.image1.alt}
-            />
+            <Figure image={section1.image1} />
           </div>
           <div className="col-start-2 col-span-4">
             <RichText
@@ -57,14 +54,11 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
       </section>
 
-      <section className="bg-black-b py-g sectionGradient-lg">
+      <section className="bg-black-b py-g">
         <div className="container">
           <div className="grid grid-cols-12 mb-e">
             <div className="col-span-5 ">
-              <GatsbyImage
-                image={section2.image1.src.asset.gatsbyImageData}
-                alt={section2.image1.alt}
-              />
+              <Figure image={section2.image1} className="text-white" />
             </div>
             <div className="col-start-7 col-span-5 text-white">
               <RichText
@@ -114,6 +108,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
               slides={section3.gallery1.galleryRef.images}
               slug={section3.gallery1.galleryRef.slug}
               className="aspect-w-16 aspect-h-9"
+              theme="light"
             />
           </div>
         </div>
@@ -123,6 +118,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
               slides={section3.gallery2.galleryRef.images}
               slug={section3.gallery2.galleryRef.slug}
               className="aspect-w-2 aspect-h-3"
+              theme="light"
             />
           </div>
           <div className="col-start-6 col-end-13">
@@ -130,6 +126,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
               slides={section3.gallery3.galleryRef.images}
               slug={section3.gallery3.galleryRef.slug}
               className="aspect-w-16 aspect-h-9"
+              theme="light"
             />
           </div>
         </div>
@@ -142,7 +139,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
 
       {/* Section 4 */}
 
-      <section className="bg-bio-a py-g sectionGradient-lg text-white">
+      <section className="bg-bio-a py-g text-white">
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-span-5">
             <Gallery
@@ -170,10 +167,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <RichText className="f-13" content={section5.richText1._rawText} />
           </div>
           <div className="col-span-6">
-            <GatsbyImage
-              image={section5.image1.src.asset.gatsbyImageData}
-              alt={section5.image1.alt}
-            />
+            <Figure image={section5.image1} />
           </div>
         </div>
         <Gallery
@@ -193,17 +187,14 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12">
           <div className="col-start-2 col-span-10">
-            <GatsbyImage
-              image={section5.image1.src.asset.gatsbyImageData}
-              alt={section5.image1.alt}
-            />
+            <Figure image={section5.image1} />
           </div>
         </div>
       </section>
 
       {/* Section 6 */}
 
-      <section className="py-g bg-bio-b sectionGradient-t-lg">
+      <section className="py-g bg-bio-b">
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
             <RichText className="f-13" content={section6.richText1._rawText} />
@@ -211,10 +202,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-10">
-            <GatsbyImage
-              image={section6.image1.src.asset.gatsbyImageData}
-              alt={section6.image1.alt}
-            />
+            <Figure image={section6.image1} />
           </div>
         </div>
         <div className="container grid grid-cols-12 mb-e">
@@ -249,7 +237,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
 
       {/* Section 7 */}
 
-      <section className="py-g bg-bio-c sectionGradient-t-lg text-white">
+      <section className="py-g bg-bio-c text-white">
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-5">
             <RichText className="f-13" content={section7.richText1._rawText} />
@@ -274,21 +262,14 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <RichText className="f-13" content={section7.richText2._rawText} />
           </div>
           <div className="col-span-6">
-            <GatsbyImage
-              image={section7.image1.src.asset.gatsbyImageData}
-              alt={section7.image1.alt}
-            />
+            <Figure image={section7.image1} />
           </div>
         </div>
       </section>
 
       <Link to={bioCta.path} className="block relative py-e">
         <div className="absolute inset-0 flex" style={{ zIndex: '-1' }}>
-          <GatsbyImage
-            image={bioCta.image1.src.asset.gatsbyImageData}
-            alt={bioCta.image1.alt}
-            className="flex-1"
-          />
+          <Figure objectFit="cover" image={bioCta.image1} className="flex-1" />
         </div>
         <div className="container">
           <div className="flex items-center text-white">
