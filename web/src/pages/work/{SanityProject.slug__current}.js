@@ -4,11 +4,21 @@ import { Helmet } from 'react-helmet'
 
 import { Context } from '../../context'
 import ProjectHeader from '../../components/ProjectHeader'
+import RichText from '../../components/RichText'
 import ProjectGallery from '../../components/ProjectGallery'
 
 export default function Project({
   data: {
-    sanityProject: { title, id, previewImage, gallery, collection, dimensions },
+    sanityProject: {
+      title,
+      id,
+      gallery,
+      body,
+      dimensions,
+      materialsText,
+      collectionText,
+      yearText,
+    },
     allSanityProject: { edges },
   },
 }) {
@@ -48,25 +58,15 @@ export default function Project({
             <dt className="f-7 mb-3 uppercase">Work Title</dt>
             <dd className="f-6 mb-10">{title}</dd>
             <dt className="f-7 mb-3 uppercase">Year</dt>
-            <dd className="f-6 mb-10">Year tbd</dd>
+            <dd className="f-6 mb-10">{yearText}</dd>
             <dt className="f-7 mb-3 uppercase">Materials</dt>
-            <dd className="f-6 mb-10">Materials Tbd</dd>
+            <dd className="f-6 mb-10">{materialsText}</dd>
             <dt className="f-7 mb-3 uppercase">Dimensions</dt>
             <dd className="f-6 mb-10">{dimensions}</dd>
-            {/* @TODO What if multiple collections*/}
             <dt className="f-7 mb-3 uppercase">Collection</dt>
-            <dd className="f-6">{collection[0].label}</dd>
+            <dd className="f-6">{collectionText}</dd>
           </dl>
-          <p className="f-6">
-            “Shanks perfectly exemplifies Unger’s inclinations—rational yet
-            connected to nature, serene but passionate, rigorously formed yet
-            playful.”<br></br> –Judith Page, Sculpture Magazine, Month, 1999
-          </p>
-          <p className="f-6">
-            “The overall effect of the nearly nine-foot, tripartite composition
-            is one of uncanny, restless grace.”<br></br> –Horace Ballard,
-            Williams College Museum of Art, 2022
-          </p>
+          <RichText content={body._rawText} className="f-6" />
         </div>
       </div>
     </div>
@@ -98,8 +98,12 @@ export const exhibitionQuery = graphql`
     sanityProject(id: { eq: $id }) {
       id
       title
-      previewImage {
-        ...figure
+      materialsText
+      collectionsText
+      yearText
+      era
+      body {
+        _rawText
       }
       gallery {
         ...gallery

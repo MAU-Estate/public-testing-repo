@@ -2,10 +2,6 @@ export default {
   name: 'galleryObj',
   title: 'Gallery',
   type: 'object',
-  options: {
-    collapsible: true,
-    collapsed: true
-  },
   fields: [
     {
       name: 'galleryRef',

@@ -7,7 +7,7 @@ import RichText from '../components/RichText'
 const ContactPage = ({ data: { sanityContact: pageData } }) => {
   const {
     title,
-    headerImage,
+    headerImages,
     advisorsBody,
     directorBody,
     body,
@@ -16,7 +16,7 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
   } = pageData
   return (
     <>
-      <PageHeader image={headerImage} title={title} />
+      <PageHeader image={headerImages[0]} title={title} />
       <div className="bg-black text-white pb-i">
         <div className="container pt-b grid grid-cols-12">
           <div className="col-span-5">
@@ -57,8 +57,15 @@ export const query = graphql`
       directorBody {
         _rawText
       }
-      headerImage {
-        ...image
+      headerImages {
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH)
+          metadata {
+            dimensions {
+              aspectRatio
+            }
+          }
+        }
       }
       infoBody {
         _rawText

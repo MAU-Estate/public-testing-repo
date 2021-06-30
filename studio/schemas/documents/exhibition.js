@@ -35,7 +35,12 @@ export default {
     {
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'figure'
+      type: 'previewImage'
+    },
+    {
+      name: 'gallery',
+      title: 'Images',
+      type: 'galleryObj'
     },
     {
       name: 'venue',
@@ -66,19 +71,6 @@ export default {
       name: 'quotedBody',
       title: 'Quoted',
       type: 'richText'
-    },
-    {
-      name: 'media',
-      title: 'Media',
-      type: 'array',
-      of: [{ type: 'figure' }]
-    },
-    {
-      name: 'details',
-      title: 'Details',
-      description:
-        'Additional information to be in parenthesis after exhibition name in CV',
-      type: 'string'
     }
   ]
 }

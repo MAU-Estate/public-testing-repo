@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 
 import ProjectHeader from '../../components/ProjectHeader'
 import RichText from '../../components/RichText'
+import ProjectGallery from '../../components/ProjectGallery'
 
 export default function exhibition({
   data: {
@@ -13,14 +14,13 @@ export default function exhibition({
       date,
       title,
       id,
-      previewImage,
+      gallery,
       venue,
       curator,
       body,
       quotedBody,
       isSolo,
       location,
-      media,
     },
     allSanityExhibition: { edges },
   },
@@ -93,11 +93,7 @@ export default function exhibition({
           )}
         </div>
         <div className="col-start-6 col-span-7">
-          <GatsbyImage
-            image={previewImage.src.asset.gatsbyImageData}
-            alt={previewImage.alt}
-            className="aspect-w-4 aspect-h-3"
-          />
+          <ProjectGallery data={gallery} className="col-span-8" />
         </div>
       </div>
     </div>
@@ -115,14 +111,11 @@ export const exhibitionQuery = graphql`
       }
       curator
       date(formatString: "YYYY")
-      previewImage {
-        ...figure
-      }
       id
       isSolo
       location
-      media {
-        ...figure
+      gallery {
+        ...gallery
       }
       quotedBody {
         _rawText

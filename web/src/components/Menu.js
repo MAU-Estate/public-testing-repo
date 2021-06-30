@@ -30,7 +30,7 @@ export default function Menu({ bgImage }) {
       <div
         className={`${
           isOpen ? '' : 'pointer-events-none'
-        } fixed z-20 inset-0 flex`}
+        } fixed z-30 inset-0 flex`}
       >
         <button
           className={`absolute h-full w-full inset-0 block bg-black transition-all ${

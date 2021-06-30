@@ -18,7 +18,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     exhibitionsBody,
     groupExhibitionsBody,
     groupExhibitionsTitle,
-    headerImage,
+    headerImages,
     life,
     lifeTitle,
     permanentSiteCommissionsBody,
@@ -38,7 +38,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
   ]
   return (
     <>
-      <PageHeader image={headerImage} title={title} />
+      <PageHeader image={headerImages[0]} title={title} />
       <div className="bg-black text-white">
         <div className="container grid grid-cols-3 pb-i pt-b">
           <div>
@@ -194,8 +194,15 @@ export const query = graphql`
         _rawText
       }
       groupExhibitionsTitle
-      headerImage {
-        ...image
+      headerImages {
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH)
+          metadata {
+            dimensions {
+              aspectRatio
+            }
+          }
+        }
       }
       life
       lifeTitle

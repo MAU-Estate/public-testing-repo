@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import RichText from '../components/RichText'
+import PageHeader from '../components/PageHeader'
 import Seo from '../components/Seo'
 
 const FellowshipsPage = ({
@@ -11,7 +12,7 @@ const FellowshipsPage = ({
   const {
     title,
     seo,
-    headerImage,
+    headerImages,
     headerBodyLeft,
     headerBodyRight,
     recipientLabel,
@@ -21,21 +22,7 @@ const FellowshipsPage = ({
   return (
     <>
       <Seo {...seo} />
-      <div className="relative pt-25 pb-b ">
-        <div className="absolute inset-0 flex">
-          <GatsbyImage
-            image={headerImage.asset.gatsbyImageData}
-            alt="header background image"
-            objectFit="cover"
-            className="flex-1"
-          />
-        </div>
-        <div className="container">
-          <h1 className="text-white f-5 pb-a3 border-b border-white">
-            {title}
-          </h1>
-        </div>
-      </div>
+      <PageHeader image={headerImages[0]} title={title} />
       <div className="pt-b bg-black text-white">
         <div className="container">
           <div className="grid grid-cols-12 mb-p">
@@ -74,7 +61,7 @@ const FellowshipsPage = ({
                 <div>
                   <RichText className="f-6" content={fellow.body._rawText} />
                   <p className="f-6">–</p>
-                  <p className="f-6">Other info TBD</p>
+                  <RichText content={fellow.infoBody._rawText} />
                 </div>
               </div>
             </div>
@@ -94,8 +81,15 @@ export const query = graphql`
         title
       }
       title
-      headerImage {
-        ...image
+      headerImages {
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH)
+          metadata {
+            dimensions {
+              aspectRatio
+            }
+          }
+        }
       }
       headerBodyLeft {
         _rawText
@@ -116,7 +110,17 @@ export const query = graphql`
           _rawText
         }
         avatar {
-          ...image
+          asset {
+            gatsbyImageData(layout: FULL_WIDTH)
+            metadata {
+              dimensions {
+                aspectRatio
+              }
+            }
+          }
+        }
+        infoBody {
+          _rawText
         }
         _key
       }

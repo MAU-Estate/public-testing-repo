@@ -20,9 +20,10 @@ export default {
       type: 'string'
     },
     {
-      name: 'headerImage',
+      name: 'headerImages',
       title: 'Header background image',
-      type: 'image'
+      type: 'array',
+      of: [{ type: 'image' }]
     },
     {
       name: 'headerBodyLeft',

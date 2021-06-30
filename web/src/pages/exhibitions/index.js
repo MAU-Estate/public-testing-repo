@@ -20,7 +20,7 @@ const ExhibitionsPage = ({
             <li className="mb-l">
               <Link to={exhibition.slug.current} className="grid grid-cols-2">
                 <GatsbyImage
-                  image={exhibition.previewImage.src.asset.gatsbyImageData}
+                  image={exhibition.previewImage.asset.gatsbyImageData}
                   alt={exhibition.previewImage.alt}
                   className="aspect-w-4 aspect-h-3"
                 />
@@ -55,10 +55,7 @@ export const query = graphql`
           current
         }
         previewImage {
-          ...figure
-        }
-        media {
-          ...figure
+          ...image
         }
         venue
         location

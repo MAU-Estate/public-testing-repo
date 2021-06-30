@@ -300,7 +300,7 @@ const Work = ({
                 <Link to={slug.current}>
                   {/* <div className="aspect-w-1 aspect-h-1 mb-a3"> */}
                   <GatsbyImage
-                    image={previewImage.src.asset.gatsbyImageData}
+                    image={previewImage.asset.gatsbyImageData}
                     alt={previewImage.alt}
                     objectFit="contain"
                     className="aspect-h-1 aspect-w-1 mb-a3"
@@ -340,7 +340,6 @@ export const workQuery = graphql`
         title
         id
         date(formatString: "YYYY")
-        era
         slug {
           current
         }
@@ -350,7 +349,7 @@ export const workQuery = graphql`
           }
         }
         previewImage {
-          ...figure
+          ...image
         }
         medium {
           slug {

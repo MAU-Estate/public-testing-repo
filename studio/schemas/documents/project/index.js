@@ -27,22 +27,35 @@ export default {
     {
       name: 'date',
       title: 'Date',
-      type: 'datetime'
+      type: 'date',
+      options: {
+        dateFormat: 'MM-DD-YYYY'
+      }
+    },
+    {
+      name: 'yearText',
+      type: 'string',
+      title: 'Display Year'
     },
     {
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'figure'
+      type: 'previewImage'
     },
     {
       name: 'gallery',
-      title: 'Images',
+      title: 'Project Images',
       type: 'galleryObj'
     },
     {
       name: 'dimensions',
       title: 'Dimensions',
       type: 'string'
+    },
+    {
+      name: 'collectionsText',
+      type: 'string',
+      title: 'Display Collections'
     },
     {
       title: 'Collections',
@@ -52,11 +65,14 @@ export default {
       of: [{ type: 'projectCollections' }]
     },
     {
-      title: 'Mediums',
-      name: 'medium',
-      type: 'array',
-      validation: Rule => Rule.required(),
-      of: [{ type: 'projectMediums' }]
+      name: 'materialsText',
+      type: 'string',
+      title: 'Display Materials'
+    },
+    {
+      name: 'era',
+      type: 'string',
+      hidden: true
     },
     {
       title: 'Materials',
@@ -66,26 +82,19 @@ export default {
       of: [{ type: 'projectMaterials' }]
     },
     {
-      name: 'era',
-      type: 'string'
-      // hidden: true
+      title: 'Mediums',
+      name: 'medium',
+      type: 'array',
+      validation: Rule => Rule.required(),
+      of: [{ type: 'projectMediums' }]
+    },
+    {
+      name: 'body',
+      type: 'richText',
+      title: 'Body'
     }
-
-    // year
-    // dimensions string
-    // categories
-    // // medium
-    // // collection
-    // // materials
-    // Quotes
-    // Images...some two column
-    // // add single image / add image grid
   ],
   initialValue: {
     date: '1990-01-01 00:00'
   }
 }
-
-// label
-// relationship
-// slug of page

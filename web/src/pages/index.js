@@ -22,15 +22,13 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
     <>
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
-        <div className="relative z-10 w-full h-full flex">
-          <div className="container w-full h-full flex flex-1">
-            <Gallery
-              inline={false}
-              cover={false}
-              slides={pageData.hero.galleryRef.images}
-              slug={pageData.hero.galleryRef.slug}
-            />
-          </div>
+        <div className="container w-full h-full flex flex-1 relative">
+          <Gallery
+            inline={false}
+            cover={false}
+            slides={pageData.hero.galleryRef.images}
+            slug={pageData.hero.galleryRef.slug}
+          />
         </div>
       </div>
 

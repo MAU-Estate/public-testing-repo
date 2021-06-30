@@ -44,11 +44,17 @@ const PressPage = ({
   )
 }
 
-const renderArticlePreview = ({ image, title, author, publication, date }) => (
+const renderArticlePreview = ({
+  previewImage,
+  title,
+  author,
+  publication,
+  date,
+}) => (
   <>
     <GatsbyImage
-      image={image.src.asset.gatsbyImageData}
-      alt={image.alt}
+      image={previewImage.asset.gatsbyImageData}
+      alt={previewImage.alt}
       className="aspect-w-1 aspect-h-1 mb-a"
       objectFit="contain"
     />
@@ -77,8 +83,8 @@ export const query = graphql`
         external
         url
         publication
-        image {
-          ...figure
+        previewImage {
+          ...image
         }
         gallery {
           galleryRef {

@@ -34,8 +34,10 @@ import blockquote from './objects/blockquote'
 import bodyPortableText from './objects/bodyPortableText'
 import caption from './objects/caption'
 import figure from './objects/figure'
+import previewImage from './objects/previewImage'
 import galleryObj from './objects/galleryObj'
 import richText from './objects/richText'
+import richTextSerif from './objects/richTextSerif'
 import seo from './objects/seo'
 import textColumn from './objects/textColumn'
 import textColumns from './objects/textColumns'
@@ -84,10 +86,12 @@ export default createSchema({
     seo,
     galleryObj,
     richText,
+    richTextSerif,
     blockquote,
     textColumn,
     textColumns,
     figure,
+    previewImage,
     address,
     twoColImage,
     // documents

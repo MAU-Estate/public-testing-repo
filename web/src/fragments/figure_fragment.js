@@ -10,15 +10,14 @@ export const FIGURE_FRAGMENT = graphql`
         metadata {
           dimensions {
             aspectRatio
+            height
+            width
           }
         }
       }
     }
     figcaption {
-      credit
-      body {
-        _rawText
-      }
+      _rawText
     }
   }
 `

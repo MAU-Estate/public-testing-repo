@@ -1,5 +1,8 @@
 /* purgecss start ignore */
 .slick-slider {
+  position: absolute;
+  inset: 0;
+  display: flex;
   /* &:after {
     content: '';
     position: absolute;
@@ -14,8 +17,48 @@
     );
   } */
 }
-
+.slick-list,
 .slick-track {
+  flex: 1 0 0%;
+  display: flex !important;
+  min-width: 0;
+  min-height: 0;
+}
+
+.slick-list {
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.slick-slide {
+  min-width: 0;
+  min-height: 0;
+  flex: 1 0 0%;
+  display: flex !important;
+  overflow: hidden;
+
+  > div {
+    display: flex !important;
+    flex: 1 0 0%;
+  }
+
+  .slide {
+    position: relative;
+    display: flex !important;
+  }
+
+  .gatsby-image-outer-wrapper,
+  .gatsby-image-wrapper {
+    flex: 1;
+    display: flex !important;
+  }
+  img {
+    object-position: center center;
+  }
+}
+
+/* .slick-track {
   width: 100% !important;
   position: relative !important;
   left: 0 !important;
@@ -59,5 +102,5 @@
     flex: 1;
     display: flex !important;
   }
-}
+} */
 /* purgecss end ignore */

@@ -13,9 +13,9 @@ export default {
       type: 'string'
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'figure'
+      name: 'previewImage',
+      title: 'Preview Image',
+      type: 'previewImage'
     },
     {
       name: 'external',

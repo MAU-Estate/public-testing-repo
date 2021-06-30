@@ -33,6 +33,11 @@ export default {
       name: 'body',
       title: 'Body',
       type: 'richText'
+    },
+    {
+      name: 'infoBody',
+      title: 'Additional Info',
+      type: 'richText'
     }
   ]
 }

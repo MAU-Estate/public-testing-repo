@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 
 export const IMAGE_FRAGMENT = graphql`
-  fragment image on SanityImage {
+  fragment image on SanityPreviewImage {
     asset {
       gatsbyImageData(layout: FULL_WIDTH)
       metadata {
@@ -10,5 +10,6 @@ export const IMAGE_FRAGMENT = graphql`
         }
       }
     }
+    alt
   }
 `
