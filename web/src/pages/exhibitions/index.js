@@ -11,7 +11,7 @@ const ExhibitionsPage = ({
   return (
     <div className="container pt-25">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="mb-b pb-a3 border-b border-grey-b flex justify-between items-end">
+      <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
         <h1 className="f-5">{seo.title}</h1>
       </div>
       <ul className="grid grid-cols-2">
@@ -25,7 +25,9 @@ const ExhibitionsPage = ({
                   className="aspect-w-4 aspect-h-3"
                 />
                 <div>
-                  <p className="f-22 mb-k">2019–Solo</p>
+                  <p className="f-22 mb-k uppercase">
+                    {exhibition.date}–{exhibition.isSolo ? 'Solo' : 'Group'}
+                  </p>
                   <h3 className="f-23 mb-3">{exhibition.title}</h3>
                   <p className="f-23--light mb-3">{exhibition.venue}</p>
                   <p className="f-23--light">{exhibition.location}</p>
@@ -57,7 +59,9 @@ export const query = graphql`
         previewImage {
           ...image
         }
+        isSolo
         venue
+        date(formatString: "YYYY")
         location
       }
     }

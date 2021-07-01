@@ -70,42 +70,42 @@ const Slide = ({
         alt={data.src.asset.altText}
       />
       {/* <div>Information here</div> */}
+      <div
+        className={`relative z-10 pointer-events-auto w-full flex mt-c
+            max-w-[1508px]
+            mx-auto
+            ${isDark ? 'text-white' : 'text-black'}
+            ${inline ? '' : 'container'}
+          `}
+      >
+        <figcaption className={`flex-1`}>
+          {data.figcaption?.body && (
+            <RichText
+              content={data.figcaption.body._rawText}
+              className={`f-8`}
+            />
+          )}
+        </figcaption>
+        {inline && (
+          <div className="flex justify-between">
+            <div className="f-8 mr-24">
+              <button onClick={goToPrev} className="pr-4">
+                Prev
+              </button>
+              |
+              <button onClick={goToNext} className="pl-4">
+                Next
+              </button>
+            </div>
+            <div className="f-8">
+              {index + 1} / {galleryLength}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
     // <figure className="relative flex-1">
     //   <div className="absolute inset-0 flex flex-col">
-    //   <div
-    //       className={`relative z-10 pointer-events-auto w-full flex mt-c
-    //         max-w-[1508px]
-    //         mx-auto
-    //         ${isDark ? 'text-white' : 'text-black'}
-    //         ${inline ? '' : 'container'}
-    //       `}
-    //     >
-    //       <figcaption className={`flex-1`}>
-    //         {data.figcaption?.body && (
-    //           <RichText
-    //             content={data.figcaption.body._rawText}
-    //             className={`f-8`}
-    //           />
-    //         )}
-    //       </figcaption>
-    //       {inline && (
-    //         <div className="flex justify-between">
-    //           <div className="f-8 mr-24">
-    //             <button onClick={goToPrev} className="pr-4">
-    //               Prev
-    //             </button>
-    //             |
-    //             <button onClick={goToNext} className="pl-4">
-    //               Next
-    //             </button>
-    //           </div>
-    //           <div className="f-8">
-    //             {index + 1} / {galleryLength}
-    //           </div>
-    //         </div>
-    //       )}
-    //     </div>
     //   </div>
     // </figure>
   )

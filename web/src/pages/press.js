@@ -14,7 +14,7 @@ const PressPage = ({
     <div className="container pt-25">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="mb-b pb-a3 border-b border-grey-b flex justify-between items-end">
+      <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
         <h1 className="f-5">{title}</h1>
       </div>
       {/* Split this into rows */}

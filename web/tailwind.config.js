@@ -54,6 +54,7 @@ module.exports = {
         t: 'var(--unit-t)',
         u: 'var(--unit-u)',
         v: 'var(--unit-v)',
+        header: 'var(--unit-header)',
       },
       colors: {
         black: 'var(--black)',
@@ -63,7 +64,7 @@ module.exports = {
         'grey-b': 'var(--grey-a)',
         'grey-c': 'var(--grey-c)',
         'grey-d': 'var(--grey-d)',
-        'grey-d': 'var(--grey-d)',
+        'grey-e': 'var(--grey-e)',
         'bio-a': 'var(--bio-a)',
         'bio-b': 'var(--bio-b)',
         'bio-c': 'var(--bio-c)',

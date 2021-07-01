@@ -56,6 +56,7 @@
     --unit-t: calc(var(--unit) * 3);
     --unit-u: calc(var(--unit) * 4);
     --unit-v: calc(var(--unit) * 3);
+    --unit-header: calc(var(--unit) * 37);
   }
 
   @screen md {
@@ -318,7 +319,7 @@
       @screen lg {
         font-size: 170px;
         line-height: 135px;
-        letter-spacing: -6px;
+        letter-spacing: -12px;
         bottom: -0.05em;
         margin-top: -0.075em;
       }
@@ -350,9 +351,10 @@
       margin-top: -0.825em;
 
       @screen lg {
-        font-size: 19px;
+        font-size: 17px;
         line-height: 28px;
-        bottom: -0.375em;
+        letter-spacing: -0.5px;
+        bottom: -0.6em;
         margin-top: -0.725em;
       }
     }
@@ -489,8 +491,8 @@
 
       @screen lg {
         font-size: 57px;
-        line-height: 54px;
-        letter-spacing: -0.7px;
+        line-height: 57px;
+        letter-spacing: -1.8px;
         bottom: -0.125em;
         margin-top: -0.215em;
       }
@@ -515,7 +517,7 @@
     }
 
     .f-16 {
-      font-family: var(--font-secondary--medium);
+      font-family: var(--font-secondary);
       font-size: 23px;
       line-height: 25px;
       position: relative;
@@ -526,6 +528,11 @@
     .f-16--light {
       @apply f-16;
       font-family: var(--font-secondary--light);
+    }
+
+    .f-16--medium {
+      @apply f-16;
+      font-family: var(--font-secondary--medium);
     }
 
     .f-17 {
@@ -588,11 +595,11 @@
       margin-top: -0.25em;
 
       @screen lg {
-        font-size: 75px;
+        font-size: 66px;
         line-height: 68px;
         letter-spacing: -2.5px;
         bottom: -0.115em;
-        margin-top: -0.2em;
+        margin-top: -0.3em;
       }
     }
 

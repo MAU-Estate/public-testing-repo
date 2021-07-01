@@ -7,7 +7,7 @@ import Icon from '../components/Icon'
 import useKeyPress from '../hooks/useKeyPress'
 
 const NAV_ITEMS = [
-  { path: '/', label: 'About Mary Ann' },
+  { path: '/#intro', label: 'About Mary Ann' },
   { path: '/work', label: 'Work' },
   { path: '/exhibitions', label: 'Exhibitions' },
   { path: '/press', label: 'Press' },
@@ -78,14 +78,14 @@ export default function Menu({ bgImage }) {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="z-10 flex-1 self-stretch bg-black-c"
+          className="z-10 flex-1 self-stretch bg-black"
         >
           <span
-            className="absolute top-11 text-white left-[11px] transform -translate-x-full  origin-top-right -rotate-90 flex items-center"
-            style={{ lineHeight: 0 }}
+            className="absolute top-11 text-white left-[10px] transform -translate-x-full  origin-top-right -rotate-90 flex items-center"
+            style={{ lineHeight: 1, fontSize: '20.5px' }}
           >
             EXPLORE{' '}
-            <div className="transform rotate-90 ml-2">
+            <div className="transform rotate-90 ml-3">
               <Icon name={isOpen ? 'menuClose' : 'menu'} className="w-4 h-4" />
             </div>
           </span>

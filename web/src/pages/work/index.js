@@ -187,13 +187,17 @@ const Work = ({
   return (
     <div className="container pt-25">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="pb-a3 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
+      <div className="pb-a3 pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5">{title}</h1>
 
         {/* radios */}
 
-        <div className="flex uppercase f-16--light">
-          <div className="radio relative cursor-pointer">
+        <div className="flex uppercase">
+          <div
+            className={`radio relative cursor-pointer ${
+              isFeatured ? 'f-16--medium' : 'f-16'
+            }`}
+          >
             <input
               type="radio"
               name="featuredFilter"
@@ -204,8 +208,12 @@ const Work = ({
             />
             <label htmlFor="featured">Featured</label>
           </div>
-          <div className="mx-1">/</div>
-          <div className="radio relative cursor-pointer">
+          <div className="mx-1 f-16">/</div>
+          <div
+            className={`radio relative cursor-pointer ${
+              !isFeatured ? 'f-16--medium' : 'f-16'
+            }`}
+          >
             <input
               type="radio"
               name="featuredFilter"
@@ -219,12 +227,12 @@ const Work = ({
         </div>
         <button
           onClick={() => setIsFilterVisible(!isFilterVisible)}
-          className={`rounded-md border py-1 px-4 ${
-            isFilterVisible ? 'bg-grey-e' : ''
+          className={`rounded-md border border-black py-1 px-4 ${
+            hasFiltering ? 'bg-grey-e' : ''
           }`}
           style={{ width: '157px' }}
         >
-          <span className="f-9 block ">
+          <span className="f-9 block uppercase">
             {isFilterVisible ? 'Close' : 'Filter'}
           </span>
         </button>

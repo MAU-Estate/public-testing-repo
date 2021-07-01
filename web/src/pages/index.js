@@ -22,7 +22,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
     <>
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
-        <div className="container w-full h-full flex flex-1 relative">
+        <div className="container overflow-hidden w-full h-full flex flex-1 relative">
           <Gallery
             inline={false}
             cover={false}
@@ -32,7 +32,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
       </div>
 
-      <section className="container mt-e">
+      <section id="intro" className="container pt-e">
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3">
             <Figure image={section1.image1} />
@@ -185,7 +185,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12">
           <div className="col-start-2 col-span-10">
-            <Figure image={section5.image1} />
+            <Figure image={section5.image2} />
           </div>
         </div>
       </section>
@@ -224,8 +224,8 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
           </div>
           <div className="col-span-7">
             <Gallery
-              slides={section6.gallery1.galleryRef.images}
-              slug={section6.gallery1.galleryRef.slug}
+              slides={section6.gallery2.galleryRef.images}
+              slug={section6.gallery2.galleryRef.slug}
               theme="light"
               className="aspect-w-4 aspect-h-3"
             />

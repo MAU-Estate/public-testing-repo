@@ -39,8 +39,8 @@ const FellowshipsPage = ({
               <h2 className="f-28">
                 {fellow.year} {recipientLabel}
               </h2>
-              <div className="grid grid-cols-2 mt-n">
-                <div className="grid grid-cols-3">
+              <div className="grid grid-cols-12 mt-n">
+                <div className="grid col-span-6 grid-cols-3">
                   <div className="col-span-1">
                     <GatsbyImage
                       className="aspect-w-1 aspect-h-1 rounded-full"
@@ -53,12 +53,12 @@ const FellowshipsPage = ({
                       <h3 className="f-28">{fellow.title}</h3>
                     </div>
                     <RichText
-                      className="f-29"
+                      className="f-29 text-grey-d"
                       content={fellow.education._rawText}
                     />
                   </div>
                 </div>
-                <div>
+                <div className="col-span-5">
                   <RichText className="f-6" content={fellow.body._rawText} />
                   <p className="f-6">–</p>
                   <RichText content={fellow.infoBody._rawText} />

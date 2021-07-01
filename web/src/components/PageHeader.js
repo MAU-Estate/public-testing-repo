@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const PageHeader = ({ image, title }) => {
   return (
-    <div className="relative pt-25 pb-b ">
+    <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">
         <GatsbyImage
           image={image.asset.gatsbyImageData}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, Link } from 'gatsby'
 
 import Footer from './Footer'
 import Menu from './Menu'
@@ -33,8 +33,10 @@ const Layout = ({ children, className = '' }) => {
             style={{ marginLeft: '41px' }}
           >
             <header className="pt-a absolute z-10 left-0 right-0">
-              <div className="container text-white">
-                <Icon id="logo" name="logo" />
+              <div className="container">
+                <Link to="/" className="text-white">
+                  <Icon id="logo" name="logo" />
+                </Link>
               </div>
             </header>
             <main className={`${className}`}>{children}</main>
