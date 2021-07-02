@@ -22,7 +22,11 @@ const FellowshipsPage = ({
   return (
     <>
       <Seo {...seo} />
-      <PageHeader image={headerImages[0]} title={title} />
+      <PageHeader
+        image={headerImages[0]}
+        title={title}
+        titleClasses="ml-[-21px]"
+      />
       <div className="pt-b bg-black text-white">
         <div className="container">
           <div className="grid grid-cols-12 mb-p">

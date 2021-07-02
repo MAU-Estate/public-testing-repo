@@ -38,7 +38,11 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
   ]
   return (
     <>
-      <PageHeader image={headerImages[0]} title={title} />
+      <PageHeader
+        image={headerImages[0]}
+        title={title}
+        titleClasses="ml-[-12px]"
+      />
       <div className="bg-black text-white">
         <div className="container grid grid-cols-3 pb-i pt-b">
           <div>

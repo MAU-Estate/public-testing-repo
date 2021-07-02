@@ -2,7 +2,7 @@ import React from 'react'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-const PageHeader = ({ image, title }) => {
+const PageHeader = ({ image, title, titleClasses = '' }) => {
   return (
     <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">
@@ -14,7 +14,9 @@ const PageHeader = ({ image, title }) => {
         />
       </div>
       <div className="container">
-        <h1 className="text-white f-5 pb-a3 border-b border-white">{title}</h1>
+        <div className="border border-white pb-a3 f-5 text-white ">
+          <h1 className={`${titleClasses}`}>{title}</h1>
+        </div>
       </div>
     </div>
   )

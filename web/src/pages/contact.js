@@ -16,7 +16,11 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
   } = pageData
   return (
     <>
-      <PageHeader image={headerImages[0]} title={title} />
+      <PageHeader
+        image={headerImages[0]}
+        title={title}
+        titleClasses="ml-[-12px]"
+      />
       <div className="bg-black text-white pb-i">
         <div className="container pt-b grid grid-cols-12">
           <div className="col-span-5">

@@ -13,12 +13,13 @@ export default function Figure({
         image={image.src.asset.gatsbyImageData}
         alt={image.alt}
         objectFit={objectFit}
+        className="flex-1"
       />
-      {image.figcaption?.body && (
+      {image.figcaption && (
         <figcaption className={`flex-1`}>
-          {image.figcaption?.body && (
+          {image.figcaption && (
             <RichText
-              content={image.figcaption.body._rawText}
+              content={image.figcaption._rawText}
               className={`pt-c f-8`}
             />
           )}

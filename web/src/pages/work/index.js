@@ -188,7 +188,7 @@ const Work = ({
     <div className="container pt-25">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="pb-a3 pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
-        <h1 className="f-5">{title}</h1>
+        <h1 className="f-5 ml-[-9px]">{title}</h1>
 
         {/* radios */}
 
@@ -351,6 +351,7 @@ export const workQuery = graphql`
         slug {
           current
         }
+        era
         material {
           slug {
             current

@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { InView } from 'react-intersection-observer'
 
 import Blockquote from '../components/Blockquote'
 import Gallery from '../components/Gallery'
@@ -7,7 +9,7 @@ import RichText from '../components/RichText'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
 
-const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
+const IndexPage = ({ data: { sanityBio: pageData } }) => {
   const {
     bioCta,
     section1,
@@ -28,6 +30,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             cover={false}
             slides={pageData.hero.galleryRef.images}
             slug={pageData.hero.galleryRef.slug}
+            className="flex flex-1"
           />
         </div>
       </div>
@@ -51,48 +54,58 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
           </div>
         </div>
       </section>
-
-      <section className="bg-black-b py-g">
-        <div className="container">
-          <div className="grid grid-cols-12 mb-e">
-            <div className="col-span-5 ">
-              <Figure image={section2.image1} className="text-white" />
+      <InView threshold={0.1} triggerOnce>
+        {({ inView, ref }) => (
+          <section
+            ref={ref}
+            className={`transition-colors duration-700 ${
+              inView ? 'bg-black-b' : 'bg-white'
+            } py-g text-white`}
+          >
+            <div className="container">
+              <div className="grid grid-cols-12 mb-e">
+                <div className="col-span-5 ">
+                  <Figure image={section2.image1} className="text-white" />
+                </div>
+                <div className="col-start-7 col-span-5 text-white">
+                  <RichText
+                    className="f-13"
+                    content={section2.richText1._rawText}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="col-start-7 col-span-5 text-white">
-              <RichText
-                className="f-13"
-                content={section2.richText1._rawText}
-              />
-            </div>
-          </div>
-        </div>
 
-        {/* Full Gallery */}
-        <Gallery
-          slides={section2.gallery1.galleryRef.images}
-          slug={section2.gallery1.galleryRef.slug}
-          className="mb-e aspect-w-16 aspect-h-9"
-        />
-
-        <div className="container grid grid-cols-12">
-          <div className="col-start-7 col-span-5 text-white mb-e">
-            <RichText className="f-13" content={section2.richText2._rawText} />
-          </div>
-          <div className="col-start-2 col-span-8 mb-e text-white">
-            <Blockquote quote={section2.quote1} />
-          </div>
-        </div>
-
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-end-12">
+            {/* Full Gallery */}
             <Gallery
-              slides={section2.gallery2.galleryRef.images}
-              slug={section2.gallery2.galleryRef.slug}
-              className="aspect-w-16 aspect-h-9"
+              slides={section2.gallery1.galleryRef.images}
+              slug={section2.gallery1.galleryRef.slug}
+              className="mb-e"
             />
-          </div>
-        </div>
-      </section>
+
+            <div className="container grid grid-cols-12">
+              <div className="col-start-7 col-span-5 text-white mb-e">
+                <RichText
+                  className="f-13"
+                  content={section2.richText2._rawText}
+                />
+              </div>
+              <div className="col-start-2 col-span-8 mb-e text-white">
+                <Blockquote quote={section2.quote1} />
+              </div>
+            </div>
+
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-2 col-end-12">
+                <Gallery
+                  slides={section2.gallery2.galleryRef.images}
+                  slug={section2.gallery2.galleryRef.slug}
+                />
+              </div>
+            </div>
+          </section>
+        )}
+      </InView>
 
       {/* Section 3 */}
 
@@ -105,7 +118,6 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <Gallery
               slides={section3.gallery1.galleryRef.images}
               slug={section3.gallery1.galleryRef.slug}
-              className="aspect-w-16 aspect-h-9"
               theme="light"
             />
           </div>
@@ -115,7 +127,6 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <Gallery
               slides={section3.gallery2.galleryRef.images}
               slug={section3.gallery2.galleryRef.slug}
-              className="aspect-w-2 aspect-h-3"
               theme="light"
             />
           </div>
@@ -123,7 +134,6 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
             <Gallery
               slides={section3.gallery3.galleryRef.images}
               slug={section3.gallery3.galleryRef.slug}
-              className="aspect-w-16 aspect-h-9"
               theme="light"
             />
           </div>
@@ -136,26 +146,36 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
       </section>
 
       {/* Section 4 */}
-
-      <section className="bg-bio-a py-g text-white">
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-span-5">
-            <Gallery
-              slides={section4.gallery1.galleryRef.images}
-              slug={section4.gallery1.galleryRef.slug}
-              className="aspect-w-2 aspect-h-3"
-            />
-          </div>
-          <div className="col-start-7 col-end-13">
-            <RichText className="f-13" content={section4.richText1._rawText} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12">
-          <div className="col-start-2 col-end-10">
-            <Blockquote quote={section4.blockquote1} />
-          </div>
-        </div>
-      </section>
+      <InView threshold={0.15} triggerOnce>
+        {({ inView, ref }) => (
+          <section
+            ref={ref}
+            className={`transition-colors duration-700 ${
+              inView ? 'bg-bio-a' : 'bg-white'
+            }  py-g text-white`}
+          >
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-span-5">
+                <Gallery
+                  slides={section4.gallery1.galleryRef.images}
+                  slug={section4.gallery1.galleryRef.slug}
+                />
+              </div>
+              <div className="col-start-7 col-end-13">
+                <RichText
+                  className="f-13"
+                  content={section4.richText1._rawText}
+                />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12">
+              <div className="col-start-2 col-end-10">
+                <Blockquote quote={section4.blockquote1} />
+              </div>
+            </div>
+          </section>
+        )}
+      </InView>
 
       {/* Section 5 */}
 
@@ -171,7 +191,7 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
         <Gallery
           slides={section5.gallery1.galleryRef.images}
           slug={section5.gallery1.galleryRef.slug}
-          className="aspect-w-4 aspect-h-3 mb-e"
+          className="mb-e"
         />
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -191,83 +211,112 @@ const IndexPage = ({ location, data: { sanityBio: pageData } }) => {
       </section>
 
       {/* Section 6 */}
-
-      <section className="py-g bg-bio-b">
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-7 col-end-13">
-            <RichText className="f-13" content={section6.richText1._rawText} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-span-10">
-            <Figure image={section6.image1} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-end-10">
-            <Blockquote quote={section6.blockquote1} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-7 col-end-12">
-            <RichText className="f-13" content={section6.richText2._rawText} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 items-end">
-          <div className="col-span-5">
-            <Gallery
-              slides={section6.gallery1.galleryRef.images}
-              slug={section6.gallery1.galleryRef.slug}
-              theme="light"
-              className="aspect-w-3 aspect-h-4"
-            />
-          </div>
-          <div className="col-span-7">
-            <Gallery
-              slides={section6.gallery2.galleryRef.images}
-              slug={section6.gallery2.galleryRef.slug}
-              theme="light"
-              className="aspect-w-4 aspect-h-3"
-            />
-          </div>
-        </div>
-      </section>
+      <InView threshold={0.15} triggerOnce>
+        {({ inView, ref }) => (
+          <section
+            ref={ref}
+            className={`transition-colors duration-700 ${
+              inView ? 'bg-bio-b' : 'bg-white'
+            }  py-g`}
+          >
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-7 col-end-13">
+                <RichText
+                  className="f-13"
+                  content={section6.richText1._rawText}
+                />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-2 col-span-10">
+                <Figure image={section6.image1} />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-2 col-end-10">
+                <Blockquote quote={section6.blockquote1} />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-7 col-end-12">
+                <RichText
+                  className="f-13"
+                  content={section6.richText2._rawText}
+                />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 items-end">
+              <div className="col-span-5">
+                <Gallery
+                  slides={section6.gallery1.galleryRef.images}
+                  slug={section6.gallery1.galleryRef.slug}
+                  theme="light"
+                />
+              </div>
+              <div className="col-span-7">
+                <Gallery
+                  slides={section6.gallery2.galleryRef.images}
+                  slug={section6.gallery2.galleryRef.slug}
+                  theme="light"
+                />
+              </div>
+            </div>
+          </section>
+        )}
+      </InView>
 
       {/* Section 7 */}
-
-      <section className="py-g bg-bio-c text-white">
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-span-5">
-            <RichText className="f-13" content={section7.richText1._rawText} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-span-10">
-            <Gallery
-              slides={section7.gallery1.galleryRef.images}
-              slug={section7.gallery1.galleryRef.slug}
-              className="aspect-w-4 aspect-h-3"
-            />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12 mb-e">
-          <div className="col-start-4 col-end-11">
-            <Blockquote quote={section7.blockquote1} />
-          </div>
-        </div>
-        <div className="container grid grid-cols-12">
-          <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section7.richText2._rawText} />
-          </div>
-          <div className="col-span-6">
-            <Figure image={section7.image1} />
-          </div>
-        </div>
-      </section>
+      <InView threshold={0.15} triggerOnce>
+        {({ inView, ref }) => (
+          <section
+            ref={ref}
+            className={`transition-colors duration-700 ${
+              inView ? 'bg-bio-c' : 'bg-bio-b'
+            }  py-g text-white`}
+          >
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-2 col-span-5">
+                <RichText
+                  className="f-13"
+                  content={section7.richText1._rawText}
+                />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-2 col-span-10">
+                <Gallery
+                  slides={section7.gallery1.galleryRef.images}
+                  slug={section7.gallery1.galleryRef.slug}
+                />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12 mb-e">
+              <div className="col-start-4 col-end-11">
+                <Blockquote quote={section7.blockquote1} />
+              </div>
+            </div>
+            <div className="container grid grid-cols-12">
+              <div className="col-start-2 col-end-7">
+                <RichText
+                  className="f-13"
+                  content={section7.richText2._rawText}
+                />
+              </div>
+              <div className="col-span-6">
+                <Figure image={section7.image1} />
+              </div>
+            </div>
+          </section>
+        )}
+      </InView>
 
       <Link to={bioCta.path} className="block relative py-e">
         <div className="absolute inset-0 flex" style={{ zIndex: '-1' }}>
-          <Figure objectFit="cover" image={bioCta.image1} className="flex-1" />
+          <Figure
+            objectFit="cover"
+            image={bioCta.image1}
+            className="flex-1 flex"
+          />
         </div>
         <div className="container">
           <div className="flex items-center text-white">

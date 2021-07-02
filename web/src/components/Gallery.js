@@ -14,7 +14,6 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         objectFit={cover ? 'cover' : 'contain'}
         objectPosition="center"
         alt={alt}
-        // imgClassName="pointer-events-auto"
       />
     )
   }
@@ -25,7 +24,6 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         objectFit={cover ? 'cover' : 'contain'}
         objectPosition="center"
         alt={alt}
-        // imgClassName="pointer-events-auto"
       />
     </Link>
   )
@@ -43,25 +41,20 @@ const Slide = ({
   route,
 }) => {
   const isDark = theme === 'dark'
-  console.log(data.src.asset.metadata.dimensions.aspectRatio)
-  const aspectRatio = data.src.asset.metadata.dimensions.aspectRatio
-  if (galleryDimensions) {
-    console.log(
-      galleryDimensions,
-      aspectRatio,
-      galleryDimensions.width * aspectRatio
-    )
-  }
+  // console.log(data.src.asset.metadata.dimensions.aspectRatio)
+  if (!data.src) return <></>
+  // const aspectRatio = data.src.asset.metadata.dimensions.aspectRatio
+  // if (galleryDimensions) {
+  //   console.log(
+  //     galleryDimensions,
+  //     aspectRatio,
+  //     galleryDimensions.width * aspectRatio
+  //   )
+  // }
   // const height = data.src.asset.metadata.dimensions.height
   // const width = data.src.asset.metadata.dimensions.width
   return (
     <div className="flex-1 flex flex-col">
-      {/* <div
-        className="border border-[red]"
-        style={{
-          paddingBottom: `calc(${aspectRatio} * 100%)`,
-        }}
-      ></div> */}
       <SlideImage
         inline={inline}
         route={route}
@@ -69,21 +62,17 @@ const Slide = ({
         cover={cover}
         alt={data.src.asset.altText}
       />
-      {/* <div>Information here</div> */}
       <div
-        className={`relative z-10 pointer-events-auto w-full flex mt-c
-            max-w-[1508px]
-            mx-auto
-            ${isDark ? 'text-white' : 'text-black'}
-            ${inline ? '' : 'container'}
-          `}
+        className={`pb-1 relative z-10 pointer-events-auto w-full flex mt-c
+          max-w-[1508px]
+          mx-auto
+          ${isDark ? 'text-white' : 'text-black'}
+          ${inline ? '' : 'container'}
+        `}
       >
-        <figcaption className={`flex-1`}>
-          {data.figcaption?.body && (
-            <RichText
-              content={data.figcaption.body._rawText}
-              className={`f-8`}
-            />
+        <figcaption className={`flex-1 `}>
+          {data.figcaption && data.figcaption._rawText && (
+            <RichText content={data.figcaption._rawText} className={`f-8`} />
           )}
         </figcaption>
         {inline && (
@@ -104,10 +93,6 @@ const Slide = ({
         )}
       </div>
     </div>
-    // <figure className="relative flex-1">
-    //   <div className="absolute inset-0 flex flex-col">
-    //   </div>
-    // </figure>
   )
 }
 
@@ -174,6 +159,10 @@ export default function Gallery({
     }
   })
 
+  const firstSlideDimensions = slides[0].src.asset.metadata.dimensions
+  const firstSlideAspectRatio =
+    (firstSlideDimensions.height / firstSlideDimensions.width) * 100
+
   return (
     <div
       ref={ref => {
@@ -185,10 +174,18 @@ export default function Gallery({
           })
         }
       }}
-      className={`Gallery overflow-hidden flex flex-1 ${className}`}
+      className={`Gallery relative ${className}`}
+      style={{
+        height: 0,
+        paddingBottom: `${firstSlideAspectRatio}%`,
+      }}
       id={slug?.current}
     >
-      <Slider ref={slider => (sliderRef.current = slider)} {...settings}>
+      <Slider
+        ref={slider => (sliderRef.current = slider)}
+        {...settings}
+        className="overflow-hidden"
+      >
         {parsedSlides.map((slide, i) => (
           <Slide
             key={slide._key}

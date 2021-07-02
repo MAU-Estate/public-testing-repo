@@ -9,6 +9,8 @@ export default function gallery({
     sanityGallery: { images, slug, backUrl },
   },
 }) {
+  const backPath =
+    backUrl === '/' ? `/#${slug.current}` : `/${backUrl}/${slug.current}`
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
@@ -20,10 +22,7 @@ export default function gallery({
             </>
           ) : (
             <div className="fixed inset-0 py-h z-30 bg-white flex">
-              <Link
-                to={`/${backUrl}#${slug.current}`}
-                className="absolute z-20 top-0 right-0"
-              >
+              <Link to={backPath} className="absolute z-20 top-0 right-0">
                 Close
               </Link>
               <div className="container flex flex-1">

@@ -12,7 +12,7 @@ const ExhibitionsPage = ({
     <div className="container pt-25">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
-        <h1 className="f-5">{seo.title}</h1>
+        <h1 className="f-5 ml-[-21px]">{seo.title}</h1>
       </div>
       <ul className="grid grid-cols-2">
         {exhibitions.map(exhibition => {
