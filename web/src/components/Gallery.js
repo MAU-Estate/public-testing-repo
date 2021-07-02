@@ -159,7 +159,10 @@ export default function Gallery({
     }
   })
 
-  const firstSlideDimensions = slides[0].src.asset.metadata.dimensions
+  const firstSlideDimensions = slides[0].src?.asset.metadata.dimensions || {
+    width: 1000,
+    height: 1000,
+  }
   const firstSlideAspectRatio =
     (firstSlideDimensions.height / firstSlideDimensions.width) * 100
 
