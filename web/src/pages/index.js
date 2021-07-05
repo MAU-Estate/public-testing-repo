@@ -27,10 +27,11 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
     <div className={`transition transition-colors duration-700 ${bodyClasses}`}>
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
-        <div className="container overflow-hidden w-full h-full flex flex-1 relative">
+        <div className="container w-full h-full flex flex-1 relative">
           <GalleryHome
             // inline={false}
             // cover={false}
+            theme="dark"
             slides={pageData.hero.galleryRef.images}
             slug={pageData.hero.galleryRef.slug}
             // className="flex flex-1"

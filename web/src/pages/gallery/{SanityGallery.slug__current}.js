@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
 
-import Gallery from '../../components/Gallery'
+import GalleryHome from '../../components/GalleryHome'
 
 export default function gallery({
   data: {
@@ -26,7 +26,12 @@ export default function gallery({
                 Close
               </Link>
               <div className="container flex flex-1">
-                <Gallery slides={images} theme="light" inline={false} />
+                <GalleryHome
+                  slides={images}
+                  theme="light"
+                  inline={false}
+                  className="flex flex-1 relative"
+                />
               </div>
             </div>
           )}

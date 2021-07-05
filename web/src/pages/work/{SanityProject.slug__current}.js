@@ -52,7 +52,10 @@ export default function Project({
         prevPath={`/work/${node.previous.slug.current}`}
       />
       <div className="grid grid-cols-12 mt-20 mb-i">
-        <ProjectGallery data={gallery} className="col-span-8" />
+        <ProjectGallery
+          data={gallery}
+          className="col-span-8 grid grid-cols-4"
+        />
         <div className="col-start-10 col-span-3">
           <dl className="mb-22">
             <dt className="f-7 mb-3 uppercase">Work Title</dt>

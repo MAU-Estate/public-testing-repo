@@ -9,10 +9,13 @@ const ProjectGallery = ({
   },
 }) => {
   const slugPath = slug.current
+
   return (
     <div className={className}>
-      {images.map((item, i) =>
-        item._type === 'twoColImage' ? (
+      {images.map((item, i) => {
+        // const isPortrait = item.src.asset.metadata.dimensions.aspectRatio < 1
+        const isPortrait = false
+        return item._type === 'twoColImage' ? (
           <div key={item._key} className="grid grid-cols-2 mb-a">
             <Link to={`/gallery/${slugPath}?index=${i}`}>
               <GatsbyImage
@@ -28,14 +31,17 @@ const ProjectGallery = ({
             </Link>
           </div>
         ) : (
-          <Link to={`/gallery/${slugPath}?index=${i}`} className="mb-a">
+          <Link
+            to={`/gallery/${slugPath}?index=${i}`}
+            className={`mb-a ${isPortrait ? 'col-span-3' : 'col-span-4'}`}
+          >
             <GatsbyImage
               image={item.src.asset.gatsbyImageData}
               alt={item.alt}
             />
           </Link>
         )
-      )}
+      })}
     </div>
   )
 }
