@@ -24,74 +24,66 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         objectFit={cover ? 'cover' : 'contain'}
         objectPosition="center"
         alt={alt}
+        className="flex-1"
       />
     </Link>
   )
 }
-const Slide = ({
+const Slide = ({ data, cover, inline, route }) => {
+  if (!data.src) return <></>
+  return (
+    <SlideImage
+      inline={inline}
+      route={route}
+      src={data.src.asset.gatsbyImageData}
+      cover={cover}
+      alt={data.src.asset.altText}
+    />
+  )
+}
+
+const SlideCaption = ({
   data,
   theme,
-  galleryDimensions,
-  cover,
-  index,
   inline,
-  galleryLength,
-  goToPrev,
   goToNext,
-  route,
+  goToPrev,
+  index,
+  galleryLength,
 }) => {
   const isDark = theme === 'dark'
-  // console.log(data.src.asset.metadata.dimensions.aspectRatio)
-  if (!data.src) return <></>
-  // const aspectRatio = data.src.asset.metadata.dimensions.aspectRatio
-  // if (galleryDimensions) {
-  //   console.log(
-  //     galleryDimensions,
-  //     aspectRatio,
-  //     galleryDimensions.width * aspectRatio
-  //   )
-  // }
-  // const height = data.src.asset.metadata.dimensions.height
-  // const width = data.src.asset.metadata.dimensions.width
   return (
-    <div className="flex-1 flex flex-col">
-      <SlideImage
-        inline={inline}
-        route={route}
-        src={data.src.asset.gatsbyImageData}
-        cover={cover}
-        alt={data.src.asset.altText}
-      />
-      <div
-        className={`pb-1 relative z-10 pointer-events-auto w-full flex mt-c
-          max-w-[1508px]
-          mx-auto
-          ${isDark ? 'text-white' : 'text-black'}
-          ${inline ? '' : 'container'}
-        `}
-      >
-        <figcaption className={`flex-1 `}>
-          {data.figcaption && data.figcaption._rawText && (
-            <RichText content={data.figcaption._rawText} className={`f-8`} />
-          )}
-        </figcaption>
-        {inline && (
-          <div className="flex justify-between">
-            <div className="f-8 mr-24">
-              <button onClick={goToPrev} className="pr-4">
-                Prev
-              </button>
-              |
-              <button onClick={goToNext} className="pl-4">
-                Next
-              </button>
-            </div>
-            <div className="f-8">
-              {index + 1} / {galleryLength}
-            </div>
-          </div>
+    <div
+      className={`relative z-10 pointer-events-auto w-full flex
+      mt-c
+      max-w-[1508px]
+      mx-auto
+      pb-1
+      ${isDark ? 'text-white' : 'text-black'}
+      ${inline ? '' : 'container'}
+    `}
+    >
+      <figcaption className={`flex-1`}>
+        {data.figcaption && data.figcaption._rawText && (
+          <RichText content={data.figcaption._rawText} className={`f-8`} />
         )}
-      </div>
+      </figcaption>
+      {inline && (
+        <div className="flex flex-0 justify-between">
+          <div className="f-8 mr-24">
+            <button onClick={goToPrev} className="pr-4">
+              Prev
+            </button>
+            |
+            <button onClick={goToNext} className="pl-4">
+              Next
+            </button>
+          </div>
+          <div className="f-8">
+            {index + 1} / {galleryLength}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -140,14 +132,23 @@ export default function Gallery({
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
+    arrows: false,
+    swipe: false,
+  }
+  const navGallerySettings = {
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
     arrows: !inline,
-    swipeToSlide: false,
+    fade: true,
+    swipe: false,
     nextArrow: !inline ? <SliderArrow theme={theme} /> : null,
     prevArrow: !inline ? <SliderArrow theme={theme} type="next" /> : null,
   }
-  const [galleryDimensions, setGalleryDimensions] = useState()
+  // const [galleryDimensions, setGalleryDimensions] = useState()
   const sliderRef = useRef()
-  const sliderContainer = useRef()
+  const sliderCaptionsRef = useRef()
   const parsedSlides = []
 
   // handle 2 Column images
@@ -167,41 +168,40 @@ export default function Gallery({
     (firstSlideDimensions.height / firstSlideDimensions.width) * 100
 
   return (
-    <div
-      ref={ref => {
-        if (ref && !sliderContainer.current) {
-          sliderContainer.current = ref
-          setGalleryDimensions({
-            height: sliderContainer.current?.getBoundingClientRect().height,
-            width: sliderContainer.current?.getBoundingClientRect().width,
-          })
-        }
-      }}
-      className={`Gallery relative ${className}`}
-      style={{
-        height: 0,
-        paddingBottom: `${firstSlideAspectRatio}%`,
-      }}
-      id={slug?.current}
-    >
+    <div className={`Gallery  ${className}`} id={slug?.current}>
+      <div
+        className="relative"
+        style={{ height: 0, paddingBottom: `${firstSlideAspectRatio}%` }}
+      >
+        <Slider ref={slider => (sliderRef.current = slider)} {...settings}>
+          {parsedSlides.map((slide, i) => (
+            <Slide
+              key={slide._key}
+              data={slide}
+              cover={cover}
+              inline={inline}
+              route={`/gallery/${slug?.current}?index=${i}`}
+            />
+          ))}
+        </Slider>
+      </div>
       <Slider
-        ref={slider => (sliderRef.current = slider)}
-        {...settings}
-        className="overflow-hidden"
+        asNavFor={sliderRef.current}
+        ref={slider => (sliderCaptionsRef.current = slider)}
+        {...navGallerySettings}
+        style={{ position: 'relative' }}
+        className="Slider-captions"
       >
         {parsedSlides.map((slide, i) => (
-          <Slide
-            key={slide._key}
-            galleryDimensions={galleryDimensions}
+          <SlideCaption
+            key={`${slide._key}-caption`}
             index={i}
             galleryLength={slides.length}
-            goToPrev={() => sliderRef.current.slickPrev()}
-            goToNext={() => sliderRef.current.slickNext()}
+            inline={inline}
+            goToPrev={() => sliderCaptionsRef.current.slickPrev()}
+            goToNext={() => sliderCaptionsRef.current.slickNext()}
             data={slide}
             theme={theme}
-            cover={cover}
-            inline={inline}
-            route={`/gallery/${slug?.current}?index=${i}`}
           />
         ))}
       </Slider>

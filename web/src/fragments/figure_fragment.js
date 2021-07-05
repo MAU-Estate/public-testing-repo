@@ -6,7 +6,7 @@ export const FIGURE_FRAGMENT = graphql`
     alt
     src {
       asset {
-        gatsbyImageData(layout: FULL_WIDTH)
+        gatsbyImageData(layout: CONSTRAINED)
         metadata {
           dimensions {
             aspectRatio

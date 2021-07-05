@@ -47,11 +47,11 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
         <div className="container grid grid-cols-3 pb-i pt-b">
           <div>
             <div className="mb-10">
-              <h3 className="f-7 mb-2 uppercase">{lifeTitle}</h3>
+              <h3 className="f-7 mb-4 uppercase">{lifeTitle}</h3>
               <p className="f-6">{life}</p>
             </div>
             <div className="mb-r">
-              <h3 className="f-7 mb-2 uppercase">{educationTitle}</h3>
+              <h3 className="f-7 mb-4 uppercase">{educationTitle}</h3>
               <RichText className="f-6" content={educationBody._rawText} />
             </div>
             <div className="border-t border-grey-b pt-r">
@@ -62,20 +62,24 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
           </div>
           <div className="col-span-2">
             <nav className="mb-r">
-              <ul>
+              <ul className="flex flex-wrap -mb-2">
                 {navItems.map((item, i) => (
-                  <li
-                    className={`inline-block ${
-                      i < navItems.length - 1
-                        ? 'border-r-2 border-white mr-2 pr-2'
-                        : ''
-                    }`}
-                  >
+                  <li className="mb-2">
                     <a
-                      className={`block f-7 uppercase `}
                       href={`#${slugify(item, { lower: true })}`}
+                      className={`block f-7  ${
+                        i < navItems.length - 1 ? ' mr-2' : ''
+                      }`}
                     >
-                      {item}
+                      <span
+                        className={`
+                          inline-block uppercase  border-white
+                          ${i < navItems.length - 1 ? 'pr-2 border-r-2' : ''}
+                        `}
+                        style={{ lineHeight: '1' }}
+                      >
+                        {item}
+                      </span>
                     </a>
                   </li>
                 ))}
@@ -86,7 +90,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(exhibitionsTitle, { lower: true })}`}
-                  className="f-7 mb-3"
+                  className="f-7 mb-4 uppercase"
                 >
                   {exhibitionsTitle}
                 </h3>
@@ -95,7 +99,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(awardsTitle, { lower: true })}`}
-                  className="f-7 mb-3"
+                  className="f-7 mb-4 uppercase"
                 >
                   {awardsTitle}
                 </h3>
@@ -107,7 +111,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(publicCollectionsTitle, { lower: true })}`}
-                  className="f-7 mb-3"
+                  className="f-7 mb-4 uppercase"
                 >
                   {publicCollectionsTitle}
                 </h3>
@@ -119,7 +123,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(commisionsTitle, { lower: true })}`}
-                  className="f-7 mb-3"
+                  className="f-7 mb-4 uppercase"
                 >
                   {commisionsTitle}
                 </h3>
@@ -133,7 +137,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
-                className="f-7 mb-3"
+                className="f-7 mb-4 uppercase"
               >
                 {groupExhibitionsTitle}
               </h3>
@@ -148,7 +152,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(bibliographyTitle, { lower: true })}`}
-                className="f-7 mb-3"
+                className="f-7 mb-4 uppercase"
               >
                 {bibliographyTitle}
               </h3>

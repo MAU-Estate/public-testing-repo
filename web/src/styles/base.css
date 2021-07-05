@@ -695,14 +695,14 @@
       font-family: var(--font-secondary--regular);
       font-size: 29px;
       line-height: 30px;
-      letter-spacing: -0.4px;
+      letter-spacing: -1px;
       position: relative;
       bottom: -0.175em;
       margin-top: -0.315em;
 
       @screen lg {
         font-size: 33px;
-        line-height: 35px;
+        line-height: 37px;
       }
     }
 

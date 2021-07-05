@@ -41,6 +41,7 @@
     "postcss": "^8.2.14",
     "query-string": "^7.0.0",
     "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
     "slugify": "^1.5.3"
   }
 }

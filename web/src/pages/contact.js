@@ -30,10 +30,10 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
             <RichText content={infoBody._rawText} className="f-7" />
           </div>
           <div className="col-start-10 col-span-3">
-            <div className="border-t border-grey-b pt-4 mb-10">
+            <div className="border-t border-grey-b pt-4 mb-25">
               <RichText content={survivedByBody._rawText} className="f-6" />
             </div>
-            <div className="border-t border-grey-b pt-4 mb-10">
+            <div className="border-t border-grey-b pt-4 mb-25">
               <RichText content={directorBody._rawText} className="f-6" />
             </div>
             <div className="border-t border-grey-b pt-4">

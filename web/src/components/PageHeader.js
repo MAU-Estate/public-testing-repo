@@ -14,7 +14,7 @@ const PageHeader = ({ image, title, titleClasses = '' }) => {
         />
       </div>
       <div className="container">
-        <div className="border border-white pb-a3 f-5 text-white ">
+        <div className="border-b border-white pb-a3 f-5 text-white ">
           <h1 className={`${titleClasses}`}>{title}</h1>
         </div>
       </div>

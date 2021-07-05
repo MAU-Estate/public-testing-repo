@@ -37,7 +37,7 @@ import figure from './objects/figure'
 import previewImage from './objects/previewImage'
 import galleryObj from './objects/galleryObj'
 import richText from './objects/richText'
-import richTextSerif from './objects/richTextSerif'
+import richTextSingle from './objects/richTextSingle'
 import seo from './objects/seo'
 import textColumn from './objects/textColumn'
 import textColumns from './objects/textColumns'
@@ -86,7 +86,7 @@ export default createSchema({
     seo,
     galleryObj,
     richText,
-    richTextSerif,
+    richTextSingle,
     blockquote,
     textColumn,
     textColumns,

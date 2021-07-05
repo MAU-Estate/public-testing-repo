@@ -185,7 +185,7 @@ const Work = ({
   const isFeatured = activeFilters.featured === 'true'
 
   return (
-    <div className="container pt-25">
+    <div className="container pt-25 relative">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="pb-a3 pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5 ml-[-9px]">{title}</h1>
@@ -237,76 +237,75 @@ const Work = ({
           </span>
         </button>
       </div>
+
+      {/* Filter */}
+      <div
+        ref={filterRef}
+        className={`flex absolute container left-0 right-0 justify-between pt-j transition-opacity  ${
+          isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
+        }`}
+      >
+        <div className="flex">
+          <FilterList
+            title="Medium"
+            className="flex-1"
+            activeItems={activeFilters.medium}
+            // availableFilters={availableFilters.medium}
+            onSelect={filters => handleSetActiveFilter('medium', filters)}
+            items={mediums.nodes}
+          />
+          <FilterList
+            title="Era"
+            className="flex-1 ml-20"
+            activeItems={activeFilters.era}
+            // availableFilters={availableFilters.era}
+            onSelect={filters => handleSetActiveFilter('era', filters)}
+            items={yearOptions.map(year => {
+              return {
+                label: year,
+                slug: { current: year },
+              }
+            })}
+          />
+          <FilterList
+            title="Collection"
+            activeItems={activeFilters.collection}
+            // availableFilters={availableFilters.collection}
+            className="flex-1 ml-20"
+            onSelect={filters => handleSetActiveFilter('collection', filters)}
+            items={collections.nodes}
+          />
+          <FilterList
+            title="Materials"
+            activeItems={activeFilters.material}
+            // availableFilters={availableFilters.material}
+            className="flex-1 ml-20"
+            onSelect={filters => handleSetActiveFilter('material', filters)}
+            items={materials.nodes}
+          />
+        </div>
+        <div className="flex items-start">
+          <button
+            className={`${hasFiltering ? '' : 'text-grey-d'}`}
+            onClick={handleResetFilters}
+            disabled={!hasFiltering}
+          >
+            <div className="f-9--light uppercase">Reset Filters</div>
+          </button>
+        </div>
+      </div>
       <div
         className={`transform transition-transform pointer-events-none`}
         style={{
-          marginBottom: `-${isFilterVisible ? 0 : filterHeight}px`,
-          transform: `translateY(-${isFilterVisible ? 0 : filterHeight}px)`,
+          paddingBottom: `${isFilterVisible ? filterHeight : 0}px`,
+          transform: `translateY(${isFilterVisible ? filterHeight : 0}px)`,
         }}
       >
-        {/* Filter */}
-        <div
-          ref={filterRef}
-          className={`flex justify-between pt-j transition-opacity  ${
-            isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
-          }`}
-        >
-          <div className="flex">
-            <FilterList
-              title="Medium"
-              className="flex-1"
-              activeItems={activeFilters.medium}
-              // availableFilters={availableFilters.medium}
-              onSelect={filters => handleSetActiveFilter('medium', filters)}
-              items={mediums.nodes}
-            />
-            <FilterList
-              title="Era"
-              className="flex-1 ml-20"
-              activeItems={activeFilters.era}
-              // availableFilters={availableFilters.era}
-              onSelect={filters => handleSetActiveFilter('era', filters)}
-              items={yearOptions.map(year => {
-                return {
-                  label: year,
-                  slug: { current: year },
-                }
-              })}
-            />
-            <FilterList
-              title="Collection"
-              activeItems={activeFilters.collection}
-              // availableFilters={availableFilters.collection}
-              className="flex-1 ml-20"
-              onSelect={filters => handleSetActiveFilter('collection', filters)}
-              items={collections.nodes}
-            />
-            <FilterList
-              title="Materials"
-              activeItems={activeFilters.material}
-              // availableFilters={availableFilters.material}
-              className="flex-1 ml-20"
-              onSelect={filters => handleSetActiveFilter('material', filters)}
-              items={materials.nodes}
-            />
-          </div>
-          <div className="flex items-start">
-            <button
-              className={`${hasFiltering ? '' : 'text-grey-d'}`}
-              onClick={handleResetFilters}
-              disabled={!hasFiltering}
-            >
-              <div className="f-9--light uppercase">Reset Filters</div>
-            </button>
-          </div>
-        </div>
-
         {filteredProjects && filteredProjects.length ? (
           <ul className="pointer-events-auto mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
             {filteredProjects.map(({ title, slug, date, previewImage }, i) => (
               <li key={slug.current}>
                 <Link to={slug.current}>
-                  {/* <div className="aspect-w-1 aspect-h-1 mb-a3"> */}
                   <GatsbyImage
                     image={previewImage.asset.gatsbyImageData}
                     alt={previewImage.alt}

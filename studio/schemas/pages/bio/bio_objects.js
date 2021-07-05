@@ -15,12 +15,12 @@ export const bioSection1 = {
     {
       name: 'section1bodyLeft',
       title: 'Column Left',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'section1bodyRight',
       title: 'Column Right',
-      type: 'richText'
+      type: 'richTextSingle'
     }
   ]
 }
@@ -42,7 +42,7 @@ export const bioSection2 = {
     {
       name: 'richText1',
       title: 'Text',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'gallery1',
@@ -52,7 +52,7 @@ export const bioSection2 = {
     {
       name: 'richText2',
       title: 'Text',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'quote1',
@@ -79,7 +79,7 @@ export const bioSection3 = {
     {
       name: 'richText1',
       title: 'Text 1',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'gallery1',
@@ -99,7 +99,7 @@ export const bioSection3 = {
     {
       name: 'richText2',
       title: 'Text 2',
-      type: 'richText'
+      type: 'richTextSingle'
     }
   ]
 }
@@ -121,7 +121,7 @@ export const bioSection4 = {
     {
       name: 'richText1',
       title: 'Text 1',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'blockquote1',
@@ -143,7 +143,7 @@ export const bioSection5 = {
     {
       name: 'richText1',
       title: 'Text 1',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'image1',
@@ -158,7 +158,7 @@ export const bioSection5 = {
     {
       name: 'richText2',
       title: 'Text 2',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'blockquote1',
@@ -185,7 +185,7 @@ export const bioSection6 = {
     {
       name: 'richText1',
       title: 'Text 1',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'image1',
@@ -200,7 +200,7 @@ export const bioSection6 = {
     {
       name: 'richText2',
       title: 'Text 2',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'gallery1',
@@ -227,7 +227,7 @@ export const bioSection7 = {
     {
       name: 'richText1',
       title: 'Text 1',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'gallery1',
@@ -242,7 +242,7 @@ export const bioSection7 = {
     {
       name: 'richText2',
       title: 'Text 2',
-      type: 'richText'
+      type: 'richTextSingle'
     },
     {
       name: 'image1',
