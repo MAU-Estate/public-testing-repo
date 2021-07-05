@@ -54,7 +54,7 @@ const FontPreview = ({ font }) => {
           </p>
         </div>
         <div className="grid grid-cols-2">
-          <img src="http://placehold.it/320x180" alt="placholder" />
+          <img src="https://via.placeholder.com/320x180" alt="placholder" />
         </div>
       </div>
     </div>

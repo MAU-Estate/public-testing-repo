@@ -4,6 +4,7 @@ import { InView } from 'react-intersection-observer'
 
 import Blockquote from '../components/Blockquote'
 import Gallery from '../components/Gallery'
+import GalleryHome from '../components/GalleryHome'
 import RichText from '../components/RichText'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
@@ -27,9 +28,9 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div className="container overflow-hidden w-full h-full flex flex-1 relative">
-          <Gallery
-            inline={false}
-            cover={false}
+          <GalleryHome
+            // inline={false}
+            // cover={false}
             slides={pageData.hero.galleryRef.images}
             slug={pageData.hero.galleryRef.slug}
             // className="flex flex-1"
@@ -201,7 +202,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
             setBodyClasses('bg-white text-black')
           }
         }}
-        className="py-g"
+        className="BeringStrait py-g"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -215,6 +216,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
           slides={section5.gallery1.galleryRef.images}
           slug={section5.gallery1.galleryRef.slug}
           className="mb-e"
+          theme="light"
         />
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -242,7 +244,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
             setBodyClasses('bg-bio-b text-black')
           }
         }}
-        className="py-g"
+        className="Guerilla py-g"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
@@ -322,7 +324,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       </InView>
 
       <Link to={bioCta.path} className="block relative py-e">
-        <div className="absolute inset-0 flex" style={{ zIndex: '-1' }}>
+        <div className="absolute inset-0 flex">
           <Figure
             objectFit="cover"
             image={bioCta.image1}
@@ -332,7 +334,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         <div className="container">
           <div className="flex items-center text-white">
             <h2 className="f-14 max-w-md">{bioCta.title}</h2>
-            <Icon name="arrowCta" className="text-white" />
+            <Icon name="arrowCta" className="text-white relative" />
           </div>
         </div>
       </Link>

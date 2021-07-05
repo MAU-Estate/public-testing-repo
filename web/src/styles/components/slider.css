@@ -51,6 +51,7 @@
 
 .slick-track {
   position: relative;
+  height: 100%;
   top: 0;
   left: 0;
   flex: 1;
@@ -59,6 +60,11 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.Gallery--home .slick-track {
+  display: flex !important;
+}
+
 .slick-track:before,
 .slick-track:after {
   display: table;
