@@ -90,7 +90,7 @@ export default {
     },
     {
       name: 'body',
-      type: 'richText',
+      type: 'richTextSingle',
       title: 'Body'
     }
   ],

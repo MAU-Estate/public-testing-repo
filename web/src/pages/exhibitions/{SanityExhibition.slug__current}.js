@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
 import ProjectHeader from '../../components/ProjectHeader'
-import RichText from '../../components/RichText'
+import RichTextSingle from '../../components/RichTextSingle'
 import ProjectGallery from '../../components/ProjectGallery'
 
 export default function exhibition({
@@ -27,6 +27,8 @@ export default function exhibition({
   const currentItem = edges.find(edge => edge.node.id === id)
   if (!currentItem.next) currentItem.next = edges[0].node
   if (!currentItem.previous) currentItem.previous = edges[edges.length - 1].node
+
+  console.log(gallery)
 
   return (
     <div className="container mt-a2 mb-i">
@@ -69,14 +71,14 @@ export default function exhibition({
             <div className="mb-n">
               <h2 className="f-25">Original Press Release</h2>
             </div>
-            <RichText className="f-6" content={body._rawText} />
+            <RichTextSingle className="f-6" content={body._rawText} />
           </div>
           {artistStatementBody && (
             <div className="border-t border-grey-b pt-v mt-m">
               <div className="mb-n">
                 <h2 className="f-25">Artist Statement</h2>
               </div>
-              <RichText
+              <RichTextSingle
                 className="f-6"
                 content={artistStatementBody._rawText}
               />
@@ -87,12 +89,14 @@ export default function exhibition({
               <div className="mb-n">
                 <h2 className="f-25">Quoted</h2>
               </div>
-              <RichText className="f-6" content={quotedBody._rawText} />
+              <RichTextSingle className="f-6" content={quotedBody._rawText} />
             </div>
           )}
         </div>
         <div className="col-start-6 col-span-7">
-          <ProjectGallery data={gallery} className="col-span-8" />
+          {gallery && gallery.galleryRef && (
+            <ProjectGallery data={gallery} className="col-span-8" />
+          )}
         </div>
       </div>
     </div>

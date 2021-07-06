@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
+import RichTextSingle from '../components/RichTextSingle'
 import RichText from '../components/RichText'
 import PageHeader from '../components/PageHeader'
 import Seo from '../components/Seo'
@@ -31,10 +32,16 @@ const FellowshipsPage = ({
         <div className="container">
           <div className="grid grid-cols-12 mb-p">
             <div className="col-span-5">
-              <RichText className="f-27" content={headerBodyLeft._rawText} />
+              <RichTextSingle
+                className="f-27"
+                content={headerBodyLeft._rawText}
+              />
             </div>
             <div className="col-span-5">
-              <RichText className="f-27" content={headerBodyRight._rawText} />
+              <RichTextSingle
+                className="f-27"
+                content={headerBodyRight._rawText}
+              />
             </div>
           </div>
           {/* Recipient */}
@@ -56,14 +63,17 @@ const FellowshipsPage = ({
                     <div className="mb-q">
                       <h3 className="f-28">{fellow.title}</h3>
                     </div>
-                    <RichText
+                    <RichTextSingle
                       className="f-29 text-grey-d"
                       content={fellow.education._rawText}
                     />
                   </div>
                 </div>
                 <div className="col-span-5">
-                  <RichText className="f-6" content={fellow.body._rawText} />
+                  <RichTextSingle
+                    className="f-6"
+                    content={fellow.body._rawText}
+                  />
                   <p className="f-6">–</p>
                   <RichText content={fellow.infoBody._rawText} />
                 </div>

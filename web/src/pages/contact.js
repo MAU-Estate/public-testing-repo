@@ -10,6 +10,7 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
     title,
     headerImages,
     advisorsBody,
+    creditsBody,
     directorBody,
     body,
     infoBody,
@@ -31,15 +32,26 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
             <RichText content={infoBody._rawText} />
           </div>
           <div className="col-start-10 col-span-3">
-            <div className="border-t border-grey-b pt-4 mb-25">
-              <RichText content={survivedByBody._rawText} />
-            </div>
-            <div className="border-t border-grey-b pt-4 mb-25">
-              <RichText content={directorBody._rawText} />
-            </div>
-            <div className="border-t border-grey-b pt-4">
-              <RichText content={advisorsBody._rawText} />
-            </div>
+            {survivedByBody && (
+              <div className="border-t border-grey-b pt-4 mb-25">
+                <RichText content={survivedByBody._rawText} />
+              </div>
+            )}
+            {directorBody && (
+              <div className="border-t border-grey-b pt-4 mb-25">
+                <RichText content={directorBody._rawText} />
+              </div>
+            )}
+            {advisorsBody && (
+              <div className="border-t border-grey-b pt-4">
+                <RichText content={advisorsBody._rawText} />
+              </div>
+            )}
+            {creditsBody && (
+              <div className="border-t border-grey-b pt-4">
+                <RichText content={creditsBody._rawText} />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -79,6 +91,9 @@ export const query = graphql`
         _rawText
       }
       advisorsBody {
+        _rawText
+      }
+      creditsBody {
         _rawText
       }
     }

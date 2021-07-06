@@ -4,6 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const PageHeader = ({ images, title, titleClasses = '' }) => {
   const imageIndex = Math.floor(Math.random() * images.length)
+  console.log(imageIndex)
   return (
     <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">

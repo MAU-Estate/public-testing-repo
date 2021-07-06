@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 @font-face {
   font-family: 'LetteraTextLLSub-Medium';
   src: local('LetteraTextLLSub-Medium'),
@@ -31,3 +32,4 @@
     url(../assets/fonts/signifier-web-light-italic.woff) format('woff'),
     url(../assets/fonts/signifier-web-light-italic.woff2) format('woff2');
 }
+/* purgecss end ignore */

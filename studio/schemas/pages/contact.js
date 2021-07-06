@@ -49,6 +49,11 @@ export default {
       name: 'advisorsBody',
       title: 'Advisors',
       type: 'richText'
+    },
+    {
+      name: 'creditsBody',
+      title: 'credits',
+      type: 'richText'
     }
     // Estate Address
     // Gallery Address

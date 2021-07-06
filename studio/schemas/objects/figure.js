@@ -16,7 +16,6 @@ export default {
       name: 'alt',
       title: 'Alt Text',
       description: 'Describe the image',
-      placeholder: 'exterior of mainspring headquarters',
       type: 'string'
     },
     {

@@ -314,6 +314,7 @@ const Work = ({
                   />
                   <p className="f-17 mb-2">{title}</p>
                   <p className="f-17 font-italic">{date}</p>
+                  {/* if a museum add the collectionsText with a comma after date */}
                 </Link>
               </li>
             ))}

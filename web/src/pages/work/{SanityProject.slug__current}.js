@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { Context } from '../../context'
 import ProjectHeader from '../../components/ProjectHeader'
-import RichText from '../../components/RichText'
+import RichTextSingle from '../../components/RichTextSingle'
 import ProjectGallery from '../../components/ProjectGallery'
 
 export default function Project({
@@ -16,7 +16,7 @@ export default function Project({
       body,
       dimensions,
       materialsText,
-      collectionText,
+      collectionsText,
       yearText,
     },
     allSanityProject: { edges },
@@ -67,9 +67,9 @@ export default function Project({
             <dt className="f-7 mb-3 uppercase">Dimensions</dt>
             <dd className="f-6 mb-10">{dimensions}</dd>
             <dt className="f-7 mb-3 uppercase">Collection</dt>
-            <dd className="f-6">{collectionText}</dd>
+            <dd className="f-6">{collectionsText}</dd>
           </dl>
-          <RichText content={body._rawText} className="f-6" />
+          {body && <RichTextSingle content={body._rawText} className="f-6" />}
         </div>
       </div>
     </div>

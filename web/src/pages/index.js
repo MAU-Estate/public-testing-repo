@@ -51,7 +51,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         className="container pt-e"
       >
         <div className="grid grid-cols-12 mb-g">
-          <div className="col-span-9 mb-a3">
+          <div className="col-span-9 mb-a3 mix-blend-multiply">
             <Figure image={section1.image1} />
           </div>
           <div className="col-start-2 col-span-4">

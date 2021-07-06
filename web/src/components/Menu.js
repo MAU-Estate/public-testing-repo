@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { path: '/#intro', label: 'About Mary Ann' },
   { path: '/work', label: 'Work' },
   { path: '/exhibitions', label: 'Exhibitions' },
-  { path: '/press', label: 'Press' },
+  { path: '/press', label: 'Press & Essays' },
   { path: '/fellowships', label: 'Fellowships' },
   { path: '/contact', label: 'Contact' },
   { path: '/cv', label: 'CV' },
@@ -19,6 +19,8 @@ const NAV_ITEMS = [
 export default function Menu({ bgImage }) {
   const [isOpen, setIsOpen] = useState(false)
   const esc = useKeyPress('Escape')
+
+  // look at location and set whether button bg is black or black-c (contact, cv, fellowships)
 
   useEffect(() => {
     esc && isOpen && setIsOpen(false)
@@ -55,7 +57,9 @@ export default function Menu({ bgImage }) {
             <GatsbyImage image={bgImage} alt="" objectFit="cover" />
           </div>
           <nav className="relative z-10 mt-11">
-            <Icon name="logo" className="text-white" />
+            <Link to="/" onClick={() => setIsOpen(!isOpen)}>
+              <Icon name="logo" className="text-white" />
+            </Link>
             <ul className="pt-s">
               {NAV_ITEMS.map(item => (
                 <li key={item.path} className="f-1">
