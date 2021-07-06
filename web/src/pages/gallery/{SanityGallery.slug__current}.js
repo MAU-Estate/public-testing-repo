@@ -2,7 +2,8 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
 
-import GalleryHome from '../../components/GalleryHome'
+import GalleryModal from '../../components/GalleryModal'
+import Icon from '../../components/Icon'
 
 export default function gallery({
   data: {
@@ -14,28 +15,27 @@ export default function gallery({
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
-        <div>
+        <>
           {modal ? (
-            <>
-              <h2>Gallery loaded in a modal</h2>
-              <Link to={closeTo}>Close</Link>
-            </>
+            <div className="absolute inset-0 py-h flex">
+              <Link to={backPath} className="absolute z-20 top-0 right-0">
+                <Icon name="modalClose" className="m-10" />
+              </Link>
+              <div className="container flex flex-1">
+                <GalleryModal slides={images} theme="light" />
+              </div>
+            </div>
           ) : (
             <div className="fixed inset-0 py-h z-30 bg-white flex">
               <Link to={backPath} className="absolute z-20 top-0 right-0">
-                Close
+                <Icon name="modalClose" className="m-10" />
               </Link>
               <div className="container flex flex-1">
-                <GalleryHome
-                  slides={images}
-                  theme="light"
-                  inline={false}
-                  className="flex flex-1 relative"
-                />
+                <GalleryModal slides={images} theme="light" />
               </div>
             </div>
           )}
-        </div>
+        </>
       )}
     </ModalRoutingContext.Consumer>
   )

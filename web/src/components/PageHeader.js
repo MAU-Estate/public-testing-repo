@@ -2,12 +2,13 @@ import React from 'react'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-const PageHeader = ({ image, title, titleClasses = '' }) => {
+const PageHeader = ({ images, title, titleClasses = '' }) => {
+  const imageIndex = Math.floor(Math.random() * images.length)
   return (
     <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">
         <GatsbyImage
-          image={image.asset.gatsbyImageData}
+          image={images[imageIndex].asset.gatsbyImageData}
           alt="header background image"
           objectFit="cover"
           className="flex-1"

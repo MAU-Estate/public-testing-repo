@@ -16,7 +16,7 @@ const ProjectGallery = ({
         // const isPortrait = item.src.asset.metadata.dimensions.aspectRatio < 1
         const isPortrait = false
         return item._type === 'twoColImage' ? (
-          <div key={item._key} className="grid grid-cols-2 mb-a">
+          <div key={item._key} className="grid col-span-4 grid-cols-2 mb-a">
             <Link to={`/gallery/${slugPath}?index=${i}`}>
               <GatsbyImage
                 image={item.imageL.src.asset.gatsbyImageData}

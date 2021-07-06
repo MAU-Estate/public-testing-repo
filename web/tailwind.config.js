@@ -61,7 +61,7 @@ module.exports = {
         'black-b': 'var(--black-b)',
         'black-c': 'var(--black-c)',
         'grey-a': 'var(--grey-a)',
-        'grey-b': 'var(--grey-a)',
+        'grey-b': 'var(--grey-b)',
         'grey-c': 'var(--grey-c)',
         'grey-d': 'var(--grey-d)',
         'grey-e': 'var(--grey-e)',

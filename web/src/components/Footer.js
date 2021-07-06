@@ -13,13 +13,13 @@ export default function Footer() {
               Keep in touch with the estate through our newsletter:
             </p>
             <div className="w-72">
-              <label className="h-14 block w-full f-4 relative border-b border-grey-b flex">
+              <label className="h-14 block w-full relative border-b border-grey-b flex text-grey-c">
                 <input
                   type="text"
-                  className="bg-transparent"
+                  className="bg-transparent f-4 outline-none text-grey-c"
                   placeholder="ENTER YOUR EMAIL ADDRESS"
                 />
-                <Icon name="arrowSignUp" className="text-grey-b" />
+                <Icon name="arrowSignUp" className="h-7 mt-[5px]" />
               </label>
             </div>
           </div>

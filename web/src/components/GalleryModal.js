@@ -1,9 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import RichText from './RichText'
+import { SlideCaption } from './Gallery'
 import Icon from './Icon'
 
 const SlideImage = ({ src, alt }) => {
@@ -59,13 +59,14 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
 }
 
 export default function Gallery({ slides, className = '', theme = 'dark' }) {
+  const [controller, setController] = useState()
   const settings = {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     arrows: true,
-    swipe: false,
+    swipe: true,
     nextArrow: <SliderArrow theme={theme} />,
     prevArrow: <SliderArrow theme={theme} type="next" />,
   }
@@ -79,38 +80,55 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
     swipe: false,
   }
   const sliderRef = useRef()
-  // const sliderCaptionsRef = useRef()
+  const sliderCaptionsRef = useRef()
+
+  const parsedSlides = []
+
+  // handle 2 Column images
+  slides.forEach(slide => {
+    if (slide._type === 'figure') parsedSlides.push(slide)
+    if (slide._type === 'twoColImage') {
+      parsedSlides.push(slide.imageL)
+      parsedSlides.push(slide.imageR)
+    }
+  })
+
+  useEffect(() => {
+    setController(sliderCaptionsRef.current)
+  }, [sliderCaptionsRef.current])
 
   return (
-    <div className={`Gallery Gallery--home flex-1  ${className}`}>
-      <Slider ref={slider => (sliderRef.current = slider)} {...settings}>
-        {slides.map((slide, i) => (
-          <Slide
-            key={slide._key}
-            data={slide}
-            // route={`/gallery/${slug?.current}?index=${i}`}
-          />
-        ))}
-      </Slider>
-      {/* <Slider
-        asNavFor={sliderRef.current}
-        ref={slider => (sliderCaptionsRef.current = slider)}
-        {...navGallerySettings}
-        style={{ position: 'relative' }}
-        className="Slider-captions"
-      >
-        {parsedSlides.map((slide, i) => (
-          <SlideCaption
-            key={`${slide._key}-caption`}
-            index={i}
-            galleryLength={slides.length}
-            inline={inline}
-            arrows={false}
-            data={slide}
-            theme={theme}
-          />
-        ))}
-      </Slider> */}
+    <div className={`Gallery flex flex-1 flex-col ${className}`}>
+      <div className="relative flex-1">
+        <Slider
+          asNavFor={controller}
+          ref={slider => (sliderRef.current = slider)}
+          {...settings}
+        >
+          {slides.map((slide, i) => (
+            <Slide key={slide._key} data={slide} />
+          ))}
+        </Slider>
+      </div>
+      <div className="relative h-14">
+        <Slider
+          ref={slider => (sliderCaptionsRef.current = slider)}
+          {...navGallerySettings}
+          className="Slider-captions"
+        >
+          {parsedSlides.map((slide, i) => (
+            <SlideCaption
+              key={`${slide._key}-caption`}
+              index={i}
+              galleryLength={slides.length}
+              arrows={false}
+              inline={true}
+              data={slide}
+              theme={'light'}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   )
 }

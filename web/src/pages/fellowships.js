@@ -23,7 +23,7 @@ const FellowshipsPage = ({
     <>
       <Seo {...seo} />
       <PageHeader
-        image={headerImages[0]}
+        images={headerImages}
         title={title}
         titleClasses="ml-[-21px]"
       />

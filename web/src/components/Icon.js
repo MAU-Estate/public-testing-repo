@@ -7,6 +7,7 @@ import { ReactComponent as filterActive } from '../assets/icons/filter-active.sv
 import { ReactComponent as filterDefault } from '../assets/icons/filter-default.svg'
 import { ReactComponent as menu } from '../assets/icons/menu.svg'
 import { ReactComponent as menuClose } from '../assets/icons/menuClose.svg'
+import { ReactComponent as modalClose } from '../assets/icons/modalClose.svg'
 import { ReactComponent as arrowSignUp } from '../assets/icons/arrowSignUp.svg'
 import { ReactComponent as grid } from '../assets/icons/grid.svg'
 
@@ -20,6 +21,7 @@ const icons = {
   filterDefault,
   menu,
   menuClose,
+  modalClose,
   grid,
 }
 

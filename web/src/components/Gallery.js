@@ -18,7 +18,14 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
     )
   }
   return (
-    <Link to={route} className="flex-1 flex" style={{ minHeight: 0 }}>
+    <Link
+      to={route}
+      className="flex-1 flex"
+      style={{ minHeight: 0 }}
+      state={{
+        modal: true,
+      }}
+    >
       <GatsbyImage
         image={src}
         objectFit={cover ? 'cover' : 'contain'}
@@ -42,12 +49,13 @@ const Slide = ({ data, cover, inline, route }) => {
   )
 }
 
-const SlideCaption = ({
+export const SlideCaption = ({
   data,
   theme,
   inline,
   goToNext,
   goToPrev,
+  arrows = true,
   index,
   galleryLength,
 }) => {
@@ -70,16 +78,18 @@ const SlideCaption = ({
       </figcaption>
       {inline && (
         <div className="flex flex-0 justify-between">
-          <div className="f-8 mr-24">
-            <button onClick={goToPrev} className="pr-4">
-              Prev
-            </button>
-            |
-            <button onClick={goToNext} className="pl-4">
-              Next
-            </button>
-          </div>
-          <div className="f-8">
+          {arrows && (
+            <div className="f-8 mr-24">
+              <button onClick={goToPrev} className="pr-4">
+                Prev
+              </button>
+              |
+              <button onClick={goToNext} className="pl-4">
+                Next
+              </button>
+            </div>
+          )}
+          <div className="w-12 text-right f-8">
             {index + 1} / {galleryLength}
           </div>
         </div>

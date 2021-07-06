@@ -11,7 +11,7 @@ const PressPage = ({
   const { seo, title } = pageData
   const { nodes: articles } = articleNodes
   return (
-    <div className="container pt-25">
+    <div className="container pt-25 pb-i">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
