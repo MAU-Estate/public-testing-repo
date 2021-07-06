@@ -5,11 +5,11 @@ import { InView } from 'react-intersection-observer'
 import Blockquote from '../components/Blockquote'
 import Gallery from '../components/Gallery'
 import GalleryHome from '../components/GalleryHome'
-import RichText from '../components/RichText'
+import RichTextSingle from '../components/RichTextSingle'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
 
-const bgColorThreshold = 0.25
+const bgColorThreshold = 0.2
 
 const IndexPage = ({ data: { sanityBio: pageData } }) => {
   const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
@@ -55,13 +55,13 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
             <Figure image={section1.image1} />
           </div>
           <div className="col-start-2 col-span-4">
-            <RichText
+            <RichTextSingle
               className="f-12"
               content={section1.section1bodyLeft._rawText}
             />
           </div>
           <div className="col-start-6 col-span-4">
-            <RichText
+            <RichTextSingle
               className="f-12"
               content={section1.section1bodyRight._rawText}
             />
@@ -84,7 +84,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
               <Figure image={section2.image1} />
             </div>
             <div className="col-start-7 col-span-5">
-              <RichText
+              <RichTextSingle
                 className="f-13"
                 content={section2.richText1._rawText}
               />
@@ -101,7 +101,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
 
         <div className="container grid grid-cols-12">
           <div className="col-start-7 col-span-5 text-white mb-e">
-            <RichText className="f-13" content={section2.richText2._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section2.richText2._rawText}
+            />
           </div>
           <div className="col-start-2 col-span-8 mb-e text-white">
             <Blockquote quote={section2.quote1} />
@@ -131,7 +134,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section3.richText1._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section3.richText1._rawText}
+            />
           </div>
           <div className="col-start-8 col-end-13">
             <Gallery
@@ -159,7 +165,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12">
           <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section3.richText2._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section3.richText2._rawText}
+            />
           </div>
         </div>
       </InView>
@@ -183,7 +192,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
             />
           </div>
           <div className="col-start-7 col-end-13">
-            <RichText className="f-13" content={section4.richText1._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section4.richText1._rawText}
+            />
           </div>
         </div>
         <div className="container grid grid-cols-12">
@@ -207,7 +219,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section5.richText1._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section5.richText1._rawText}
+            />
           </div>
           <div className="col-span-6">
             <Figure image={section5.image1} />
@@ -221,7 +236,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         />
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section5.richText2._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section5.richText2._rawText}
+            />
           </div>
         </div>
         <div className="container grid grid-cols-12 mb-e">
@@ -249,7 +267,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
-            <RichText className="f-13" content={section6.richText1._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section6.richText1._rawText}
+            />
           </div>
         </div>
         <div className="container grid grid-cols-12 mb-e">
@@ -264,7 +285,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-12">
-            <RichText className="f-13" content={section6.richText2._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section6.richText2._rawText}
+            />
           </div>
         </div>
         <div className="container grid grid-cols-12 items-end">
@@ -298,7 +322,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-5">
-            <RichText className="f-13" content={section7.richText1._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section7.richText1._rawText}
+            />
           </div>
         </div>
         <div className="container grid grid-cols-12 mb-e">
@@ -316,7 +343,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         </div>
         <div className="container grid grid-cols-12">
           <div className="col-start-2 col-end-7">
-            <RichText className="f-13" content={section7.richText2._rawText} />
+            <RichTextSingle
+              className="f-13"
+              content={section7.richText2._rawText}
+            />
           </div>
           <div className="col-span-6">
             <Figure image={section7.image1} />

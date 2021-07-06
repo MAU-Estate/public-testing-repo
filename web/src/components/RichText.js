@@ -6,32 +6,26 @@ const serializers = {
   //   //   const { type } = props
   //   //   const bullet = type === 'bullet'
   //   //   if (bullet) {
-  //   //     return <ul>{props.children}</ul>
+  //   //     return <ul>{<prop></prop>s.children}</ul>
   //   //   }
   //   //   return <ol>{props.children}</ol>
   //   // },
   //   // listItem: props => <li>{props.children}</li>,
   marks: {
     serif: props => {
-      return <span className="font-serif">{props.children}</span>
+      return <span className="f-6 inline-block">{props.children}</span>
     },
   },
-  // types: {
-  //   code: props => (
-  //     <pre data-language={props.node.language}>
-  //       <code>{props.node.code}</code>
-  //     </pre>
-  //   ),
-  // block: props => {
-  //   const style = props.node.style || 'normal'
-  //   if (style === 'serif') {
-  //     return <p className="font-serif">{props.children}</p>
-  //   } else {
-  //     return <p>{props.children}</p>
-  //   }
-  // },
-  // },
-  // },
+  types: {
+    code: props => (
+      <pre data-language={props.node.language}>
+        <code>{props.node.code}</code>
+      </pre>
+    ),
+    block: props => {
+      return <p className="f-7">{props.children}</p>
+    },
+  },
 }
 
 const RichText = ({ content, className }) => {

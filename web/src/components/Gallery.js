@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import RichText from './RichText'
+import RichTextSingle from './RichTextSingle'
 import Icon from './Icon'
 
 const SlideImage = ({ route, src, alt, cover, inline }) => {
@@ -73,7 +73,10 @@ export const SlideCaption = ({
     >
       <figcaption className={`flex-1`}>
         {data.figcaption && data.figcaption._rawText && (
-          <RichText content={data.figcaption._rawText} className={`f-8`} />
+          <RichTextSingle
+            content={data.figcaption._rawText}
+            className={`f-8`}
+          />
         )}
       </figcaption>
       {inline && (

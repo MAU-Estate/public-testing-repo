@@ -3,6 +3,7 @@ import slugify from 'slugify'
 import { graphql } from 'gatsby'
 import PageHeader from '../components/PageHeader'
 import RichText from '../components/RichText'
+import RichTextSingle from '../components/RichTextSingle'
 
 const CvPage = ({ data: { sanityCv: pageData } }) => {
   const {
@@ -47,16 +48,22 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
         <div className="container grid grid-cols-3 pb-i pt-b">
           <div>
             <div className="mb-10">
-              <h3 className="f-7 mb-4 uppercase">{lifeTitle}</h3>
+              <h3 className="f-7 mb-3 uppercase">{lifeTitle}</h3>
               <p className="f-6">{life}</p>
             </div>
             <div className="mb-r">
-              <h3 className="f-7 mb-4 uppercase">{educationTitle}</h3>
-              <RichText className="f-6" content={educationBody._rawText} />
+              <h3 className="f-7 mb-3 uppercase">{educationTitle}</h3>
+              <RichTextSingle
+                className="f-6"
+                content={educationBody._rawText}
+              />
             </div>
             <div className="border-t border-grey-b pt-r">
               <p className="f-6">
-                {downloadCVLabel} <a href={download.asset.url}>here</a>
+                {downloadCVLabel}{' '}
+                <a href={download.asset.url} className="link">
+                  here
+                </a>
               </p>
             </div>
           </div>
@@ -64,7 +71,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <nav className="mb-r">
               <ul className="flex flex-wrap -mb-2">
                 {navItems.map((item, i) => (
-                  <li className="mb-2">
+                  <li className="mb-3">
                     <a
                       href={`#${slugify(item, { lower: true })}`}
                       className={`block f-7  ${
@@ -73,7 +80,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                     >
                       <span
                         className={`
-                          inline-block uppercase  border-white
+                          inline-block uppercase border-white hover:underline
                           ${i < navItems.length - 1 ? 'pr-2 border-r-2' : ''}
                         `}
                         style={{ lineHeight: '1' }}
@@ -90,7 +97,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(exhibitionsTitle, { lower: true })}`}
-                  className="f-7 mb-4 uppercase"
+                  className="f-7 mb-1 uppercase"
                 >
                   {exhibitionsTitle}
                 </h3>
@@ -99,7 +106,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(awardsTitle, { lower: true })}`}
-                  className="f-7 mb-4 uppercase"
+                  className="f-7 mb-1 uppercase"
                 >
                   {awardsTitle}
                 </h3>
@@ -111,7 +118,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(publicCollectionsTitle, { lower: true })}`}
-                  className="f-7 mb-4 uppercase"
+                  className="f-7 mb-1 uppercase"
                 >
                   {publicCollectionsTitle}
                 </h3>
@@ -123,7 +130,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               <div>
                 <h3
                   id={`${slugify(commisionsTitle, { lower: true })}`}
-                  className="f-7 mb-4 uppercase"
+                  className="f-7 mb-1 uppercase"
                 >
                   {commisionsTitle}
                 </h3>
@@ -137,7 +144,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
-                className="f-7 mb-4 uppercase"
+                className="f-7 mb-1 uppercase"
               >
                 {groupExhibitionsTitle}
               </h3>
@@ -152,7 +159,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(bibliographyTitle, { lower: true })}`}
-                className="f-7 mb-4 uppercase"
+                className="f-7 mb-1 uppercase"
               >
                 {bibliographyTitle}
               </h3>

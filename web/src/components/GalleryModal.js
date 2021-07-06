@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
@@ -95,7 +94,7 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
 
   useEffect(() => {
     setController(sliderCaptionsRef.current)
-  }, [sliderCaptionsRef.current])
+  }, [sliderCaptionsRef])
 
   return (
     <div className={`Gallery flex flex-1 flex-col ${className}`}>

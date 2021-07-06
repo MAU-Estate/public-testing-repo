@@ -1,7 +1,7 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import RichText from './RichText'
+import RichTextSingle from './RichTextSingle'
 export default function Figure({
   image,
   className = '',
@@ -18,7 +18,7 @@ export default function Figure({
       {image.figcaption && (
         <figcaption className={`flex-1`}>
           {image.figcaption && (
-            <RichText
+            <RichTextSingle
               content={image.figcaption._rawText}
               className={`pt-c f-8`}
             />

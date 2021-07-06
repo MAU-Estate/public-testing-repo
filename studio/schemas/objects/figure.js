@@ -22,7 +22,7 @@ export default {
     {
       name: 'figcaption',
       title: 'Caption',
-      type: 'richText',
+      type: 'richTextSingle',
       options: {
         collapsible: false,
         collapsed: false

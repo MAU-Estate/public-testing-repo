@@ -163,7 +163,8 @@
     outline: none;
   }
 
-  .richText a {
+  .richText a,
+  .link {
     text-decoration: underline;
 
     &:hover {
@@ -375,6 +376,12 @@
         margin-top: 28px;
       }
     }
+
+    .f-7 .f-6 {
+      bottom: initial;
+      margin-top: initial;
+    }
+
     .f-8 {
       font-family: var(--font-primary);
       font-size: 15px;

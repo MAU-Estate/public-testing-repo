@@ -23,7 +23,7 @@ export default {
           lists: [],
           styles: [],
           marks: {
-            decorators: []
+            decorators: [{ title: 'Emphasis', value: 'em' }]
           }
         }
       ]

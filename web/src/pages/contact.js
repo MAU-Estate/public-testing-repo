@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 
 import PageHeader from '../components/PageHeader'
 import RichText from '../components/RichText'
+import RichTextSingle from '../components/RichTextSingle'
 
 const ContactPage = ({ data: { sanityContact: pageData } }) => {
   const {
@@ -24,20 +25,20 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
       <div className="bg-black text-white pb-i">
         <div className="container pt-b grid grid-cols-12">
           <div className="col-span-5">
-            <RichText content={body._rawText} className="f-27" />
+            <RichTextSingle content={body._rawText} className="f-27" />
           </div>
           <div className="col-start-7 col-span-3 border-t border-grey-b pt-4">
-            <RichText content={infoBody._rawText} className="f-7" />
+            <RichText content={infoBody._rawText} />
           </div>
           <div className="col-start-10 col-span-3">
             <div className="border-t border-grey-b pt-4 mb-25">
-              <RichText content={survivedByBody._rawText} className="f-6" />
+              <RichText content={survivedByBody._rawText} />
             </div>
             <div className="border-t border-grey-b pt-4 mb-25">
-              <RichText content={directorBody._rawText} className="f-6" />
+              <RichText content={directorBody._rawText} />
             </div>
             <div className="border-t border-grey-b pt-4">
-              <RichText content={advisorsBody._rawText} className="f-6" />
+              <RichText content={advisorsBody._rawText} />
             </div>
           </div>
         </div>
