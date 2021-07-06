@@ -48,7 +48,7 @@ export default function Menu({ bgImage }) {
           className={`flex flex-col justify-top pl-20 pr-96 transition-transform duration-300 transform ${
             isOpen ? '' : '-translate-x-full'
           }`}
-          style={{ marginLeft: '41px' }}
+          style={{ marginLeft: '40px' }}
         >
           <div
             className="left-0 top-0 bottom-0 absolute flex"
