@@ -137,11 +137,11 @@
   body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-  }
 
-  em {
-    font-family: var(--font-primary--italic);
-    font-style: normal;
+    em {
+      font-family: var(--font-primary--italic);
+      font-style: normal;
+    }
   }
 
   .no-scroll,
