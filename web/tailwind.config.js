@@ -17,6 +17,7 @@ module.exports = {
   theme: {
     fontFamily: {
       serif: `var(--font-primary)`,
+      italic: `var(--font-primary--italic)`,
     },
     extend: {
       maxWidth: {
