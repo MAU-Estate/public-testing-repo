@@ -55,12 +55,5 @@ export default {
       title: 'credits',
       type: 'richText'
     }
-    // Estate Address
-    // Gallery Address
-    // Currently on view (does this link to exhibition page?)
-    // Survived by (people with links)
-    // Director
-    // Advisors
-    // CV (should be in site settings)
   ]
 }

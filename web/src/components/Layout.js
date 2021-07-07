@@ -5,10 +5,21 @@ import Footer from './Footer'
 import Menu from './Menu'
 import Icon from './Icon'
 
-const Layout = ({ children, className = '' }) => {
+const Layout = ({ location, children, className = '' }) => {
   // const isHome = location.pathname === '/'
   // const pathname = isHome ? 'home' : location.pathname.slice(1)
   // const cleanedPathname = pathname.replace(/\//i, '')
+  let menuBgClass
+  switch (location.pathname) {
+    case '/contact':
+    case '/cv':
+    case '/fellowships':
+      menuBgClass = 'bg-black-c'
+      break
+    default:
+      menuBgClass = 'bg-black'
+      break
+  }
 
   return (
     <StaticQuery
@@ -26,6 +37,7 @@ const Layout = ({ children, className = '' }) => {
       render={({ sanitySiteSettings }) => (
         <div className={`flex flex-col flex-1`}>
           <Menu
+            menuBgClass={menuBgClass}
             bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
           />
           <div

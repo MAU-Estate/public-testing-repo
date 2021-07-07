@@ -303,21 +303,41 @@ const Work = ({
       >
         {filteredProjects && filteredProjects.length ? (
           <ul className="pointer-events-auto mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
-            {filteredProjects.map(({ title, slug, date, previewImage }, i) => (
-              <li key={slug.current}>
-                <Link to={slug.current}>
-                  <GatsbyImage
-                    image={previewImage.asset.gatsbyImageData}
-                    alt={previewImage.alt}
-                    objectFit="contain"
-                    className="aspect-h-1 aspect-w-1 mb-a3"
-                  />
-                  <p className="f-17 mb-2">{title}</p>
-                  <p className="f-17 font-italic">{date}</p>
-                  {/* if a museum add the collectionsText with a comma after date */}
-                </Link>
-              </li>
-            ))}
+            {filteredProjects.map(
+              (
+                {
+                  title,
+                  slug,
+                  date,
+                  previewImage,
+                  collection,
+                  collectionsText,
+                },
+                i
+              ) => {
+                const collectionHasMuseum = collection.some(
+                  item => item.slug.current === 'museum'
+                )
+                console.log(collectionHasMuseum)
+                return (
+                  <li key={slug.current}>
+                    <Link to={slug.current}>
+                      <GatsbyImage
+                        image={previewImage.asset.gatsbyImageData}
+                        alt={previewImage.alt}
+                        objectFit="contain"
+                        className="aspect-h-1 aspect-w-1 mb-a3"
+                      />
+                      <p className="f-17 mb-2">{title}</p>
+                      <p className="f-17 font-italic">
+                        {date}
+                        {collectionHasMuseum && `, ${collectionsText}`}
+                      </p>
+                    </Link>
+                  </li>
+                )
+              }
+            )}
           </ul>
         ) : (
           <div className="mt-b mb-e">
@@ -365,6 +385,7 @@ export const workQuery = graphql`
             current
           }
         }
+        collectionsText
         collection {
           slug {
             current

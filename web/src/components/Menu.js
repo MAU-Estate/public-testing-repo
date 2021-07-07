@@ -16,7 +16,7 @@ const NAV_ITEMS = [
   { path: '/cv', label: 'CV' },
 ]
 
-export default function Menu({ bgImage }) {
+export default function Menu({ bgImage, menuBgClass }) {
   const [isOpen, setIsOpen] = useState(false)
   const esc = useKeyPress('Escape')
 
@@ -35,7 +35,8 @@ export default function Menu({ bgImage }) {
         } fixed z-30 inset-0 flex`}
       >
         <button
-          className={`absolute h-full w-full inset-0 block bg-black transition-all ${
+          className={`absolute h-full w-full inset-0 block transition-all
+          ${
             isOpen
               ? 'opacity-50 visible'
               : 'opacity-0 pointer-events-none invisible'
@@ -50,10 +51,7 @@ export default function Menu({ bgImage }) {
           }`}
           style={{ marginLeft: '40px' }}
         >
-          <div
-            className="left-0 top-0 bottom-0 absolute flex"
-            style={{ backgroundColor: 'green' }}
-          >
+          <div className="left-0 top-0 bottom-0 absolute flex">
             <GatsbyImage image={bgImage} alt="" objectFit="cover" />
           </div>
           <nav className="relative z-10 mt-11">
@@ -82,7 +80,7 @@ export default function Menu({ bgImage }) {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="z-10 flex-1 self-stretch bg-black"
+          className={`z-10 flex-1 self-stretch transition transition-colors ${menuBgClass}`}
         >
           <span
             className="absolute top-11 text-white left-[10px] transform -translate-x-full  origin-top-right -rotate-90 flex items-center"

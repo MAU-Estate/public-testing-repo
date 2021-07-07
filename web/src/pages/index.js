@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import { InView } from 'react-intersection-observer'
 
@@ -23,32 +23,43 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
     section6,
     section7,
   } = pageData
+
+  const [rootMargin, setRootMargin] = useState('-400px')
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const handleResize = () => setRootMargin(`-${window.innerHeight / 2}px`)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+
   return (
     <div className={`transition transition-colors duration-700 ${bodyClasses}`}>
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div className="container--tight w-full h-full flex flex-1 relative">
           <GalleryHome
-            // inline={false}
-            // cover={false}
             theme="dark"
             slides={pageData.hero.galleryRef.images}
             slug={pageData.hero.galleryRef.slug}
-            // className="flex flex-1"
           />
         </div>
       </div>
 
       <InView
         as="section"
-        threshold={bgColorThreshold}
-        onChange={(inView, entry) => {
+        root={null}
+        rootMargin={rootMargin}
+        onChange={inView => {
           if (inView) {
             setBodyClasses('bg-white text-black')
           }
         }}
         id="intro"
-        className="container pt-e"
+        className="container pt-e "
       >
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3 mix-blend-multiply">
@@ -70,13 +81,14 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       </InView>
       <InView
         as="section"
-        threshold={0.15}
-        onChange={(inView, entry) => {
+        root={null}
+        rootMargin={rootMargin}
+        onChange={inView => {
           if (inView) {
             setBodyClasses('bg-black-b text-white')
           }
         }}
-        className="py-g"
+        className="py-g  "
       >
         <div className="container">
           <div className="grid grid-cols-12 mb-e">
@@ -124,8 +136,9 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       {/* Section 3 */}
       <InView
         as="section"
-        threshold={bgColorThreshold}
-        onChange={(inView, entry) => {
+        root={null}
+        rootMargin={rootMargin}
+        onChange={inView => {
           if (inView) {
             setBodyClasses('bg-white text-black')
           }
@@ -176,8 +189,9 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       {/* Section 4 */}
       <InView
         as="section"
-        threshold={bgColorThreshold}
-        onChange={(inView, entry) => {
+        root={null}
+        rootMargin={rootMargin}
+        onChange={inView => {
           if (inView) {
             setBodyClasses('bg-bio-a text-white')
           }
@@ -209,8 +223,9 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
 
       <InView
         as="section"
-        threshold={bgColorThreshold}
-        onChange={(inView, entry) => {
+        root={null}
+        rootMargin={rootMargin}
+        onChange={inView => {
           if (inView) {
             setBodyClasses('bg-white text-black')
           }
@@ -257,7 +272,8 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       {/* Section 6 */}
       <InView
         as="section"
-        threshold={bgColorThreshold}
+        root={null}
+        rootMargin={rootMargin}
         onChange={inView => {
           if (inView) {
             setBodyClasses('bg-bio-b text-black')
@@ -312,7 +328,8 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
       {/* Section 7 */}
       <InView
         as="section"
-        threshold={bgColorThreshold}
+        root={null}
+        rootMargin={rootMargin}
         onChange={inView => {
           if (inView) {
             setBodyClasses('bg-bio-c text-white')

@@ -43,7 +43,7 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
               </div>
             )}
             {advisorsBody && (
-              <div className="border-t border-grey-b pt-4">
+              <div className="border-t border-grey-b pt-4 mb-25">
                 <RichText content={advisorsBody._rawText} />
               </div>
             )}

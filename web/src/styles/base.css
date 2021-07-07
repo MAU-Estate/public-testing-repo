@@ -244,16 +244,6 @@
       background-image: linear-gradient(var(--color), rgba(0, 0, 0, 0));
     }
 
-    /* .f-1 {
-      font: var(--font-secondary) 53px/52px;
-      letter-spacing: -1.5px;
-
-      @screen lg {
-        font: var(--font-secondary) 93px/88px;
-        letter-spacing: -2px;
-      }
-    } */
-
     .f-1 {
       font-family: var(--font-secondary);
       font-size: 53px;
@@ -266,7 +256,7 @@
       @screen lg {
         font-size: 93px;
         line-height: 88px;
-        letter-spacing: -2px;
+        letter-spacing: -3.5px;
         bottom: -0.125em;
         margin-top: -0.23em;
       }
