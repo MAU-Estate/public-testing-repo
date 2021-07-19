@@ -95,7 +95,7 @@ export default function exhibition({
         </div>
         <div className="col-start-6 col-span-7">
           {gallery && gallery.galleryRef && (
-            <ProjectGallery data={gallery} className="col-span-8" />
+            <ProjectGallery data={gallery} className="col-span-8 grid" />
           )}
         </div>
       </div>

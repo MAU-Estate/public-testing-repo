@@ -25,7 +25,6 @@ export default function Menu({ bgImage, menuBgClass }) {
   useEffect(() => {
     esc && isOpen && setIsOpen(false)
   }, [esc, isOpen])
-
   return (
     <>
       <Helmet bodyAttributes={{ class: `${isOpen ? 'no-scroll' : ''}` }} />

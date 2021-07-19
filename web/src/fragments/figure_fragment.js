@@ -5,9 +5,10 @@ export const FIGURE_FRAGMENT = graphql`
     _key
     alt
     src {
+      ...ImageWithPreview
       asset {
         gatsbyImageData(
-          width: 2000
+          layout: FULL_WIDTH
           placeholder: BLURRED
           formats: [AUTO, WEBP, AVIF]
         )

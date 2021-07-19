@@ -47,6 +47,20 @@ module.exports = {
     },
     `gatsby-plugin-modal-routing-3`,
     {
+      resolve: 'gatsby-plugin-sanity-image',
+      options: {
+        ...clientConfig.sanity,
+        customImageTypes: ['SanityPreviewImage', 'SanityFigure'],
+        defaultImageConfig: {
+          quality: 35,
+          maxWidth: 1000,
+          format: 'webp',
+          fit: 'clip',
+          auto: 'format',
+        },
+      },
+    },
+    {
       resolve: 'gatsby-source-sanity',
       options: {
         ...clientConfig.sanity,

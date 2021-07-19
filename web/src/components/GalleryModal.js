@@ -1,16 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Slider from 'react-slick'
-import { GatsbyImage } from 'gatsby-plugin-image'
+
+import queryString from 'query-string'
 
 import { SlideCaption } from './Gallery'
 import Icon from './Icon'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 const SlideImage = ({ src, alt }) => {
   return (
-    <GatsbyImage
-      image={src}
-      objectFit={'contain'}
-      objectPosition="center"
+    <SanityImage
+      {...src}
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+      }}
       alt={alt}
     />
   )
@@ -18,12 +23,7 @@ const SlideImage = ({ src, alt }) => {
 
 const Slide = ({ data }) => {
   if (!data.src) return <></>
-  return (
-    <SlideImage
-      src={data.src.asset.gatsbyImageData}
-      alt={data.src.asset.altText}
-    />
-  )
+  return <SlideImage src={data.src} alt={data.src.asset.altText} />
 }
 
 const SliderArrow = ({ type = 'previous', onClick, theme }) => {
@@ -57,8 +57,18 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   )
 }
 
-export default function Gallery({ slides, className = '', theme = 'dark' }) {
+export default function Gallery({
+  location,
+  slides,
+  className = '',
+  theme = 'dark',
+}) {
   const [controller, setController] = useState()
+  const indexParam = queryString.parse(location.search, {
+    arrayFormat: 'comma',
+  })?.index
+  const initialSlide = indexParam ? Number(indexParam) : 0
+
   const settings = {
     infinite: true,
     slidesToShow: 1,
@@ -66,17 +76,27 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
     autoplay: false,
     arrows: true,
     swipe: true,
+    initialSlide,
     nextArrow: <SliderArrow theme={theme} />,
     prevArrow: <SliderArrow theme={theme} type="next" />,
   }
   const navGallerySettings = {
     infinite: true,
+    afterChange: index => {
+      console.log(typeof index)
+      window.history.pushState(
+        { path: `${location.pathname}?index=${index}` },
+        '',
+        `${location.pathname}?index=${index}`
+      )
+    },
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
     arrows: false,
     fade: true,
     swipe: false,
+    initialSlide,
   }
   const sliderRef = useRef()
   const sliderCaptionsRef = useRef()
@@ -87,6 +107,8 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
   slides.forEach(slide => {
     if (slide._type === 'figure') parsedSlides.push(slide)
     if (slide._type === 'twoColImage') {
+      slide.imageL._key = `${slide._key}-left`
+      slide.imageR._key = `${slide._key}-right`
       parsedSlides.push(slide.imageL)
       parsedSlides.push(slide.imageR)
     }
@@ -104,7 +126,7 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
           ref={slider => (sliderRef.current = slider)}
           {...settings}
         >
-          {slides.map((slide, i) => (
+          {parsedSlides.map((slide, i) => (
             <Slide key={slide._key} data={slide} />
           ))}
         </Slider>

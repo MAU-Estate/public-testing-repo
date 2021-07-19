@@ -1,5 +1,19 @@
 import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
+import { Link } from 'gatsby'
+
+const parseUrlType = url => {
+  if (url.includes('mailto:')) {
+    return 'mailto'
+  }
+  try {
+    if (new URL(url).origin !== window.location.origin) {
+      return 'external'
+    }
+  } catch (error) {
+    return 'default'
+  }
+}
 
 const serializers = {
   //   // list: props => {
@@ -14,6 +28,26 @@ const serializers = {
   marks: {
     serif: props => {
       return <span className="f-6 inline-block">{props.children}</span>
+    },
+    link: props => {
+      const href = props.mark.href
+      let result
+      switch (parseUrlType(href)) {
+        case 'mailto':
+          result = <a href={href}>{props.children}</a>
+          break
+        case 'external':
+          result = (
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              {props.children}
+            </a>
+          )
+          break
+        default:
+          result = <Link to={href}>{props.children}</Link>
+          break
+      }
+      return result
     },
   },
   types: {

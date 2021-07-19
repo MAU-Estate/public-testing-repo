@@ -6,32 +6,42 @@ import GalleryModal from '../../components/GalleryModal'
 import Icon from '../../components/Icon'
 
 export default function gallery({
+  location,
   data: {
     sanityGallery: { images, slug, backUrl },
   },
 }) {
   const backPath =
     backUrl === '/' ? `/#${slug.current}` : `/${backUrl}/${slug.current}`
+  // set initial slide by presence of search param slide=x
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
         <>
           {modal ? (
-            <div className="absolute inset-0 py-h flex">
+            <div className="absolute inset-0 py-12 flex">
               <Link to={backPath} className="absolute z-20 top-0 right-0">
                 <Icon name="modalClose" className="m-10" />
               </Link>
-              <div className="container flex flex-1">
-                <GalleryModal slides={images} theme="light" />
+              <div className="container--large flex flex-1">
+                <GalleryModal
+                  location={location}
+                  slides={images}
+                  theme="light"
+                />
               </div>
             </div>
           ) : (
-            <div className="fixed inset-0 py-h z-30 bg-white flex">
+            <div className="fixed inset-0 py-12 z-30 bg-white flex">
               <Link to={backPath} className="absolute z-20 top-0 right-0">
-                <Icon name="modalClose" className="m-10" />
+                <Icon name="modalClose" className="m-4" />
               </Link>
-              <div className="container flex flex-1">
-                <GalleryModal slides={images} theme="light" />
+              <div className="container--large flex flex-1">
+                <GalleryModal
+                  location={location}
+                  slides={images}
+                  theme="light"
+                />
               </div>
             </div>
           )}
@@ -58,9 +68,13 @@ export const galleryQuery = graphql`
           _key
           _type
           imageL {
+            _key
+            _type
             ...figure
           }
           imageR {
+            _key
+            _type
             ...figure
           }
         }

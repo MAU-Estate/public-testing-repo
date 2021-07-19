@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 import RichTextSingle from './RichTextSingle'
 import Icon from './Icon'
@@ -9,15 +10,24 @@ import Icon from './Icon'
 const SlideImage = ({ route, src, alt, cover, inline }) => {
   if (!inline) {
     return (
-      <GatsbyImage
-        image={src}
-        objectFit={cover ? 'cover' : 'contain'}
-        objectPosition="center"
+      <SanityImage
+        {...src}
+        width="1250"
+        // image={src}
+        // objectFit={cover ? 'cover' : 'contain'}
+        // objectPosition="center"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
         alt={alt}
+        className="flex-1"
       />
     )
   }
   return (
+    // add search param for index
     <Link
       to={route}
       className="flex-1 flex"
@@ -26,10 +36,17 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         modal: true,
       }}
     >
-      <GatsbyImage
-        image={src}
-        objectFit={cover ? 'cover' : 'contain'}
-        objectPosition="center"
+      <SanityImage
+        {...src}
+        width="1250"
+        // image={src}
+        // objectFit={cover ? 'cover' : 'contain'}
+        // objectPosition="center"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
         alt={alt}
         className="flex-1"
       />
@@ -42,7 +59,7 @@ const Slide = ({ data, cover, inline, route }) => {
     <SlideImage
       inline={inline}
       route={route}
-      src={data.src.asset.gatsbyImageData}
+      src={data.src}
       cover={cover}
       alt={data.src.asset.altText}
     />
@@ -64,11 +81,10 @@ export const SlideCaption = ({
     <div
       className={`relative z-10 pointer-events-auto w-full flex
       mt-c
-      max-w-[1508px]
       mx-auto
       pb-1
       ${isDark ? 'text-white' : 'text-black'}
-      ${inline ? '' : 'container'}
+      ${inline ? '' : 'container max-w-[1508px]'}
     `}
     >
       <figcaption className={`flex-1`}>
@@ -132,7 +148,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   )
 }
 
-export default function Gallery({
+function Gallery({
   slides,
   slug,
   className = '',
@@ -168,6 +184,8 @@ export default function Gallery({
   slides.forEach(slide => {
     if (slide._type === 'figure') parsedSlides.push(slide)
     if (slide._type === 'twoColImage') {
+      slide.imageL._key = `${slide._key}-left`
+      slide.imageR._key = `${slide._key}-right`
       parsedSlides.push(slide.imageL)
       parsedSlides.push(slide.imageR)
     }
@@ -181,7 +199,7 @@ export default function Gallery({
     (firstSlideDimensions.height / firstSlideDimensions.width) * 100
 
   return (
-    <div className={`Gallery  ${className}`} id={slug?.current}>
+    <div className={`Gallery ${className}`} id={slug?.current}>
       <div
         className="relative"
         style={{ height: 0, paddingBottom: `${firstSlideAspectRatio}%` }}
@@ -221,3 +239,5 @@ export default function Gallery({
     </div>
   )
 }
+
+export default React.memo(Gallery)

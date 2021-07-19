@@ -17,7 +17,5 @@
     "@sanity/cli": "^2.0.0",
     "lerna": "^3.13.1"
   },
-  "dependencies": {
-    "react-intersection-observer": "^8.32.0"
-  }
+  "dependencies": {}
 }

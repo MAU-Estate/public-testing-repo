@@ -17,6 +17,9 @@
     --font-secondary--regular: 'LetteraTextLLSub-Regular';
     --font-secondary--medium: 'LetteraTextLLSub-Medium';
 
+    --homeBg: #ffffff;
+    --homeColor: #121212;
+
     --black: #121212;
     --black-b: #1f1f1f;
     --black-c: #2e2e2e;
@@ -137,11 +140,6 @@
   body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-
-    em {
-      font-family: var(--font-primary--italic);
-      font-style: normal;
-    }
   }
 
   .no-scroll,
@@ -222,6 +220,13 @@
       margin-left: auto;
       margin-right: auto;
       max-width: calc(1600px - calc(var(--unit) * 24));
+    }
+
+    .container--large {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 2200px;
+      @apply px-20;
     }
 
     .sectionGradient-lg,

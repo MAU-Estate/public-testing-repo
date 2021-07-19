@@ -1,0 +1,7 @@
+/* purgecss start ignore */
+em,
+.richText em {
+  font-family: var(--font-primary--italic);
+  font-style: normal;
+}
+/* purgecss end ignore */

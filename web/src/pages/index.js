@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { graphql, Link } from 'gatsby'
 import { InView } from 'react-intersection-observer'
 
@@ -11,8 +11,18 @@ import Figure from '../components/Figure'
 
 const bgColorThreshold = 0.2
 
+const handleBioSectionChange = (inView, entry, bgColor) => {
+  const target = entry.target
+  if (inView) {
+    document.documentElement.style.setProperty('--homeBg', `var(--${bgColor})`)
+    target.classList.add('opacity-100')
+  } else {
+    target.classList.remove('opacity-100')
+  }
+}
+
 const IndexPage = ({ data: { sanityBio: pageData } }) => {
-  const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
+  // const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
   const {
     bioCta,
     section1,
@@ -24,11 +34,15 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
     section7,
   } = pageData
 
-  const [rootMargin, setRootMargin] = useState('-400px')
+  const [rootMargin, setRootMargin] = useState('-310px')
+  // const rootMargin = '-350px'
+  // const backgroundColor = useRef('white')
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const handleResize = () => setRootMargin(`-${window.innerHeight / 2}px`)
+    const handleResize = () => {
+      setRootMargin(`-${window.innerHeight / 2}px`)
+    }
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => {
@@ -37,7 +51,13 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
   })
 
   return (
-    <div className={`transition transition-colors duration-700 ${bodyClasses}`}>
+    <div
+      className={`transition transition-colors duration-500`}
+      style={{
+        willChange: 'background-color',
+        backgroundColor: 'var(--homeBg)',
+      }}
+    >
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div className="container--tight w-full h-full flex flex-1 relative">
@@ -53,13 +73,11 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-white text-black')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'white')
         }}
         id="intro"
-        className="container pt-e "
+        className="container pt-e opacity-0 transition-opacity transition duration-500"
       >
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3 mix-blend-multiply">
@@ -83,15 +101,13 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-black-b text-white')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'black-b')
         }}
-        className="py-g  "
+        className="py-g text-white opacity-0 transition-opacity transition duration-500"
       >
         <div className="container">
-          <div className="grid grid-cols-12 mb-e">
+          <div className="grid grid-cols-12">
             <div className="col-span-5 ">
               <Figure image={section2.image1} />
             </div>
@@ -104,11 +120,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
           </div>
         </div>
 
-        {/* Full Gallery */}
         <Gallery
           slides={section2.gallery1.galleryRef.images}
           slug={section2.gallery1.galleryRef.slug}
-          className="mb-e"
+          className="y-e"
         />
 
         <div className="container grid grid-cols-12">
@@ -118,16 +133,17 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
               content={section2.richText2._rawText}
             />
           </div>
-          <div className="col-start-2 col-span-8 mb-e text-white">
+          <div className="col-start-2 col-span-8 text-white">
             <Blockquote quote={section2.quote1} />
           </div>
         </div>
 
-        <div className="container grid grid-cols-12 mb-e">
+        <div className="container grid grid-cols-12">
           <div className="col-start-2 col-end-12">
             <Gallery
               slides={section2.gallery2.galleryRef.images}
               slug={section2.gallery2.galleryRef.slug}
+              className="py-e"
             />
           </div>
         </div>
@@ -138,12 +154,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-white text-black')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'white')
         }}
-        className="py-g"
+        className="py-g opacity-0 transition-opacity transition duration-500"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -191,12 +205,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-bio-a text-white')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'bio-a')
         }}
-        className="py-g"
+        className="py-g text-white opacity-0 transition-opacity transition duration-500"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-span-5">
@@ -225,12 +237,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-white text-black')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'white')
         }}
-        className="BeringStrait py-g"
+        className="BeringStrait py-g opacity-0 transition-opacity transition duration-500"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -274,12 +284,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-bio-b text-black')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'bio-b')
         }}
-        className="Guerilla py-g"
+        className="Guerilla py-g opacity-0 transition-opacity transition duration-500"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
@@ -330,12 +338,10 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={inView => {
-          if (inView) {
-            setBodyClasses('bg-bio-c text-white')
-          }
+        onChange={(inView, entry) => {
+          handleBioSectionChange(inView, entry, 'bio-c')
         }}
-        className="py-g"
+        className="py-g text-white opacity-0 transition-opacity transition duration-500"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-5">
@@ -373,11 +379,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
 
       <Link to={bioCta.path} className="block relative py-e">
         <div className="absolute inset-0 flex">
-          <Figure
-            objectFit="cover"
-            image={bioCta.image1}
-            className="flex-1 flex"
-          />
+          <Figure image={bioCta.image1} className="flex-1 flex" />
         </div>
         <div className="container">
           <div className="flex items-center text-white">
@@ -409,7 +411,9 @@ export const query = graphql`
           _rawText
         }
         image1 {
-          ...figure
+          src {
+            ...ImageWithPreview
+          }
         }
       }
       section2 {

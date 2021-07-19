@@ -1,5 +1,6 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 import RichTextSingle from './RichTextSingle'
 export default function Figure({
@@ -9,10 +10,16 @@ export default function Figure({
 }) {
   return (
     <figure className={className}>
-      <GatsbyImage
-        image={image.src.asset.gatsbyImageData}
-        alt={image.alt}
-        objectFit={objectFit}
+      <SanityImage
+        {...image.src}
+        // image={image.src.asset.gatsbyImageData}
+        // alt={image.alt}
+        // objectFit={objectFit}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        }}
         className="flex-1"
       />
       {image.figcaption && (
