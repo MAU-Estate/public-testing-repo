@@ -107,6 +107,14 @@ const Work = ({
   },
 }) => {
   const { setProjectEdges, setProjectFilterString } = useContext(Context)
+  const [activeFilters, setActiveFilters] = useState(
+    location.search
+      ? queryString.parse(location.search, { arrayFormat: 'comma' })
+      : {
+          featured: 'true',
+        }
+  )
+
   const getFilteredProjects = filters => {
     const filterResult = []
     const filterRejects = []
@@ -129,13 +137,6 @@ const Work = ({
     return { filterResult, filterRejects }
   }
 
-  const [activeFilters, setActiveFilters] = useState(
-    location.search
-      ? queryString.parse(location.search, { arrayFormat: 'comma' })
-      : {
-          featured: 'true',
-        }
-  )
   const [isFilterVisible, setIsFilterVisible] = useState(false)
   const { filterResult } = getFilteredProjects(activeFilters)
   const [filteredProjects, setFilteredProjects] = useState(filterResult)
@@ -308,7 +309,7 @@ const Work = ({
                 {
                   title,
                   slug,
-                  date,
+                  yearText,
                   previewImage,
                   collection,
                   collectionsText,
@@ -318,7 +319,6 @@ const Work = ({
                 const collectionHasMuseum = collection.some(
                   item => item.slug.current === 'museum'
                 )
-                console.log(collectionHasMuseum)
                 return (
                   <li key={slug.current}>
                     <Link to={slug.current}>
@@ -330,7 +330,7 @@ const Work = ({
                       />
                       <p className="f-17 mb-2">{title}</p>
                       <p className="f-17 font-italic">
-                        {date}
+                        {yearText}
                         {collectionHasMuseum && `, ${collectionsText}`}
                       </p>
                     </Link>
@@ -368,6 +368,7 @@ export const workQuery = graphql`
         title
         id
         date(formatString: "YYYY")
+        yearText
         slug {
           current
         }

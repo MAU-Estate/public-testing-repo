@@ -6,27 +6,27 @@ function ContextProvider({ children }) {
   const [projectEdges, setProjectEdges] = useState()
   const [projectFilterString, setProjectFilterString] = useState()
 
-  useEffect(() => {
-    const projectEdgesData = localStorage.getItem('projectEdges')
-    const projectFilterStringData = localStorage.getItem('projectFilterString')
-    if (projectEdgesData !== 'undefined') {
-      setProjectEdges(JSON.parse(projectEdgesData))
-    }
-    if (projectFilterStringData !== 'undefined') {
-      setProjectFilterString(JSON.parse(projectFilterStringData))
-    }
-  }, [])
+  // useEffect(() => {
+  //   const projectEdgesData = localStorage.getItem('projectEdges')
+  //   const projectFilterStringData = localStorage.getItem('projectFilterString')
+  //   if (projectEdgesData !== 'undefined') {
+  //     setProjectEdges(JSON.parse(projectEdgesData))
+  //   }
+  //   if (projectFilterStringData !== 'undefined') {
+  //     setProjectFilterString(JSON.parse(projectFilterStringData))
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    localStorage.setItem('projectEdges', JSON.stringify(projectEdges))
-  }, [projectEdges])
+  // useEffect(() => {
+  //   localStorage.setItem('projectEdges', JSON.stringify(projectEdges))
+  // }, [projectEdges])
 
-  useEffect(() => {
-    localStorage.setItem(
-      'projectFilterString',
-      JSON.stringify(projectFilterString)
-    )
-  }, [projectEdges, projectFilterString])
+  // useEffect(() => {
+  //   localStorage.setItem(
+  //     'projectFilterString',
+  //     JSON.stringify(projectFilterString)
+  //   )
+  // }, [projectEdges, projectFilterString])
 
   return (
     <Context.Provider
