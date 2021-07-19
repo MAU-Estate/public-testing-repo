@@ -123,7 +123,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         <Gallery
           slides={section2.gallery1.galleryRef.images}
           slug={section2.gallery1.galleryRef.slug}
-          className="y-e"
+          className="py-e"
         />
 
         <div className="container grid grid-cols-12">
