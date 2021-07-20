@@ -45,6 +45,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
         images={headerImages}
         title={title}
         titleClasses="ml-[-12px]"
+        index={Math.floor(Math.random() * headerImages.length)}
       />
       <div className="bg-black text-white">
         <div className="container grid grid-cols-3 pb-i pt-b">

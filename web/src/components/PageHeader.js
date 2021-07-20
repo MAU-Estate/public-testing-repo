@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 const PageHeader = ({ images, title, titleClasses = '' }) => {
-  const imageIndex = Math.floor(Math.random() * images.length)
-  console.log(imageIndex)
+  const [index, setIndex] = useState()
+
+  useEffect(() => setIndex(Math.floor(Math.random() * images.length)), [])
+
   return (
     <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">
-        <GatsbyImage
-          image={images[imageIndex].asset.gatsbyImageData}
-          alt="header background image"
-          objectFit="cover"
-          className="flex-1"
-        />
+        {index !== undefined && (
+          <GatsbyImage
+            image={images[index].asset.gatsbyImageData}
+            alt="header background image"
+            objectFit="cover"
+            className="flex-1"
+          />
+        )}
       </div>
       <div className="container">
         <div className="border-b border-white pb-a3 f-5 text-white ">
