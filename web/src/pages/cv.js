@@ -146,38 +146,26 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
-                className="f-7 mb-1 uppercase"
+                className="f-7 mb-4 uppercase"
               >
                 {groupExhibitionsTitle}
               </h3>
-              <div className="grid grid-cols-2">
-                <RichText
-                  className="f-6"
-                  content={groupExhibitionsBody._rawText}
-                />
-                <RichText
-                  className="f-6"
-                  content={groupExhibitionsBody2._rawText}
-                />
+              <div className="grid grid-cols-2 f-6">
+                <RichText content={groupExhibitionsBody._rawText} />
+                <RichText content={groupExhibitionsBody2._rawText} />
               </div>
             </div>
 
             <div className="border-t border-grey-b pt-a mb-20">
               <h3
                 id={`${slugify(bibliographyTitle, { lower: true })}`}
-                className="f-7 mb-1 uppercase"
+                className="f-7 mb-4 uppercase"
               >
                 {bibliographyTitle}
               </h3>
-              <div className="grid grid-cols-2">
-                <RichText
-                  className="f-6"
-                  content={selectedBibliographyBody._rawText}
-                />
-                <RichText
-                  className="f-6"
-                  content={selectedBibliographyBody2._rawText}
-                />
+              <div className="grid grid-cols-2 f-6">
+                <RichText content={selectedBibliographyBody._rawText} />
+                <RichText content={selectedBibliographyBody2._rawText} />
               </div>
             </div>
           </div>
