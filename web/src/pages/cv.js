@@ -18,6 +18,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     exhibitionsTitle,
     exhibitionsBody,
     groupExhibitionsBody,
+    groupExhibitionsBody2,
     groupExhibitionsTitle,
     headerImages,
     life,
@@ -26,6 +27,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     publicCollectionsBody,
     publicCollectionsTitle,
     selectedBibliographyBody,
+    selectedBibliographyBody2,
     title,
   } = pageData
 
@@ -148,10 +150,14 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               >
                 {groupExhibitionsTitle}
               </h3>
-              <div style={{ columns: '2' }}>
+              <div className="grid grid-cols-2">
                 <RichText
                   className="f-6"
                   content={groupExhibitionsBody._rawText}
+                />
+                <RichText
+                  className="f-6"
+                  content={groupExhibitionsBody2._rawText}
                 />
               </div>
             </div>
@@ -163,10 +169,14 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               >
                 {bibliographyTitle}
               </h3>
-              <div style={{ columns: '2' }}>
+              <div className="grid grid-cols-2">
                 <RichText
                   className="f-6"
                   content={selectedBibliographyBody._rawText}
+                />
+                <RichText
+                  className="f-6"
+                  content={selectedBibliographyBody2._rawText}
                 />
               </div>
             </div>
@@ -208,6 +218,9 @@ export const query = graphql`
       groupExhibitionsBody {
         _rawText
       }
+      groupExhibitionsBody2 {
+        _rawText
+      }
       groupExhibitionsTitle
       headerImages {
         asset {
@@ -230,6 +243,9 @@ export const query = graphql`
       }
       publicCollectionsTitle
       selectedBibliographyBody {
+        _rawText
+      }
+      selectedBibliographyBody2 {
         _rawText
       }
       title

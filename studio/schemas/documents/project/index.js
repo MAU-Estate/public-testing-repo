@@ -14,7 +14,8 @@ export default {
     {
       type: 'string',
       name: 'title',
-      title: 'Project Title'
+      title: 'Project Title',
+      validation: Rule => Rule.required()
     },
     {
       name: 'slug',
@@ -22,7 +23,8 @@ export default {
       type: 'slug',
       options: {
         source: 'title'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'date',
@@ -30,22 +32,26 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'MM-DD-YYYY'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'yearText',
       type: 'string',
-      title: 'Display Year'
+      title: 'Display Year',
+      validation: Rule => Rule.required()
     },
     {
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'previewImage'
+      type: 'previewImage',
+      validation: Rule => Rule.required()
     },
     {
       name: 'gallery',
       title: 'Project Images',
-      type: 'galleryObj'
+      type: 'galleryObj',
+      validation: Rule => Rule.required()
     },
     {
       name: 'dimensions',
@@ -55,14 +61,20 @@ export default {
     {
       name: 'collectionsText',
       type: 'string',
-      title: 'Display Collections'
+      title: 'Display Collections',
+      validation: Rule => Rule.required()
     },
     {
       title: 'Collections',
       name: 'collection',
       type: 'array',
       validation: Rule => Rule.required(),
-      of: [{ type: 'projectCollections' }]
+      of: [{ type: 'projectCollections' }],
+      validation: Rule =>
+        Rule.required()
+          .min(1)
+          .max(3)
+          .error('Please choose between 1 and 3 collections')
     },
     {
       name: 'materialsText',
@@ -78,8 +90,8 @@ export default {
       title: 'Materials',
       name: 'material',
       type: 'array',
-      validation: Rule => Rule.required(),
-      of: [{ type: 'projectMaterials' }]
+      of: [{ type: 'projectMaterials' }],
+      validation: Rule => Rule.required()
     },
     {
       title: 'Mediums',

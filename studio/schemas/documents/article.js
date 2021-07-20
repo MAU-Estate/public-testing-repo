@@ -10,12 +10,14 @@ export default {
     {
       name: 'title',
       title: 'Articles name',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'previewImage'
+      type: 'previewImage',
+      validation: Rule => Rule.required()
     },
     {
       name: 'external',
@@ -31,7 +33,12 @@ export default {
       inputComponent: ConditionalField,
       options: {
         condition: document => !document.external
-      }
+      },
+      validation: Rule =>
+        Rule.custom((_, context) => {
+          if (context.document.external) return true
+          else return 'You must choose a gallery for an internal document'
+        })
     },
     {
       name: 'url',
@@ -40,17 +47,24 @@ export default {
       inputComponent: ConditionalField,
       options: {
         condition: document => document.external
-      }
+      },
+      validation: Rule =>
+        Rule.custom((_, context) => {
+          if (!context.document.external) return true
+          else return 'You must choose a valid url for an external document'
+        })
     },
     {
       name: 'author',
       title: 'Author',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'publication',
       title: 'Publication',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'date',
@@ -60,7 +74,8 @@ export default {
         'Year & month will be displayed but all will be used for ordering',
       options: {
         dateFormat: 'MM-DD-YYYY'
-      }
+      },
+      validation: Rule => Rule.required()
     }
   ]
 }

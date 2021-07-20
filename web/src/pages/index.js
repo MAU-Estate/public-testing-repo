@@ -53,10 +53,7 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
   return (
     <div
       className={`transition transition-colors duration-500`}
-      style={{
-        willChange: 'background-color',
-        backgroundColor: 'var(--homeBg)',
-      }}
+      style={{ backgroundColor: 'var(--homeBg)' }}
     >
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">

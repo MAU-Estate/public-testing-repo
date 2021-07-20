@@ -6,7 +6,8 @@ export default {
     {
       name: 'title',
       title: 'Exhibition Title',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'slug',
@@ -14,7 +15,8 @@ export default {
       type: 'slug',
       options: {
         source: 'title'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'date',
@@ -24,38 +26,45 @@ export default {
         'Year will be displayed but month & day will be used for ordering',
       options: {
         dateFormat: 'MM-DD-YYYY'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'isSolo',
       title: 'Is this a solo exhibition',
       type: 'boolean',
-      initialValue: true
+      initialValue: true,
+      validation: Rule => Rule.required()
     },
     {
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'previewImage'
+      type: 'previewImage',
+      validation: Rule => Rule.required()
     },
     {
       name: 'gallery',
       title: 'Images',
-      type: 'galleryObj'
+      type: 'galleryObj',
+      validation: Rule => Rule.required()
     },
     {
       name: 'venue',
       title: 'Venue',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'curator',
       title: 'Curator',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'location',
       title: 'Location',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'body',

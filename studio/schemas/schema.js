@@ -56,11 +56,9 @@ import {
 import medium from './documents/medium'
 import material from './documents/material'
 import exhibition from './documents/exhibition'
-import awards from './documents/awards'
-import bibliographies from './documents/bibliographies'
-import publicCollections from './documents/publicCollections'
-import education from './documents/education'
 import article from './documents/article'
+import homeCarousel from './documents/homeCarousel'
+import newsSlide from './objects/newsSlide'
 
 export default createSchema({
   name: 'maue',
@@ -81,7 +79,9 @@ export default createSchema({
     fellowships,
     press,
     work,
+    homeCarousel,
     // components
+    newsSlide,
     caption,
     seo,
     galleryObj,
@@ -96,10 +96,7 @@ export default createSchema({
     twoColImage,
     // documents
     article,
-    awards,
-    bibliographies,
     collection,
-    education,
     exhibition,
     fellow,
     galleries,
@@ -110,7 +107,6 @@ export default createSchema({
     projectMaterials,
     projectMediums,
     projectCollections,
-    publicCollections,
     siteSettings
   ])
 })

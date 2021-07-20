@@ -177,6 +177,13 @@ export default () =>
             ])
         ),
       S.listItem()
+        .title('Home Carousel')
+        .child(
+          S.document()
+            .schemaType('homeCarousel')
+            .documentId('homeCarousel')
+        ),
+      S.listItem()
         .title('Project Filters')
         .icon(AiFillTags)
         .child(

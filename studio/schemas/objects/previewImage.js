@@ -9,7 +9,8 @@ export default {
       title: 'Alt Text',
       options: {
         isHighlighted: true
-      }
+      },
+      validation: Rule => Rule.required()
     }
   ]
 }

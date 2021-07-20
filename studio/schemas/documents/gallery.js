@@ -42,7 +42,8 @@ export default {
       options: {
         condition: document => !document.isDocument,
         source: 'seo.title'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'backUrl',
@@ -51,7 +52,8 @@ export default {
       inputComponent: ConditionalField,
       options: {
         condition: document => !document.isDocument
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'images',
@@ -60,7 +62,8 @@ export default {
       of: [{ type: 'figure' }, { type: 'twoColImage' }],
       options: {
         layout: 'grid'
-      }
+      },
+      validation: Rule => Rule.required().min(1)
     }
   ]
 }

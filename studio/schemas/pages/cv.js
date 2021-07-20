@@ -112,7 +112,12 @@ export default {
     {
       name: 'groupExhibitionsBody',
       type: 'richText',
-      title: 'Group Exhibitions Body'
+      title: 'Group Exhibitions - Left'
+    },
+    {
+      name: 'groupExhibitionsBody2',
+      type: 'richText',
+      title: 'Group Exhibitions - Right'
     },
     {
       name: 'bibliographyTitle',
@@ -123,7 +128,12 @@ export default {
     {
       name: 'selectedBibliographyBody',
       type: 'richText',
-      title: 'Selected Bibliography Body'
+      title: 'Selected Bibliography - Left'
+    },
+    {
+      name: 'selectedBibliographyBody2',
+      type: 'richText',
+      title: 'Selected Bibliography - Right'
     }
   ]
 }

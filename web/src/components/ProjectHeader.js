@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
+import useKeyPress from '../hooks/useKeyPress'
 
 import Icon from './Icon'
 
@@ -10,6 +11,16 @@ export default function ProjectHeader({
   nextPath,
   prevPath,
 }) {
+  const left = useKeyPress('ArrowLeft')
+  const right = useKeyPress('ArrowRight')
+
+  if (left) {
+    navigate(prevPath)
+  }
+  if (right) {
+    navigate(nextPath)
+  }
+
   return (
     <div className={`${className} sticky py-11 top-0 bg-white z-10`}>
       <div className="border-t border-grey-b mb-t w-full"></div>

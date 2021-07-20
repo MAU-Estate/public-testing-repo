@@ -76,6 +76,7 @@ export default function Gallery({
     autoplay: false,
     arrows: true,
     swipe: true,
+    focusOnSelect: true,
     initialSlide,
     nextArrow: <SliderArrow theme={theme} />,
     prevArrow: <SliderArrow theme={theme} type="next" />,
@@ -83,13 +84,13 @@ export default function Gallery({
   const navGallerySettings = {
     infinite: true,
     afterChange: index => {
-      console.log(typeof index)
       window.history.pushState(
         { path: `${location.pathname}?index=${index}` },
         '',
         `${location.pathname}?index=${index}`
       )
     },
+    accesibility: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
@@ -116,6 +117,7 @@ export default function Gallery({
 
   useEffect(() => {
     setController(sliderCaptionsRef.current)
+    sliderRef.current.innerSlider.list.firstChild.firstChild.focus()
   }, [sliderCaptionsRef])
 
   return (

@@ -9,7 +9,8 @@ export default {
     {
       name: 'title',
       title: `Fellow's Name`,
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       name: 'year',
@@ -17,22 +18,26 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY'
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'avatar',
       type: 'image',
-      title: `Fellow's headshot image`
+      title: `Fellow's headshot image`,
+      validation: Rule => Rule.required()
     },
     {
       name: 'education',
       title: 'Education',
-      type: 'richText'
+      type: 'richText',
+      validation: Rule => Rule.required()
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'richText'
+      type: 'richText',
+      validation: Rule => Rule.required()
     },
     {
       name: 'infoBody',
