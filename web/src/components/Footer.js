@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-4 border-t border-grey-b flex pt-4">
           <div>
             <button
-              className="flex f-2"
+              className="flex f-2 hover:underline"
               onClick={() => {
                 window.scrollTo({
                   top: 0,
@@ -40,12 +40,18 @@ export default function Footer() {
             </button>
           </div>
           <div>
-            <a className="block f-2" href="mailto:estate@maryannunger.com">
+            <a
+              className="block f-2 hover:underline"
+              href="mailto:estate@maryannunger.com"
+            >
               estate@maryannunger.com
             </a>
           </div>
           <div>
-            <a className="block f-2" href="https://instagram.com">
+            <a
+              className="block f-2 hover:underline"
+              href="https://instagram.com"
+            >
               Join us on Instagram
             </a>
           </div>

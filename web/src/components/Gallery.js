@@ -30,12 +30,15 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
     // add search param for index
     <Link
       to={route}
-      className="flex-1 flex"
+      className="flex-1 flex relative group"
       style={{ minHeight: 0 }}
       state={{
         modal: true,
       }}
     >
+      <div className="h-8 w-8 absolute bottom-4 right-4 z-20 transition-opacity opacity-0 group-hover:opacity-100">
+        <Icon name="plus" className="h-full w-full" />
+      </div>
       <SanityImage
         {...src}
         width="1250"
@@ -99,11 +102,11 @@ export const SlideCaption = ({
         <div className="flex flex-0 justify-between">
           {arrows && (
             <div className="f-8 mr-24">
-              <button onClick={goToPrev} className="pr-4">
+              <button onClick={goToPrev} className="pr-4 hover:underline">
                 Prev
               </button>
               |
-              <button onClick={goToNext} className="pl-4">
+              <button onClick={goToNext} className="pl-4 hover:underline">
                 Next
               </button>
             </div>

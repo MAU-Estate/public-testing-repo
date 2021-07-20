@@ -33,7 +33,7 @@ export default function FilterList({
                 htmlFor={slug}
                 className={`filterItem flex items-center f-20 relative pl-5
                   ${isAvailable ? '' : 'opacity-50'}
-                  ${isChecked ? 'text-black' : 'text-grey-b'}
+                  ${isChecked ? 'text-black' : 'text-grey-b hover:text-black'}
                 `}
               >
                 <input

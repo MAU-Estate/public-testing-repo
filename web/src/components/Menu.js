@@ -61,7 +61,7 @@ export default function Menu({ bgImage, menuBgClass }) {
               {NAV_ITEMS.map(item => (
                 <li key={item.path} className="f-1">
                   <Link
-                    className="pb-5 block text-white"
+                    className="pb-5 block text-white hover:underline"
                     to={item.path}
                     onClick={() => setIsOpen(!isOpen)}
                   >

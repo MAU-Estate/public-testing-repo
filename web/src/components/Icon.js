@@ -10,6 +10,7 @@ import { ReactComponent as menuClose } from '../assets/icons/menuClose.svg'
 import { ReactComponent as modalClose } from '../assets/icons/modalClose.svg'
 import { ReactComponent as arrowSignUp } from '../assets/icons/arrowSignUp.svg'
 import { ReactComponent as grid } from '../assets/icons/grid.svg'
+import { ReactComponent as plus } from '../assets/icons/plus.svg'
 
 const icons = {
   logo: Logo,
@@ -23,6 +24,7 @@ const icons = {
   menuClose,
   modalClose,
   grid,
+  plus,
 }
 
 const Icon = props => {

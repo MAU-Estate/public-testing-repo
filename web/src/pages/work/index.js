@@ -340,9 +340,14 @@ const Work = ({
             )}
           </ul>
         ) : (
-          <div className="mt-b mb-e">
+          <div className="pt-b mb-e f-6 pointer-events-auto">
             Your search returned no results<br></br>
-            <button onClick={handleResetFilters}>Reset Filters</button>
+            <button
+              onClick={() => alert('test')}
+              className="underline font-italic cursor-pointer hover:no-underline"
+            >
+              Reset Filters
+            </button>
           </div>
         )}
       </div>
