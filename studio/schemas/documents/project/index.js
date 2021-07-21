@@ -5,6 +5,12 @@ export default {
   title: 'Projects',
   icon: BiPaint,
   type: 'document',
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'slug.current'
+    }
+  },
   fields: [
     {
       type: 'seo',
