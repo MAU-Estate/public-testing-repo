@@ -1,12 +1,11 @@
 import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import SanityImage from 'gatsby-plugin-sanity-image'
 
 import RichTextSingle from './RichTextSingle'
 export default function Figure({
   image,
   className = '',
-  objectFit = 'contain',
+  // objectFit = 'contain',
 }) {
   return (
     <figure className={className}>

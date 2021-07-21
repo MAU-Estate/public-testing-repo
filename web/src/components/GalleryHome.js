@@ -1,17 +1,21 @@
 import React, { useRef } from 'react'
-import { Link } from 'gatsby'
 import Slider from 'react-slick'
-import { GatsbyImage } from 'gatsby-plugin-image'
 
-import RichText from './RichText'
+// import { Link } from 'gatsby'
+// import RichText from './RichText'
 import Icon from './Icon'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 const SlideImage = ({ src, alt }) => {
   return (
-    <GatsbyImage
-      image={src}
-      objectFit={'contain'}
-      objectPosition="center"
+    <SanityImage
+      {...src}
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+        objectPosition: 'center',
+      }}
       alt={alt}
     />
   )
@@ -19,12 +23,7 @@ const SlideImage = ({ src, alt }) => {
 
 const Slide = ({ data }) => {
   if (!data.src) return <></>
-  return (
-    <SlideImage
-      src={data.src.asset.gatsbyImageData}
-      alt={data.src.asset.altText}
-    />
-  )
+  return <SlideImage src={data.src} alt={data.src.asset.altText} />
 }
 
 const SliderArrow = ({ type = 'previous', onClick, theme }) => {
@@ -69,17 +68,7 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
     nextArrow: <SliderArrow theme={theme} />,
     prevArrow: <SliderArrow theme={theme} type="next" />,
   }
-  const navGallerySettings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: false,
-    arrows: false,
-    fade: true,
-    swipe: false,
-  }
   const sliderRef = useRef()
-  // const sliderCaptionsRef = useRef()
 
   return (
     <div className={`Gallery Gallery--home flex-1  ${className}`}>
@@ -92,25 +81,6 @@ export default function Gallery({ slides, className = '', theme = 'dark' }) {
           />
         ))}
       </Slider>
-      {/* <Slider
-        asNavFor={sliderRef.current}
-        ref={slider => (sliderCaptionsRef.current = slider)}
-        {...navGallerySettings}
-        style={{ position: 'relative' }}
-        className="Slider-captions"
-      >
-        {parsedSlides.map((slide, i) => (
-          <SlideCaption
-            key={`${slide._key}-caption`}
-            index={i}
-            galleryLength={slides.length}
-            inline={inline}
-            arrows={false}
-            data={slide}
-            theme={theme}
-          />
-        ))}
-      </Slider> */}
     </div>
   )
 }

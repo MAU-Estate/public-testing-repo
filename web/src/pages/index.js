@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import { InView } from 'react-intersection-observer'
 
@@ -8,8 +8,6 @@ import GalleryHome from '../components/GalleryHome'
 import RichTextSingle from '../components/RichTextSingle'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
-
-const bgColorThreshold = 0.2
 
 const handleBioSectionChange = (inView, entry, bgColor) => {
   const target = entry.target

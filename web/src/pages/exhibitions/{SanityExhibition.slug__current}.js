@@ -9,15 +9,13 @@ import ProjectGallery from '../../components/ProjectGallery'
 export default function exhibition({
   data: {
     sanityExhibition: {
-      artistStatementBody,
       date,
       title,
       id,
       gallery,
       venue,
       curator,
-      body,
-      quotedBody,
+      content,
       isSolo,
       location,
     },
@@ -67,31 +65,18 @@ export default function exhibition({
               <dd className="f-6">{location}</dd>
             </div>
           </dl>
-          <div className="border-t border-grey-b pt-v mt-m">
-            <div className="mb-n">
-              <h2 className="f-25">Original Press Release</h2>
-            </div>
-            <RichTextSingle className="f-6" content={body._rawText} />
-          </div>
-          {artistStatementBody && (
-            <div className="border-t border-grey-b pt-v mt-m">
-              <div className="mb-n">
-                <h2 className="f-25">Artist Statement</h2>
+          {content &&
+            content.map(block => (
+              <div
+                key={block._key}
+                className="border-t border-grey-b pt-v mt-m"
+              >
+                <div className="mb-n">
+                  <h2 className="f-25">{block.header}</h2>
+                </div>
+                <RichTextSingle className="f-6" content={block.body._rawText} />
               </div>
-              <RichTextSingle
-                className="f-6"
-                content={artistStatementBody._rawText}
-              />
-            </div>
-          )}
-          {quotedBody && (
-            <div className="border-t border-grey-b pt-v mt-m">
-              <div className="mb-n">
-                <h2 className="f-25">Quoted</h2>
-              </div>
-              <RichTextSingle className="f-6" content={quotedBody._rawText} />
-            </div>
-          )}
+            ))}
         </div>
         <div className="col-start-6 col-span-7">
           {gallery && gallery.galleryRef && (
@@ -106,22 +91,20 @@ export default function exhibition({
 export const exhibitionQuery = graphql`
   query ($id: String) {
     sanityExhibition(id: { eq: $id }) {
-      artistStatementBody {
-        _rawText
-      }
-      body {
-        _rawText
-      }
       curator
       date(formatString: "YYYY")
       id
       isSolo
       location
+      content {
+        _key
+        header
+        body {
+          _rawText
+        }
+      }
       gallery {
         ...gallery
-      }
-      quotedBody {
-        _rawText
       }
       title
       venue

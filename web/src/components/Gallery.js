@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import { Link } from 'gatsby'
 import Slider from 'react-slick'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import SanityImage from 'gatsby-plugin-sanity-image'
 
 import RichTextSingle from './RichTextSingle'

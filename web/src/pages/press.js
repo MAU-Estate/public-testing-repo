@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
 import SanityImage from 'gatsby-plugin-sanity-image'

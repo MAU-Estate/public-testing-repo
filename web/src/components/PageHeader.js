@@ -5,7 +5,10 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 const PageHeader = ({ images, title, titleClasses = '' }) => {
   const [index, setIndex] = useState()
 
-  useEffect(() => setIndex(Math.floor(Math.random() * images.length)), [])
+  useEffect(
+    () => setIndex(Math.floor(Math.random() * images.length)),
+    [images.length]
+  )
 
   return (
     <div className="relative pt-header pb-b ">
