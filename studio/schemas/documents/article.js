@@ -49,10 +49,14 @@ export default {
         condition: document => document.external
       },
       validation: Rule =>
-        Rule.custom((_, context) => {
+        Rule.custom((content, context) => {
           if (!context.document.external) return true
-          else return 'You must choose a valid url for an external document'
-        })
+          if (!content) {
+            return 'You must choose a valid url for an external document'
+          } else {
+            return true
+          }
+        }).required()
     },
     {
       name: 'author',

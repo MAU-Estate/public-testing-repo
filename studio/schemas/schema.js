@@ -59,6 +59,7 @@ import exhibition from './documents/exhibition'
 import article from './documents/article'
 import homeCarousel from './documents/homeCarousel'
 import newsSlide from './objects/newsSlide'
+import richSection from './objects/richSection'
 
 export default createSchema({
   name: 'maue',
@@ -92,6 +93,7 @@ export default createSchema({
     textColumns,
     figure,
     previewImage,
+    richSection,
     address,
     twoColImage,
     // documents

@@ -67,19 +67,10 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: 'body',
-      title: 'Body Content',
-      type: 'richText'
-    },
-    {
-      name: 'artistStatementBody',
-      title: 'Artist Statement',
-      type: 'richText'
-    },
-    {
-      name: 'quotedBody',
-      title: 'Quoted',
-      type: 'richText'
+      name: 'content',
+      title: 'Content',
+      type: 'array',
+      of: [{ type: 'richSection' }]
     }
   ]
 }

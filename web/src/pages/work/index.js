@@ -343,7 +343,7 @@ const Work = ({
           <div className="pt-b mb-e f-6 pointer-events-auto">
             Your search returned no results<br></br>
             <button
-              onClick={() => alert('test')}
+              onClick={handleResetFilters}
               className="underline font-italic cursor-pointer hover:no-underline"
             >
               Reset Filters

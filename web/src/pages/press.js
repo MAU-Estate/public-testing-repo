@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 const PressPage = ({
   data: { sanityPress: pageData, allSanityArticle: articleNodes },
@@ -52,12 +53,18 @@ const renderArticlePreview = ({
   date,
 }) => (
   <>
-    <GatsbyImage
-      image={previewImage.asset.gatsbyImageData}
-      alt={previewImage.alt}
-      className="aspect-w-1 aspect-h-1 mb-a"
-      objectFit="contain"
-    />
+    <div className="aspect-w-1 aspect-h-1 mb-a">
+      <SanityImage
+        {...previewImage}
+        alt={previewImage.alt}
+        width={250}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+        }}
+      />
+    </div>
     <h3 className="f-26 mb-2">{title}</h3>
     <p className="f-26--light mb-k">{author}</p>
     <p className="f-8 mb-2">{publication}</p>
@@ -84,7 +91,7 @@ export const query = graphql`
         url
         publication
         previewImage {
-          ...image
+          ...ImageWithPreview
         }
         gallery {
           galleryRef {

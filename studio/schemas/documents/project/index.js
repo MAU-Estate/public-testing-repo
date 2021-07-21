@@ -68,7 +68,6 @@ export default {
       title: 'Collections',
       name: 'collection',
       type: 'array',
-      validation: Rule => Rule.required(),
       of: [{ type: 'projectCollections' }],
       validation: Rule =>
         Rule.required()
@@ -84,20 +83,19 @@ export default {
     {
       name: 'era',
       type: 'string',
+      title: 'era',
       hidden: true
     },
     {
       title: 'Materials',
       name: 'material',
       type: 'array',
-      of: [{ type: 'projectMaterials' }],
-      validation: Rule => Rule.required()
+      of: [{ type: 'projectMaterials' }]
     },
     {
       title: 'Mediums',
       name: 'medium',
       type: 'array',
-      validation: Rule => Rule.required(),
       of: [{ type: 'projectMediums' }]
     },
     {
@@ -107,6 +105,6 @@ export default {
     }
   ],
   initialValue: {
-    date: '1990-01-01 00:00'
+    date: '2021-01-01'
   }
 }

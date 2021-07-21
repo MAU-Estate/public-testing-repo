@@ -20,7 +20,7 @@ export default function gallery({
         <>
           {modal ? (
             <div className="absolute inset-0 py-12 flex">
-              <Link to={backPath} className="absolute z-20 top-0 right-0">
+              <Link to={backPath} className="absolute z-30 top-0 right-0">
                 <Icon name="modalClose" className="m-10" />
               </Link>
               <div className="container--large flex flex-1">
@@ -33,7 +33,7 @@ export default function gallery({
             </div>
           ) : (
             <div className="fixed inset-0 py-12 z-30 bg-white flex">
-              <Link to={backPath} className="absolute z-20 top-0 right-0">
+              <Link to={backPath} className="absolute z-30 top-0 right-0">
                 <Icon name="modalClose" className="m-4" />
               </Link>
               <div className="container--large flex flex-1">

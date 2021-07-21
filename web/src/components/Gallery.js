@@ -22,7 +22,6 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
           objectFit: 'cover',
         }}
         alt={alt}
-        className="flex-1"
       />
     )
   }
@@ -36,7 +35,7 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         modal: true,
       }}
     >
-      <div className="h-8 w-8 absolute bottom-4 right-4 z-20 transition-opacity opacity-0 group-hover:opacity-100">
+      <div className="h-8 w-8 absolute top-4 left-4 z-20 transition-opacity opacity-0 group-hover:opacity-100">
         <Icon name="plus" className="h-full w-full" />
       </div>
       <SanityImage

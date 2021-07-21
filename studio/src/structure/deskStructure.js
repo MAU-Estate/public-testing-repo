@@ -161,6 +161,7 @@ export default () =>
               ...S.documentTypeListItems().filter(
                 listItem =>
                   ![
+                    'homeCarousel',
                     'bio',
                     'cv',
                     'contact',
