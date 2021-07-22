@@ -36,7 +36,7 @@ export default {
       },
       validation: Rule =>
         Rule.custom((_, context) => {
-          if (context.document.external) return true
+          if (context.document.external || _.galleryRef) return true
           else return 'You must choose a gallery for an internal document'
         })
     },
@@ -56,7 +56,7 @@ export default {
           } else {
             return true
           }
-        }).required()
+        })
     },
     {
       name: 'author',
