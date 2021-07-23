@@ -62,10 +62,18 @@ export default function Project({
             <dd className="f-6 mb-10">{title}</dd>
             <dt className="f-7 mb-3 uppercase">Year</dt>
             <dd className="f-6 mb-10">{yearText}</dd>
-            <dt className="f-7 mb-3 uppercase">Materials</dt>
-            <dd className="f-6 mb-10">{materialsText}</dd>
-            <dt className="f-7 mb-3 uppercase">Dimensions</dt>
-            <dd className="f-6 mb-10">{dimensions}</dd>
+            {materialsText && (
+              <>
+                <dt className="f-7 mb-3 uppercase">Materials</dt>
+                <dd className="f-6 mb-10">{materialsText}</dd>
+              </>
+            )}
+            {dimensions && (
+              <>
+                <dt className="f-7 mb-3 uppercase">Dimensions</dt>
+                <dd className="f-6 mb-10">{dimensions}</dd>
+              </>
+            )}
             <dt className="f-7 mb-3 uppercase">Collection</dt>
             <dd className="f-6">{collectionsText}</dd>
           </dl>

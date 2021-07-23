@@ -67,7 +67,7 @@ const renderArticlePreview = ({
     <h3 className="f-26 mb-2">{title}</h3>
     <p className="f-26--light mb-k">{author}</p>
     <p className="f-8 mb-2">{publication}</p>
-    <p className="f-8">{date}</p>
+    {date && <p className="f-8">{date}</p>}
   </>
 )
 
