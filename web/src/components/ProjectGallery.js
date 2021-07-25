@@ -18,12 +18,16 @@ const ProjectGallery = ({
           item.src.asset.metadata.dimensions.aspectRatio < 1
         return item._type === 'twoColImage' ? (
           <div key={item._key} className="grid col-span-4 grid-cols-2 mb-a">
-            <Link to={`/gallery/${slugPath}?index=${i}`}>
-              <SanityImage {...item.imageL.src} alt={item.imageL.alt} />
-            </Link>
-            <Link to={`/gallery/${slugPath}?index=${i}`}>
-              <SanityImage {...item.imageR.src} alt={item.imageR.alt} />
-            </Link>
+            {item.imageL && (
+              <Link to={`/gallery/${slugPath}?index=${i}`}>
+                <SanityImage {...item.imageL.src} alt={item.imageL.alt} />
+              </Link>
+            )}
+            {item.imageR && (
+              <Link to={`/gallery/${slugPath}?index=${i}`}>
+                <SanityImage {...item.imageR.src} alt={item.imageR.alt} />
+              </Link>
+            )}
           </div>
         ) : (
           <Link
