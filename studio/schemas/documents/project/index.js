@@ -27,6 +27,11 @@ export default {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      slugify: input =>
+        input
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .slice(0, 200),
       options: {
         source: 'title'
       },
