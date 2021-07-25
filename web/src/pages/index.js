@@ -19,7 +19,7 @@ const handleBioSectionChange = (inView, entry, bgColor) => {
   }
 }
 
-const IndexPage = ({ data: { sanityBio: pageData } }) => {
+const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
   // const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
   const {
     bioCta,
@@ -33,8 +33,11 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
   } = pageData
 
   const [rootMargin, setRootMargin] = useState('-310px')
-  // const rootMargin = '-350px'
-  // const backgroundColor = useRef('white')
+  const [carouselBgColor, setCarouselBgColor] = useState(
+    sanityHomeCarousel.slides[0]._type === 'slide'
+      ? 'bg-transparent'
+      : 'bg-[#4e5c59]'
+  )
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -55,11 +58,14 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
     >
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
+        <div
+          className={`absolute transition transition-colors duration-300 inset-0 right-1/2 ${carouselBgColor}`}
+        />
         <div className="container--tight w-full h-full flex flex-1 relative">
           <GalleryHome
+            onChange={setCarouselBgColor}
             theme="dark"
-            slides={pageData.hero.galleryRef.images}
-            slug={pageData.hero.galleryRef.slug}
+            slides={sanityHomeCarousel.slides}
           />
         </div>
       </div>
@@ -75,8 +81,8 @@ const IndexPage = ({ data: { sanityBio: pageData } }) => {
         className="container pt-e opacity-0 transition-opacity transition duration-500"
       >
         <div className="grid grid-cols-12 mb-g">
-          <div className="col-span-9 mb-a3 mix-blend-multiply">
-            <Figure image={section1.image1} />
+          <div className="col-span-9 mb-a3 ">
+            <Figure image={section1.image1} className="mix-blend-multiply" />
           </div>
           <div className="col-start-2 col-span-4">
             <RichTextSingle
@@ -391,12 +397,31 @@ export default IndexPage
 
 export const query = graphql`
   query HomeQuery {
+    sanityHomeCarousel {
+      slides {
+        ... on SanitySlide {
+          _key
+          _type
+          url
+          image {
+            ...figure
+          }
+        }
+        ... on SanityNewsSlide {
+          _key
+          _type
+          title
+          subhead
+          url
+          image {
+            ...figure
+          }
+        }
+      }
+    }
     sanityBio {
       seo {
         title
-      }
-      hero {
-        ...gallery
       }
       section1 {
         section1bodyLeft {

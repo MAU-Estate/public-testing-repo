@@ -15,11 +15,6 @@ export default {
       type: 'seo'
     },
     {
-      name: 'hero',
-      title: 'Hero Gallery',
-      type: 'galleryObj'
-    },
-    {
       name: 'section1',
       title: 'Intro',
       type: 'bioSection1'

@@ -2,11 +2,7 @@ import React from 'react'
 import SanityImage from 'gatsby-plugin-sanity-image'
 
 import RichTextSingle from './RichTextSingle'
-export default function Figure({
-  image,
-  className = '',
-  // objectFit = 'contain',
-}) {
+export default function Figure({ image, className = '', objectFit = 'cover' }) {
   return (
     <figure className={className}>
       <SanityImage
@@ -17,9 +13,11 @@ export default function Figure({
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          objectFit: objectFit,
+          objectPosition: 'center',
         }}
         className="flex-1"
+        alt={image.alt}
       />
       {image.figcaption && (
         <figcaption className={`flex-1`}>

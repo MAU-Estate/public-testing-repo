@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, navigate } from 'gatsby'
 import useKeyPress from '../hooks/useKeyPress'
 
@@ -11,22 +11,61 @@ export default function ProjectHeader({
   nextPath,
   prevPath,
 }) {
+  const [isSticky, setIsSticky] = useState(false)
   const left = useKeyPress('ArrowLeft')
   const right = useKeyPress('ArrowRight')
 
-  if (left) {
-    navigate(prevPath)
-  }
-  if (right) {
-    navigate(nextPath)
-  }
+  if (left) navigate(prevPath)
+  if (right) navigate(nextPath)
+
+  const element = useRef()
+
+  useEffect(() => {
+    const _element = element.current
+    const callback = e => {
+      setIsSticky(!e[0].isIntersecting)
+    }
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: '20px 0px 0px 0px',
+      threshold: [1],
+    })
+
+    observer.observe(_element)
+
+    return () => {
+      observer.unobserve(_element)
+    }
+  }, [element])
 
   return (
-    <div className={`${className} sticky py-11 top-0 bg-white z-10`}>
+    <div
+      ref={element}
+      className={`${className} sticky pt-11 -top-7 z-10 ${isSticky ? '' : ''}`}
+    >
+      <div
+        className={`absolute inset-0 bg-white ${
+          isSticky ? '-translate-y-4' : ''
+        }`}
+        style={{ zIndex: -1 }}
+      ></div>
       <div className="border-t border-grey-b mb-t w-full"></div>
-      <div className="flex justify-between items-end">
-        <h1 className="f-21">{title}</h1>
-        <div className="h-11 flex items-center">
+      <div
+        className={`flex justify-between items-end ${
+          isSticky ? '-translate-y-3' : ''
+        }`}
+      >
+        <h1
+          className={`f-21 origin-top-left ease-linear transition-transform ${
+            isSticky ? 'scale-75' : ''
+          }`}
+        >
+          {title}
+        </h1>
+        <div
+          className={`h-11 flex items-center origin-top-right ease-linear transition-transform ${
+            isSticky ? 'scale-75' : ''
+          }`}
+        >
           <Link to={backPath} className="flex">
             <Icon name="grid" className="mx-6" />
           </Link>

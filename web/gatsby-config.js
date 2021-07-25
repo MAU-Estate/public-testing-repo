@@ -50,7 +50,7 @@ module.exports = {
       resolve: 'gatsby-plugin-sanity-image',
       options: {
         ...clientConfig.sanity,
-        customImageTypes: ['SanityPreviewImage', 'SanityFigure'],
+        customImageTypes: ['SanityPreviewImage', 'SanityFigure', 'SanitySlide'],
         defaultImageConfig: {
           quality: 35,
           maxWidth: 1000,

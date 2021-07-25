@@ -1,26 +1,14 @@
 export default {
-  name: 'newsSlide',
-  title: 'News Slide',
+  name: 'slide',
+  title: 'Slide',
   type: 'object',
   preview: {
     select: {
-      title: 'title',
+      title: 'image.alt',
       media: 'image.src'
     }
   },
   fields: [
-    {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-      validation: Rule => Rule.required()
-    },
-    {
-      name: 'subhead',
-      title: 'Subhead',
-      type: 'string',
-      validation: Rule => Rule.required()
-    },
     {
       name: 'image',
       type: 'figure',

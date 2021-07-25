@@ -84,7 +84,9 @@
 //     ])
 
 import S from '@sanity/desk-tool/structure-builder'
+import { FiSettings } from 'react-icons/fi'
 import { AiFillTags } from 'react-icons/ai'
+import { BiCarousel } from 'react-icons/bi'
 import { GrDocument } from 'react-icons/gr'
 
 export default () =>
@@ -179,6 +181,7 @@ export default () =>
         ),
       S.listItem()
         .title('Home Carousel')
+        .icon(BiCarousel)
         .child(
           S.document()
             .schemaType('homeCarousel')
@@ -200,6 +203,7 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Settings')
+        .icon(FiSettings)
         .child(
           S.document()
             .schemaType('siteSettings')

@@ -1,8 +1,11 @@
 import ConditionalField from 'sanity-plugin-conditional-field'
 
+import { GrGallery } from 'react-icons/gr'
+
 export default {
   name: 'gallery',
   title: 'Galleries',
+  icon: GrGallery,
   type: 'document',
   preview: {
     select: {

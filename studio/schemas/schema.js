@@ -60,6 +60,7 @@ import article from './documents/article'
 import homeCarousel from './documents/homeCarousel'
 import newsSlide from './objects/newsSlide'
 import richSection from './objects/richSection'
+import slide from './objects/slide'
 
 export default createSchema({
   name: 'maue',
@@ -83,6 +84,7 @@ export default createSchema({
     homeCarousel,
     // components
     newsSlide,
+    slide,
     caption,
     seo,
     galleryObj,
