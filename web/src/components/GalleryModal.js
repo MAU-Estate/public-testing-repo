@@ -108,10 +108,14 @@ export default function Gallery({
   slides.forEach(slide => {
     if (slide._type === 'figure') parsedSlides.push(slide)
     if (slide._type === 'twoColImage') {
-      slide.imageL._key = `${slide._key}-left`
-      slide.imageR._key = `${slide._key}-right`
-      parsedSlides.push(slide.imageL)
-      parsedSlides.push(slide.imageR)
+      if (slide.imageL) {
+        slide.imageL._key = `${slide._key}-left`
+        parsedSlides.push(slide.imageL)
+      }
+      if (slide.imageR) {
+        slide.imageR._key = `${slide._key}-right`
+        parsedSlides.push(slide.imageR)
+      }
     }
   })
 
