@@ -26,8 +26,6 @@ export default function exhibition({
   if (!currentItem.next) currentItem.next = edges[0].node
   if (!currentItem.previous) currentItem.previous = edges[edges.length - 1].node
 
-  console.log(gallery)
-
   return (
     <div className="container mt-a2 mb-i">
       <Helmet bodyAttributes={{ class: 'theme--light' }} />

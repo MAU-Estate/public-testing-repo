@@ -12,8 +12,12 @@ export default function gallery({
   },
 }) {
   const backPath =
-    backUrl === '/' ? `/#${slug.current}` : `/${backUrl}/${slug.current}`
-  // set initial slide by presence of search param slide=x
+    backUrl === '/'
+      ? `/#${slug.current}`
+      : backUrl === 'press'
+      ? `/${backUrl}#${slug.current}`
+      : `/${backUrl}/${slug.current}`
+
   return (
     <ModalRoutingContext.Consumer>
       {({ modal, closeTo }) => (
