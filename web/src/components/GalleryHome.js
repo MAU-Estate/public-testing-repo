@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import Slider from 'react-slick'
 
 // import { Link } from 'gatsby'
@@ -7,37 +7,130 @@ import Icon from './Icon'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import RichTextSingle from './RichTextSingle'
 
-const SlideImage = ({ className = '', image, alt }) => {
+const SlideImage = ({ className = '', dimensions, image, alt }) => {
+  const imageContainer = useRef()
+  const [slideDimensions, setSlideDimensions] = useState()
+
+  useEffect(() => {
+    if (imageContainer.current) {
+      const element = imageContainer.current
+      const { clientWidth: width, clientHeight: height } = element
+      // console.log(
+      //   width / dimensions.aspectRatio,
+      //   height * dimensions.aspectRatio
+      // )
+      // console.log(width / dimensions.aspectRatio / width)
+
+      const isLandscape = dimensions.aspectRatio > 1
+
+      const constrainedAspectRatio = isLandscape
+        ? width / dimensions.width
+        : height / dimensions.height
+
+      // if width is less than height
+      // console.log(
+      //   (width / dimensions.aspectRatio / width) *
+      //     (height * dimensions.aspectRatio)
+      // )
+      console.log(constrainedAspectRatio)
+      const constrainedDimensions = isLandscape
+        ? {
+            width: width,
+            height: dimensions.height * constrainedAspectRatio,
+          }
+        : {
+            width: dimensions.width * constrainedAspectRatio,
+            height: height,
+            // height: 100,
+          }
+      // console.log('container', width, height)
+      // console.log('constrainedAspectRatio', constrainedAspectRatio)
+      // console.log('constrainedDimensions', constrainedDimensions)
+      // console.log((width / dimensions.aspectRatio / width) * height)
+      // console.log(dimensions.width, dimensions.height)
+      // console.log((width / dimensions.width) * dimensions.height)
+      // const constrainedDimensions = {
+      //   width: (height / dimensions.height) * dimensions.width,
+      //   height: (width / dimensions.width) * dimensions.height,
+      // }
+      setSlideDimensions({
+        imageDimensions: {
+          width: dimensions.width,
+          height: dimensions.height,
+        },
+        constrainedDimensions,
+        containerDimensions: {
+          width,
+          height,
+        },
+        isLandscape,
+      })
+    }
+  }, [imageContainer, dimensions])
+  console.log(slideDimensions)
   return (
-    <figure className={`${className} flex flex-col flex-1`}>
-      <div className="flex-1" style={{ minHeight: 0 }}>
-        <SanityImage
-          {...image.src}
+    <figure className={`${className} flex flex-1 justify-center`}>
+      <div
+        className="flex flex-1 flex-col"
+        style={{
+          maxWidth: `${
+            slideDimensions
+              ? `${slideDimensions.constrainedDimensions.width}px`
+              : 'initial'
+          }`,
+        }}
+      >
+        <div
+          className="flex-1"
+          ref={imageContainer}
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            objectPosition: 'center',
+            minHeight: 0,
           }}
-          alt={alt}
-        />
-      </div>
-      {image.figcaption && (
-        <figcaption className={`flex-none`}>
-          {image.figcaption && (
-            <RichTextSingle
-              content={image.figcaption._rawText}
-              className={`pt-c f-8 text-white`}
-            />
+        >
+          {slideDimensions && (
+            <div
+              className=""
+              style={{
+                height: `${slideDimensions.constrainedDimensions.height}px`,
+                width: `${slideDimensions.constrainedDimensions.width}px`,
+              }}
+            >
+              <SanityImage
+                {...image.src}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  objectPosition: 'center',
+                }}
+                alt={alt}
+              />
+            </div>
           )}
-        </figcaption>
-      )}
+        </div>
+        {image.figcaption && (
+          <figcaption className={`flex-none w-full`}>
+            {image.figcaption && (
+              <RichTextSingle
+                content={image.figcaption._rawText}
+                className={`pt-c f-8 text-white`}
+              />
+            )}
+          </figcaption>
+        )}
+      </div>
     </figure>
   )
 }
 
 const Slide = ({ data }) => {
-  return <SlideImage image={data.image} alt={data.image.alt} />
+  return (
+    <SlideImage
+      image={data.image}
+      alt={data.image.alt}
+      dimensions={data.image.src.asset.metadata.dimensions}
+    />
+  )
 }
 
 const NewsSlide = ({ data }) => {
@@ -97,7 +190,7 @@ export default function Gallery({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     swipe: false,
     beforeChange: (_, newIdx) => {
