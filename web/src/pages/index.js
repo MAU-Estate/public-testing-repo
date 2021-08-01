@@ -32,7 +32,8 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
     section7,
   } = pageData
 
-  const [rootMargin, setRootMargin] = useState('-310px')
+  const [rootMargin, setRootMargin] = useState()
+
   const [carouselBgColor, setCarouselBgColor] = useState(
     sanityHomeCarousel.slides[0]._type === 'slide'
       ? 'bg-transparent'
@@ -40,16 +41,20 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
   )
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    const handleResize = () => {
+    if (typeof window !== 'undefined') {
       setRootMargin(`-${window.innerHeight / 2}px`)
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
+      window.addEventListener('resize', () =>
+        setRootMargin(`-${window.innerHeight / 2}px`)
+      )
+      return () => {
+        window.removeEventListener('resize', () =>
+          setRootMargin(`-${window.innerHeight / 2}px`)
+        )
+      }
     }
   })
+
+  console.log(rootMargin)
 
   return (
     <div

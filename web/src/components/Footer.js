@@ -1,8 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Icon from './Icon'
 
 export default function Footer() {
+  const [mailchimpState, setMailchimpState] = useState()
+  const [mailchimpError, setMailchimpError] = useState('')
+
+  const handleMailingListSubmit = async e => {
+    e.preventDefault()
+
+    const email = document.getElementById('email')
+    mailchimpState && setMailchimpState('')
+    fetch('/.netlify/functions/addEmailToMailchimp', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: email.value,
+    })
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (data) {
+        if (data.status === 400) {
+          setMailchimpState('ERROR')
+          setMailchimpError(
+            data.title === 'Member Exists'
+              ? `${email.value} is already signed up`
+              : data.detail
+          )
+        } else {
+          setMailchimpState('SUCCESS')
+          email.value = ''
+        }
+      })
+  }
+
   return (
     <div className="bg-black-b pt-d pb-d3">
       <div className="container text-white">
@@ -12,15 +45,37 @@ export default function Footer() {
             <p className="f-3 w-72 mr-20">
               Keep in touch with the estate through our newsletter:
             </p>
-            <div className="w-72">
-              <label className="h-14 block w-full relative border-b border-grey-b flex text-grey-c">
-                <input
-                  type="text"
-                  className="bg-transparent f-4 outline-none text-grey-c"
-                  placeholder="ENTER YOUR EMAIL ADDRESS"
-                />
-                <Icon name="arrowSignUp" className="h-7 mt-[5px]" />
-              </label>
+            <div>
+              <form onSubmit={handleMailingListSubmit} className="w-72">
+                <label className="h-14 block w-full relative border-b border-grey-b flex text-grey-c">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className={`bg-transparent f-4 outline-none text-grey-c ${
+                      mailchimpState === 'SUCCESS' ? 'opacity-0' : ''
+                    }`}
+                    placeholder="ENTER YOUR EMAIL ADDRESS"
+                    required
+                  />
+                  <button
+                    onClick={handleMailingListSubmit}
+                    className="h-7 mt-[5px]"
+                  >
+                    <Icon name="arrowSignUp" className="" />
+                  </button>
+                  {mailchimpState === 'SUCCESS' && (
+                    <div className="absolute left-0 bottom-0 top-0 right-0 flex items-center">
+                      <p className="f-4 uppercase">Thank you.</p>
+                    </div>
+                  )}
+                </label>
+                {mailchimpState === 'ERROR' && (
+                  <div className="mt-4">
+                    <p className="f-4 uppercase">{mailchimpError}</p>
+                  </div>
+                )}
+              </form>
             </div>
           </div>
         </div>
