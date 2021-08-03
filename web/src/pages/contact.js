@@ -4,9 +4,11 @@ import { graphql } from 'gatsby'
 import PageHeader from '../components/PageHeader'
 import RichText from '../components/RichText'
 import RichTextSingle from '../components/RichTextSingle'
+import Seo from '../components/Seo'
 
 const ContactPage = ({ data: { sanityContact: pageData } }) => {
   const {
+    seo,
     title,
     headerImages,
     advisorsBody,
@@ -18,6 +20,7 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
   } = pageData
   return (
     <>
+      <Seo {...seo} />
       <PageHeader
         images={headerImages}
         title={title}
@@ -66,6 +69,10 @@ export const query = graphql`
     sanityContact {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       title
       body {

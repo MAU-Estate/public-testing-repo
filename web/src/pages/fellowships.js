@@ -97,6 +97,10 @@ export const query = graphql`
     sanityFellowships {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       title
       headerImages {

@@ -6,6 +6,7 @@ import { Context } from '../../context'
 import ProjectHeader from '../../components/ProjectHeader'
 import RichTextSingle from '../../components/RichTextSingle'
 import ProjectGallery from '../../components/ProjectGallery'
+import Seo from '../../components/Seo'
 
 export default function Project({
   data: {
@@ -18,6 +19,7 @@ export default function Project({
       materialsText,
       collectionsText,
       yearText,
+      seo,
     },
     allSanityProject: { edges },
   },
@@ -43,6 +45,7 @@ export default function Project({
 
   return (
     <div className="container mt-a2">
+      <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <ProjectHeader
         className={''}
@@ -107,6 +110,13 @@ export const exhibitionQuery = graphql`
       }
     }
     sanityProject(id: { eq: $id }) {
+      seo {
+        description
+        title
+        image {
+          ...Image
+        }
+      }
       id
       title
       materialsText

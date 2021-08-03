@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Seo from '../../components/Seo'
 
 const ExhibitionsPage = ({
   data: { sanityExhibitions: pageData, allSanityExhibition: exhibitionNodes },
@@ -10,6 +11,7 @@ const ExhibitionsPage = ({
   const { nodes: exhibitions } = exhibitionNodes
   return (
     <div className="container pt-25">
+      <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
         <h1 className="f-5 ml-[-21px]">{seo.title}</h1>
@@ -48,6 +50,10 @@ export const query = graphql`
     sanityExhibitions {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
     }
     allSanityExhibition {

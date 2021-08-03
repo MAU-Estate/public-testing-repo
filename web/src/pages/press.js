@@ -78,6 +78,10 @@ export const query = graphql`
     sanityPress {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       title
     }

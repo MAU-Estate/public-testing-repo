@@ -4,11 +4,12 @@ import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
 
 import GalleryModal from '../../components/GalleryModal'
 import Icon from '../../components/Icon'
+import Seo from '../../components/Seo'
 
 export default function gallery({
   location,
   data: {
-    sanityGallery: { images, slug, backUrl },
+    sanityGallery: { images, slug, backUrl, seo },
   },
 }) {
   const backPath =
@@ -37,6 +38,7 @@ export default function gallery({
             </div>
           ) : (
             <div className="fixed inset-0 py-12 z-30 bg-white flex">
+              <Seo {...seo} />
               <Link to={backPath} className="absolute z-30 top-0 right-0">
                 <Icon name="modalClose" className="m-4" />
               </Link>
@@ -58,6 +60,13 @@ export default function gallery({
 export const galleryQuery = graphql`
   query ($id: String) {
     sanityGallery(id: { eq: $id }) {
+      seo {
+        description
+        title
+        image {
+          ...Image
+        }
+      }
       slug {
         current
       }

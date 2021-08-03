@@ -8,6 +8,7 @@ import GalleryHome from '../components/GalleryHome'
 import RichTextSingle from '../components/RichTextSingle'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
+import Seo from '../components/Seo'
 
 const handleBioSectionChange = (inView, entry, bgColor) => {
   const target = entry.target
@@ -22,6 +23,7 @@ const handleBioSectionChange = (inView, entry, bgColor) => {
 const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
   // const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
   const {
+    seo,
     bioCta,
     section1,
     section2,
@@ -54,13 +56,14 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
     }
   })
 
-  console.log(rootMargin)
+  // console.log(rootMargin)
 
   return (
     <div
       className={`transition transition-colors duration-500`}
       style={{ backgroundColor: 'var(--homeBg)' }}
     >
+      <Seo {...seo} />
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div
@@ -427,6 +430,10 @@ export const query = graphql`
     sanityBio {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       section1 {
         section1bodyLeft {

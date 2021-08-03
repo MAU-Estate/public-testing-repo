@@ -5,10 +5,12 @@ import { Helmet } from 'react-helmet'
 import ProjectHeader from '../../components/ProjectHeader'
 import RichTextSingle from '../../components/RichTextSingle'
 import ProjectGallery from '../../components/ProjectGallery'
+import Seo from '../../components/Seo'
 
 export default function exhibition({
   data: {
     sanityExhibition: {
+      seo,
       date,
       title,
       id,
@@ -28,6 +30,7 @@ export default function exhibition({
 
   return (
     <div className="container mt-a2 mb-i">
+      <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <ProjectHeader
         backPath={'/exhibitions'}
@@ -89,6 +92,13 @@ export default function exhibition({
 export const exhibitionQuery = graphql`
   query ($id: String) {
     sanityExhibition(id: { eq: $id }) {
+      seo {
+        description
+        title
+        image {
+          ...Image
+        }
+      }
       curator
       date(formatString: "YYYY")
       id

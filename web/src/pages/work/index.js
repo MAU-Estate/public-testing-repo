@@ -8,6 +8,7 @@ import { Context } from '../../context'
 import useObserver from '../../hooks/useObserver'
 
 import FilterList from '../../components/FilterList'
+import Seo from '../../components/Seo'
 
 const getFeaturedProjects = (featuredProjects, projects) => {
   const featuredIds = featuredProjects.map(project => project.id)
@@ -187,6 +188,7 @@ const Work = ({
 
   return (
     <div className="container pt-25 relative">
+      <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="pb-a3 pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5 ml-[-9px]">{title}</h1>
@@ -362,6 +364,10 @@ export const workQuery = graphql`
     sanityWork {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       title
       featured {

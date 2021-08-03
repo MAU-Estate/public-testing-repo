@@ -31,6 +31,7 @@ const ProjectGallery = ({
           </div>
         ) : (
           <Link
+            key={item._key}
             to={`/gallery/${slugPath}?index=${i}`}
             className={`mb-a ${isPortrait ? 'col-span-3' : 'col-span-4'}`}
           >

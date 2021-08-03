@@ -4,6 +4,11 @@ export default {
   type: 'document',
   fields: [
     {
+      type: 'seo',
+      name: 'seo',
+      title: 'SEO'
+    },
+    {
       name: 'title',
       title: 'Exhibition Title',
       type: 'string',

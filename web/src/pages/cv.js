@@ -4,9 +4,11 @@ import { graphql } from 'gatsby'
 import PageHeader from '../components/PageHeader'
 import RichText from '../components/RichText'
 import RichTextSingle from '../components/RichTextSingle'
+import Seo from '../components/Seo'
 
 const CvPage = ({ data: { sanityCv: pageData } }) => {
   const {
+    seo,
     awardsBody,
     awardsTitle,
     bibliographyTitle,
@@ -41,6 +43,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
   ]
   return (
     <>
+      <Seo {...seo} />
       <PageHeader
         images={headerImages}
         title={title}
@@ -183,6 +186,10 @@ export const query = graphql`
     sanityCv {
       seo {
         title
+        description
+        image {
+          ...Image
+        }
       }
       awardsBody {
         _rawText
