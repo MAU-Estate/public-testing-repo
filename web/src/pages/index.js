@@ -54,7 +54,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         )
       }
     }
-  })
+  }, [setRootMargin])
 
   // console.log(rootMargin)
 

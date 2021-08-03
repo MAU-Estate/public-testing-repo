@@ -1,6 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import SanityImage from 'gatsby-plugin-sanity-image'
+import Icon from '../components/Icon'
+
+const EnlargeIndicator = () => (
+  <div className="h-8 w-8 absolute top-4 left-4 transition-opacity opacity-0 group-hover:opacity-100">
+    <Icon name="plus" className="h-full w-full" />
+  </div>
+)
 
 const ProjectGallery = ({
   className = '',
@@ -19,12 +26,20 @@ const ProjectGallery = ({
         return item._type === 'twoColImage' ? (
           <div key={item._key} className="grid col-span-4 grid-cols-2 mb-a">
             {item.imageL && (
-              <Link to={`/gallery/${slugPath}?index=${i}`}>
+              <Link
+                to={`/gallery/${slugPath}?index=${i}`}
+                className="relative group"
+              >
+                <EnlargeIndicator />
                 <SanityImage {...item.imageL.src} alt={item.imageL.alt} />
               </Link>
             )}
             {item.imageR && (
-              <Link to={`/gallery/${slugPath}?index=${i}`}>
+              <Link
+                to={`/gallery/${slugPath}?index=${i}`}
+                className="relative group"
+              >
+                <EnlargeIndicator />
                 <SanityImage {...item.imageR.src} alt={item.imageR.alt} />
               </Link>
             )}
@@ -33,8 +48,11 @@ const ProjectGallery = ({
           <Link
             key={item._key}
             to={`/gallery/${slugPath}?index=${i}`}
-            className={`mb-a ${isPortrait ? 'col-span-3' : 'col-span-4'}`}
+            className={`mb-a relative group ${
+              isPortrait ? 'col-span-3' : 'col-span-4'
+            }`}
           >
+            <EnlargeIndicator />
             <SanityImage {...item.src} alt={item.alt} />
           </Link>
         )

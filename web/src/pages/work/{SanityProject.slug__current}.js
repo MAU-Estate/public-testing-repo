@@ -61,7 +61,10 @@ export default function Project({
         />
         <div className="col-start-10 col-span-3">
           <dl className="mb-22">
-            <dt className="f-7 mb-3 uppercase">Work Title</dt>
+            {/* custom spacing */}
+            <dt className="f-7 mb-3 uppercase">
+              Work<span className="ml-[6px]">Title</span>
+            </dt>
             <dd className="f-6 mb-10">{title}</dd>
             <dt className="f-7 mb-3 uppercase">Year</dt>
             <dd className="f-6 mb-10">{yearText}</dd>

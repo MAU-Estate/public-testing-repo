@@ -25,13 +25,19 @@ const PressPage = ({
             <li key={id} className="mb-l relative">
               <div className="absolute right-[-23px] top-0 bottom-0 border-r border-grey-b"></div>
               {external ? (
-                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
                   {renderArticlePreview(article)}
                 </a>
               ) : (
                 <Link
                   id={article.gallery.galleryRef.slug.current}
                   to={`/gallery/${article.gallery.galleryRef.slug.current}`}
+                  className="hover:underline"
                 >
                   {renderArticlePreview(article)}
                 </Link>
@@ -85,7 +91,7 @@ export const query = graphql`
       }
       title
     }
-    allSanityArticle {
+    allSanityArticle(sort: { order: DESC, fields: date }) {
       nodes {
         id
         author

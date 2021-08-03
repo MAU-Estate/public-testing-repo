@@ -140,6 +140,7 @@
   body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
+    text-decoration-thickness: 10px;
   }
 
   .no-scroll,

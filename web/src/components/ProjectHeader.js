@@ -38,31 +38,28 @@ export default function ProjectHeader({
   }, [element])
 
   return (
-    <div
-      ref={element}
-      className={`${className} sticky pt-11 -top-7 z-10 ${isSticky ? '' : ''}`}
-    >
+    <div ref={element} className={`${className} sticky pt-11 -top-7 z-10`}>
       <div
-        className={`absolute inset-0 bg-white ${
+        className={`absolute inset-0 bg-white ease-linear transition-transform duration-75 ${
           isSticky ? '-translate-y-4' : ''
         }`}
         style={{ zIndex: -1 }}
       ></div>
       <div className="border-t border-grey-b mb-t w-full"></div>
       <div
-        className={`flex justify-between items-end ${
+        className={`flex justify-between items-start ease-linear transition-transform duration-75 ${
           isSticky ? '-translate-y-3' : ''
         }`}
       >
         <h1
-          className={`f-21 origin-top-left ease-linear transition-transform ${
+          className={`f-21 origin-top-left ease-linear transition-transform duration-75 ${
             isSticky ? 'scale-75' : ''
           }`}
         >
           {title}
         </h1>
         <div
-          className={`h-11 flex items-center origin-top-right ease-linear transition-transform ${
+          className={`md:ml-10 -h-11 flex items-center origin-top-right ease-linear transition-transform duration-75 ${
             isSticky ? 'scale-75' : ''
           }`}
         >

@@ -83,6 +83,7 @@ export default function Footer() {
           <div>
             <button
               className="flex f-2 hover:underline"
+              style={{ textDecorationThickness: '.5px' }}
               onClick={() => {
                 window.scrollTo({
                   top: 0,
@@ -98,6 +99,7 @@ export default function Footer() {
             <a
               className="block f-2 hover:underline"
               href="mailto:estate@maryannunger.com"
+              style={{ textDecorationThickness: '.5px' }}
             >
               estate@maryannunger.com
             </a>
@@ -106,6 +108,7 @@ export default function Footer() {
             <a
               className="block f-2 hover:underline"
               href="https://instagram.com"
+              style={{ textDecorationThickness: '.5px' }}
             >
               Join us on Instagram
             </a>

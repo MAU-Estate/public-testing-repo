@@ -99,47 +99,41 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               </ul>
             </nav>
 
-            <div className="grid grid-cols-2 border-t border-grey-b pt-a mb-20">
+            <div
+              className="grid grid-cols-2 border-grey-b mb-20 "
+              id={`${slugify(exhibitionsTitle, { lower: true })}`}
+            >
+              <div
+                id={`${slugify(awardsTitle, { lower: true })}`}
+                className="border-b pt-t mb-t col-span-2"
+              ></div>
               <div>
-                <h3
-                  id={`${slugify(exhibitionsTitle, { lower: true })}`}
-                  className="f-7 mb-1 uppercase"
-                >
-                  {exhibitionsTitle}
-                </h3>
+                <h3 className="f-7 mb-1 uppercase">{exhibitionsTitle}</h3>
                 <RichText className="f-6" content={exhibitionsBody._rawText} />
               </div>
               <div>
-                <h3
-                  id={`${slugify(awardsTitle, { lower: true })}`}
-                  className="f-7 mb-1 uppercase"
-                >
-                  {awardsTitle}
-                </h3>
+                <h3 className="f-7 mb-1 uppercase">{awardsTitle}</h3>
                 <RichText className="f-6" content={awardsBody._rawText} />
               </div>
             </div>
 
-            <div className="grid grid-cols-2 border-t border-grey-b pt-a mb-20">
+            <div
+              className="grid grid-cols-2 border-grey-b mb-20"
+              id={`${slugify(publicCollectionsTitle, { lower: true })}`}
+            >
+              <div
+                className="border-b pt-t mb-t col-span-2"
+                id={`${slugify(commisionsTitle, { lower: true })}`}
+              ></div>
               <div>
-                <h3
-                  id={`${slugify(publicCollectionsTitle, { lower: true })}`}
-                  className="f-7 mb-1 uppercase"
-                >
-                  {publicCollectionsTitle}
-                </h3>
+                <h3 className="f-7 mb-1 uppercase">{publicCollectionsTitle}</h3>
                 <RichText
                   className="f-6"
                   content={publicCollectionsBody._rawText}
                 />
               </div>
               <div>
-                <h3
-                  id={`${slugify(commisionsTitle, { lower: true })}`}
-                  className="f-7 mb-1 uppercase"
-                >
-                  {commisionsTitle}
-                </h3>
+                <h3 className="f-7 mb-1 uppercase">{commisionsTitle}</h3>
                 <RichText
                   className="f-6"
                   content={permanentSiteCommissionsBody._rawText}
@@ -147,20 +141,23 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               </div>
             </div>
 
-            <div className="border-t border-grey-b pt-a mb-20">
-              <h3
+            <div className="border-grey-b mb-20">
+              <div
+                className="border-b pt-t mb-t"
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
-                className="f-7 mb-4 uppercase"
-              >
-                {groupExhibitionsTitle}
-              </h3>
+              ></div>
+              <h3 className="f-7 mb-4 uppercase">{groupExhibitionsTitle}</h3>
               <div className="grid grid-cols-2 f-6">
                 <RichText content={groupExhibitionsBody._rawText} />
                 <RichText content={groupExhibitionsBody2._rawText} />
               </div>
             </div>
 
-            <div className="border-t border-grey-b pt-a mb-20">
+            <div className="border-t border-grey-b mb-20">
+              <div
+                className="border-b pt-t mb-t"
+                id={`${slugify(bibliographyTitle, { lower: true })}`}
+              ></div>
               <h3
                 id={`${slugify(bibliographyTitle, { lower: true })}`}
                 className="f-7 mb-4 uppercase"

@@ -24,7 +24,7 @@ export default function gallery({
       {({ modal, closeTo }) => (
         <>
           {modal ? (
-            <div className="absolute inset-0 py-12 flex">
+            <div className="absolute inset-0 pt-12 pb-8 flex">
               <Link to={backPath} className="absolute z-30 top-0 right-0">
                 <Icon name="modalClose" className="m-10" />
               </Link>
@@ -37,7 +37,7 @@ export default function gallery({
               </div>
             </div>
           ) : (
-            <div className="fixed inset-0 py-12 z-30 bg-white flex">
+            <div className="fixed inset-0 pt-12 pb-8 z-30 bg-white flex">
               <Seo {...seo} />
               <Link to={backPath} className="absolute z-30 top-0 right-0">
                 <Icon name="modalClose" className="m-4" />

@@ -20,6 +20,9 @@ module.exports = {
       italic: `var(--font-primary--italic)`,
     },
     extend: {
+      transitionProperty: {
+        underline: 'text-decoration',
+      },
       maxWidth: {
         'prose-50': '50ch',
       },

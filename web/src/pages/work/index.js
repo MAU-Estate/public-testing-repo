@@ -323,7 +323,7 @@ const Work = ({
                 )
                 return (
                   <li key={slug.current}>
-                    <Link to={slug.current}>
+                    <Link to={slug.current} className="hover:underline">
                       <GatsbyImage
                         image={previewImage.asset.gatsbyImageData}
                         alt={previewImage.alt}
