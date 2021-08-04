@@ -75,7 +75,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
           </div>
           <div className="col-span-2">
             <nav className="mb-r">
-              <ul className="flex flex-wrap -mb-2">
+              <ul className="flex flex-wrap -mb-8">
                 {navItems.map((item, i) => (
                   <li className="mb-3">
                     <a
@@ -100,7 +100,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             </nav>
 
             <div
-              className="grid grid-cols-2 border-grey-b mb-20 "
+              className="grid grid-cols-2 border-grey-b mb-h "
               id={`${slugify(exhibitionsTitle, { lower: true })}`}
             >
               <div
@@ -118,7 +118,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             </div>
 
             <div
-              className="grid grid-cols-2 border-grey-b mb-20"
+              className="grid grid-cols-2 border-grey-b mb-h"
               id={`${slugify(publicCollectionsTitle, { lower: true })}`}
             >
               <div
@@ -141,7 +141,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               </div>
             </div>
 
-            <div className="border-grey-b mb-20">
+            <div className="border-grey-b mb-h">
               <div
                 className="border-b pt-t mb-t"
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
@@ -153,7 +153,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               </div>
             </div>
 
-            <div className="border-t border-grey-b mb-20">
+            <div className="border-grey-b">
               <div
                 className="border-b pt-t mb-t"
                 id={`${slugify(bibliographyTitle, { lower: true })}`}

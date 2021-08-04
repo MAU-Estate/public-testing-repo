@@ -6,8 +6,9 @@ import Slider from 'react-slick'
 import Icon from './Icon'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import RichTextSingle from './RichTextSingle'
+import { Link } from 'gatsby'
 
-const SlideImage = ({ className = '', dimensions, image, alt }) => {
+const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
   const imageContainer = useRef()
   const [slideDimensions, setSlideDimensions] = useState()
 
@@ -32,7 +33,7 @@ const SlideImage = ({ className = '', dimensions, image, alt }) => {
       //   (width / dimensions.aspectRatio / width) *
       //     (height * dimensions.aspectRatio)
       // )
-      console.log(constrainedAspectRatio)
+      // console.log(constrainedAspectRatio)
       const constrainedDimensions = isLandscape
         ? {
             width: width,
@@ -113,7 +114,7 @@ const SlideImage = ({ className = '', dimensions, image, alt }) => {
             {image.figcaption && (
               <RichTextSingle
                 content={image.figcaption._rawText}
-                className={`pt-c f-8 text-white`}
+                className={`pt-c f-8 text-white group-hover:underline mb-1`}
               />
             )}
           </figcaption>
@@ -125,18 +126,20 @@ const SlideImage = ({ className = '', dimensions, image, alt }) => {
 
 const Slide = ({ data }) => {
   return (
-    <SlideImage
-      image={data.image}
-      alt={data.image.alt}
-      dimensions={data.image.src.asset.metadata.dimensions}
-    />
+    <Link to={data.url} className="flex flex-1 group">
+      <SlideImage
+        image={data.image}
+        alt={data.image.alt}
+        dimensions={data.image.src.asset.metadata.dimensions}
+      />
+    </Link>
   )
 }
 
 const NewsSlide = ({ data }) => {
   return (
-    <div className="flex-1 grid grid-cols-2 gap-0">
-      <div className="text-white text-center flex flex-col justify-center px-12">
+    <Link to={data.url} className="flex-1 grid grid-cols-2 gap-0 group">
+      <div className="text-white text-center flex flex-col justify-center px-12 group-hover:underline">
         <p className="f-11">{data.subhead}</p>
         <div className="border-t pt-u mt-t">
           <h1 className="f-10">{data.title}</h1>
@@ -145,7 +148,7 @@ const NewsSlide = ({ data }) => {
       <div className="flex flex-1 px-12">
         <SlideImage image={data.image} alt={data.image.alt} />
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -165,7 +168,6 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
             pointer-events-auto
             h-full
             flex
-            w-1/2
             items-center
             ${isDark ? 'text-white' : 'text-black'}
             ${isPrevious ? 'justify-end' : 'justify-start '}
@@ -190,7 +192,7 @@ export default function Gallery({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     arrows: true,
     swipe: false,
     beforeChange: (_, newIdx) => {

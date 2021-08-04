@@ -14,14 +14,13 @@ const handleBioSectionChange = (inView, entry, bgColor) => {
   const target = entry.target
   if (inView) {
     document.documentElement.style.setProperty('--homeBg', `var(--${bgColor})`)
-    target.classList.add('opacity-100')
+    target.classList.add('section--inView')
   } else {
-    target.classList.remove('opacity-100')
+    target.classList.remove('section--inView')
   }
 }
 
 const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
-  // const [bodyClasses, setBodyClasses] = useState('bg-white text-black')
   const {
     seo,
     bioCta,
@@ -86,19 +85,19 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           handleBioSectionChange(inView, entry, 'white')
         }}
         id="intro"
-        className="container pt-e opacity-0 transition-opacity transition duration-500"
+        className="container pt-e"
       >
         <div className="grid grid-cols-12 mb-g">
           <div className="col-span-9 mb-a3 ">
             <Figure image={section1.image1} className="mix-blend-multiply" />
           </div>
-          <div className="col-start-2 col-span-4">
+          <div className="col-start-2 col-span-4 opacity-0 transition-opacity transition duration-500">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyLeft._rawText}
             />
           </div>
-          <div className="col-start-6 col-span-4">
+          <div className="col-start-6 col-span-4 opacity-0 transition-opacity transition duration-500">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyRight._rawText}

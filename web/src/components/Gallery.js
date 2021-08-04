@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'gatsby'
 import Slider from 'react-slick'
 import SanityImage from 'gatsby-plugin-sanity-image'
@@ -157,6 +157,8 @@ function Gallery({
   inline = true,
   cover = true,
 }) {
+  const [controller, setController] = useState()
+
   const settings = {
     infinite: true,
     slidesToShow: 1,
@@ -199,6 +201,10 @@ function Gallery({
   const firstSlideAspectRatio =
     (firstSlideDimensions.height / firstSlideDimensions.width) * 100
 
+  useEffect(() => {
+    setController(sliderRef.current)
+  }, [sliderCaptionsRef])
+
   return (
     <div className={`Gallery ${className}`} id={slug?.current}>
       <div
@@ -218,7 +224,7 @@ function Gallery({
         </Slider>
       </div>
       <Slider
-        asNavFor={sliderRef.current}
+        asNavFor={controller}
         ref={slider => (sliderCaptionsRef.current = slider)}
         {...navGallerySettings}
         style={{ position: 'relative' }}
