@@ -14,9 +14,9 @@ const handleBioSectionChange = (inView, entry, bgColor) => {
   const target = entry.target
   if (inView) {
     document.documentElement.style.setProperty('--homeBg', `var(--${bgColor})`)
-    target.classList.add('section--inView')
+    target.classList.add('fadeSection--inView')
   } else {
-    target.classList.remove('section--inView')
+    target.classList.remove('fadeSection--inView')
   }
 }
 
@@ -91,13 +91,13 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           <div className="col-span-9 mb-a3 ">
             <Figure image={section1.image1} className="mix-blend-multiply" />
           </div>
-          <div className="col-start-2 col-span-4 opacity-0 transition-opacity transition duration-500">
+          <div className="col-start-2 col-span-4 fadeItem">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyLeft._rawText}
             />
           </div>
-          <div className="col-start-6 col-span-4 opacity-0 transition-opacity transition duration-500">
+          <div className="col-start-6 col-span-4 fadeItem">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyRight._rawText}
@@ -112,7 +112,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'black-b')
         }}
-        className="py-g text-white opacity-0 transition-opacity transition duration-500"
+        className="py-g text-white fadeItem"
       >
         <div className="container">
           <div className="grid grid-cols-12">
@@ -165,7 +165,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'white')
         }}
-        className="py-g opacity-0 transition-opacity transition duration-500"
+        className="py-g fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -216,7 +216,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'bio-a')
         }}
-        className="py-g text-white opacity-0 transition-opacity transition duration-500"
+        className="py-g text-white fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-span-5">
@@ -248,7 +248,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'white')
         }}
-        className="BeringStrait py-g opacity-0 transition-opacity transition duration-500"
+        className="BeringStrait py-g fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
@@ -295,7 +295,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'bio-b')
         }}
-        className="Guerilla py-g opacity-0 transition-opacity transition duration-500"
+        className="Guerilla py-g fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-7 col-end-13">
@@ -349,7 +349,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         onChange={(inView, entry) => {
           handleBioSectionChange(inView, entry, 'bio-c')
         }}
-        className="py-g text-white opacity-0 transition-opacity transition duration-500"
+        className="py-g text-white fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-5">

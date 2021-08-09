@@ -82,14 +82,7 @@ export const query = graphql`
         _rawText
       }
       headerImages {
-        asset {
-          gatsbyImageData(layout: FULL_WIDTH)
-          metadata {
-            dimensions {
-              aspectRatio
-            }
-          }
-        }
+        ...ImageWithPreview
       }
       infoBody {
         _rawText

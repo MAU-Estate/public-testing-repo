@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
-import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 const PageHeader = ({ images, title, titleClasses = '' }) => {
   const [index, setIndex] = useState()
@@ -14,10 +13,9 @@ const PageHeader = ({ images, title, titleClasses = '' }) => {
     <div className="relative pt-header pb-b ">
       <div className="absolute inset-0 flex">
         {index !== undefined && (
-          <GatsbyImage
-            image={images[index].asset.gatsbyImageData}
+          <SanityImage
+            {...images[index]}
             alt="header background image"
-            objectFit="cover"
             className="flex-1"
           />
         )}

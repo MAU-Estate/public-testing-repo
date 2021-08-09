@@ -13,12 +13,12 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
         {...src}
         width="1250"
         // image={src}
-        // objectFit={cover ? 'cover' : 'contain'}
+        // objectFit={}
         // objectPosition="center"
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          objectFit: cover ? 'cover' : 'contain',
         }}
         alt={alt}
       />
@@ -40,13 +40,12 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
       <SanityImage
         {...src}
         width="1250"
-        // image={src}
-        // objectFit={cover ? 'cover' : 'contain'}
-        // objectPosition="center"
+        objectFit={cover ? 'cover' : 'contain'}
+        objectPosition="center"
         style={{
           width: '100%',
           height: '100%',
-          objectFit: 'cover',
+          objectFit: cover ? 'cover' : 'contain',
         }}
         alt={alt}
         className="flex-1"
@@ -155,7 +154,7 @@ function Gallery({
   className = '',
   theme = 'dark',
   inline = true,
-  cover = true,
+  cover = false,
 }) {
   const [controller, setController] = useState()
 
@@ -228,7 +227,9 @@ function Gallery({
         ref={slider => (sliderCaptionsRef.current = slider)}
         {...navGallerySettings}
         style={{ position: 'relative' }}
-        className="Slider-captions"
+        className="
+          Slider-captions mx-auto container--tight
+        "
       >
         {parsedSlides.map((slide, i) => (
           <SlideCaption

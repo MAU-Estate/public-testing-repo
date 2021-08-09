@@ -216,14 +216,7 @@ export const query = graphql`
       }
       groupExhibitionsTitle
       headerImages {
-        asset {
-          gatsbyImageData(layout: FULL_WIDTH)
-          metadata {
-            dimensions {
-              aspectRatio
-            }
-          }
-        }
+        ...ImageWithPreview
       }
       life
       lifeTitle
