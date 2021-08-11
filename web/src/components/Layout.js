@@ -4,11 +4,15 @@ import { StaticQuery, graphql, Link } from 'gatsby'
 import Footer from './Footer'
 import Menu from './Menu'
 import Icon from './Icon'
+import { useCurrentBreakpoint } from '../hooks/useCurrentBreakpoint'
 
 const Layout = ({ location, children, className = '' }) => {
   // const isHome = location.pathname === '/'
   // const pathname = isHome ? 'home' : location.pathname.slice(1)
   // const cleanedPathname = pathname.replace(/\//i, '')
+
+  const { isMedium } = useCurrentBreakpoint()
+
   let menuBgClass
   switch (location.pathname) {
     case '/contact':
@@ -40,9 +44,10 @@ const Layout = ({ location, children, className = '' }) => {
             menuBgClass={menuBgClass}
             bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
           />
+
           <div
             className="flex flex-col flex-1 relative"
-            style={{ marginLeft: '41px' }}
+            style={{ marginLeft: isMedium ? '41px' : '' }}
           >
             <header className="pt-a absolute z-10 left-0 right-0">
               <div className="container">

@@ -59,7 +59,7 @@
     --unit-t: calc(var(--unit) * 3);
     --unit-u: calc(var(--unit) * 4);
     --unit-v: calc(var(--unit) * 3);
-    --unit-header: calc(var(--unit) * 37);
+    --unit-header: calc(var(--unit) * 24);
   }
 
   @screen md {
@@ -89,6 +89,7 @@
       --unit-s: calc(var(--unit) * 48);
       --unit-t: calc(var(--unit) * 5);
       --unit-u: calc(var(--unit) * 7);
+      --unit-header: calc(var(--unit) * 37);
     }
   }
 
@@ -215,7 +216,8 @@
       margin-left: auto;
       margin-right: auto;
       max-width: 1600px;
-      @apply px-12;
+      @apply px-6;
+      @apply md:px-12;
     }
 
     .container--tight {

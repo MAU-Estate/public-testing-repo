@@ -27,8 +27,8 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
         titleClasses="ml-[-12px]"
       />
       <div className="bg-black text-white pb-i">
-        <div className="container pt-b grid grid-cols-12">
-          <div className="col-span-5">
+        <div className="container pt-b md:grid grid-cols-12">
+          <div className="sm-only:mb-24 col-span-5">
             <RichTextSingle content={body._rawText} className="f-27" />
           </div>
           <div className="col-start-7 col-span-3 border-t border-grey-b pt-4">

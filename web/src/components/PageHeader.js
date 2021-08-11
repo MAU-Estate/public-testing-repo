@@ -10,11 +10,16 @@ const PageHeader = ({ images, title, titleClasses = '' }) => {
   )
 
   return (
-    <div className="relative pt-header pb-b ">
+    <div className="relative pt-header pb-10 md:pb-b ">
       <div className="absolute inset-0 flex">
         {index !== undefined && (
           <SanityImage
             {...images[index]}
+            style={{
+              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
+            }}
             alt="header background image"
             className="flex-1"
           />
