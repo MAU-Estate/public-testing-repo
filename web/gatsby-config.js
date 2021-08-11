@@ -54,7 +54,6 @@ module.exports = {
         defaultImageConfig: {
           quality: 35,
           maxWidth: 1000,
-          format: 'webp',
           fit: 'clip',
           auto: 'format',
         },
