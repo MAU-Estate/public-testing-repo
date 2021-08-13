@@ -26,9 +26,12 @@ export default function gallery({
           {modal ? (
             <div className="absolute inset-0 pt-12 pb-8 flex">
               <Link to={backPath} className="absolute z-30 top-0 right-0">
-                <Icon name="modalClose" className="m-10" />
+                <Icon
+                  name="modalClose"
+                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-10"
+                />
               </Link>
-              <div className="container--large flex flex-1">
+              <div className="mx-6 md:container--large flex flex-1">
                 <GalleryModal
                   location={location}
                   slides={images}
@@ -40,9 +43,12 @@ export default function gallery({
             <div className="fixed inset-0 pt-12 pb-8 z-30 bg-white flex">
               <Seo {...seo} />
               <Link to={backPath} className="absolute z-30 top-0 right-0">
-                <Icon name="modalClose" className="m-4" />
+                <Icon
+                  name="modalClose"
+                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4"
+                />
               </Link>
-              <div className="container--large flex flex-1">
+              <div className="mx-6 md:container--large flex flex-1">
                 <GalleryModal
                   location={location}
                   slides={images}

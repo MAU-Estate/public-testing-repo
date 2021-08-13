@@ -68,6 +68,20 @@
   display: flex !important;
 }
 
+.Gallery--home .slick-slider,
+.Gallery--modal .slick-slider {
+  @screen sm-only {
+    flex-wrap: wrap;
+  }
+}
+
+.Gallery--home .slick-list,
+.Gallery--modal .slick-list {
+  @screen sm-only {
+    min-width: 100%;
+  }
+}
+
 .slick-track:before,
 .slick-track:after {
   display: table;

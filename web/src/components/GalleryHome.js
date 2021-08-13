@@ -36,7 +36,6 @@ const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
       width: dimensions.width,
       height: dimensions.height,
     }
-    console.log('useEffect')
     setSlideDimensions(getSlideDimensions(container, caption, imageDimensions))
     window.addEventListener('resize', () =>
       setSlideDimensions(
@@ -49,7 +48,7 @@ const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
           getSlideDimensions(container, caption, imageDimensions)
         )
       )
-  }, [container])
+  }, [container, dimensions.width, dimensions.height])
 
   return (
     <figure
@@ -136,7 +135,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`absolute z-20 inset-0 flex flex-1 h-full pointer-events-none ${
+      className={`sm-only:order-1 sm-only:w-1/2 md:absolute z-20 inset-0 flex md:flex-1 md:h-full pointer-events-none ${
         isPrevious ? 'justify-end' : 'justify-start'
       }`}
     >
@@ -145,7 +144,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
         className={`
             focus:outline-none
             pointer-events-auto
-            h-full
+            md:h-full
             flex
             items-center
             ${isDark ? 'text-white' : 'text-black'}

@@ -5,6 +5,7 @@ import PageHeader from '../components/PageHeader'
 import RichText from '../components/RichText'
 import RichTextSingle from '../components/RichTextSingle'
 import Seo from '../components/Seo'
+import { useCurrentBreakpoint } from '../hooks/useCurrentBreakpoint'
 
 const CvPage = ({ data: { sanityCv: pageData } }) => {
   const {
@@ -41,18 +42,22 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     groupExhibitionsTitle,
     bibliographyTitle,
   ]
+
+  const { isSmall, atMedium } = useCurrentBreakpoint()
+
   return (
     <>
       <Seo {...seo} />
       <PageHeader
         images={headerImages}
         title={title}
-        titleClasses="ml-[-12px]"
+        titleClasses="ml-[-4px] md:ml-[-12px]"
         index={Math.floor(Math.random() * headerImages.length)}
       />
       <div className="bg-black text-white">
-        <div className="container grid grid-cols-3 pb-i pt-b">
-          <div>
+        <div className="container md:grid md:grid-cols-3 pb-i pt-12 md:pt-b">
+          {isSmall && <CVNav items={navItems} className="pb-12" />}
+          <div className="border-grey-b sm-only:border-t sm-only:pt-12">
             <div className="mb-10">
               <h3 className="f-7 mb-3 uppercase">{lifeTitle}</h3>
               <p className="f-6">{life}</p>
@@ -64,7 +69,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 content={educationBody._rawText}
               />
             </div>
-            <div className="border-t border-grey-b pt-r">
+            <div className="border-t border-grey-b pt-r sm-only:mb-24">
               <p className="f-6">
                 {downloadCVLabel}{' '}
                 <a href={download.asset.url} className="link">
@@ -74,65 +79,41 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             </div>
           </div>
           <div className="col-span-2">
-            <nav className="mb-r">
-              <ul className="flex flex-wrap -mb-8">
-                {navItems.map((item, i) => (
-                  <li className="mb-3">
-                    <a
-                      href={`#${slugify(item, { lower: true })}`}
-                      className={`block f-7  ${
-                        i < navItems.length - 1 ? ' mr-2' : ''
-                      }`}
-                    >
-                      <span
-                        className={`
-                          inline-block uppercase border-white hover:underline
-                          ${i < navItems.length - 1 ? 'pr-2 border-r-2' : ''}
-                        `}
-                        style={{ lineHeight: '1' }}
-                      >
-                        {item}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-
+            {atMedium && <CVNav items={navItems} className="mb-r" />}
             <div
-              className="grid grid-cols-2 border-grey-b mb-h "
+              className="md:grid grid-cols-2 mb-h "
               id={`${slugify(exhibitionsTitle, { lower: true })}`}
             >
               <div
                 id={`${slugify(awardsTitle, { lower: true })}`}
-                className="border-b pt-t mb-t col-span-2"
+                className="border-b border-grey-b pt-t mb-t col-span-2"
               ></div>
-              <div>
+              <div className="sm-only:mb-20">
                 <h3 className="f-7 mb-1 uppercase">{exhibitionsTitle}</h3>
                 <RichText className="f-6" content={exhibitionsBody._rawText} />
               </div>
-              <div>
+              <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
                 <h3 className="f-7 mb-1 uppercase">{awardsTitle}</h3>
                 <RichText className="f-6" content={awardsBody._rawText} />
               </div>
             </div>
 
             <div
-              className="grid grid-cols-2 border-grey-b mb-h"
+              className="md:grid grid-cols-2 border-grey-b mb-h"
               id={`${slugify(publicCollectionsTitle, { lower: true })}`}
             >
               <div
                 className="border-b pt-t mb-t col-span-2"
                 id={`${slugify(commisionsTitle, { lower: true })}`}
               ></div>
-              <div>
+              <div className="sm-only:mb-20">
                 <h3 className="f-7 mb-1 uppercase">{publicCollectionsTitle}</h3>
                 <RichText
                   className="f-6"
                   content={publicCollectionsBody._rawText}
                 />
               </div>
-              <div>
+              <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
                 <h3 className="f-7 mb-1 uppercase">{commisionsTitle}</h3>
                 <RichText
                   className="f-6"
@@ -147,7 +128,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
               ></div>
               <h3 className="f-7 mb-4 uppercase">{groupExhibitionsTitle}</h3>
-              <div className="grid grid-cols-2 f-6">
+              <div className="md:grid grid-cols-2 f-6">
                 <RichText content={groupExhibitionsBody._rawText} />
                 <RichText content={groupExhibitionsBody2._rawText} />
               </div>
@@ -164,7 +145,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               >
                 {bibliographyTitle}
               </h3>
-              <div className="grid grid-cols-2 f-6">
+              <div className="md:grid grid-cols-2 f-6">
                 <RichText content={selectedBibliographyBody._rawText} />
                 <RichText content={selectedBibliographyBody2._rawText} />
               </div>
@@ -238,3 +219,28 @@ export const query = graphql`
     }
   }
 `
+
+const CVNav = ({ items, className }) => (
+  <nav className={className}>
+    <ul className="md:flex flex-wrap -mb-8">
+      {items.map((item, i) => (
+        <li className="mb-6 md:mb-3">
+          <a
+            href={`#${slugify(item, { lower: true })}`}
+            className={`block f-7  ${i < items.length - 1 ? ' mr-2' : ''}`}
+          >
+            <span
+              className={`
+                          inline-block uppercase md:border-white hover:underline
+                          ${i < items.length - 1 ? 'md:pr-2 md:border-r-2' : ''}
+                        `}
+              style={{ lineHeight: '1' }}
+            >
+              {item}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)

@@ -1,0 +1,8 @@
+.Menu-toggle,
+.no-scroll .Menu-toggle {
+  @apply text-white;
+}
+
+.theme--light .Menu-toggle {
+  @apply text-black;
+}

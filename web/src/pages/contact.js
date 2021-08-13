@@ -31,7 +31,7 @@ const ContactPage = ({ data: { sanityContact: pageData } }) => {
           <div className="sm-only:mb-24 col-span-5">
             <RichTextSingle content={body._rawText} className="f-27" />
           </div>
-          <div className="col-start-7 col-span-3 border-t border-grey-b pt-4">
+          <div className="sm-only:mb-25 col-start-7 col-span-3 border-t border-grey-b pt-4">
             <RichText content={infoBody._rawText} />
           </div>
           <div className="col-start-10 col-span-3">

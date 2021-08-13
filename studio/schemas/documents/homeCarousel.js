@@ -14,8 +14,3 @@ export default {
     }
   ]
 }
-
-// slides
-// single image / caption / alt / ref to project / exhibition / article
-// news card / image with alt / caption / link
-//// title // subhead

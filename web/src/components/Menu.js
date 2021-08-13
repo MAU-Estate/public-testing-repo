@@ -20,7 +20,7 @@ const NAV_ITEMS = [
 export default function Menu({ bgImage, menuBgClass }) {
   const [isOpen, setIsOpen] = useState(false)
   const esc = useKeyPress('Escape')
-  const { isMedium, isLarge } = useCurrentBreakpoint()
+  const { atMedium, isLarge } = useCurrentBreakpoint()
 
   // look at location and set whether button bg is black or black-c (contact, cv, fellowships)
 
@@ -29,13 +29,13 @@ export default function Menu({ bgImage, menuBgClass }) {
   }, [esc, isOpen])
   return (
     <>
-      <Helmet bodyAttributes={{ class: `${isOpen ? 'no-scroll' : ''}` }} />
+      {isOpen && <Helmet bodyAttributes={{ class: 'no-scroll' }} />}
       <div
         className={`
           ${isOpen ? '' : 'pointer-events-none'}
           fixed z-30 inset-0 flex`}
       >
-        {isMedium && (
+        {atMedium && (
           <button
             className={`absolute h-full w-full inset-0 block transition-all
               ${
@@ -54,7 +54,7 @@ export default function Menu({ bgImage, menuBgClass }) {
             ${isLarge ? 'pl-20 pr-96' : 'flex-1 px-6'}
             ${isOpen ? '' : '-translate-x-full'}
           `}
-          style={{ marginLeft: isMedium ? '41px' : '' }}
+          style={{ marginLeft: atMedium ? '41px' : '' }}
         >
           <div className="left-0 top-0 bottom-0 absolute flex">
             <GatsbyImage image={bgImage} alt="" objectFit="cover" />
@@ -62,7 +62,7 @@ export default function Menu({ bgImage, menuBgClass }) {
           <nav
             className={`
               relative z-10
-              ${isMedium ? 'mt-11' : 'mt-6'}
+              ${atMedium ? 'mt-11' : 'mt-6'}
             `}
           >
             <Link to="/" onClick={() => setIsOpen(!isOpen)}>
@@ -89,7 +89,7 @@ export default function Menu({ bgImage, menuBgClass }) {
         </div>
       </div>
 
-      {isMedium ? (
+      {atMedium ? (
         <div
           className="fixed z-30 flex items-start justify-center left-0 top-0 bottom-0"
           style={{ width: '41px' }}
@@ -121,7 +121,7 @@ export default function Menu({ bgImage, menuBgClass }) {
             <span className="sr-only">menu {isOpen ? 'close' : 'open'}</span>
             <Icon
               name={isOpen ? 'menuClose' : 'menu'}
-              className="w-5 h-5 text-white"
+              className="Menu-toggle w-5 h-5 "
             />
           </button>
         </div>

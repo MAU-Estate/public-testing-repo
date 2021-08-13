@@ -54,10 +54,10 @@ export default function Project({
         nextPath={`/work/${node.next.slug.current}`}
         prevPath={`/work/${node.previous.slug.current}`}
       />
-      <div className="grid grid-cols-12 mt-20 mb-i">
+      <div className="md:grid grid-cols-12 mt-12 md:mt-20 mb-i">
         <ProjectGallery
           data={gallery}
-          className="col-span-8 grid grid-cols-4"
+          className="sm-only:mb-4 col-span-8 grid md:grid-cols-4"
         />
         <div className="col-start-10 col-span-3">
           <dl className="mb-22">

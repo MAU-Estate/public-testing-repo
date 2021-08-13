@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="md:flex justify-between mb-d2">
           <Icon
             name="logo"
-            className="sm-only:mb-20 sm-only:pr-8 w-full md:w-[520px]"
+            className="sm-only:mb-20 sm-only:pr-8 sm-only:w-full sm-only:max-w-[400px] w-[520px]md:w-[520px]"
           />
           <div className="md:flex items-end">
             <p className="sm-only:mb-8 f-3 w-64 md:w-72 md:mr-20">

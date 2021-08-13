@@ -13,10 +13,10 @@ const ExhibitionsPage = ({
     <div className="container pt-25 mb-i">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="mb-b pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
-        <h1 className="f-5 ml-[-21px]">{seo.title}</h1>
+      <div className="mb-b md:pt-12 pb-a3 border-b border-grey-b flex justify-between items-end">
+        <h1 className="f-5 ml-[-7px] md:ml-[-21px]">{seo.title}</h1>
       </div>
-      <ul className="grid grid-cols-2">
+      <ul className="grid md:grid-cols-2">
         {exhibitions.map(exhibition => {
           return (
             <li className="mb-l">

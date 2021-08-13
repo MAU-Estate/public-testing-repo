@@ -48,6 +48,7 @@ export const useCurrentBreakpoint = () => {
     breakpoint,
     isSmall: breakpoint.value === 'small',
     isMedium: breakpoint.value === 'medium',
+    atMedium: breakpoint.value === 'medium' || breakpoint.value === 'large',
     isLarge: breakpoint.value === 'large',
   }
 }

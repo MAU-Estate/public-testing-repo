@@ -26,12 +26,12 @@ const FellowshipsPage = ({
       <PageHeader
         images={headerImages}
         title={title}
-        titleClasses="ml-[-21px]"
+        titleClasses="ml-[-6px] md:ml-[-21px]"
       />
-      <div className="pt-b bg-black text-white">
+      <div className="pt-8 md:pt-b bg-black text-white">
         <div className="container">
-          <div className="grid grid-cols-12 mb-p">
-            <div className="col-span-5">
+          <div className="grid md:grid-cols-12 mb-p">
+            <div className="col-span-5 sm-only:mb-10">
               <RichTextSingle
                 className="f-27"
                 content={headerBodyLeft._rawText}
@@ -50,9 +50,9 @@ const FellowshipsPage = ({
               <h2 className="f-28">
                 {fellow.year} {recipientLabel}
               </h2>
-              <div className="grid grid-cols-12 mt-n">
-                <div className="grid col-span-6 grid-cols-3">
-                  <div className="col-span-1">
+              <div className="grid md:grid-cols-12 mt-n">
+                <div className="md:grid col-span-6 md:grid-cols-3">
+                  <div className="col-span-1 sm-only:mb-12">
                     <GatsbyImage
                       className="aspect-w-1 aspect-h-1 rounded-full"
                       image={fellow.avatar.asset.gatsbyImageData}
@@ -63,10 +63,12 @@ const FellowshipsPage = ({
                     <div className="mb-q">
                       <h3 className="f-28">{fellow.title}</h3>
                     </div>
-                    <RichTextSingle
-                      className="f-29 text-grey-d"
-                      content={fellow.education._rawText}
-                    />
+                    <div className="sm-only:mb-20">
+                      <RichTextSingle
+                        className="f-29 text-grey-d"
+                        content={fellow.education._rawText}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="col-span-5">

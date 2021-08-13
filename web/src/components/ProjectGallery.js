@@ -24,7 +24,10 @@ const ProjectGallery = ({
           item._type !== 'twoColImage' &&
           item.src.asset.metadata.dimensions.aspectRatio < 1
         return item._type === 'twoColImage' ? (
-          <div key={item._key} className="grid col-span-4 grid-cols-2 mb-a">
+          <div
+            key={item._key}
+            className="sm-only:gap-y-a grid col-span-4 md:grid-cols-2 mb-a "
+          >
             {item.imageL && (
               <Link
                 to={`/gallery/${slugPath}?index=${i}`}

@@ -38,40 +38,43 @@ export default function ProjectHeader({
   }, [element])
 
   return (
-    <div ref={element} className={`${className} sticky pt-11 -top-7 z-10`}>
+    <div
+      ref={element}
+      className={`${className} sm-only:pb-4 sticky pt-11 -top-7 z-10`}
+    >
       <div
         className={`absolute inset-0 bg-white ease-linear transition-transform duration-75 ${
-          isSticky ? '-translate-y-4' : ''
+          isSticky ? 'md:-translate-y-4' : ''
         }`}
         style={{ zIndex: -1 }}
       ></div>
       <div className="border-t border-grey-b mb-t w-full"></div>
       <div
         className={`flex justify-between items-start ease-linear transition-transform duration-75 ${
-          isSticky ? '-translate-y-3' : ''
+          isSticky ? 'md:-translate-y-3' : ''
         }`}
       >
         <h1
           className={`f-21 origin-top-left ease-linear transition-transform duration-75 ${
-            isSticky ? 'scale-75' : ''
+            isSticky ? 'md:scale-75' : ''
           }`}
         >
           {title}
         </h1>
         <div
           className={`md:ml-10 -h-11 flex items-center origin-top-right ease-linear transition-transform duration-75 ${
-            isSticky ? 'scale-75' : ''
+            isSticky ? 'md:scale-75' : ''
           }`}
         >
           <Link to={backPath} className="flex">
-            <Icon name="grid" className="mx-6" />
+            <Icon name="grid" className="w-[24px] md:w-[36px] mx-6" />
           </Link>
           <div className="border-r border-grey-b self-stretch"></div>
           <Link to={prevPath} className="flex pl-6 pr-3">
-            <Icon name="arrowLeft" className="w-[22px]" />
+            <Icon name="arrowLeft" className="w-[14px] md:w-[22px]" />
           </Link>
           <Link to={nextPath} className="flex pl-3">
-            <Icon name="arrowRight" className="w-[22px]" />
+            <Icon name="arrowRight" className="w-[14px] md:w-[22px]" />
           </Link>
         </div>
       </div>

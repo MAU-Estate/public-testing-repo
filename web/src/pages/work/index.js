@@ -9,6 +9,7 @@ import useObserver from '../../hooks/useObserver'
 
 import FilterList from '../../components/FilterList'
 import Seo from '../../components/Seo'
+import { useCurrentBreakpoint } from '../../hooks/useCurrentBreakpoint'
 
 const getFeaturedProjects = (featuredProjects, projects) => {
   const featuredIds = featuredProjects.map(project => project.id)
@@ -108,6 +109,7 @@ const Work = ({
   },
 }) => {
   const { setProjectEdges, setProjectFilterString } = useContext(Context)
+  const { atMedium, isSmall } = useCurrentBreakpoint()
   const [activeFilters, setActiveFilters] = useState(
     location.search
       ? queryString.parse(location.search, { arrayFormat: 'comma' })
@@ -190,7 +192,7 @@ const Work = ({
     <div className="container pt-25 relative">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="pb-a3 pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
+      <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
         <h1 className="f-5 ml-[-9px]">{title}</h1>
 
         {/* radios */}
@@ -228,18 +230,34 @@ const Work = ({
             <label htmlFor="all">All</label>
           </div>
         </div>
-        <button
-          onClick={() => setIsFilterVisible(!isFilterVisible)}
-          className={`rounded-md border border-black py-1 px-4 ${
-            hasFiltering ? 'bg-grey-e' : ''
-          }`}
-          style={{ width: '157px' }}
-        >
-          <span className="f-9 block uppercase">
-            {isFilterVisible ? 'Close' : 'Filter'}
-          </span>
-        </button>
+        {atMedium && (
+          <FilterButton
+            onClick={() => setIsFilterVisible(!isFilterVisible)}
+            isVisible={isFilterVisible}
+            hasFiltering={hasFiltering}
+          />
+        )}
       </div>
+      {isSmall && (
+        <div className="flex justify-between mt-6">
+          <FilterButton
+            onClick={() => setIsFilterVisible(!isFilterVisible)}
+            isVisible={isFilterVisible}
+            hasFiltering={hasFiltering}
+          />
+          {isFilterVisible && (
+            <div className="flex items-start">
+              <button
+                className={`${hasFiltering ? '' : 'text-grey-d'}`}
+                onClick={handleResetFilters}
+                disabled={!hasFiltering}
+              >
+                <div className="f-9--light uppercase">Reset Filters</div>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Filter */}
       <div
@@ -248,7 +266,7 @@ const Work = ({
           isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
         }`}
       >
-        <div className="flex">
+        <div className="sm-only:grid grid-cols-2 gap-y-8 md:flex">
           <FilterList
             title="Medium"
             className="flex-1"
@@ -259,7 +277,7 @@ const Work = ({
           />
           <FilterList
             title="Era"
-            className="flex-1 ml-20"
+            className="flex-1 md:ml-20"
             activeItems={activeFilters.era}
             // availableFilters={availableFilters.era}
             onSelect={filters => handleSetActiveFilter('era', filters)}
@@ -274,7 +292,7 @@ const Work = ({
             title="Collection"
             activeItems={activeFilters.collection}
             // availableFilters={availableFilters.collection}
-            className="flex-1 ml-20"
+            className="flex-1 md:ml-20"
             onSelect={filters => handleSetActiveFilter('collection', filters)}
             items={collections.nodes}
           />
@@ -282,20 +300,22 @@ const Work = ({
             title="Materials"
             activeItems={activeFilters.material}
             // availableFilters={availableFilters.material}
-            className="flex-1 ml-20"
+            className="flex-1 md:ml-20"
             onSelect={filters => handleSetActiveFilter('material', filters)}
             items={materials.nodes}
           />
         </div>
-        <div className="flex items-start">
-          <button
-            className={`${hasFiltering ? '' : 'text-grey-d'}`}
-            onClick={handleResetFilters}
-            disabled={!hasFiltering}
-          >
-            <div className="f-9--light uppercase">Reset Filters</div>
-          </button>
-        </div>
+        {atMedium && (
+          <div className="flex items-start">
+            <button
+              className={`${hasFiltering ? '' : 'text-grey-d'}`}
+              onClick={handleResetFilters}
+              disabled={!hasFiltering}
+            >
+              <div className="f-9--light uppercase">Reset Filters</div>
+            </button>
+          </div>
+        )}
       </div>
       <div
         className={`transform transition-transform pointer-events-none`}
@@ -305,7 +325,7 @@ const Work = ({
         }}
       >
         {filteredProjects && filteredProjects.length ? (
-          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-3 gap-x-11 gap-y-h">
+          <ul className="pointer-events-auto mt-b mb-e grid md:grid-cols-2 lg:grid-cols-3 gap-x-11 gap-y-h">
             {filteredProjects.map(
               (
                 {
@@ -434,3 +454,19 @@ export const workQuery = graphql`
     }
   }
 `
+
+const FilterButton = ({ className, onClick, isVisible, hasFiltering }) => (
+  <button
+    onClick={onClick}
+    className={`
+      rounded-md border border-black py-1 px-4
+      ${hasFiltering ? 'bg-grey-e' : ''}
+      ${className}
+    `}
+    style={{ width: '157px' }}
+  >
+    <span className="f-9 block uppercase">
+      {isVisible ? 'Close' : 'Filter'}
+    </span>
+  </button>
+)

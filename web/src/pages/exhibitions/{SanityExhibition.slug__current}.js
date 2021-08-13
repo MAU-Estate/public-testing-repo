@@ -38,9 +38,9 @@ export default function exhibition({
         prevPath={`../${currentItem.previous.slug.current}`}
         nextPath={`../${currentItem.next.slug.current}`}
       />
-      <div className="grid grid-cols-12 mt-h">
-        <div className="col-span-4">
-          <dl className="grid grid-cols-2">
+      <div className="grid md:grid-cols-12 mt-h">
+        <div className="md:col-span-4 sm-only:order-1">
+          <dl className="md:grid grid-cols-2">
             <div className="mb-10">
               <dt className="f-7 uppercase mb-3">Exhibition Title</dt>
               <dd className="f-6">{title}</dd>
@@ -79,7 +79,7 @@ export default function exhibition({
               </div>
             ))}
         </div>
-        <div className="col-start-6 col-span-7">
+        <div className="md:col-start-6 md:col-span-7 sm-only:mb-4">
           {gallery && gallery.galleryRef && (
             <ProjectGallery data={gallery} className="col-span-8 grid" />
           )}

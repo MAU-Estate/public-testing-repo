@@ -5,6 +5,7 @@ import queryString from 'query-string'
 
 import { SlideCaption } from './Gallery'
 import Icon from './Icon'
+import { useCurrentBreakpoint } from '../hooks/useCurrentBreakpoint'
 import SanityImage from 'gatsby-plugin-sanity-image'
 
 const SlideImage = ({ src, alt }) => {
@@ -26,14 +27,19 @@ const Slide = ({ data }) => {
   return <SlideImage src={data.src} alt={data.src.asset.altText} />
 }
 
-const SliderArrow = ({ type = 'previous', onClick, theme }) => {
+const SliderArrow = ({ type = 'previous', onClick, theme, className }) => {
   const isPrevious = type === 'previous'
   const isDark = theme === 'dark'
   return (
     <div
-      className={`absolute z-20 inset-0 flex flex-1 h-full pointer-events-none ${
-        isPrevious ? 'justify-end right-[-60px] ' : 'justify-start left-[-60px]'
-      }`}
+      className={`sm-only:hidden md:absolute z-20 inset-0  flex-1 h-full pointer-events-none md:flex
+        ${
+          isPrevious
+            ? 'justify-end right-[-60px] '
+            : 'justify-start left-[-60px]'
+        }
+        ${className}
+      `}
     >
       <button
         onClick={onClick}
@@ -50,7 +56,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
       >
         <Icon
           name={isPrevious ? 'arrowRight' : 'arrowLeft'}
-          className="h-10 w-10 text-grey-c"
+          className="h-6 w-3 md:h-10 md:w-6 text-grey-c"
         />
       </button>
     </div>
@@ -63,6 +69,7 @@ export default function Gallery({
   className = '',
   theme = 'dark',
 }) {
+  const { isSmall } = useCurrentBreakpoint()
   const [controller, setController] = useState()
   const indexParam = queryString.parse(location.search, {
     arrayFormat: 'comma',
@@ -125,7 +132,7 @@ export default function Gallery({
   }, [sliderCaptionsRef])
 
   return (
-    <div className={`Gallery flex flex-1 flex-col ${className}`}>
+    <div className={`Gallery Gallery--modal flex flex-1 flex-col ${className}`}>
       <div className="relative flex-1">
         <Slider
           asNavFor={controller}
@@ -156,6 +163,21 @@ export default function Gallery({
           ))}
         </Slider>
       </div>
+      {isSmall && (
+        <div className="flex justify-between mt-8">
+          <SliderArrow
+            onClick={sliderRef.current.slickPrev}
+            theme={theme}
+            className={'!flex'}
+            type="next"
+          />
+          <SliderArrow
+            onClick={sliderRef.current.slickNext}
+            theme={theme}
+            className={'!flex'}
+          />
+        </div>
+      )}
     </div>
   )
 }
