@@ -266,10 +266,10 @@ const Work = ({
           isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
         }`}
       >
-        <div className="sm-only:grid grid-cols-2 gap-y-8 md:flex">
+        <div className="flex flex-wrap gap-y-8">
           <FilterList
             title="Medium"
-            className="flex-1"
+            className="flex-1 sm-only:mr-8"
             activeItems={activeFilters.medium}
             // availableFilters={availableFilters.medium}
             onSelect={filters => handleSetActiveFilter('medium', filters)}
@@ -277,7 +277,7 @@ const Work = ({
           />
           <FilterList
             title="Era"
-            className="flex-1 md:ml-20"
+            className="flex-1 md:ml-20 sm-only:mr-8"
             activeItems={activeFilters.era}
             // availableFilters={availableFilters.era}
             onSelect={filters => handleSetActiveFilter('era', filters)}
@@ -292,7 +292,7 @@ const Work = ({
             title="Collection"
             activeItems={activeFilters.collection}
             // availableFilters={availableFilters.collection}
-            className="flex-1 md:ml-20"
+            className="flex-1 md:ml-20 sm-only:mr-8"
             onSelect={filters => handleSetActiveFilter('collection', filters)}
             items={collections.nodes}
           />
@@ -348,7 +348,7 @@ const Work = ({
                         image={previewImage.asset.gatsbyImageData}
                         alt={previewImage.alt}
                         objectFit="contain"
-                        className="aspect-h-1 aspect-w-1 mb-a3"
+                        className="md:aspect-h-1 md:aspect-w-1 mb-a3"
                       />
                       <p className="f-17 mb-2">{title}</p>
                       <p className="f-17 font-italic">

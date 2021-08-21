@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { graphql, Link } from 'gatsby'
 import { InView } from 'react-intersection-observer'
 
@@ -9,16 +9,6 @@ import RichTextSingle from '../components/RichTextSingle'
 import Icon from '../components/Icon'
 import Figure from '../components/Figure'
 import Seo from '../components/Seo'
-
-const handleBioSectionChange = (inView, entry, bgColor) => {
-  const target = entry.target
-  if (inView) {
-    document.documentElement.style.setProperty('--homeBg', `var(--${bgColor})`)
-    target.classList.add('fadeSection--inView')
-  } else {
-    target.classList.remove('fadeSection--inView')
-  }
-}
 
 const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
   const {
@@ -33,7 +23,18 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
     section7,
   } = pageData
 
-  const [rootMargin, setRootMargin] = useState()
+  const handleBioSectionChange = (inView, entry, color) => {
+    const target = entry.target
+    if (inView) {
+      backgroundRef.current.style.setProperty('--homeBg', `var(--${color})`)
+      target.classList.add('fadeSection--inView')
+    } else {
+      target.classList.remove('fadeSection--inView')
+    }
+  }
+
+  const rootMargin = '-49.99% 0% -49.99%'
+  const backgroundRef = useRef()
 
   const [carouselBgColor, setCarouselBgColor] = useState(
     sanityHomeCarousel.slides[0]._type === 'slide'
@@ -41,32 +42,18 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
       : 'bg-[#4e5c59]'
   )
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setRootMargin(`-${window.innerHeight / 2}px`)
-      window.addEventListener('resize', () =>
-        setRootMargin(`-${window.innerHeight / 2}px`)
-      )
-      return () => {
-        window.removeEventListener('resize', () =>
-          setRootMargin(`-${window.innerHeight / 2}px`)
-        )
-      }
-    }
-  }, [setRootMargin])
-
-  // console.log(rootMargin)
-
   return (
-    <div
-      className={`transition transition-colors duration-500`}
-      style={{ backgroundColor: 'var(--homeBg)' }}
-    >
+    <div className="bg-transparent">
+      <div
+        ref={backgroundRef}
+        className="fixed inset-0 transition-colors duration-300"
+        style={{ zIndex: -1, backgroundColor: 'var(--homeBg)' }}
+      />
       <Seo {...seo} />
       {/* gallery */}
       <div className="w-full h-screen bg-black-b relative flex py-24">
         <div
-          className={`absolute transition transition-colors duration-300 inset-0 right-1/2 ${carouselBgColor}`}
+          className={`absolute transition-colors duration-300 inset-0 right-1/2 ${carouselBgColor}`}
         />
         <div className="container--tight w-full h-full flex flex-1 relative">
           <GalleryHome
@@ -81,9 +68,9 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={(inView, entry) => {
+        onChange={(inView, entry) =>
           handleBioSectionChange(inView, entry, 'white')
-        }}
+        }
         id="intro"
         className="container pt-e"
       >
@@ -109,9 +96,9 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={(inView, entry) => {
+        onChange={(inView, entry) =>
           handleBioSectionChange(inView, entry, 'black-b')
-        }}
+        }
         className="py-g text-white fadeItem"
       >
         <div className="container">
@@ -162,9 +149,9 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         as="section"
         root={null}
         rootMargin={rootMargin}
-        onChange={(inView, entry) => {
+        onChange={(inView, entry) =>
           handleBioSectionChange(inView, entry, 'white')
-        }}
+        }
         className="py-g fadeItem"
       >
         <div className="container grid grid-cols-12 mb-e">

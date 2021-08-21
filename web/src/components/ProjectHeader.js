@@ -43,26 +43,26 @@ export default function ProjectHeader({
       className={`${className} sm-only:pb-4 sticky pt-11 -top-7 z-10`}
     >
       <div
-        className={`absolute inset-0 bg-white ease-linear transition-transform duration-75 ${
+        className={`absolute inset-0 bg-white xease-linear xtransition-transform xduration-75 ${
           isSticky ? 'md:-translate-y-4' : ''
         }`}
         style={{ zIndex: -1 }}
       ></div>
       <div className="border-t border-grey-b mb-t w-full"></div>
       <div
-        className={`flex justify-between items-start ease-linear transition-transform duration-75 ${
+        className={`flex justify-between items-start xease-linear xtransition-transform xduration-75 ${
           isSticky ? 'md:-translate-y-3' : ''
         }`}
       >
         <h1
-          className={`f-21 origin-top-left ease-linear transition-transform duration-75 ${
+          className={`f-21 origin-top-left xease-linear xtransition-transform xduration-75 ${
             isSticky ? 'md:scale-75' : ''
           }`}
         >
           {title}
         </h1>
         <div
-          className={`md:ml-10 -h-11 flex items-center origin-top-right ease-linear transition-transform duration-75 ${
+          className={`md:ml-10 -h-11 flex items-center origin-top-right xease-linear xtransition-transform xduration-75 ${
             isSticky ? 'md:scale-75' : ''
           }`}
         >
