@@ -51,7 +51,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
       />
       <Seo {...seo} />
       {/* gallery */}
-      <div className="w-full h-screen bg-black-b relative flex py-24">
+      <div className="w-full h-screen bg-black-b relative flex pt-24 pb-12">
         <div
           className={`absolute transition-colors duration-300 inset-0 right-1/2 ${carouselBgColor}`}
         />
@@ -248,12 +248,14 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
             <Figure image={section5.image1} />
           </div>
         </div>
+
         <Gallery
           slides={section5.gallery1.galleryRef.images}
           slug={section5.gallery1.galleryRef.slug}
           className="mb-e"
           theme="light"
         />
+
         <div className="container grid grid-cols-12 mb-e">
           <div className="col-start-2 col-end-7">
             <RichTextSingle

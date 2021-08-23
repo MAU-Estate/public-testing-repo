@@ -12,9 +12,6 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
       <SanityImage
         {...src}
         width="1250"
-        // image={src}
-        // objectFit={}
-        // objectPosition="center"
         style={{
           width: '100%',
           height: '100%',
@@ -67,6 +64,7 @@ const Slide = ({ data, cover, inline, route }) => {
 }
 
 export const SlideCaption = ({
+  className,
   data,
   theme,
   inline,
@@ -83,6 +81,7 @@ export const SlideCaption = ({
       mt-c
       mx-auto
       pb-1
+      ${className}
       ${isDark ? 'text-white' : 'text-black'}
       ${inline ? '' : 'container max-w-[1508px]'}
     `}
@@ -204,6 +203,32 @@ function Gallery({
     setController(sliderRef.current)
   }, [sliderCaptionsRef])
 
+  if (parsedSlides.length === 1) {
+    const slide = parsedSlides[0]
+    return (
+      <div className={`Gallery ${className}`} id={slug?.current}>
+        <Slide
+          key={slide._key}
+          data={slide}
+          cover={cover}
+          inline={inline}
+          route={`/gallery/${slug?.current}?index=${0}`}
+        />
+        <SlideCaption
+          key={`${slide._key}-caption`}
+          index={0}
+          galleryLength={slides.length}
+          inline={inline}
+          arrows={false}
+          className="mx-auto container"
+          // goToPrev={() => sliderCaptionsRef.current.slickPrev()}
+          // goToNext={() => sliderCaptionsRef.current.slickNext()}
+          data={slide}
+          theme={theme}
+        />
+      </div>
+    )
+  }
   return (
     <div className={`Gallery ${className}`} id={slug?.current}>
       <div
@@ -228,7 +253,7 @@ function Gallery({
         {...navGallerySettings}
         style={{ position: 'relative' }}
         className="
-          Slider-captions mx-auto container--tight
+          Slider-captions mx-auto container
         "
       >
         {parsedSlides.map((slide, i) => (

@@ -11,7 +11,7 @@ const Layout = ({ location, children, className = '' }) => {
   // const pathname = isHome ? 'home' : location.pathname.slice(1)
   // const cleanedPathname = pathname.replace(/\//i, '')
 
-  const { isMedium } = useCurrentBreakpoint()
+  const { isSmall, isMedium } = useCurrentBreakpoint()
 
   let menuBgClass
   switch (location.pathname) {
@@ -47,7 +47,7 @@ const Layout = ({ location, children, className = '' }) => {
 
           <div
             className="flex flex-col flex-1 relative"
-            style={{ marginLeft: isMedium ? '41px' : '' }}
+            style={{ marginLeft: !isSmall ? '41px' : '' }}
           >
             <header className="pt-a absolute z-10 left-0 right-0">
               <div className="container">

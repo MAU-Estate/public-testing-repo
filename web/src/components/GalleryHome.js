@@ -29,7 +29,10 @@ const getSlideDimensions = (container, caption, imageDimensions) => {
 const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
   const container = useRef()
   const caption = useRef()
-  const [slideDimensions, setSlideDimensions] = useState()
+  const [slideDimensions, setSlideDimensions] = useState({
+    width: 0,
+    height: 0,
+  })
 
   useEffect(() => {
     const imageDimensions = {
@@ -53,40 +56,38 @@ const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
   return (
     <figure
       ref={container}
-      className={`${className} flex flex-1 justify-center items-center`}
+      className={`${className} flex flex-1 justify-center items-center pointer-events-none`}
     >
-      <div
-        className="flex flex-1 flex-col justify-center items-center"
-        // style={{
-        //   width: `${slideDimensions.width}px`,
-        // }}
+      <Link
+        to={url}
+        className="flex flex-col justify-center items-center group pointer-events-auto"
+        style={{
+          width: `${slideDimensions.width}px`,
+        }}
       >
-        {slideDimensions && (
+        <div
+          style={{
+            minHeight: 0,
+          }}
+        >
           <div
-            // className="flex-1"
             style={{
-              minHeight: 0,
+              height: `${slideDimensions.height}px`,
+              width: `${slideDimensions.width}px`,
             }}
           >
-            <div
+            <SanityImage
+              {...image.src}
               style={{
-                height: `${slideDimensions.height}px`,
-                width: `${slideDimensions.width}px`,
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+                objectPosition: 'center',
               }}
-            >
-              <SanityImage
-                {...image.src}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  objectPosition: 'center',
-                }}
-                alt={alt}
-              />
-            </div>
+              alt={alt}
+            />
           </div>
-        )}
+        </div>
         {image.figcaption && (
           <figcaption ref={caption} className={`flex-none w-full`}>
             {image.figcaption && (
@@ -97,20 +98,19 @@ const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
             )}
           </figcaption>
         )}
-      </div>
+      </Link>
     </figure>
   )
 }
 
 const Slide = ({ data }) => {
   return (
-    <Link to={data.url} className="flex flex-1 group">
-      <SlideImage
-        image={data.image}
-        alt={data.image.alt}
-        dimensions={data.image.src.asset.metadata.dimensions}
-      />
-    </Link>
+    <SlideImage
+      url={data.url}
+      image={data.image}
+      alt={data.image.alt}
+      dimensions={data.image.src.asset.metadata.dimensions}
+    />
   )
 }
 
@@ -135,8 +135,8 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`sm-only:order-1 sm-only:w-1/2 md:absolute z-20 inset-0 flex md:flex-1 md:h-full pointer-events-none ${
-        isPrevious ? 'justify-end' : 'justify-start'
+      className={`sm-only:order-1 sm-only:w-1/2 md:absolute inset-0 flex md:flex-1 md:h-full pointer-events-none ${
+        isPrevious ? 'justify-end left-1/2' : 'justify-start right-1/2'
       }`}
     >
       <button
@@ -146,6 +146,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
             pointer-events-auto
             md:h-full
             flex
+            flex-1
             items-center
             ${isDark ? 'text-white' : 'text-black'}
             ${isPrevious ? 'justify-end' : 'justify-start '}
