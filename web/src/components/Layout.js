@@ -59,7 +59,7 @@ const Layout = ({ location, children, className = '' }) => {
             }}
           >
             <Headroom
-              className="z-10"
+              className="z-30 md:z-10"
               style={{ marginTop: isMenuFixed || atMedium ? '' : '68px' }}
               disable={atMedium}
               onPin={() => {
@@ -110,7 +110,8 @@ const Layout = ({ location, children, className = '' }) => {
                         className={`
                           Menu-toggle w-5 h-5 transition-colors
                           ${
-                            isMenuPinned && !isMenuOpen
+                            (isMenuPinned && !isMenuOpen) ||
+                            (!isMenuFixed && !isMenuOpen)
                               ? '!text-black'
                               : '!text-white'
                           }

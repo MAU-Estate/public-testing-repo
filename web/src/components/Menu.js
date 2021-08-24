@@ -86,7 +86,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
                     }}
                     className="pb-5 block text-white hover:underline"
                     to={item.path}
-                    onClick={handleOnMenuToggle}
+                    onClick={() => handleOnMenuToggle()}
                   >
                     {item.label}
                   </Link>
