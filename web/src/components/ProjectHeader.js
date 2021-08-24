@@ -40,7 +40,7 @@ export default function ProjectHeader({
   return (
     <div
       ref={element}
-      className={`${className} sm-only:pb-4 sticky pt-11 -top-7 z-10`}
+      className={`ProjectHeader ${className} sm-only:pb-4 sticky pt-11 -top-7 z-20`}
     >
       <div
         className={`absolute inset-0 bg-white xease-linear xtransition-transform xduration-75 ${

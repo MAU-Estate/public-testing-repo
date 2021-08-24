@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
 import Headroom from 'react-headroom'
+import { Helmet } from 'react-helmet'
 
 import Footer from './Footer'
 import Menu from './Menu'
@@ -44,6 +45,9 @@ const Layout = ({ location, children, className = '' }) => {
       `}
       render={({ sanitySiteSettings }) => (
         <div className={`flex flex-col flex-1`}>
+          <Helmet
+            htmlAttributes={{ class: isMenuPinned ? 'header-pinned' : '' }}
+          />
           <Menu
             onMenuToggle={value => setIsMenuOpen(value)}
             isOpen={isMenuOpen}
