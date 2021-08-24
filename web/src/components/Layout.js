@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StaticQuery, graphql, Link } from 'gatsby'
+import Headroom from 'react-headroom'
 
 import Footer from './Footer'
 import Menu from './Menu'
@@ -11,7 +12,10 @@ const Layout = ({ location, children, className = '' }) => {
   // const pathname = isHome ? 'home' : location.pathname.slice(1)
   // const cleanedPathname = pathname.replace(/\//i, '')
 
-  const { isSmall, isMedium } = useCurrentBreakpoint()
+  const { atMedium, isSmall } = useCurrentBreakpoint()
+  const [isMenuPinned, setIsMenuPinned] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuFixed, setIsMenuFixed] = useState(false)
 
   let menuBgClass
   switch (location.pathname) {
@@ -41,21 +45,82 @@ const Layout = ({ location, children, className = '' }) => {
       render={({ sanitySiteSettings }) => (
         <div className={`flex flex-col flex-1`}>
           <Menu
+            onMenuToggle={value => setIsMenuOpen(value)}
+            isOpen={isMenuOpen}
             menuBgClass={menuBgClass}
             bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
           />
 
           <div
             className="flex flex-col flex-1 relative"
-            style={{ marginLeft: !isSmall ? '41px' : '' }}
+            style={{
+              marginLeft: atMedium ? '41px' : '',
+              marginTop: atMedium ? '' : '-68px',
+            }}
           >
-            <header className="pt-a absolute z-10 left-0 right-0">
-              <div className="container">
-                <Link to="/" className="text-white">
-                  <Icon id="logo" name="logo" />
-                </Link>
-              </div>
-            </header>
+            <Headroom
+              className="z-10"
+              style={{ marginTop: isMenuFixed || atMedium ? '' : '68px' }}
+              disable={atMedium}
+              onPin={() => {
+                setIsMenuPinned(true)
+              }}
+              // pinStart={-68}
+              onUnpin={() => {
+                setIsMenuPinned(false)
+                setIsMenuFixed(true)
+              }}
+              onUnfix={() => {
+                setIsMenuPinned(false)
+                setIsMenuFixed(false)
+              }}
+            >
+              <header
+                className={`
+                  md:pt-a md:absolute z-30 left-0 right-0
+                  sm-only:h-17
+                  transition-colors
+                  ${isMenuPinned && !isMenuOpen ? 'bg-white' : ''}
+                `}
+              >
+                <div className="container w-full h-full sm-only:flex items-center justify-between">
+                  <Link
+                    to="/"
+                    className={`
+                    transition-colors
+                      ${
+                        isMenuPinned && !isMenuOpen
+                          ? 'text-black'
+                          : 'text-white'
+                      }
+                    `}
+                  >
+                    <Icon id="logo" name="logo" />
+                  </Link>
+                  {isSmall && (
+                    <button
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      className={`z-10 transition-colors`}
+                    >
+                      <span className="sr-only">
+                        menu {isMenuOpen ? 'close' : 'open'}
+                      </span>
+                      <Icon
+                        name={isMenuOpen ? 'menuClose' : 'menu'}
+                        className={`
+                          Menu-toggle w-5 h-5 transition-colors
+                          ${
+                            isMenuPinned && !isMenuOpen
+                              ? '!text-black'
+                              : '!text-white'
+                          }
+                        `}
+                      />
+                    </button>
+                  )}
+                </div>
+              </header>
+            </Headroom>
             <main className={`${className}`}>{children}</main>
             <Footer />
           </div>

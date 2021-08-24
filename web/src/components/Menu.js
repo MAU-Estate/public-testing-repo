@@ -17,16 +17,21 @@ const NAV_ITEMS = [
   { path: '/cv', label: 'CV' },
 ]
 
-export default function Menu({ bgImage, menuBgClass }) {
-  const [isOpen, setIsOpen] = useState(false)
+export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
   const esc = useKeyPress('Escape')
   const { atMedium, isLarge } = useCurrentBreakpoint()
 
-  // look at location and set whether button bg is black or black-c (contact, cv, fellowships)
+  const handleOnMenuToggle = (value = !isOpen) => {
+    console.log(value)
+    onMenuToggle(value)
+  }
 
   useEffect(() => {
-    esc && isOpen && setIsOpen(false)
+    if (esc && isOpen) {
+      handleOnMenuToggle(false)
+    }
   }, [esc, isOpen])
+
   return (
     <>
       {isOpen && <Helmet bodyAttributes={{ class: 'no-scroll' }} />}
@@ -43,11 +48,12 @@ export default function Menu({ bgImage, menuBgClass }) {
                   ? 'opacity-50 visible'
                   : 'opacity-0 pointer-events-none invisible'
               }`}
-            onClick={() => setIsOpen(false)}
+            onClick={() => handleOnMenuToggle(false)}
           >
             <span className="sr-only">Close menu</span>
           </button>
         )}
+
         <div
           className={`
             flex flex-col justify-top transition-transform duration-300 transform
@@ -65,9 +71,11 @@ export default function Menu({ bgImage, menuBgClass }) {
               ${atMedium ? 'mt-11' : 'mt-6'}
             `}
           >
-            <Link to="/" onClick={() => setIsOpen(!isOpen)}>
-              <Icon name="logo" className="text-white" />
-            </Link>
+            {atMedium && (
+              <Link to="/" onClick={handleOnMenuToggle}>
+                <Icon name="logo" className="text-white" />
+              </Link>
+            )}
             <ul className="pt-12 md:pt-s">
               {NAV_ITEMS.map(item => (
                 <li key={item.path} className="f-1">
@@ -78,7 +86,7 @@ export default function Menu({ bgImage, menuBgClass }) {
                     }}
                     className="pb-5 block text-white hover:underline"
                     to={item.path}
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={handleOnMenuToggle}
                   >
                     {item.label}
                   </Link>
@@ -89,13 +97,13 @@ export default function Menu({ bgImage, menuBgClass }) {
         </div>
       </div>
 
-      {atMedium ? (
+      {atMedium && (
         <div
           className="fixed z-30 flex items-start justify-center left-0 top-0 bottom-0"
           style={{ width: '41px' }}
         >
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => handleOnMenuToggle()}
             className={`z-10 flex-1 self-stretch transition-colors ${menuBgClass}`}
           >
             <span
@@ -112,20 +120,39 @@ export default function Menu({ bgImage, menuBgClass }) {
             </span>
           </button>
         </div>
-      ) : (
-        <div className="fixed z-30 top-0 left-0 right-0 h-17 flex items-center justify-end px-6">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`z-10 transition-colors`}
-          >
-            <span className="sr-only">menu {isOpen ? 'close' : 'open'}</span>
-            <Icon
-              name={isOpen ? 'menuClose' : 'menu'}
-              className="Menu-toggle w-5 h-5 "
-            />
-          </button>
-        </div>
       )}
     </>
   )
 }
+
+// : (
+//   <div
+//     className={`
+//       h-17 flex items-center justify-between px-6
+//       transition-colors
+//       ${isPinned ? 'bg-white' : ''}
+//     `}
+//   >
+//     <Link
+//       to="/"
+//       className={`transition-colors ${
+//         isPinned ? 'text-black' : 'text-white'
+//       }`}
+//     >
+//       <Icon id="logo" name="logo" />
+//     </Link>
+//     <button
+//       onClick={() => setIsOpen(!isOpen)}
+//       className={`z-10 transition-colors`}
+//     >
+//       <span className="sr-only">menu {isOpen ? 'close' : 'open'}</span>
+//       <Icon
+//         name={isOpen ? 'menuClose' : 'menu'}
+//         className={`
+//           Menu-toggle w-5 h-5 transition-colors
+//           ${isPinned ? '!text-black' : '!text-white'}
+//         `}
+//       />
+//     </button>
+//   </div>
+// )}

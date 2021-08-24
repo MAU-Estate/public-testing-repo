@@ -17,5 +17,7 @@
     "@sanity/cli": "^2.0.0",
     "lerna": "^3.13.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-headroom": "^3.1.1"
+  }
 }

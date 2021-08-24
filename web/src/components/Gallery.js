@@ -22,7 +22,6 @@ const SlideImage = ({ route, src, alt, cover, inline }) => {
     )
   }
   return (
-    // add search param for index
     <Link
       to={route}
       className="flex-1 flex relative group"
@@ -152,6 +151,7 @@ function Gallery({
   slug,
   className = '',
   theme = 'dark',
+  full = false,
   inline = true,
   cover = false,
 }) {
@@ -252,9 +252,7 @@ function Gallery({
         ref={slider => (sliderCaptionsRef.current = slider)}
         {...navGallerySettings}
         style={{ position: 'relative' }}
-        className="
-          Slider-captions mx-auto container
-        "
+        className={`Slider-captions mx-auto ${full ? 'container' : ''}`}
       >
         {parsedSlides.map((slide, i) => (
           <SlideCaption

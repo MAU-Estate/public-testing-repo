@@ -75,6 +75,10 @@
   }
 }
 
+.Gallery--home .slick-list {
+  @apply sm-only:h-full;
+}
+
 .Gallery--home .slick-list,
 .Gallery--modal .slick-list {
   @screen sm-only {
