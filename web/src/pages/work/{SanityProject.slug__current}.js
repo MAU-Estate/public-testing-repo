@@ -55,10 +55,12 @@ export default function Project({
         prevPath={`/work/${node.previous.slug.current}`}
       />
       <div className="md:grid grid-cols-12 mt-12 md:mt-20 mb-i">
-        <ProjectGallery
-          data={gallery}
-          className="sm-only:mb-4 col-span-8 grid md:grid-cols-4"
-        />
+        {gallery && gallery.galleryRef && (
+          <ProjectGallery
+            data={gallery}
+            className="sm-only:mb-4 col-span-8 grid md:grid-cols-4"
+          />
+        )}
         <div className="col-start-10 col-span-3">
           <dl className="mb-22">
             {/* custom spacing */}
