@@ -96,7 +96,7 @@ export const SlideCaption = ({
       {inline && (
         <div className="flex flex-0 justify-between">
           {arrows && (
-            <div className="f-8 mr-24">
+            <div className="f-8 md:mr-24">
               <button onClick={goToPrev} className="pr-4 hover:underline">
                 Prev
               </button>

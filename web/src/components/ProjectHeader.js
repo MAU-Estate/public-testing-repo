@@ -44,14 +44,14 @@ export default function ProjectHeader({
     >
       <div
         className={`absolute inset-0 bg-white xease-linear xtransition-transform xduration-75 ${
-          isSticky ? 'md:-translate-y-4' : ''
+          isSticky ? 'md:-translate-y-2' : ''
         }`}
         style={{ zIndex: -1 }}
       ></div>
       <div className="border-t border-grey-b mb-t w-full"></div>
       <div
         className={`flex justify-between items-start xease-linear xtransition-transform xduration-75 ${
-          isSticky ? 'md:-translate-y-3' : ''
+          isSticky ? 'md:-translate-y-2' : ''
         }`}
       >
         <h1

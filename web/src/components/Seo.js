@@ -18,7 +18,7 @@ function Seo({ description, lang, meta, keywords, title, image }) {
         const metaImage =
           image && image.asset
             ? imageUrlFor(buildImageObj(image)).width(1200).url()
-            : ''
+            : imageUrlFor(buildImageObj(data.site.seoImage)).width(1200).url()
 
         return (
           <Helmet
@@ -101,6 +101,9 @@ const detailsQuery = graphql`
       title
       description
       keywords
+      seoImage {
+        ...Image
+      }
     }
   }
 `

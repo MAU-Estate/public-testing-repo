@@ -72,7 +72,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
             `}
           >
             {atMedium && (
-              <Link to="/" onClick={handleOnMenuToggle}>
+              <Link to="/" onClick={() => handleOnMenuToggle(false)}>
                 <Icon name="logo" className="text-white" />
               </Link>
             )}
@@ -124,35 +124,3 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
     </>
   )
 }
-
-// : (
-//   <div
-//     className={`
-//       h-17 flex items-center justify-between px-6
-//       transition-colors
-//       ${isPinned ? 'bg-white' : ''}
-//     `}
-//   >
-//     <Link
-//       to="/"
-//       className={`transition-colors ${
-//         isPinned ? 'text-black' : 'text-white'
-//       }`}
-//     >
-//       <Icon id="logo" name="logo" />
-//     </Link>
-//     <button
-//       onClick={() => setIsOpen(!isOpen)}
-//       className={`z-10 transition-colors`}
-//     >
-//       <span className="sr-only">menu {isOpen ? 'close' : 'open'}</span>
-//       <Icon
-//         name={isOpen ? 'menuClose' : 'menu'}
-//         className={`
-//           Menu-toggle w-5 h-5 transition-colors
-//           ${isPinned ? '!text-black' : '!text-white'}
-//         `}
-//       />
-//     </button>
-//   </div>
-// )}

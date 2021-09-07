@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, navigate } from 'gatsby'
 import { ModalRoutingContext } from 'gatsby-plugin-modal-routing-3'
 
 import GalleryModal from '../../components/GalleryModal'
@@ -25,12 +25,15 @@ export default function gallery({
         <>
           {modal ? (
             <div className="absolute inset-0 pt-12 pb-8 flex">
-              <Link to={backPath} className="absolute z-30 top-0 right-0">
+              <button
+                onClick={() => navigate(-1)}
+                className="absolute z-30 top-0 right-0"
+              >
                 <Icon
                   name="modalClose"
                   className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-10"
                 />
-              </Link>
+              </button>
               <div className="mx-6 md:container--large flex flex-1">
                 <GalleryModal
                   location={location}

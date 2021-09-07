@@ -26,6 +26,11 @@ export default {
       }
     },
     {
+      name: 'seoImage',
+      title: 'SEO Image',
+      type: 'image'
+    },
+    {
       name: 'menuBgImage',
       title: 'Menu Background Image',
       type: 'image'
@@ -35,6 +40,5 @@ export default {
       title: 'Back to top button label',
       type: 'string'
     }
-    // social - will this ever grow?
   ]
 }

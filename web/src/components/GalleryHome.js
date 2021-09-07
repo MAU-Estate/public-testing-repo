@@ -56,7 +56,9 @@ const SlideImage = ({ className = '', dimensions, image, alt, url }) => {
   return (
     <figure
       ref={container}
-      className={`${className} flex flex-1 justify-center items-center pointer-events-none`}
+      className={`${className} transition-opacity ${
+        slideDimensions.width ? 'opacity-100' : 'opacity-0'
+      } flex flex-1 justify-center items-center pointer-events-none`}
     >
       <Link
         to={url}
@@ -171,7 +173,7 @@ export default function Gallery({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     arrows: true,
     swipe: false,
     beforeChange: (_, newIdx) => {

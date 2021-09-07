@@ -141,7 +141,7 @@
   body {
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
-    text-decoration-thickness: 10px;
+    text-decoration-thickness: 1px;
   }
 
   .no-scroll,

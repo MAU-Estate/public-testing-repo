@@ -54,7 +54,6 @@ const Layout = ({ location, children, className = '' }) => {
             menuBgClass={menuBgClass}
             bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
           />
-
           <div
             className="flex flex-col flex-1 relative"
             style={{

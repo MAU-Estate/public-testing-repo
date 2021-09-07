@@ -31,6 +31,9 @@ const ProjectGallery = ({
             {item.imageL && (
               <Link
                 to={`/gallery/${slugPath}?index=${i}`}
+                state={{
+                  modal: true,
+                }}
                 className="relative group"
               >
                 <EnlargeIndicator />
@@ -40,6 +43,9 @@ const ProjectGallery = ({
             {item.imageR && (
               <Link
                 to={`/gallery/${slugPath}?index=${i}`}
+                state={{
+                  modal: true,
+                }}
                 className="relative group"
               >
                 <EnlargeIndicator />
@@ -51,6 +57,9 @@ const ProjectGallery = ({
           <Link
             key={item._key}
             to={`/gallery/${slugPath}?index=${i}`}
+            state={{
+              modal: true,
+            }}
             className={`mb-a relative group ${
               isPortrait ? 'col-span-3' : 'col-span-4'
             }`}
