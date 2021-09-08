@@ -89,11 +89,13 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 className="border-b border-grey-b pt-t mb-t col-span-2"
               ></div>
               <div className="sm-only:mb-20">
-                <h3 className="f-7 mb-1 uppercase">{exhibitionsTitle}</h3>
+                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+                  {exhibitionsTitle}
+                </h3>
                 <RichText className="f-6" content={exhibitionsBody._rawText} />
               </div>
               <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
-                <h3 className="f-7 mb-1 uppercase">{awardsTitle}</h3>
+                <h3 className="f-7 mb-3 md:mb-1 uppercase">{awardsTitle}</h3>
                 <RichText className="f-6" content={awardsBody._rawText} />
               </div>
             </div>
@@ -107,14 +109,18 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 id={`${slugify(commisionsTitle, { lower: true })}`}
               ></div>
               <div className="sm-only:mb-20">
-                <h3 className="f-7 mb-1 uppercase">{publicCollectionsTitle}</h3>
+                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+                  {publicCollectionsTitle}
+                </h3>
                 <RichText
                   className="f-6"
                   content={publicCollectionsBody._rawText}
                 />
               </div>
               <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
-                <h3 className="f-7 mb-1 uppercase">{commisionsTitle}</h3>
+                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+                  {commisionsTitle}
+                </h3>
                 <RichText
                   className="f-6"
                   content={permanentSiteCommissionsBody._rawText}

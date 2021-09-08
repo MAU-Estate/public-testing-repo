@@ -137,7 +137,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`sm-only:order-1 sm-only:w-1/2 md:absolute inset-0 flex h-14 md:flex-1 md:h-full pointer-events-none ${
+      className={`sm-only:order-1 sm-only:w-1/2 hidden md:flex md:absolute inset-0 h-14 md:flex-1 md:h-full pointer-events-none ${
         isPrevious ? 'justify-end left-1/2' : 'justify-start right-1/2'
       }`}
     >

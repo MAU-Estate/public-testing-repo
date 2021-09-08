@@ -30,7 +30,7 @@ const FellowshipsPage = ({
       />
       <div className="pt-8 md:pt-b bg-black text-white">
         <div className="container">
-          <div className="grid md:grid-cols-12 mb-p">
+          <div className="md:grid md:grid-cols-12 mb-p">
             <div className="col-span-5 sm-only:mb-10">
               <RichTextSingle
                 className="f-27"
@@ -50,7 +50,7 @@ const FellowshipsPage = ({
               <h2 className="f-28">
                 {fellow.year} {recipientLabel}
               </h2>
-              <div className="grid md:grid-cols-12 mt-n">
+              <div className="md:grid md:grid-cols-12 mt-n">
                 <div className="md:grid col-span-6 md:grid-cols-3">
                   <div className="col-span-1 sm-only:mb-12">
                     <GatsbyImage

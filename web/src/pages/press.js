@@ -41,7 +41,10 @@ const PressPage = ({
             {row.map((article, i) => {
               const { id, external } = article
               return (
-                <li key={id} className="relative">
+                <li
+                  key={id}
+                  className="relative sm-only:border-b border-grey-b sm-only:pb-o"
+                >
                   {(i == 0 || i !== row.length - 1) && (
                     <div
                       className={`absolute right-[-23px] top-0 bottom-0 md:border-r border-grey-b`}

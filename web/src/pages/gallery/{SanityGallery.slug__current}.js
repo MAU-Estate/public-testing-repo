@@ -31,7 +31,7 @@ export default function gallery({
               >
                 <Icon
                   name="modalClose"
-                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-10"
+                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4 md:m-10"
                 />
               </button>
               <div className="mx-6 md:container--large flex flex-1">

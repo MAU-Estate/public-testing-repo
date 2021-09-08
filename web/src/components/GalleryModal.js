@@ -32,7 +32,7 @@ const SliderArrow = ({ type = 'previous', onClick, theme, className }) => {
   const isDark = theme === 'dark'
   return (
     <div
-      className={`sm-only:hidden md:absolute z-20 inset-0  flex-1 h-full pointer-events-none md:flex
+      className={`sm-only:hidden md:absolute inset-0 flex-1 h-full pointer-events-none md:flex
         ${
           isPrevious
             ? 'justify-end right-[-60px] '
@@ -133,7 +133,7 @@ export default function Gallery({
 
   return (
     <div className={`Gallery Gallery--modal flex flex-1 flex-col ${className}`}>
-      <div className="relative flex-1">
+      <div className="relative z-20 flex-1">
         <Slider
           asNavFor={controller}
           ref={slider => (sliderRef.current = slider)}

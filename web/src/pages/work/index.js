@@ -239,7 +239,7 @@ const Work = ({
         )}
       </div>
       {isSmall && (
-        <div className="flex justify-between mt-6">
+        <div className="flex justify-between mt-6 items-center">
           <FilterButton
             onClick={() => setIsFilterVisible(!isFilterVisible)}
             isVisible={isFilterVisible}

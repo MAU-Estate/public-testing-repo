@@ -18,7 +18,9 @@ function Seo({ description, lang, meta, keywords, title, image }) {
         const metaImage =
           image && image.asset
             ? imageUrlFor(buildImageObj(image)).width(1200).url()
-            : imageUrlFor(buildImageObj(data.site.seoImage)).width(1200).url()
+            : data.site && data.site.seoImage
+            ? imageUrlFor(buildImageObj(data.site.seoImage)).width(1200).url()
+            : ''
 
         return (
           <Helmet

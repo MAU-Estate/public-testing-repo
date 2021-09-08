@@ -90,6 +90,10 @@
   z-index: 1;
 }
 
+.Gallery--modal .slick-list {
+  z-index: 1;
+}
+
 .Gallery--home .slick-list,
 .Gallery--home .slick-track,
 .Gallery--home .slick-slide {

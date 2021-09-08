@@ -21,10 +21,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
   const esc = useKeyPress('Escape')
   const { atMedium, isLarge } = useCurrentBreakpoint()
 
-  const handleOnMenuToggle = (value = !isOpen) => {
-    console.log(value)
-    onMenuToggle(value)
-  }
+  const handleOnMenuToggle = (value = !isOpen) => onMenuToggle(value)
 
   useEffect(() => {
     if (esc && isOpen) {

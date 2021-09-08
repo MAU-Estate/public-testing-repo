@@ -30,6 +30,19 @@ const Layout = ({ location, children, className = '' }) => {
       break
   }
 
+  let menuToggleClass
+  switch (location.pathname) {
+    case '/':
+    case '/contact':
+    case '/cv':
+    case '/fellowships':
+      menuToggleClass = '!text-white'
+      break
+    default:
+      menuToggleClass = '!text-black'
+      break
+  }
+
   return (
     <StaticQuery
       query={graphql`
@@ -90,6 +103,7 @@ const Layout = ({ location, children, className = '' }) => {
                   <Link
                     to="/"
                     className={`
+                    -mb-1
                     transition-colors
                       ${
                         isMenuPinned && !isMenuOpen
@@ -115,7 +129,7 @@ const Layout = ({ location, children, className = '' }) => {
                           ${
                             (isMenuPinned && !isMenuOpen) ||
                             (!isMenuFixed && !isMenuOpen)
-                              ? '!text-black'
+                              ? menuToggleClass
                               : '!text-white'
                           }
                         `}
