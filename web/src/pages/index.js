@@ -537,7 +537,7 @@ export const query = graphql`
           ...gallery
         }
         gallery2 {
-          ...figure
+          ...gallery
         }
         richText1 {
           _rawText
