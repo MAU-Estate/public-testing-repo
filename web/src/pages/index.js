@@ -92,7 +92,10 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         <div className="container">
           <div className="md:grid grid-cols-12">
             <div className="sm-only:mb-14 col-span-5 ">
-              <Figure image={section2.image1} />
+              <Gallery
+                slides={section2.gallery1.galleryRef.images}
+                slug={section2.gallery1.galleryRef.slug}
+              />
             </div>
             <div className="col-start-7 col-span-5">
               <RichTextSingle
@@ -104,8 +107,8 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         </div>
 
         <Gallery
-          slides={section2.gallery1.galleryRef.images}
-          slug={section2.gallery1.galleryRef.slug}
+          slides={section2.gallery2.galleryRef.images}
+          slug={section2.gallery2.galleryRef.slug}
           className="py-e"
           full={true}
         />
@@ -125,8 +128,8 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         <div className="container md:grid grid-cols-12">
           <div className="col-start-2 col-end-12">
             <Gallery
-              slides={section2.gallery2.galleryRef.images}
-              slug={section2.gallery2.galleryRef.slug}
+              slides={section2.gallery3.galleryRef.images}
+              slug={section2.gallery3.galleryRef.slug}
               className="py-e"
             />
           </div>
@@ -234,13 +237,17 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
             />
           </div>
           <div className="sm-only:mb-18 md:col-span-6">
-            <Figure image={section5.image1} />
+            <Gallery
+              slides={section5.gallery1.galleryRef.images}
+              slug={section5.gallery1.galleryRef.slug}
+              theme="light"
+            />
           </div>
         </div>
 
         <Gallery
-          slides={section5.gallery1.galleryRef.images}
-          slug={section5.gallery1.galleryRef.slug}
+          slides={section5.gallery2.galleryRef.images}
+          slug={section5.gallery2.galleryRef.slug}
           className="mb-e"
           theme="light"
         />
@@ -260,7 +267,11 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         </div>
         <div className="container md:grid grid-cols-12">
           <div className="col-start-2 col-span-10">
-            <Figure image={section5.image2} />
+            <Gallery
+              slides={section5.gallery3.galleryRef.images}
+              slug={section5.gallery3.galleryRef.slug}
+              theme="light"
+            />
           </div>
         </div>
       </InView>
@@ -285,7 +296,11 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
           <div className="col-start-2 col-span-10">
-            <Figure image={section6.image1} />
+            <Gallery
+              slides={section6.gallery1.galleryRef.images}
+              slug={section6.gallery1.galleryRef.slug}
+              theme="light"
+            />
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
@@ -304,15 +319,15 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         <div className="container md:grid grid-cols-12 items-end">
           <div className="sm-only:mb-18 col-span-5">
             <Gallery
-              slides={section6.gallery1.galleryRef.images}
-              slug={section6.gallery1.galleryRef.slug}
+              slides={section6.gallery2.galleryRef.images}
+              slug={section6.gallery2.galleryRef.slug}
               theme="light"
             />
           </div>
           <div className="col-span-7">
             <Gallery
-              slides={section6.gallery2.galleryRef.images}
-              slug={section6.gallery2.galleryRef.slug}
+              slides={section6.gallery3.galleryRef.images}
+              slug={section6.gallery3.galleryRef.slug}
               theme="light"
             />
           </div>
@@ -358,7 +373,10 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
             />
           </div>
           <div className="col-span-6">
-            <Figure image={section7.image1} />
+            <Gallery
+              slides={section7.gallery12galleryRef.images}
+              slug={section7.gallery2.galleryRef.slug}
+            />
           </div>
         </div>
       </InView>
@@ -420,9 +438,7 @@ export const query = graphql`
           _rawText
         }
         image1 {
-          src {
-            ...ImageWithPreview
-          }
+          ...figure
         }
       }
       section2 {
@@ -432,8 +448,8 @@ export const query = graphql`
         gallery2 {
           ...gallery
         }
-        image1 {
-          ...figure
+        gallery3 {
+          ...gallery
         }
         quote1 {
           ...blockquote
@@ -480,11 +496,11 @@ export const query = graphql`
         gallery1 {
           ...gallery
         }
-        image1 {
-          ...figure
+        gallery2 {
+          ...gallery
         }
-        image2 {
-          ...figure
+        gallery3 {
+          ...gallery
         }
         richText1 {
           _rawText
@@ -503,7 +519,7 @@ export const query = graphql`
         gallery2 {
           ...gallery
         }
-        image1 {
+        gallery3 {
           ...figure
         }
         richText1 {
@@ -520,7 +536,7 @@ export const query = graphql`
         gallery1 {
           ...gallery
         }
-        image1 {
+        gallery2 {
           ...figure
         }
         richText1 {

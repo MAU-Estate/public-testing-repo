@@ -10,7 +10,7 @@ export const bioSection1 = {
     {
       name: 'image1',
       title: 'Signature Image',
-      type: 'figure'
+      type: 'galleryObj'
     },
     {
       name: 'section1bodyLeft',
@@ -35,9 +35,9 @@ export const bioSection2 = {
   },
   fields: [
     {
-      name: 'image1',
-      title: 'Image',
-      type: 'figure'
+      name: 'gallery1',
+      title: 'Gallery 1',
+      type: 'galleryObj'
     },
     {
       name: 'richText1',
@@ -45,8 +45,8 @@ export const bioSection2 = {
       type: 'richTextSingle'
     },
     {
-      name: 'gallery1',
-      title: 'Gallery 1',
+      name: 'gallery2',
+      title: 'Gallery 2',
       type: 'galleryObj'
     },
     {
@@ -60,8 +60,8 @@ export const bioSection2 = {
       type: 'blockquote'
     },
     {
-      name: 'gallery2',
-      title: 'Gallery 2',
+      name: 'gallery3',
+      title: 'Gallery 3',
       type: 'galleryObj'
     }
   ]
@@ -83,7 +83,7 @@ export const bioSection3 = {
     },
     {
       name: 'gallery1',
-      title: 'Gallery',
+      title: 'Gallery 1',
       type: 'galleryObj'
     },
     {
@@ -146,13 +146,13 @@ export const bioSection5 = {
       type: 'richTextSingle'
     },
     {
-      name: 'image1',
-      title: 'Image',
-      type: 'figure'
+      name: 'gallery1',
+      title: 'Gallery 1',
+      type: 'galleryObj'
     },
     {
-      name: 'gallery1',
-      title: 'Gallery',
+      name: 'gallery2',
+      title: 'Gallery 2',
       type: 'galleryObj'
     },
     {
@@ -166,9 +166,9 @@ export const bioSection5 = {
       type: 'blockquote'
     },
     {
-      name: 'image2',
+      name: 'gallery3',
       title: 'Image',
-      type: 'figure'
+      type: 'galleryObj'
     }
   ]
 }
@@ -188,9 +188,9 @@ export const bioSection6 = {
       type: 'richTextSingle'
     },
     {
-      name: 'image1',
-      title: 'Image',
-      type: 'figure'
+      name: 'gallery1',
+      title: 'Gallery 1',
+      type: 'galleryObj'
     },
     {
       name: 'blockquote1',
@@ -203,12 +203,12 @@ export const bioSection6 = {
       type: 'richTextSingle'
     },
     {
-      name: 'gallery1',
+      name: 'gallery2',
       title: 'Gallery Left',
       type: 'galleryObj'
     },
     {
-      name: 'gallery2',
+      name: 'gallery3',
       title: 'Gallery Right',
       type: 'galleryObj'
     }
@@ -245,9 +245,9 @@ export const bioSection7 = {
       type: 'richTextSingle'
     },
     {
-      name: 'image1',
-      title: 'Image',
-      type: 'figure'
+      name: 'gallery2',
+      title: 'Gallery 2',
+      type: 'galleryObj'
     }
   ]
 }
