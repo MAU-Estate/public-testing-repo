@@ -175,7 +175,7 @@ export default function Gallery({
     slidesToScroll: 1,
     autoplay: true,
     arrows: true,
-    swipe: false,
+    swipe: true,
     beforeChange: (_, newIdx) => {
       onChange &&
         onChange(

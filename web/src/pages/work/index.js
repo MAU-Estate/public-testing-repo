@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import SanityImage from 'gatsby-plugin-sanity-image'
 import queryString from 'query-string'
+import Masonry from 'react-masonry-css'
 
 import { Context } from '../../context'
 import useObserver from '../../hooks/useObserver'
@@ -266,10 +267,15 @@ const Work = ({
           isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
         }`}
       >
-        <div className="flex flex-wrap gap-y-8">
+        <Masonry
+          breakpointCols={4}
+          className="projectFilter"
+          columnClassName="projectFilter_column"
+        >
+          {/* masonry */}
           <FilterList
             title="Medium"
-            className="flex-1 sm-only:mr-8"
+            // className="flex-1 sm-only:mr-8"
             activeItems={activeFilters.medium}
             // availableFilters={availableFilters.medium}
             onSelect={filters => handleSetActiveFilter('medium', filters)}
@@ -277,7 +283,7 @@ const Work = ({
           />
           <FilterList
             title="Era"
-            className="flex-1 md:ml-20 sm-only:mr-8"
+            // className="flex-1 md:ml-20 sm-only:mr-8"
             activeItems={activeFilters.era}
             // availableFilters={availableFilters.era}
             onSelect={filters => handleSetActiveFilter('era', filters)}
@@ -292,7 +298,7 @@ const Work = ({
             title="Collection"
             activeItems={activeFilters.collection}
             // availableFilters={availableFilters.collection}
-            className="flex-1 md:ml-20 sm-only:mr-8"
+            // className="flex-1 md:ml-20 sm-only:mr-8"
             onSelect={filters => handleSetActiveFilter('collection', filters)}
             items={collections.nodes}
           />
@@ -300,11 +306,11 @@ const Work = ({
             title="Materials"
             activeItems={activeFilters.material}
             // availableFilters={availableFilters.material}
-            className="flex-1 md:ml-20"
+            // className="flex-1 md:ml-20"
             onSelect={filters => handleSetActiveFilter('material', filters)}
             items={materials.nodes}
           />
-        </div>
+        </Masonry>
         {atMedium && (
           <div className="flex items-start">
             <button
@@ -325,7 +331,7 @@ const Work = ({
         }}
       >
         {filteredProjects && filteredProjects.length ? (
-          <ul className="pointer-events-auto mt-b mb-e grid md:grid-cols-2 lg:grid-cols-3 gap-x-11 gap-y-h">
+          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-2 work2col:grid-cols-3 gap-x-11 gap-y-h">
             {filteredProjects.map(
               (
                 {

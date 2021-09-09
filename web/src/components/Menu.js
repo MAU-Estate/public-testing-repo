@@ -73,7 +73,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
                 <Icon name="logo" className="text-white" />
               </Link>
             )}
-            <ul className="pt-12 md:pt-s">
+            <ul className="pt-s">
               {NAV_ITEMS.map(item => (
                 <li key={item.path} className="f-1">
                   <Link

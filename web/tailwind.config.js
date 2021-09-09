@@ -82,7 +82,9 @@ module.exports = {
       md: '768px',
       'md-max': { max: '999px' },
       'md-only': { min: '768', max: '999px' },
+      work2col: '925px',
       lg: '1000px',
+      xl: '1400px',
     },
 
     fontSize: {},

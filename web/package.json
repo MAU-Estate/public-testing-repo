@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean-cache": "gatsby clean",
-    "dev": "npm run clean-cache && gatsby develop",
+    "dev": "npm run clean-cache && gatsby develop -H 0.0.0.0 -p 8000",
     "lint": "eslint .",
     "format": "prettier-eslint --write \"**/*.js\" \"!.cache/**\" \"!node_modules/**\" \"!public/**\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
@@ -45,6 +45,7 @@
     "query-string": "^7.0.0",
     "react-headroom": "^3.1.1",
     "react-intersection-observer": "^8.32.0",
+    "react-masonry-css": "^1.0.16",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "slugify": "^1.5.3"

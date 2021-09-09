@@ -7,14 +7,21 @@ const getWidth = () =>
 
 const getBreakpoint = (width = getWidth()) => {
   return {
-    value: width >= 1000 ? 'large' : width >= 768 ? 'medium' : 'small',
+    value:
+      width >= 1400
+        ? 'xl'
+        : width >= 1000
+        ? 'large'
+        : width >= 768
+        ? 'medium'
+        : 'small',
     width,
   }
 }
 
 export const useCurrentBreakpoint = () => {
   const [hasRan, setHasRan] = useState(false)
-  let [breakpoint, setBreakpoint] = useState({ breakpoint: 'large' })
+  let [breakpoint, setBreakpoint] = useState({ breakpoint: 'xl' })
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
@@ -48,7 +55,12 @@ export const useCurrentBreakpoint = () => {
     breakpoint,
     isSmall: breakpoint.value === 'small',
     isMedium: breakpoint.value === 'medium',
-    atMedium: breakpoint.value === 'medium' || breakpoint.value === 'large',
+    atMedium:
+      breakpoint.value === 'medium' ||
+      breakpoint.value === 'large' ||
+      breakpoint.value === 'xl',
     isLarge: breakpoint.value === 'large',
+    atLarge: breakpoint.value === 'large' || breakpoint.value === 'xl',
+    isXl: breakpoint.value === 'xl',
   }
 }

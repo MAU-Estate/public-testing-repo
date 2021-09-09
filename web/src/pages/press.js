@@ -13,9 +13,9 @@ const PressPage = ({
   const { nodes: articles } = articleNodes
 
   const articlesInRows = []
-  const { isLarge } = useCurrentBreakpoint()
+  const { isXl } = useCurrentBreakpoint()
 
-  const chunkSize = isLarge ? 4 : 3
+  const chunkSize = isXl ? 4 : 3
   for (var i = 0; i < articles.length; i += chunkSize) {
     const chunk = articles.slice(i, i + chunkSize)
     articlesInRows.push(chunk)
@@ -32,7 +32,7 @@ const PressPage = ({
       {articlesInRows.map((row, i) => {
         return (
           <ul
-            className={`grid md:grid-cols-3 lg:grid-cols-4 sm-only:gap-y-o mb-o  ${
+            className={`grid lg:grid-cols-3 xl:grid-cols-4 sm-only:gap-y-o mb-o  ${
               i !== articlesInRows.length - 1
                 ? 'md:pb-o md:border-b md:border-b-grey-b'
                 : ''
