@@ -331,7 +331,7 @@ const Work = ({
         }}
       >
         {filteredProjects && filteredProjects.length ? (
-          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-2 work2col:grid-cols-3 gap-x-11 gap-y-h">
+          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-2 work3:grid-cols-3 gap-x-11 gap-y-h">
             {filteredProjects.map(
               (
                 {
