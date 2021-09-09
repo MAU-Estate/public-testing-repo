@@ -93,7 +93,7 @@ export const SlideCaption = ({
           />
         )}
       </figcaption>
-      {inline && (
+      {inline && galleryLength > 1 && (
         <div className="flex flex-0 justify-between">
           {arrows && (
             <div className="f-8 md:mr-24">
@@ -220,7 +220,7 @@ function Gallery({
           galleryLength={slides.length}
           inline={inline}
           arrows={false}
-          className="mx-auto container"
+          className="mx-auto max-w-[1508px]"
           // goToPrev={() => sliderCaptionsRef.current.slickPrev()}
           // goToNext={() => sliderCaptionsRef.current.slickNext()}
           data={slide}

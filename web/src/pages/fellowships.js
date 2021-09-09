@@ -54,7 +54,8 @@ const FellowshipsPage = ({
                 <div className="md:grid col-span-6 md:grid-cols-3">
                   <div className="col-span-1 sm-only:mb-12">
                     <GatsbyImage
-                      className="aspect-w-1 aspect-h-1 rounded-full"
+                      className="aspect-w-1 aspect-h-1 "
+                      imgClassName="rounded-full"
                       image={fellow.avatar.asset.gatsbyImageData}
                       alt={'alt text'}
                     />
