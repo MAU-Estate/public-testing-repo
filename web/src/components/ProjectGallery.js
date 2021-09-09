@@ -20,9 +20,10 @@ const ProjectGallery = ({
   return (
     <div className={className}>
       {images.map((item, i) => {
+        if (!item.src) return null
         const isPortrait =
           item._type !== 'twoColImage' &&
-          item.src?.asset?.metadata &&
+          item.src?.asset &&
           item.src.asset.metadata.dimensions.aspectRatio < 1
         return item._type === 'twoColImage' ? (
           <div
