@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext, useEffect } from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 import queryString from 'query-string'
 
 import { Context } from '../../context'
@@ -344,12 +344,18 @@ const Work = ({
                 return (
                   <li key={slug.current}>
                     <Link to={slug.current} className="hover:underline">
-                      <GatsbyImage
-                        image={previewImage.asset.gatsbyImageData}
-                        alt={previewImage.alt}
-                        objectFit="contain"
-                        className="md:aspect-h-1 md:aspect-w-1 mb-a3"
-                      />
+                      <div className="md:aspect-h-1 md:aspect-w-1 mb-a3">
+                        <SanityImage
+                          {...previewImage}
+                          alt={previewImage.alt}
+                          width={800}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                          }}
+                        />
+                      </div>
                       <p className="f-17 mb-2">{title}</p>
                       <p className="f-17 font-italic">
                         {yearText}
@@ -410,7 +416,8 @@ export const workQuery = graphql`
           }
         }
         previewImage {
-          ...image
+          alt
+          ...ImageWithPreview
         }
         medium {
           slug {
