@@ -520,7 +520,7 @@ export const query = graphql`
           ...gallery
         }
         gallery3 {
-          ...figure
+          ...gallery
         }
         richText1 {
           _rawText
