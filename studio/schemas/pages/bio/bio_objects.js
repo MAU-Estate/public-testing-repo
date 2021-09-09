@@ -10,7 +10,7 @@ export const bioSection1 = {
     {
       name: 'image1',
       title: 'Signature Image',
-      type: 'galleryObj'
+      type: 'figure'
     },
     {
       name: 'section1bodyLeft',

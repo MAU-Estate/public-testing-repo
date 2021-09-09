@@ -36,6 +36,11 @@ export default {
       type: 'richText'
     },
     {
+      name: 'cvDownloadLabel',
+      title: 'Cv Download Label',
+      type: 'string'
+    },
+    {
       name: 'survivedByBody',
       title: 'Survived By',
       type: 'richText'

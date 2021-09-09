@@ -183,7 +183,6 @@ export const query = graphql`
       download {
         asset {
           url
-          originalFilename
         }
       }
       downloadCVLabel
