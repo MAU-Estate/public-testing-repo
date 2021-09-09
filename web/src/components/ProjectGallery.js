@@ -20,9 +20,9 @@ const ProjectGallery = ({
   return (
     <div className={className}>
       {images.map((item, i) => {
-        if (!item.src) return null
         const isPortrait =
           item._type !== 'twoColImage' &&
+          item.src &&
           item.src?.asset &&
           item.src.asset.metadata.dimensions.aspectRatio < 1
         return item._type === 'twoColImage' ? (
@@ -67,7 +67,7 @@ const ProjectGallery = ({
             }`}
           >
             <EnlargeIndicator />
-            <SanityImage {...item.src} alt={item.alt} />
+            {item.src && <SanityImage {...item.src} alt={item.alt} />}
           </Link>
         )
       })}

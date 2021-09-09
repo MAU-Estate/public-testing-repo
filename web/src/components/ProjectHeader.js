@@ -62,7 +62,7 @@ export default function ProjectHeader({
           {title}
         </h1>
         <div
-          className={`md:ml-10 -h-11 flex items-center origin-top-right xease-linear xtransition-transform xduration-75 ${
+          className={`md:ml-[160px] lg:ml-[320px] -h-11 flex items-center origin-top-right xease-linear xtransition-transform xduration-75 ${
             isSticky ? 'md:scale-75' : ''
           }`}
         >

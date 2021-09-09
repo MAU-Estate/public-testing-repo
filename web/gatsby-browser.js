@@ -18,21 +18,21 @@ export const wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>
 }
 
-export const shouldUpdateScroll = ({
-  routerProps: { location },
-  getSavedScrollPosition,
-}) => {
-  console.log(location)
+// export const shouldUpdateScroll = ({
+//   routerProps: { location },
+//   getSavedScrollPosition,
+// }) => {
+//   console.log(location)
 
-  // // hack to override `shouldUpdateScroll` behavior to bypass useQueryParams in news
-  // if (
-  //   location.search.includes('category=') ||
-  //   location.search.includes('page=')
-  // ) {
-  //   return false
-  // }
-  const currentPosition = getSavedScrollPosition(location)
-  console.log(currentPosition)
-  // return currentPosition || [0, 0]
-  return false
-}
+//   // // hack to override `shouldUpdateScroll` behavior to bypass useQueryParams in news
+//   // if (
+//   //   location.search.includes('category=') ||
+//   //   location.search.includes('page=')
+//   // ) {
+//   //   return false
+//   // }
+//   const currentPosition = getSavedScrollPosition(location)
+//   console.log(currentPosition)
+//   // return currentPosition || [0, 0]
+//   return false
+// }
