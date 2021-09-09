@@ -163,7 +163,7 @@ function Gallery({
     slidesToScroll: 1,
     autoplay: false,
     arrows: false,
-    swipe: false,
+    swipe: true,
   }
   const navGallerySettings = {
     infinite: true,

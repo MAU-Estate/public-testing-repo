@@ -77,7 +77,7 @@ const FellowshipsPage = ({
                     className="f-6"
                     content={fellow.body._rawText}
                   />
-                  {fellow.infoBody && (
+                  {fellow.infoBody?._rawText && (
                     <>
                       <p className="f-6">–</p>
                       <RichText content={fellow.infoBody._rawText} />
