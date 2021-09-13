@@ -67,14 +67,14 @@ export default function ProjectHeader({
           }`}
         >
           <Link to={backPath} className="flex">
-            <Icon name="grid" className="w-[24px] md:w-[36px] mx-6" />
+            <Icon name="grid" className="w-[24px] md:w-[36px] mx-6 h-full" />
           </Link>
           <div className="border-r border-grey-b self-stretch"></div>
           <Link to={prevPath} className="flex pl-6 pr-3">
-            <Icon name="arrowLeft" className="w-[14px] md:w-[22px]" />
+            <Icon name="arrowLeft" className="w-[14px] md:w-[22px] h-full" />
           </Link>
           <Link to={nextPath} className="flex pl-3">
-            <Icon name="arrowRight" className="w-[14px] md:w-[22px]" />
+            <Icon name="arrowRight" className="w-[14px] md:w-[22px] h-full" />
           </Link>
         </div>
       </div>

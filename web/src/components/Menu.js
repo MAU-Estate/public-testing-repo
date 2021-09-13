@@ -19,7 +19,7 @@ const NAV_ITEMS = [
 
 export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
   const esc = useKeyPress('Escape')
-  const { atMedium, isLarge } = useCurrentBreakpoint()
+  const { atMedium, atLarge } = useCurrentBreakpoint()
 
   const handleOnMenuToggle = (value = !isOpen) => onMenuToggle(value)
 
@@ -54,7 +54,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
         <div
           className={`
             flex flex-col justify-top transition-transform duration-300 transform
-            ${isLarge ? 'pl-20 pr-96' : 'flex-1 px-6'}
+            ${atLarge ? 'pl-20 pr-96' : 'flex-1 px-6'}
             ${isOpen ? '' : '-translate-x-full'}
           `}
           style={{ marginLeft: atMedium ? '41px' : '' }}

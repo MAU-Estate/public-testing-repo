@@ -22,6 +22,8 @@ function Seo({ description, lang, meta, keywords, title, image }) {
             ? imageUrlFor(buildImageObj(data.site.seoImage)).width(1200).url()
             : ''
 
+        console.log(data)
+
         return (
           <Helmet
             htmlAttributes={{ lang }}
@@ -99,7 +101,7 @@ export default Seo
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
-    site: sanitySiteSettings(_id: { eq: "siteSettings" }) {
+    site: sanitySiteSettings {
       title
       description
       keywords

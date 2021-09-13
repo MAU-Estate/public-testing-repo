@@ -267,15 +267,16 @@ const Work = ({
           isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
         }`}
       >
-        <Masonry
+        {/* <Masonry
           breakpointCols={4}
           className="projectFilter"
           columnClassName="projectFilter_column"
-        >
+        > */}
+        <div className="grid grid-cols-2 lg:flex">
           {/* masonry */}
           <FilterList
             title="Medium"
-            // className="flex-1 sm-only:mr-8"
+            className="sm-only:mr-8"
             activeItems={activeFilters.medium}
             // availableFilters={availableFilters.medium}
             onSelect={filters => handleSetActiveFilter('medium', filters)}
@@ -283,7 +284,7 @@ const Work = ({
           />
           <FilterList
             title="Era"
-            // className="flex-1 md:ml-20 sm-only:mr-8"
+            className="lg:ml-10 xl:ml-20 sm-only:mr-8"
             activeItems={activeFilters.era}
             // availableFilters={availableFilters.era}
             onSelect={filters => handleSetActiveFilter('era', filters)}
@@ -298,7 +299,7 @@ const Work = ({
             title="Collection"
             activeItems={activeFilters.collection}
             // availableFilters={availableFilters.collection}
-            // className="flex-1 md:ml-20 sm-only:mr-8"
+            className="lg:ml-10 xl:ml-20 sm-only:mr-8"
             onSelect={filters => handleSetActiveFilter('collection', filters)}
             items={collections.nodes}
           />
@@ -306,15 +307,18 @@ const Work = ({
             title="Materials"
             activeItems={activeFilters.material}
             // availableFilters={availableFilters.material}
-            // className="flex-1 md:ml-20"
+            className="lg:ml-10 xl:ml-20"
+            listClassName="grid grid-cols-2 gap-x-8"
             onSelect={filters => handleSetActiveFilter('material', filters)}
             items={materials.nodes}
           />
-        </Masonry>
+        </div>
         {atMedium && (
-          <div className="flex items-start">
+          <div className="flex items-start flex-shrink-0 md:ml-8">
             <button
-              className={`${hasFiltering ? '' : 'text-grey-d'}`}
+              className={`${
+                hasFiltering ? '' : 'text-grey-d cursor-not-allowed'
+              }`}
               onClick={handleResetFilters}
               disabled={!hasFiltering}
             >
@@ -478,7 +482,7 @@ const FilterButton = ({ className, onClick, isVisible, hasFiltering }) => (
     `}
     style={{ width: '157px' }}
   >
-    <span className="f-9 block uppercase">
+    <span className="f-9 block py-[6px] uppercase">
       {isVisible ? 'Close' : 'Filter'}
     </span>
   </button>

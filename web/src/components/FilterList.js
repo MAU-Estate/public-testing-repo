@@ -8,6 +8,7 @@ export default function FilterList({
   className = '',
   activeItems = [],
   availableFilters,
+  listClassName = '',
   onSelect,
 }) {
   const handleOnSelect = (filter, checked) => {
@@ -21,7 +22,7 @@ export default function FilterList({
   return (
     <div className={`${className}`}>
       <h3 className="uppercase f-19 mb-3 pl-5">{title}</h3>
-      <ul>
+      <ul className={`${listClassName}`}>
         {items.map((item, i) => {
           const slug = item.slug.current
           const isChecked = activeItems.indexOf(slug) !== -1

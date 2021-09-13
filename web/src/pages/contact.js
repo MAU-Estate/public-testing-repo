@@ -35,11 +35,18 @@ const ContactPage = ({ data: { sanityContact: pageData, sanityCv } }) => {
           <div className="sm-only:mb-25 col-start-7 col-span-3 border-t border-grey-b pt-4">
             <RichText content={infoBody._rawText} />
             {cvDownloadLabel && sanityCv.download && (
-              <p className="f-6">
-                <a href={sanityCv.download.asset.url} className="link">
-                  {cvDownloadLabel}
-                </a>
-              </p>
+              <div className="mt-25">
+                <p className="f-6">
+                  <a
+                    href={sanityCv.download.asset.url}
+                    className="link"
+                    target="_blank"
+                    rel="noreferrer noopener nofollower"
+                  >
+                    {cvDownloadLabel}
+                  </a>
+                </p>
+              </div>
             )}
           </div>
           <div className="col-start-10 col-span-3">

@@ -415,10 +415,15 @@
       font-family: var(--font-secondary--regular);
       font-size: 17px;
       line-height: 20px;
+      bottom: -0.3em;
+      margin-top: -0.6em;
+      position: relative;
 
       @screen lg {
         font-size: 20px;
         line-height: 25px;
+        bottom: -0.3em;
+        margin-top: -0.6em;
       }
     }
 

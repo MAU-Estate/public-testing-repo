@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="md:flex justify-between mb-d2">
           <Icon
             name="logo"
-            className="sm-only:mb-20 sm-only:pr-8 sm-only:w-full sm-only:max-w-[400px] w-[520px] md:w-[520px]"
+            className="sm-only:mb-20 sm-only:pr-8 sm-only:w-full sm-only:max-w-[400px] w-[520px] md:w-[520px] h-full"
           />
           <div className="md:flex items-end">
             <p className="sm-only:mb-8 f-3 w-64 md:w-72 md:mr-20">
@@ -65,7 +65,7 @@ export default function Footer() {
                     onClick={handleMailingListSubmit}
                     className="h-7 mt-[5px]"
                   >
-                    <Icon name="arrowSignUp" className="" />
+                    <Icon name="arrowSignUp" className="h-full" />
                   </button>
                   {mailchimpState === 'SUCCESS' && (
                     <div className="absolute left-0 bottom-0 top-0 right-0 flex items-center">

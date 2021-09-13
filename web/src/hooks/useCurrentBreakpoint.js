@@ -52,6 +52,7 @@ export const useCurrentBreakpoint = () => {
   }, [hasRan])
 
   return {
+    vw: getWidth(),
     breakpoint,
     isSmall: breakpoint.value === 'small',
     isMedium: breakpoint.value === 'medium',

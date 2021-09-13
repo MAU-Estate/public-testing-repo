@@ -1,7 +1,7 @@
 .projectFilter {
   @apply flex;
-  @apply gap-y-8;
-  @apply gap-x-8;
+  @apply md:flex-1;
+  @apply lg:flex-grow-0;
 }
 
 .projectFilter_column:not(:first-child) {

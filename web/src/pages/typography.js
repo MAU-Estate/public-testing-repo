@@ -8,6 +8,7 @@ const fonts = [
   'f-6',
   'f-7',
   'f-8',
+  'f-9',
   'f-10',
   'f-11',
   'f-12',
@@ -40,18 +41,12 @@ const FontPreview = ({ font }) => {
           </p>
         </div>
         <div>
-          <p className={`${font}`}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod!
-          </p>
+          <p className={`${font}`}>About Mary Ann</p>
         </div>
       </div>
       <div>
         <div className={`border mb-10`}>
-          <p className={`${font}`}>
-            {font} - Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod!
-          </p>
+          <p className={`${font}`}>{font} - About Mary Ann</p>
         </div>
         <div className="grid grid-cols-2">
           <img src="https://via.placeholder.com/320x180" alt="placholder" />
