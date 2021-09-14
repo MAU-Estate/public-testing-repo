@@ -189,6 +189,45 @@ const Work = ({
 
   const isFeatured = activeFilters.featured === 'true'
 
+  const renderFilterList = () => (
+    <>
+      <FilterList
+        title="Medium"
+        className="sm-only:mr-8"
+        activeItems={activeFilters.medium}
+        onSelect={filters => handleSetActiveFilter('medium', filters)}
+        items={mediums.nodes}
+      />
+      <FilterList
+        title="Era"
+        className="lg:ml-10 xl:ml-20 sm-only:mr-8"
+        activeItems={activeFilters.era}
+        onSelect={filters => handleSetActiveFilter('era', filters)}
+        items={yearOptions.map(year => {
+          return {
+            label: year,
+            slug: { current: year },
+          }
+        })}
+      />
+      <FilterList
+        title="Collection"
+        activeItems={activeFilters.collection}
+        className="lg:ml-10 xl:ml-20 sm-only:mr-8"
+        onSelect={filters => handleSetActiveFilter('collection', filters)}
+        items={collections.nodes}
+      />
+      <FilterList
+        title="Materials"
+        activeItems={activeFilters.material}
+        className="lg:ml-10 xl:ml-20"
+        listClassName="grid grid-cols-2 gap-x-8"
+        onSelect={filters => handleSetActiveFilter('material', filters)}
+        items={materials.nodes}
+      />
+    </>
+  )
+
   return (
     <div className="container pt-25 relative">
       <Seo {...seo} />
@@ -272,47 +311,17 @@ const Work = ({
           className="projectFilter"
           columnClassName="projectFilter_column"
         > */}
-        <div className="grid grid-cols-2 lg:flex">
-          {/* masonry */}
-          <FilterList
-            title="Medium"
-            className="sm-only:mr-8"
-            activeItems={activeFilters.medium}
-            // availableFilters={availableFilters.medium}
-            onSelect={filters => handleSetActiveFilter('medium', filters)}
-            items={mediums.nodes}
-          />
-          <FilterList
-            title="Era"
-            className="lg:ml-10 xl:ml-20 sm-only:mr-8"
-            activeItems={activeFilters.era}
-            // availableFilters={availableFilters.era}
-            onSelect={filters => handleSetActiveFilter('era', filters)}
-            items={yearOptions.map(year => {
-              return {
-                label: year,
-                slug: { current: year },
-              }
-            })}
-          />
-          <FilterList
-            title="Collection"
-            activeItems={activeFilters.collection}
-            // availableFilters={availableFilters.collection}
-            className="lg:ml-10 xl:ml-20 sm-only:mr-8"
-            onSelect={filters => handleSetActiveFilter('collection', filters)}
-            items={collections.nodes}
-          />
-          <FilterList
-            title="Materials"
-            activeItems={activeFilters.material}
-            // availableFilters={availableFilters.material}
-            className="lg:ml-10 xl:ml-20"
-            listClassName="grid grid-cols-2 gap-x-8"
-            onSelect={filters => handleSetActiveFilter('material', filters)}
-            items={materials.nodes}
-          />
-        </div>
+        {atMedium ? (
+          <div className="grid grid-cols-2 lg:flex">{renderFilterList()}</div>
+        ) : (
+          <Masonry
+            breakpointCols={2}
+            className="projectFilter"
+            columnClassName="projectFilter_column"
+          >
+            {renderFilterList()}
+          </Masonry>
+        )}
         {atMedium && (
           <div className="flex items-start flex-shrink-0 md:ml-8">
             <button

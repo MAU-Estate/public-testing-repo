@@ -28,11 +28,24 @@ const ContactPage = ({ data: { sanityContact: pageData, sanityCv } }) => {
         titleClasses="ml-[-12px]"
       />
       <div className="bg-black text-white pb-i">
-        <div className="container pt-b md:grid grid-cols-12">
-          <div className="sm-only:mb-24 col-span-5">
+        <div className="container pt-b md:grid md:grid-cols-12">
+          <div className="sm-only:mb-24 md:col-span-8 lg:col-span-7 xl:col-span-5">
             <RichTextSingle content={body._rawText} className="f-27" />
           </div>
-          <div className="sm-only:mb-25 col-start-7 col-span-3 border-t border-grey-b pt-4">
+          <div
+            className="
+              border-t
+            border-grey-b
+              pt-4
+              sm-only:mb-25
+              md:mb-25
+              md:col-start-9
+              md:col-span-4
+              xl:mb-0
+              xl:col-start-7
+              xl:col-span-3
+            "
+          >
             <RichText content={infoBody._rawText} />
             {cvDownloadLabel && sanityCv.download && (
               <div className="mt-25">
@@ -49,7 +62,7 @@ const ContactPage = ({ data: { sanityContact: pageData, sanityCv } }) => {
               </div>
             )}
           </div>
-          <div className="col-start-10 col-span-3">
+          <div className="md:col-start-9 xl:col-start-10 md:col-span-4 xl:col-span-3">
             {survivedByBody && (
               <div className="border-t border-grey-b pt-4 mb-25">
                 <RichText content={survivedByBody._rawText} />

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { graphql, Link } from 'gatsby'
 import { InView } from 'react-intersection-observer'
 

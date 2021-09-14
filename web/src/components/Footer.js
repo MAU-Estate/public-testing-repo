@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useCurrentBreakpoint } from '../hooks/useCurrentBreakpoint'
 
 import Icon from './Icon'
 
 export default function Footer() {
   const [mailchimpState, setMailchimpState] = useState()
   const [mailchimpError, setMailchimpError] = useState('')
+
+  const { atLarge } = useCurrentBreakpoint()
 
   const handleMailingListSubmit = async e => {
     e.preventDefault()
@@ -39,17 +42,17 @@ export default function Footer() {
   return (
     <div className="bg-black-b pt-d pb-d3">
       <div className="container text-white">
-        <div className="md:flex justify-between mb-d2">
+        <div className="md:grid grid-cols-2 justify-start mb-d2">
           <Icon
             name="logo"
-            className="sm-only:mb-20 sm-only:pr-8 sm-only:w-full sm-only:max-w-[400px] w-[520px] md:w-[520px] h-full"
+            className="sm-only:mb-20 pr-8 md:pr-24 xl:pr-0 sm-only:w-full sm-only:max-w-[400px] w-full md:max-w-[520px]"
           />
-          <div className="md:flex items-end">
-            <p className="sm-only:mb-8 f-3 w-64 md:w-72 md:mr-20">
+          <div className="xl:flex items-end">
+            <p className="mb-8 xl:mb-0 f-3 w-64 md:w-72 md:mr-20 ">
               Keep in touch with the estate through our newsletter:
             </p>
             <div>
-              <form onSubmit={handleMailingListSubmit} className="md:w-72">
+              <form onSubmit={handleMailingListSubmit} className="w-72">
                 <label className="h-14 w-full relative border-b border-grey-b flex text-grey-c">
                   <input
                     id="email"
@@ -82,8 +85,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="grid md:grid-cols-4 border-t border-grey-b pt-4">
-          <div className="sm-only:order-1">
+        <div className="grid md:grid-cols-2 gap-x-0 lg:flex justify-between xl:grid xl:grid-cols-4 border-t border-grey-b pt-4">
+          <div className="sm-only:order-1 ">
             <button
               className="flex f-2 hover:underline"
               style={{ textDecorationThickness: '.5px' }}
@@ -98,29 +101,39 @@ export default function Footer() {
               Back to top ↑
             </button>
           </div>
-          <div className="sm-only:mb-3">
-            <a
-              className="block f-2 hover:underline"
-              href="mailto:estate@maryannunger.com"
-              style={{ textDecorationThickness: '.5px' }}
-            >
-              estate@maryannunger.com
-            </a>
-          </div>
-          <div className="sm-only:mb-12">
-            <a
-              className="block f-2 hover:underline"
-              href="https://instagram.com"
-              style={{ textDecorationThickness: '.5px' }}
-            >
-              Join us on Instagram
-            </a>
-          </div>
-          <div className="sm-only:mb-24">
-            <div className="f-2">© 2021 Mary Ann Unger Estate</div>
-          </div>
+          {atLarge ? (
+            renderFooterLinks()
+          ) : (
+            <div className="lg:flex justify-between">{renderFooterLinks()}</div>
+          )}
         </div>
       </div>
     </div>
   )
 }
+
+const renderFooterLinks = () => (
+  <>
+    <div className="mb-3 lg:mb-0">
+      <a
+        className="block f-2 hover:underline"
+        href="mailto:estate@maryannunger.com"
+        style={{ textDecorationThickness: '.5px' }}
+      >
+        estate@maryannunger.com
+      </a>
+    </div>
+    <div className="mb-12 lg:mb-0">
+      <a
+        className="block f-2 hover:underline"
+        href="https://instagram.com"
+        style={{ textDecorationThickness: '.5px' }}
+      >
+        Join us on Instagram
+      </a>
+    </div>
+    <div className="mb-24 lg:mb-0">
+      <div className="f-2">© 2021 Mary Ann Unger Estate</div>
+    </div>
+  </>
+)

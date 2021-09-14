@@ -78,10 +78,10 @@ module.exports = {
     screens: {
       'xs-only': { max: '550px' },
       sm: '551px',
-      'sm-only': { max: '767px' },
-      md: '768px',
+      'sm-only': { max: '824px' },
+      md: '825px',
       'md-max': { max: '999px' },
-      'md-only': { min: '768', max: '999px' },
+      'md-only': { min: '825px', max: '999px' },
       work3: '925px',
       lg: '1000px',
       xl: '1400px',

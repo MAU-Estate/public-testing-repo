@@ -55,9 +55,9 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
         index={Math.floor(Math.random() * headerImages.length)}
       />
       <div className="bg-black text-white">
-        <div className="container md:grid md:grid-cols-3 pb-i pt-12 md:pt-b">
+        <div className="container md:grid md:grid-cols-8 lg:grid-cols-3 pb-i pt-12 md:pt-b">
           {isSmall && <CVNav items={navItems} className="pb-12" />}
-          <div className="border-grey-b sm-only:border-t sm-only:pt-12">
+          <div className="md:col-span-3 lg:col-span-1 border-grey-b sm-only:border-t sm-only:pt-12">
             <div className="mb-10">
               <h3 className="f-7 mb-3 uppercase">{lifeTitle}</h3>
               <p className="f-6">{life}</p>
@@ -78,38 +78,38 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               </p>
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="md:col-span-5 lg:col-span-2">
             {atMedium && <CVNav items={navItems} className="mb-r" />}
             <div
-              className="md:grid grid-cols-2 mb-h "
+              className="lg:grid lg:grid-cols-2 mb-h "
               id={`${slugify(exhibitionsTitle, { lower: true })}`}
             >
               <div
                 id={`${slugify(awardsTitle, { lower: true })}`}
                 className="border-b border-grey-b pt-t mb-t col-span-2"
               ></div>
-              <div className="sm-only:mb-20">
-                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+              <div className="mb-20 lg:mb-0">
+                <h3 className="f-7 mb-4 lg:mb-1 uppercase">
                   {exhibitionsTitle}
                 </h3>
                 <RichText className="f-6" content={exhibitionsBody._rawText} />
               </div>
               <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
-                <h3 className="f-7 mb-3 md:mb-1 uppercase">{awardsTitle}</h3>
+                <h3 className="f-7 mb-4 lg:mb-1 uppercase">{awardsTitle}</h3>
                 <RichText className="f-6" content={awardsBody._rawText} />
               </div>
             </div>
 
             <div
-              className="md:grid grid-cols-2 border-grey-b mb-h"
+              className="lg:grid grid-cols-2 border-grey-b mb-h"
               id={`${slugify(publicCollectionsTitle, { lower: true })}`}
             >
               <div
                 className="border-b pt-t mb-t col-span-2"
                 id={`${slugify(commisionsTitle, { lower: true })}`}
               ></div>
-              <div className="sm-only:mb-20">
-                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+              <div className="mb-20 lg:mb-0">
+                <h3 className="f-7 mb-4 lg:mb-1 uppercase">
                   {publicCollectionsTitle}
                 </h3>
                 <RichText
@@ -118,7 +118,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 />
               </div>
               <div className="sm-only:border-t sm-only:pt-t border-grey-b ">
-                <h3 className="f-7 mb-3 md:mb-1 uppercase">
+                <h3 className="f-7 mb-4 lg:mb-1 uppercase">
                   {commisionsTitle}
                 </h3>
                 <RichText
@@ -134,8 +134,11 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
                 id={`${slugify(groupExhibitionsTitle, { lower: true })}`}
               ></div>
               <h3 className="f-7 mb-4 uppercase">{groupExhibitionsTitle}</h3>
-              <div className="md:grid grid-cols-2 f-6">
-                <RichText content={groupExhibitionsBody._rawText} />
+              <div className="lg:grid grid-cols-2 f-6">
+                <RichText
+                  content={groupExhibitionsBody._rawText}
+                  className="mb-10 lg:mb-0"
+                />
                 <RichText content={groupExhibitionsBody2._rawText} />
               </div>
             </div>
@@ -151,8 +154,11 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
               >
                 {bibliographyTitle}
               </h3>
-              <div className="md:grid grid-cols-2 f-6">
-                <RichText content={selectedBibliographyBody._rawText} />
+              <div className="lg:grid grid-cols-2 f-6">
+                <RichText
+                  content={selectedBibliographyBody._rawText}
+                  className="mb-10 lg:mb-0"
+                />
                 <RichText content={selectedBibliographyBody2._rawText} />
               </div>
             </div>

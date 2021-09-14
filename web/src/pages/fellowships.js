@@ -30,14 +30,14 @@ const FellowshipsPage = ({
       />
       <div className="pt-8 md:pt-b bg-black text-white">
         <div className="container">
-          <div className="md:grid md:grid-cols-12 mb-p">
-            <div className="col-span-5 sm-only:mb-10">
+          <div className="lg:grid md:grid-cols-12 mb-p">
+            <div className="col-span-6 xl:col-span-5 mb-10 lg:mb-0">
               <RichTextSingle
                 className="f-27"
                 content={headerBodyLeft._rawText}
               />
             </div>
-            <div className="col-span-5">
+            <div className="col-span-6 xl:col-span-5">
               <RichTextSingle
                 className="f-27"
                 content={headerBodyRight._rawText}
@@ -51,16 +51,18 @@ const FellowshipsPage = ({
                 {fellow.year} {recipientLabel}
               </h2>
               <div className="md:grid md:grid-cols-12 mt-n">
-                <div className="md:grid col-span-6 md:grid-cols-3">
-                  <div className="col-span-1 sm-only:mb-12">
-                    <GatsbyImage
-                      className="aspect-w-1 aspect-h-1 "
-                      imgClassName="rounded-full"
-                      image={fellow.avatar.asset.gatsbyImageData}
-                      alt={'alt text'}
-                    />
+                <div className="col-span-6 xl:grid xl:grid-cols-3">
+                  <div className="col-span-3 xl:col-span-1 mb-12 xl:mb-0">
+                    <div className="max-w-[300px]">
+                      <GatsbyImage
+                        className="aspect-w-1 aspect-h-1"
+                        imgClassName="rounded-full"
+                        image={fellow.avatar.asset.gatsbyImageData}
+                        alt={'alt text'}
+                      />
+                    </div>
                   </div>
-                  <div className="col-span-2">
+                  <div className="col-span-3 xl:col-span-2">
                     <div className="mb-q">
                       <h3 className="f-28">{fellow.title}</h3>
                     </div>
@@ -72,7 +74,7 @@ const FellowshipsPage = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-5">
+                <div className="col-span-6 xl:col-span-5">
                   <RichTextSingle
                     className="f-6"
                     content={fellow.body._rawText}

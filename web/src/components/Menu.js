@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -21,13 +21,16 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
   const esc = useKeyPress('Escape')
   const { atMedium, atLarge } = useCurrentBreakpoint()
 
-  const handleOnMenuToggle = (value = !isOpen) => onMenuToggle(value)
+  const handleOnMenuToggle = useCallback(
+    (value = !isOpen) => onMenuToggle(value),
+    [onMenuToggle, isOpen]
+  )
 
   useEffect(() => {
     if (esc && isOpen) {
       handleOnMenuToggle(false)
     }
-  }, [esc, isOpen])
+  }, [esc, isOpen, handleOnMenuToggle])
 
   return (
     <>
