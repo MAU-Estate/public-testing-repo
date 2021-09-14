@@ -22,8 +22,6 @@ function Seo({ description, lang, meta, keywords, title, image }) {
             ? imageUrlFor(buildImageObj(data.site.seoImage)).width(1200).url()
             : ''
 
-        console.log(data)
-
         return (
           <Helmet
             htmlAttributes={{ lang }}

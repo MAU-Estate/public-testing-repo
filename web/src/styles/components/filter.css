@@ -1,7 +1,5 @@
 .projectFilter {
   @apply flex;
-  @apply md:flex-1;
-  @apply lg:flex-grow-0;
 }
 
 .projectFilter_column:not(:first-child) {

@@ -66,13 +66,13 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           <div className="col-span-9 mb-a3 ">
             <Figure image={section1.image1} className="mix-blend-multiply" />
           </div>
-          <div className="sm-only:mb-9 col-start-2 col-span-4 fadeItem">
+          <div className="sm-only:mb-9 col-start-1 col-span-6 xl:col-start-2 xl:col-span-4 fadeItem">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyLeft._rawText}
             />
           </div>
-          <div className="col-start-6 col-span-4 fadeItem">
+          <div className="col-start-7 col-span-6 xl:col-start-6 xl:col-span-4 fadeItem">
             <RichTextSingle
               className="f-12"
               content={section1.section1bodyRight._rawText}
@@ -91,13 +91,13 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
       >
         <div className="container">
           <div className="md:grid grid-cols-12">
-            <div className="sm-only:mb-14 col-span-5 ">
+            <div className="sm-only:mb-14 col-span-6 xl:col-span-5 ">
               <Gallery
                 slides={section2.gallery1.galleryRef.images}
                 slug={section2.gallery1.galleryRef.slug}
               />
             </div>
-            <div className="col-start-7 col-span-5">
+            <div className="xl:col-start-7 col-span-6 xl:col-span-5">
               <RichTextSingle
                 className="f-13"
                 content={section2.richText1._rawText}
@@ -114,19 +114,19 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         />
 
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-7 col-span-5 text-white mb-e">
+          <div className="col-start-5 col-span-7 xl:col-start-7 xl:col-span-5 text-white mb-e">
             <RichTextSingle
               className="f-13"
               content={section2.richText2._rawText}
             />
           </div>
-          <div className="col-start-2 col-span-8 text-white">
+          <div className="col-span-10 col-start-2 xl:col-start-2 xl:col-span-8 text-white">
             <Blockquote quote={section2.quote1} />
           </div>
         </div>
 
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-2 col-end-12">
+          <div className="col-start-1 col-end-13 lg:col-start-2 lg:col-end-12">
             <Gallery
               slides={section2.gallery3.galleryRef.images}
               slug={section2.gallery3.galleryRef.slug}
@@ -147,13 +147,13 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         className="py-g fadeItem"
       >
         <div className="container grid grid-cols-1 md:grid-cols-12 mb-e">
-          <div className="sm-only:order-1 md:col-start-2 md:col-end-7">
+          <div className="sm-only:order-1 md:col-start-1 md:col-end-7 xl:col-start-2 xl:col-end-7">
             <RichTextSingle
               className="f-13"
               content={section3.richText1._rawText}
             />
           </div>
-          <div className="sm-only:mb-18 md:col-start-8 md:col-end-13">
+          <div className="sm-only:mb-18 md:col-start-7 md:col-end-13 xl:col-start-8 xl:col-end-13">
             <Gallery
               slides={section3.gallery1.galleryRef.images}
               slug={section3.gallery1.galleryRef.slug}
@@ -178,7 +178,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-2 col-end-7">
+          <div className="col-start-2 col-end-10 xl:col-start-2 xl:col-end-7">
             <RichTextSingle
               className="f-13"
               content={section3.richText2._rawText}
@@ -198,7 +198,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         className="py-g text-white fadeItem"
       >
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="sm-only:mb-18 col-span-5">
+          <div className="sm-only:mb-18 col-span-6 xl:col-span-5">
             <Gallery
               slides={section4.gallery1.galleryRef.images}
               slug={section4.gallery1.galleryRef.slug}
@@ -212,7 +212,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-2 col-end-10">
+          <div className="col-start-2 col-end-12 xl:col-end-10">
             <Blockquote quote={section4.blockquote1} />
           </div>
         </div>
@@ -253,7 +253,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         />
 
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-end-7">
+          <div className="col-start-2 col-end-9 xl:col-end-7">
             <RichTextSingle
               className="f-13"
               content={section5.richText2._rawText}
@@ -261,7 +261,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-4 col-end-12">
+          <div className="col-start-1 col-end-13 xl:col-start-4 xl:col-end-12">
             <Blockquote quote={section5.blockquote1} />
           </div>
         </div>
@@ -287,7 +287,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         className="Guerilla py-g fadeItem"
       >
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-7 col-end-13">
+          <div className="col-start-5 col-end-13 xl:col-start-7">
             <RichTextSingle
               className="f-13"
               content={section6.richText1._rawText}
@@ -304,12 +304,12 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-end-10">
+          <div className="col-start-1 col-end-13 xl:col-start-2 xl:col-end-10">
             <Blockquote quote={section6.blockquote1} />
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-7 col-end-12">
+          <div className="col-start-5 col-end-12 xl:col-start-7">
             <RichTextSingle
               className="f-13"
               content={section6.richText2._rawText}
@@ -345,7 +345,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         className="py-g text-white fadeItem"
       >
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-2 col-span-5">
+          <div className="col-start-2 col-span-7 xl:col-span-5">
             <RichTextSingle
               className="f-13"
               content={section7.richText1._rawText}
@@ -361,12 +361,12 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-4 col-end-11">
+          <div className="col-start-3 col-end-12 xl:col-start-4 xl:col-end-11">
             <Blockquote quote={section7.blockquote1} />
           </div>
         </div>
         <div className="container md:grid grid-cols-12">
-          <div className="sm-only:mb-18 col-start-2 col-end-7">
+          <div className="sm-only:mb-18 col-start-1 xl:col-start-2 col-end-7">
             <RichTextSingle
               className="f-13"
               content={section7.richText2._rawText}

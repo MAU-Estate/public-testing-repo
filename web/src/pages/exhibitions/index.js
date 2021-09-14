@@ -22,12 +22,12 @@ const ExhibitionsPage = ({
             <li className="mb-l">
               <Link
                 to={exhibition.slug.current}
-                className="md:grid grid-cols-2 hover:underline"
+                className="xl:grid lg:grid-cols-2 hover:underline"
               >
                 <GatsbyImage
                   image={exhibition.previewImage.asset.gatsbyImageData}
                   alt={exhibition.previewImage.alt}
-                  className="md:aspect-w-4 md:aspect-h-3 sm-only:mb-8"
+                  className="md:aspect-w-4 md:aspect-h-3 mb-8 xl:mb-0"
                 />
                 <div>
                   <p className="f-22 mb-k uppercase">

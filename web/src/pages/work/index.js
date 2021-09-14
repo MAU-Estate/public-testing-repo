@@ -110,7 +110,7 @@ const Work = ({
   },
 }) => {
   const { setProjectEdges, setProjectFilterString } = useContext(Context)
-  const { atMedium, isSmall } = useCurrentBreakpoint()
+  const { atMedium, atLarge, isSmall } = useCurrentBreakpoint()
   const [activeFilters, setActiveFilters] = useState(
     location.search
       ? queryString.parse(location.search, { arrayFormat: 'comma' })
@@ -189,44 +189,42 @@ const Work = ({
 
   const isFeatured = activeFilters.featured === 'true'
 
-  const renderFilterList = () => (
-    <>
-      <FilterList
-        title="Medium"
-        className="sm-only:mr-8"
-        activeItems={activeFilters.medium}
-        onSelect={filters => handleSetActiveFilter('medium', filters)}
-        items={mediums.nodes}
-      />
-      <FilterList
-        title="Era"
-        className="lg:ml-10 xl:ml-20 sm-only:mr-8"
-        activeItems={activeFilters.era}
-        onSelect={filters => handleSetActiveFilter('era', filters)}
-        items={yearOptions.map(year => {
-          return {
-            label: year,
-            slug: { current: year },
-          }
-        })}
-      />
-      <FilterList
-        title="Collection"
-        activeItems={activeFilters.collection}
-        className="lg:ml-10 xl:ml-20 sm-only:mr-8"
-        onSelect={filters => handleSetActiveFilter('collection', filters)}
-        items={collections.nodes}
-      />
-      <FilterList
-        title="Materials"
-        activeItems={activeFilters.material}
-        className="lg:ml-10 xl:ml-20"
-        listClassName="grid grid-cols-2 gap-x-8"
-        onSelect={filters => handleSetActiveFilter('material', filters)}
-        items={materials.nodes}
-      />
-    </>
-  )
+  const renderFilterList = () => [
+    <FilterList
+      title="Medium"
+      className="sm-only:mb-4"
+      activeItems={activeFilters.medium}
+      onSelect={filters => handleSetActiveFilter('medium', filters)}
+      items={mediums.nodes}
+    />,
+    <FilterList
+      title="Era"
+      className="lg:ml-10 xl:ml-20 sm-only:mb-4"
+      activeItems={activeFilters.era}
+      onSelect={filters => handleSetActiveFilter('era', filters)}
+      items={yearOptions.map(year => {
+        return {
+          label: year,
+          slug: { current: year },
+        }
+      })}
+    />,
+    <FilterList
+      title="Collection"
+      activeItems={activeFilters.collection}
+      className="lg:ml-10 xl:ml-20 sm-only:mb-4"
+      onSelect={filters => handleSetActiveFilter('collection', filters)}
+      items={collections.nodes}
+    />,
+    <FilterList
+      title="Materials"
+      activeItems={activeFilters.material}
+      className="lg:ml-10 xl:ml-20"
+      listClassName="grid grid-cols-2 gap-x-8"
+      onSelect={filters => handleSetActiveFilter('material', filters)}
+      items={materials.nodes}
+    />,
+  ]
 
   return (
     <div className="container pt-25 relative">
@@ -306,13 +304,10 @@ const Work = ({
           isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
         }`}
       >
-        {/* <Masonry
-          breakpointCols={4}
-          className="projectFilter"
-          columnClassName="projectFilter_column"
-        > */}
-        {atMedium ? (
-          <div className="grid grid-cols-2 lg:flex">{renderFilterList()}</div>
+        {atLarge || isSmall ? (
+          <div className="grid lg:grid-cols-2 lg:flex">
+            {renderFilterList()}
+          </div>
         ) : (
           <Masonry
             breakpointCols={2}
@@ -344,7 +339,7 @@ const Work = ({
         }}
       >
         {filteredProjects && filteredProjects.length ? (
-          <ul className="pointer-events-auto mt-b mb-e grid grid-cols-2 work3:grid-cols-3 gap-x-11 gap-y-h">
+          <ul className="pointer-events-auto mt-b mb-e grid md:grid-cols-2 work3:grid-cols-3 gap-x-11 gap-y-h">
             {filteredProjects.map(
               (
                 {

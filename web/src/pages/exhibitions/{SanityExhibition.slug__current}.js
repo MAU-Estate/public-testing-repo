@@ -39,8 +39,8 @@ export default function exhibition({
         nextPath={`../${currentItem.next.slug.current}`}
       />
       <div className="grid md:grid-cols-12 mt-h">
-        <div className="md:col-span-4 sm-only:order-1">
-          <dl className="md:grid grid-cols-2">
+        <div className="md:col-span-5 xl:col-span-4 sm-only:order-1">
+          <dl className="lg:grid lg:grid-cols-2">
             <div className="mb-10">
               <dt className="f-7 uppercase mb-3">Exhibition Title</dt>
               <dd className="f-6">{title}</dd>

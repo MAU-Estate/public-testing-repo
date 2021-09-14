@@ -61,7 +61,7 @@ export default function Project({
             className="sm-only:mb-4 col-span-8 grid md:grid-cols-4"
           />
         )}
-        <div className="col-start-10 col-span-3">
+        <div className="col-start-9 col-span-4 xl:col-start-10 xl:col-span-3">
           <dl className="mb-22">
             {/* custom spacing */}
             <dt className="f-7 mb-3 uppercase">
