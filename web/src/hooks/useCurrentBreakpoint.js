@@ -21,7 +21,9 @@ const getBreakpoint = (width = getWidth()) => {
 
 export const useCurrentBreakpoint = () => {
   const [hasRan, setHasRan] = useState(false)
-  let [breakpoint, setBreakpoint] = useState({ breakpoint: 'xl' })
+  const [breakpoint, setBreakpoint] = useState({ breakpoint: 'xl' })
+  const [vw, setVw] = useState()
+  const isBrowser = typeof window !== 'undefined'
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
@@ -31,6 +33,7 @@ export const useCurrentBreakpoint = () => {
 
       // save current window width in the state object
       setBreakpoint(getBreakpoint())
+      setVw(getWidth())
     }
 
     // timeoutId for debounce mechanism
@@ -39,7 +42,10 @@ export const useCurrentBreakpoint = () => {
       // prevent execution of previous setTimeout
       clearTimeout(timeoutId)
       // change width from the state object after 150 milliseconds
-      timeoutId = setTimeout(() => setBreakpoint(getBreakpoint()), 150)
+      timeoutId = setTimeout(() => {
+        setBreakpoint(getBreakpoint())
+        setVw(getWidth())
+      }, 150)
     }
     // set resize listener
     window.addEventListener('resize', resizeListener)
@@ -52,7 +58,7 @@ export const useCurrentBreakpoint = () => {
   }, [hasRan])
 
   return {
-    vw: getWidth(),
+    vw,
     breakpoint,
     isSmall: breakpoint.value === 'small',
     isMedium: breakpoint.value === 'medium',
