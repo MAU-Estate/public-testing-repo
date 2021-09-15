@@ -231,7 +231,7 @@ const Work = ({
     <div className="pt-25 relative">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <Headroom className="work-filter" pinStart={100}>
+      <Headroom className="work-filter" pinStart={68}>
         <div className="container">
           <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
             <h1 className="f-5 ml-[-9px]">{title}</h1>

@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 .Menu-toggle,
 .no-scroll .Menu-toggle {
   @apply text-white;
@@ -7,3 +8,4 @@
 .headroom--pinned .Menu-toggle {
   @apply text-black;
 }
+/* purgecss end ignore */
