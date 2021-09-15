@@ -347,10 +347,10 @@
         line-height: 74px;
         letter-spacing: -7.5px;
       }
-      @media (min-width: 850px) {
-        font-size: 111px;
-        line-height: 79px;
-        letter-spacing: -6px;
+      @media (min-width: 850px) and (max-width: 1000px) {
+        font-size: 148px;
+        line-height: 105px;
+        letter-spacing: -11px;
       }
     }
 
@@ -387,7 +387,7 @@
       bottom: -0.085em;
       margin-top: -0.125em;
 
-      @screen xl {
+      @screen lg {
         font-size: 170px !important;
         line-height: 135px !important;
         letter-spacing: -12px !important;
