@@ -26,7 +26,7 @@ const PressPage = ({
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <div className="mb-b md:pt-12 pb-3 lg:pb-a3 border-b border-grey-b flex justify-between items-end">
-        <h1 className="f-5 ml-[-6px] lg:ml-[-21px]">{title}</h1>
+        <h1 className="f-5">{title}</h1>
       </div>
 
       {articlesInRows.map((row, i) => {

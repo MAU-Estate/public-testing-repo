@@ -84,6 +84,7 @@ module.exports = {
       'md-only': { min: '825px', max: '999px' },
       work3: '925px',
       lg: '1000px',
+      filterMd: '1200px',
       xl: '1400px',
     },
 

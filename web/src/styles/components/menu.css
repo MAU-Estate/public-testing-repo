@@ -3,6 +3,7 @@
   @apply text-white;
 }
 
-.theme--light .Menu-toggle {
+.theme--light .Menu-toggle,
+.headroom--pinned .Menu-toggle {
   @apply text-black;
 }

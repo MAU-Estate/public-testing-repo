@@ -276,7 +276,16 @@
       bottom: -0.12em;
       margin-top: -0.225em;
 
-      @screen lg {
+      @media (min-width: 550px) {
+        font-size: 72px;
+        line-height: 66px;
+        letter-spacing: -3.5px;
+        bottom: -0.12em;
+        margin-top: -0.225em;
+        color: blue;
+      }
+
+      @media (min-width: 1200px) {
         font-size: 93px;
         line-height: 88px;
         letter-spacing: -3.5px;
@@ -328,6 +337,47 @@
       }
     }
 
+    .work .f-5,
+    .exhibitions .f-5,
+    .fellowships .f-5,
+    .contact .f-5,
+    .cv .f-5 {
+      @media (min-width: 550px) {
+        font-size: 105px;
+        line-height: 74px;
+        letter-spacing: -7.5px;
+      }
+      @media (min-width: 850px) {
+        font-size: 111px;
+        line-height: 79px;
+        letter-spacing: -6px;
+      }
+    }
+
+    .press .f-5 {
+      @media (min-width: 550px) {
+        font-size: 78px;
+        line-height: 57px;
+        letter-spacing: -4.5px;
+        margin-left: -8px;
+      }
+      @media (min-width: 850px) {
+        font-size: 111px;
+        line-height: 81px;
+        letter-spacing: -6px;
+        margin-left: -12px;
+      }
+      @media (min-width: 1000px) {
+        font-size: 148px;
+        line-height: 105px;
+        letter-spacing: -11px;
+        margin-left: -16px;
+      }
+      @media (min-width: 1400px) {
+        margin-left: -18px;
+      }
+    }
+
     .f-5 {
       font-family: var(--font-secondary);
       font-size: 63px;
@@ -337,10 +387,10 @@
       bottom: -0.085em;
       margin-top: -0.125em;
 
-      @screen lg {
-        font-size: 170px;
-        line-height: 135px;
-        letter-spacing: -12px;
+      @screen xl {
+        font-size: 170px !important;
+        line-height: 135px !important;
+        letter-spacing: -12px !important;
         bottom: -0.05em;
         margin-top: -0.075em;
       }

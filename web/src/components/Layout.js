@@ -36,10 +36,10 @@ const Layout = ({ location, children, className = '' }) => {
     case '/contact':
     case '/cv':
     case '/fellowships':
-      menuToggleClass = '!text-white'
+      menuToggleClass = 'text-white'
       break
     default:
-      menuToggleClass = '!text-black'
+      menuToggleClass = 'text-black'
       break
   }
 
@@ -130,7 +130,7 @@ const Layout = ({ location, children, className = '' }) => {
                             (isMenuPinned && !isMenuOpen) ||
                             (!isMenuFixed && !isMenuOpen)
                               ? menuToggleClass
-                              : '!text-white'
+                              : 'text-white'
                           }
                         `}
                       />
@@ -139,7 +139,9 @@ const Layout = ({ location, children, className = '' }) => {
                 </div>
               </header>
             </Headroom>
-            <main className={`${className}`}>{children}</main>
+            <main className={`${className} ${location.pathname.split('/')[1]}`}>
+              {children}
+            </main>
             <Footer />
           </div>
         </div>

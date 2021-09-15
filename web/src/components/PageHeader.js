@@ -10,7 +10,7 @@ const PageHeader = ({ images, title, titleClasses = '' }) => {
   )
 
   return (
-    <div className="relative pt-header pb-10 md:pb-b ">
+    <div className="relative pt-header pb-10 md:pb-b">
       <div className="absolute inset-0 flex">
         {index !== undefined && (
           <SanityImage
@@ -27,7 +27,7 @@ const PageHeader = ({ images, title, titleClasses = '' }) => {
       </div>
       <div className="container">
         <div className="border-b border-white pb-a3 f-5 text-white ">
-          <h1 className={`${titleClasses}`}>{title}</h1>
+          <h1 className={`${titleClasses} `}>{title}</h1>
         </div>
       </div>
     </div>

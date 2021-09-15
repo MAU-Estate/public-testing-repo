@@ -11,6 +11,7 @@ import useObserver from '../../hooks/useObserver'
 import FilterList from '../../components/FilterList'
 import Seo from '../../components/Seo'
 import { useCurrentBreakpoint } from '../../hooks/useCurrentBreakpoint'
+import Headroom from 'react-headroom'
 
 const getFeaturedProjects = (featuredProjects, projects) => {
   const featuredIds = featuredProjects.map(project => project.id)
@@ -199,7 +200,7 @@ const Work = ({
     />,
     <FilterList
       title="Era"
-      className="lg:ml-10 xl:ml-20 sm-only:mb-4"
+      className="filterMd:ml-10 xl:ml-20 sm-only:mb-4"
       activeItems={activeFilters.era}
       onSelect={filters => handleSetActiveFilter('era', filters)}
       items={yearOptions.map(year => {
@@ -212,14 +213,14 @@ const Work = ({
     <FilterList
       title="Collection"
       activeItems={activeFilters.collection}
-      className="lg:ml-10 xl:ml-20 sm-only:mb-4"
+      className="filterMd:ml-10 xl:ml-20 sm-only:mb-4"
       onSelect={filters => handleSetActiveFilter('collection', filters)}
       items={collections.nodes}
     />,
     <FilterList
       title="Materials"
       activeItems={activeFilters.material}
-      className="lg:ml-10 xl:ml-20"
+      className="filterMd:ml-10 xl:ml-20"
       listClassName="grid grid-cols-2 gap-x-8"
       onSelect={filters => handleSetActiveFilter('material', filters)}
       items={materials.nodes}
@@ -227,112 +228,116 @@ const Work = ({
   ]
 
   return (
-    <div className="container pt-25 relative">
+    <div className="pt-25 relative">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
-        <h1 className="f-5 ml-[-9px]">{title}</h1>
+      <Headroom className="work-filter" pinStart={100}>
+        <div className="container">
+          <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
+            <h1 className="f-5 ml-[-9px]">{title}</h1>
 
-        {/* radios */}
+            {/* radios */}
 
-        <div className="flex uppercase">
-          <div
-            className={`radio relative cursor-pointer ${
-              isFeatured ? 'f-16--medium' : 'f-16'
-            }`}
-          >
-            <input
-              type="radio"
-              name="featuredFilter"
-              id="featured"
-              className="absolute cursor-pointer opacity-0 h-full w-full"
-              onChange={() => handleSetActiveFilter('featured', 'true')}
-              checked={isFeatured}
-            />
-            <label htmlFor="featured">Featured</label>
-          </div>
-          <div className="mx-1 f-16">/</div>
-          <div
-            className={`radio relative cursor-pointer ${
-              !isFeatured ? 'f-16--medium' : 'f-16'
-            }`}
-          >
-            <input
-              type="radio"
-              name="featuredFilter"
-              id="all"
-              className="absolute cursor-pointer opacity-0 h-full w-full"
-              onChange={() => handleSetActiveFilter('featured', 'false')}
-              checked={!isFeatured}
-            />
-            <label htmlFor="all">All</label>
-          </div>
-        </div>
-        {atMedium && (
-          <FilterButton
-            onClick={() => setIsFilterVisible(!isFilterVisible)}
-            isVisible={isFilterVisible}
-            hasFiltering={hasFiltering}
-          />
-        )}
-      </div>
-      {isSmall && (
-        <div className="flex justify-between mt-6 items-center">
-          <FilterButton
-            onClick={() => setIsFilterVisible(!isFilterVisible)}
-            isVisible={isFilterVisible}
-            hasFiltering={hasFiltering}
-          />
-          {isFilterVisible && (
-            <div className="flex items-start">
-              <button
-                className={`${hasFiltering ? '' : 'text-grey-d'}`}
-                onClick={handleResetFilters}
-                disabled={!hasFiltering}
+            <div className="flex uppercase">
+              <div
+                className={`radio relative cursor-pointer ${
+                  isFeatured ? 'f-16--medium' : 'f-16'
+                }`}
               >
-                <div className="f-9--light uppercase">Reset Filters</div>
-              </button>
+                <input
+                  type="radio"
+                  name="featuredFilter"
+                  id="featured"
+                  className="absolute cursor-pointer opacity-0 h-full w-full"
+                  onChange={() => handleSetActiveFilter('featured', 'true')}
+                  checked={isFeatured}
+                />
+                <label htmlFor="featured">Featured</label>
+              </div>
+              <div className="mx-1 f-16">/</div>
+              <div
+                className={`radio relative cursor-pointer ${
+                  !isFeatured ? 'f-16--medium' : 'f-16'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="featuredFilter"
+                  id="all"
+                  className="absolute cursor-pointer opacity-0 h-full w-full"
+                  onChange={() => handleSetActiveFilter('featured', 'false')}
+                  checked={!isFeatured}
+                />
+                <label htmlFor="all">All</label>
+              </div>
+            </div>
+            {atMedium && (
+              <FilterButton
+                onClick={() => setIsFilterVisible(!isFilterVisible)}
+                isVisible={isFilterVisible}
+                hasFiltering={hasFiltering}
+              />
+            )}
+          </div>
+          {isSmall && (
+            <div className="flex justify-between mt-6 items-center">
+              <FilterButton
+                onClick={() => setIsFilterVisible(!isFilterVisible)}
+                isVisible={isFilterVisible}
+                hasFiltering={hasFiltering}
+              />
+              {isFilterVisible && (
+                <div className="flex items-start">
+                  <button
+                    className={`${hasFiltering ? '' : 'text-grey-d'}`}
+                    onClick={handleResetFilters}
+                    disabled={!hasFiltering}
+                  >
+                    <div className="f-9--light uppercase">Reset Filters</div>
+                  </button>
+                </div>
+              )}
             </div>
           )}
-        </div>
-      )}
 
-      {/* Filter */}
-      <div
-        ref={filterRef}
-        className={`flex absolute container left-0 right-0 justify-between pt-j transition-opacity  ${
-          isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
-        }`}
-      >
-        {atLarge || isSmall ? (
-          <div className="grid lg:grid-cols-2 lg:flex">
-            {renderFilterList()}
-          </div>
-        ) : (
-          <Masonry
-            breakpointCols={2}
-            className="projectFilter"
-            columnClassName="projectFilter_column"
+          {/* Filter */}
+          <div
+            ref={filterRef}
+            className={`bg-white flex absolute container left-0 right-0 justify-between pt-j transition-opacity  ${
+              isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
+            }`}
           >
-            {renderFilterList()}
-          </Masonry>
-        )}
-        {atMedium && (
-          <div className="flex items-start flex-shrink-0 md:ml-8">
-            <button
-              className={`${
-                hasFiltering ? '' : 'text-grey-d cursor-not-allowed'
-              }`}
-              onClick={handleResetFilters}
-              disabled={!hasFiltering}
-            >
-              <div className="f-9--light uppercase">Reset Filters</div>
-            </button>
+            {atLarge || isSmall ? (
+              <div className="grid lg:gap-y-8 lg:grid-cols-3  filterMd:flex">
+                {renderFilterList()}
+              </div>
+            ) : (
+              <Masonry
+                breakpointCols={2}
+                className="projectFilter"
+                columnClassName="projectFilter_column"
+              >
+                {renderFilterList()}
+              </Masonry>
+            )}
+            {atMedium && (
+              <div className="flex items-start flex-shrink-0 md:ml-8">
+                <button
+                  className={`${
+                    hasFiltering ? '' : 'text-grey-d cursor-not-allowed'
+                  }`}
+                  onClick={handleResetFilters}
+                  disabled={!hasFiltering}
+                >
+                  <div className="f-9--light uppercase">Reset Filters</div>
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </div>
+      </Headroom>
       <div
-        className={`transform transition-transform pointer-events-none`}
+        className={`container transform transition-transform pointer-events-none`}
         style={{
           paddingBottom: `${isFilterVisible ? filterHeight : 0}px`,
           transform: `translateY(${isFilterVisible ? filterHeight : 0}px)`,
