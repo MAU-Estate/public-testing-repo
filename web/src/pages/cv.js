@@ -43,7 +43,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
     bibliographyTitle,
   ]
 
-  const { isSmall, atMedium } = useCurrentBreakpoint()
+  const { isSmall, isMedium, atLarge } = useCurrentBreakpoint()
 
   return (
     <>
@@ -56,7 +56,8 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
       />
       <div className="bg-black text-white">
         <div className="container md:grid md:grid-cols-8 lg:grid-cols-3 pb-i pt-12 md:pt-b">
-          {isSmall && <CVNav items={navItems} className="pb-12" />}
+          {isSmall ||
+            (isMedium && <CVNav items={navItems} className="pb-12" />)}
           <div className="md:col-span-3 lg:col-span-1 border-grey-b sm-only:border-t sm-only:pt-12">
             <div className="mb-10">
               <h3 className="f-7 mb-3 uppercase">{lifeTitle}</h3>
@@ -79,7 +80,7 @@ const CvPage = ({ data: { sanityCv: pageData } }) => {
             </div>
           </div>
           <div className="md:col-span-5 lg:col-span-2">
-            {atMedium && <CVNav items={navItems} className="mb-r" />}
+            {atLarge && <CVNav items={navItems} className="mb-r" />}
             <div
               className="lg:grid lg:grid-cols-2 mb-h "
               id={`${slugify(exhibitionsTitle, { lower: true })}`}

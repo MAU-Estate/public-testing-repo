@@ -304,7 +304,9 @@ const Work = ({
           <div
             ref={filterRef}
             className={`bg-white flex absolute container left-0 right-0 justify-between pt-j transition-opacity  ${
-              isFilterVisible ? 'pointer-events-auto' : 'opacity-0'
+              isFilterVisible
+                ? 'pointer-events-auto'
+                : 'pointer-events-none opacity-0'
             }`}
           >
             {atLarge || isSmall ? (

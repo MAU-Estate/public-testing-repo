@@ -41,7 +41,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
       <div
         ref={backgroundRef}
         className="fixed inset-0 transition-colors duration-300"
-        style={{ zIndex: -1, backgroundColor: 'var(--homeBg)' }}
+        style={{ backgroundColor: 'var(--homeBg)' }}
       />
       <Seo {...seo} />
 
@@ -261,7 +261,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-1 col-end-13 xl:col-start-4 xl:col-end-12">
+          <div className="col-start-1 col-end-12 xl:col-start-4 xl:col-end-12">
             <Blockquote quote={section5.blockquote1} />
           </div>
         </div>
@@ -304,7 +304,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="col-start-1 col-end-13 xl:col-start-2 xl:col-end-10">
+          <div className="col-start-1 col-end-12 xl:col-start-2 xl:col-end-10">
             <Blockquote quote={section6.blockquote1} />
           </div>
         </div>
