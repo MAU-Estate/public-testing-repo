@@ -250,6 +250,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           slug={section5.gallery2.galleryRef.slug}
           className="mb-e"
           theme="light"
+          full
         />
 
         <div className="container md:grid grid-cols-12 mb-e">

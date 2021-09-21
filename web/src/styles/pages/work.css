@@ -1,11 +1,15 @@
 .work {
-  & .work-filter .headroom--pinned,
+  & .work-filter .headroom {
+    padding-left: 41px !important;
+  }
+  & .work-filter .headroom--unfixed {
+    padding-left: 0px !important;
+  }
+  /* & .work-filter .headroom--pinned,
+  & .work-filter .headroom--scrolled,
   & .work-filter .headroom--unpinned {
-    @media (max-width: 1000px) {
-      top: 68px !important;
-    }
     @media (min-width: 1000px) {
       left: 41px !important;
     }
-  }
+  } */
 }

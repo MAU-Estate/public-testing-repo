@@ -152,8 +152,12 @@ const Work = ({
   }, [filteredProjects, setProjectEdges])
 
   // Setting filter height for drawer animation
+  const filterContainerRef = useRef()
   const filterRef = useRef()
   const [filterHeight, setFilterHeight] = useState(0)
+
+  if (filterContainerRef?.current)
+    console.log(filterContainerRef.current.getBoundingClientRect().top)
 
   useObserver({
     callback: val => setFilterHeight(val[0].contentRect.bottom),
@@ -231,10 +235,13 @@ const Work = ({
     <div className="pt-25 relative">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
-      <Headroom className="work-filter" pinStart={68}>
-        <div className="container">
+      <Headroom
+        className="work-filter"
+        pinStart={filterContainerRef?.current?.getBoundingClientRect().top || 0}
+      >
+        <div className="container" ref={filterContainerRef}>
           <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
-            <h1 className="f-5 ml-[-9px]">{title}</h1>
+            <h1 className="f-5 xl:ml-[-9px]">{title}</h1>
 
             {/* radios */}
 

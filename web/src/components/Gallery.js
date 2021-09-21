@@ -220,7 +220,7 @@ function Gallery({
           galleryLength={slides.length}
           inline={inline}
           arrows={false}
-          className="mx-auto max-w-[1604px] px-12"
+          className={`${full ? 'container' : ''}`}
           // goToPrev={() => sliderCaptionsRef.current.slickPrev()}
           // goToNext={() => sliderCaptionsRef.current.slickNext()}
           data={slide}
