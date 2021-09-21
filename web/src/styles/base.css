@@ -224,47 +224,6 @@
       text-decoration: none;
     }
   }
-
-  .work .f-5,
-  .exhibitions .f-5,
-  .fellowships .f-5,
-  .contact .f-5,
-  .cv .f-5 {
-    @media (min-width: 550px) {
-      font-size: 105px;
-      line-height: 63px;
-      letter-spacing: -7.5px;
-    }
-    @media (min-width: 850px) and (max-width: 1000px) {
-      font-size: 148px;
-      line-height: 105px;
-      letter-spacing: -11px;
-    }
-  }
-
-  .press .f-5 {
-    @media (min-width: 550px) {
-      font-size: 78px;
-      line-height: 69px;
-      letter-spacing: -4.5px;
-      margin-left: -8px;
-    }
-    @media (min-width: 850px) {
-      font-size: 111px;
-      line-height: 104px;
-      letter-spacing: -6px;
-      margin-left: -12px;
-    }
-    @media (min-width: 1000px) and (max-width: 1200px) {
-      font-size: 148px;
-      line-height: 103px;
-      letter-spacing: -11px;
-      margin-left: -16px;
-    }
-    @media (min-width: 1200px) {
-      margin-left: -18px;
-    }
-  }
 }
 
 @tailwind utilities;
