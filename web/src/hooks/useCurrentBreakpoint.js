@@ -23,7 +23,6 @@ export const useCurrentBreakpoint = () => {
   const [hasRan, setHasRan] = useState(false)
   const [breakpoint, setBreakpoint] = useState({ breakpoint: 'xl' })
   const [vw, setVw] = useState()
-  const isBrowser = typeof window !== 'undefined'
 
   // in this case useEffect will execute only once because
   // it does not have any dependencies.
