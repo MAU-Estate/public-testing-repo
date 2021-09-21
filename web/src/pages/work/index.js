@@ -366,16 +366,18 @@ const Work = ({
                   <li key={slug.current}>
                     <Link to={slug.current} className="hover:underline">
                       <div className="md:aspect-h-1 md:aspect-w-1 mb-a3">
-                        <SanityImage
-                          {...previewImage}
-                          alt={previewImage.alt}
-                          width={800}
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'contain',
-                          }}
-                        />
+                        {previewImage.asset && (
+                          <SanityImage
+                            {...previewImage}
+                            alt={previewImage.alt}
+                            width={800}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'contain',
+                            }}
+                          />
+                        )}
                       </div>
                       <p className="f-17 mb-2">{title}</p>
                       <p className="f-17 font-italic">
