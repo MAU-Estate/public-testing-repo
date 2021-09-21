@@ -16,7 +16,6 @@ em,
     letter-spacing: -7.5px;
     bottom: -0em;
     margin-top: -0em;
-    /* border: 1px solid purple; */
   }
   @media (min-width: 850px) and (max-width: 999px) {
     font-size: 148px;
@@ -24,7 +23,6 @@ em,
     letter-spacing: -11px;
     bottom: -0.01em;
     margin-top: -0.01em;
-    border: 1px solid green;
   }
 }
 
@@ -34,14 +32,12 @@ em,
     line-height: 69px;
     letter-spacing: -4.5px;
     margin-left: -8px;
-    border: 1px solid purple;
   }
   @media (min-width: 850px) and (max-width: 999px) {
     font-size: 111px;
     line-height: 104px;
     letter-spacing: -6px;
     margin-left: -12px;
-    border: 1px solid green;
   }
   @media (min-width: 1000px) and (max-width: 1400px) {
     font-size: 148px;
@@ -50,7 +46,6 @@ em,
     margin-left: -16px;
     bottom: -0.05em;
     margin-top: -0.1em;
-    border: 1px solid blue;
   }
   @media (min-width: 1200px) {
     margin-left: -18px;

@@ -156,9 +156,6 @@ const Work = ({
   const filterRef = useRef()
   const [filterHeight, setFilterHeight] = useState(0)
 
-  if (filterContainerRef?.current)
-    console.log(filterContainerRef.current.getBoundingClientRect().top)
-
   useObserver({
     callback: val => setFilterHeight(val[0].contentRect.bottom),
     element: filterRef,
