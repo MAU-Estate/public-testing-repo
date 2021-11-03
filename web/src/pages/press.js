@@ -40,16 +40,14 @@ const PressPage = ({
           >
             {row.map((article, i) => {
               const { id, external } = article
-              if (
-                (!article.external && !article.gallery) ||
-                !article.previewImage ||
-                !article.previewImage.asset
-              ) {
+              if (!article.external && !article.gallery) {
                 return (
                   <li
                     key={id}
                     className="relative sm-only:border-b border-grey-b sm-only:pb-o"
-                  >{`no gallery or gallery images added for internal article: ${article.title}`}</li>
+                  >
+                    No gallery added for internal article {article.title}
+                  </li>
                 )
               }
               return (
@@ -99,16 +97,20 @@ const renderArticlePreview = ({
 }) => (
   <>
     <div className="md:aspect-w-1 md:aspect-h-1 mb-a">
-      <SanityImage
-        {...previewImage}
-        alt={previewImage.alt}
-        width={450}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'contain',
-        }}
-      />
+      {previewImage.asset ? (
+        <SanityImage
+          {...previewImage}
+          alt={previewImage.alt}
+          width={450}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+          }}
+        />
+      ) : (
+        <span>'preview image not added'</span>
+      )}
     </div>
     <h3 className="f-26 mb-2">{title}</h3>
     <p className="f-26--light mb-k">{author}</p>
