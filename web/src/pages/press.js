@@ -47,6 +47,11 @@ const PressPage = ({
                     className="relative sm-only:border-b border-grey-b sm-only:pb-o"
                   >
                     No gallery added for internal article {article.title}
+                    {(i === +0 || i !== row.length - 1) && (
+                      <div
+                        className={`absolute right-[-23px] top-0 bottom-0 md:border-r border-grey-b`}
+                      />
+                    )}
                   </li>
                 )
               }
