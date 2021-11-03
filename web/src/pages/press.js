@@ -40,6 +40,13 @@ const PressPage = ({
           >
             {row.map((article, i) => {
               const { id, external } = article
+              if (!article.gallery)
+                return (
+                  <li
+                    key={id}
+                    className="relative sm-only:border-b border-grey-b sm-only:pb-o"
+                  >{`no gallery added for ${article.title}`}</li>
+                )
               return (
                 <li
                   key={id}
