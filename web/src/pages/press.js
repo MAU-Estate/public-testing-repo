@@ -40,13 +40,18 @@ const PressPage = ({
           >
             {row.map((article, i) => {
               const { id, external } = article
-              if (!article.gallery)
+              if (
+                (!article.external && !article.gallery) ||
+                !article.previewImage ||
+                !article.previewImage.asset
+              ) {
                 return (
                   <li
                     key={id}
                     className="relative sm-only:border-b border-grey-b sm-only:pb-o"
-                  >{`no gallery added for ${article.title}`}</li>
+                  >{`no gallery or gallery images added for internal article: ${article.title}`}</li>
                 )
+              }
               return (
                 <li
                   key={id}
