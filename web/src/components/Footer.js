@@ -40,7 +40,7 @@ export default function Footer() {
   }
 
   return (
-    <div className="bg-black-b pt-d pb-d3">
+    <div className="bg-black-b pt-d pb-d3 relative">
       <div className="container text-white">
         <div className="md:grid grid-cols-2 justify-start mb-d2">
           <Icon
