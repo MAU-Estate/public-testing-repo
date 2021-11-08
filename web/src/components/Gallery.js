@@ -233,7 +233,7 @@ function Gallery({
     <div className={`Gallery ${className}`} id={slug?.current}>
       <div
         className="relative"
-        style={{ height: 0, paddingBottom: `${firstSlideAspectRatio}%` }}
+        style={{ height: '850px', paddingBottom: `${firstSlideAspectRatio}%` }}
       >
         <Slider ref={slider => (sliderRef.current = slider)} {...settings}>
           {parsedSlides.map((slide, i) => (

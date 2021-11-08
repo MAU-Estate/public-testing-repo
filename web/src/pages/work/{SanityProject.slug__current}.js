@@ -82,8 +82,12 @@ export default function Project({
                 <dd className="f-6 mb-10">{dimensions}</dd>
               </>
             )}
-            <dt className="f-7 mb-3 uppercase">Collection</dt>
-            <dd className="f-6">{collectionsText}</dd>
+            {collectionsText && (
+              <>
+                <dt className="f-7 mb-3 uppercase">Collection</dt>
+                <dd className="f-6">{collectionsText}</dd>
+              </>
+            )}
           </dl>
           {body && <RichTextSingle content={body._rawText} className="f-6" />}
         </div>

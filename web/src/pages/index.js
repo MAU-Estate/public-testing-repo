@@ -80,6 +80,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
       </InView>
+
       <InView
         as="section"
         root={null}
@@ -198,7 +199,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         className="py-g text-white fadeItem"
       >
         <div className="container md:grid grid-cols-12 mb-e">
-          <div className="sm-only:mb-18 col-span-6 xl:col-span-5">
+          <div className="sm-only:mb-18 col-span-5 ">
             <Gallery
               slides={section4.gallery1.galleryRef.images}
               slug={section4.gallery1.galleryRef.slug}
@@ -267,7 +268,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-2 col-span-10">
+          <div className="col-start-3 col-span-10">
             <Gallery
               slides={section5.gallery3.galleryRef.images}
               slug={section5.gallery3.galleryRef.slug}
@@ -373,7 +374,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
               content={section7.richText2._rawText}
             />
           </div>
-          <div className="col-span-6">
+          <div className="col-start-8 col-span-5">
             <Gallery
               slides={section7.gallery2.galleryRef.images}
               slug={section7.gallery2.galleryRef.slug}
@@ -389,7 +390,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
         <div className="container">
           <div className="md:flex items-center text-white">
             <h2 className="f-14 sm-only:mb-4 max-w-md">{bioCta.title}</h2>
-            <Icon name="arrowCta" className="text-white relative" />
+            <Icon name="arrowRight" className="h-15 w-15 text-white relative" />
           </div>
         </div>
       </Link>

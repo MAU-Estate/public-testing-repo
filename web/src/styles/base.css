@@ -816,6 +816,23 @@
       }
     }
 
+    .f-menu {
+      @apply f-1;
+
+      a {
+        @apply pb-5;
+      }
+
+      @media (max-height: 800px) {
+        font-size: 8vh;
+        line-height: 1.2;
+
+        a {
+          padding-bottom: 2vh;
+        }
+      }
+    }
+
     .font-italic {
       font-family: var(--font-primary--italic);
     }

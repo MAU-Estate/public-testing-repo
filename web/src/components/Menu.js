@@ -68,6 +68,8 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
           <nav
             className={`
               relative z-10
+              flex-1
+              flex flex-col
               ${atMedium ? 'mt-11' : 'mt-6'}
             `}
           >
@@ -76,15 +78,15 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
                 <Icon name="logo" className="text-white" />
               </Link>
             )}
-            <ul className="pt-s">
+            <ul className="flex-1 flex flex-col justify-center">
               {NAV_ITEMS.map(item => (
-                <li key={item.path} className="f-1">
+                <li key={item.path} className="f-menu">
                   <Link
                     style={{
                       textDecorationThickness: '4px',
                       textUnderlineOffset: '4px',
                     }}
-                    className="pb-5 block text-white hover:underline"
+                    className="block text-white hover:underline"
                     to={item.path}
                     onClick={() => handleOnMenuToggle()}
                   >

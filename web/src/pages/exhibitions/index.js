@@ -1,7 +1,8 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import { Helmet } from 'react-helmet'
-import { GatsbyImage } from 'gatsby-plugin-image'
+// import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 import Seo from '../../components/Seo'
 
 const ExhibitionsPage = ({
@@ -24,11 +25,16 @@ const ExhibitionsPage = ({
                 to={exhibition.slug.current}
                 className="xl:grid lg:grid-cols-2 hover:underline"
               >
-                <GatsbyImage
-                  image={exhibition.previewImage.asset.gatsbyImageData}
-                  alt={exhibition.previewImage.alt}
-                  className="md:aspect-w-4 md:aspect-h-3 mb-8 xl:mb-0"
-                />
+                {exhibition.previewImage ? (
+                  <SanityImage
+                    {...exhibition.previewImage}
+                    alt={exhibition.previewImage.alt}
+                    width={400}
+                    className="md:aspect-w-4 md:aspect-h-3 mb-8 xl:mb-0"
+                  />
+                ) : (
+                  <div className="md:aspect-w-4 md:aspect-h-3 border mb-8 xl:mb-0"></div>
+                )}
                 <div>
                   <p className="f-22 mb-k uppercase">
                     {exhibition.date}—{exhibition.isSolo ? 'Solo' : 'Group'}
@@ -66,7 +72,7 @@ export const query = graphql`
           current
         }
         previewImage {
-          ...image
+          ...ImageWithPreview
         }
         isSolo
         venue

@@ -39,7 +39,11 @@ const ProjectGallery = ({
                 className="relative group"
               >
                 <EnlargeIndicator />
-                <SanityImage {...item.imageL.src} alt={item.imageL.alt} />
+                <SanityImage
+                  {...item.imageL.src}
+                  alt={item.imageL.alt}
+                  width={500}
+                />
               </Link>
             )}
             {item.imageR && (
@@ -51,7 +55,11 @@ const ProjectGallery = ({
                 className="relative group"
               >
                 <EnlargeIndicator />
-                <SanityImage {...item.imageR.src} alt={item.imageR.alt} />
+                <SanityImage
+                  {...item.imageR.src}
+                  alt={item.imageR.alt}
+                  width={500}
+                />
               </Link>
             )}
           </div>
@@ -63,11 +71,17 @@ const ProjectGallery = ({
               modal: true,
             }}
             className={`mb-a relative group ${
-              isPortrait ? 'col-span-3' : 'col-span-4'
+              isPortrait ? 'col-span-2' : 'col-span-4'
             }`}
           >
             <EnlargeIndicator />
-            {item.src && <SanityImage {...item.src} alt={item.alt} />}
+            {item.src && (
+              <SanityImage
+                {...item.src}
+                alt={item.alt}
+                width={isPortrait ? 500 : 1000}
+              />
+            )}
           </Link>
         )
       })}

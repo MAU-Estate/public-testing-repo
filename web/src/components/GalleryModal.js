@@ -9,6 +9,8 @@ import { useCurrentBreakpoint } from '../hooks/useCurrentBreakpoint'
 import SanityImage from 'gatsby-plugin-sanity-image'
 
 const SlideImage = ({ src, alt }) => {
+  const isPortrait = src.asset.metadata.dimensions.aspectRatio < 1
+
   return (
     <SanityImage
       {...src}
@@ -17,6 +19,7 @@ const SlideImage = ({ src, alt }) => {
         height: '100%',
         objectFit: 'contain',
       }}
+      width={isPortrait ? 750 : 1300}
       alt={alt}
     />
   )

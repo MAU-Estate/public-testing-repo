@@ -12,6 +12,11 @@ export default function FilterList({
   onSelect,
 }) {
   const handleOnSelect = (filter, checked) => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
     let result =
       typeof activeItems === 'string' ? [activeItems] : [...activeItems]
     checked

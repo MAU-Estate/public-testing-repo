@@ -49,10 +49,12 @@ export default function exhibition({
               <dt className="f-7 uppercase mb-3">Show Type</dt>
               <dd className="f-6">{isSolo ? 'Solo' : 'Group'}</dd>
             </div>
-            <div className="mb-10">
-              <dt className="f-7 uppercase mb-3">Curator</dt>
-              <dd className="f-6">{curator}</dd>
-            </div>
+            {curator && (
+              <div className="mb-10">
+                <dt className="f-7 uppercase mb-3">Curator</dt>
+                <dd className="f-6">{curator}</dd>
+              </div>
+            )}
             <div className="mb-10">
               <dt className="f-7 uppercase mb-3">Venue</dt>
               <dd className="f-6">{venue}</dd>
