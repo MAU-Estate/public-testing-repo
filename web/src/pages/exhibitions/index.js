@@ -26,12 +26,18 @@ const ExhibitionsPage = ({
                 className="xl:grid lg:grid-cols-2 hover:underline"
               >
                 {exhibition.previewImage ? (
-                  <SanityImage
-                    {...exhibition.previewImage}
-                    alt={exhibition.previewImage.alt}
-                    width={400}
-                    className="md:aspect-w-4 md:aspect-h-3 mb-8 xl:mb-0"
-                  />
+                  <div className="md:aspect-w-4 md:aspect-h-3 border mb-8 xl:mb-0">
+                    <SanityImage
+                      {...exhibition.previewImage}
+                      alt={exhibition.previewImage.alt}
+                      width={400}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </div>
                 ) : (
                   <div className="md:aspect-w-4 md:aspect-h-3 border mb-8 xl:mb-0"></div>
                 )}

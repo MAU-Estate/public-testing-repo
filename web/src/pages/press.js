@@ -40,21 +40,22 @@ const PressPage = ({
           >
             {row.map((article, i) => {
               const { id, external } = article
-              if (!article.external && !article.gallery) {
-                return (
-                  <li
-                    key={id}
-                    className="relative sm-only:border-b border-grey-b sm-only:pb-o"
-                  >
-                    No gallery added for internal article {article.title}
-                    {(i === +0 || i !== row.length - 1) && (
-                      <div
-                        className={`absolute right-[-23px] top-0 bottom-0 md:border-r border-grey-b`}
-                      />
-                    )}
-                  </li>
-                )
-              }
+              console.log(article.media)
+              // if (!article.external && !article.gallery) {
+              //   return (
+              //     <li
+              //       key={id}
+              //       className="relative sm-only:border-b border-grey-b sm-only:pb-o"
+              //     >
+              //       No gallery added for internal article {article.title}
+              //       {(i === +0 || i !== row.length - 1) && (
+              //         <div
+              //           className={`absolute right-[-23px] top-0 bottom-0 md:border-r border-grey-b`}
+              //         />
+              //       )}
+              //     </li>
+              //   )
+              // }
               return (
                 <li
                   key={id}
@@ -74,14 +75,17 @@ const PressPage = ({
                     >
                       {renderArticlePreview(article)}
                     </a>
-                  ) : (
-                    <Link
-                      id={article.gallery.galleryRef.slug.current}
-                      to={`/gallery/${article.gallery.galleryRef.slug.current}`}
+                  ) : article.media.length ? (
+                    <a
+                      href={article.media[0].asset.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:underline"
                     >
                       {renderArticlePreview(article)}
-                    </Link>
+                    </a>
+                  ) : (
+                    "You haven't added an image or pdf for the internal article"
                   )}
                 </li>
               )
@@ -149,14 +153,20 @@ export const query = graphql`
         previewImage {
           ...ImageWithPreview
         }
-        gallery {
-          galleryRef {
-            slug {
-              current
+        date(formatString: "MMMM, YYYY")
+        media {
+          ... on SanityFile {
+            asset {
+              url
             }
           }
+          ... on SanityImage {
+            asset {
+              url
+            }
+            _type
+          }
         }
-        date(formatString: "MMMM, YYYY")
       }
     }
   }

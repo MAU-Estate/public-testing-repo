@@ -27,18 +27,21 @@ export default {
       initialValue: true
     },
     {
-      name: 'gallery',
-      title: 'Gallery',
-      type: 'galleryObj',
+      name: 'media',
+      title: 'PDF or Image',
+      type: 'array',
+      of: [{ type: 'image' }, { type: 'file' }],
       inputComponent: ConditionalField,
       options: {
         condition: document => !document.external
       },
       validation: Rule =>
-        Rule.custom((_, context) => {
-          if (context.document.external || _.galleryRef) return true
-          else return 'You must choose a gallery for an internal document'
-        })
+        Rule.custom((content, context) => {
+          if (context.document.external || content?.length) return true
+          else {
+            ;('You must add an image or PDF')
+          }
+        }).length(1)
     },
     {
       name: 'url',
@@ -50,6 +53,7 @@ export default {
       },
       validation: Rule =>
         Rule.custom((content, context) => {
+          console.log(content)
           if (!context.document.external) return true
           if (!content) {
             return 'You must choose a valid url for an external document'

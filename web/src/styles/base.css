@@ -216,6 +216,7 @@
   }
 
   .richText a,
+  .richText a > *,
   .link {
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -564,7 +565,7 @@
 
       @screen lg {
         font-size: 19px;
-        line-height: 23px;
+        line-height: 21px;
         letter-spacing: -0.3px;
         bottom: -0.275em;
         margin-top: -0.5em;

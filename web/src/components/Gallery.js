@@ -94,21 +94,16 @@ export const SlideCaption = ({
         )}
       </figcaption>
       {inline && galleryLength > 1 && (
-        <div className="flex flex-0 justify-between">
-          {arrows && (
-            <div className="f-8 md:mr-24">
-              <button onClick={goToPrev} className="pr-4 hover:underline">
-                Prev
-              </button>
-              |
-              <button onClick={goToNext} className="pl-4 hover:underline">
-                Next
-              </button>
-            </div>
-          )}
-          <div className="w-12 text-right f-8">
+        <div className="flex items-center flex-0">
+          <button onClick={goToPrev} className="pr-4 hover:underline">
+            <Icon className="h-5 w-5" name="arrowLeft" />
+          </button>
+          <div className="text-right f-8">
             {index + 1} / {galleryLength}
           </div>
+          <button onClick={goToNext} className="pl-4  hover:underline">
+            <Icon className="h-5 w-5" name="arrowRight" />
+          </button>
         </div>
       )}
     </div>
@@ -233,7 +228,7 @@ function Gallery({
     <div className={`Gallery ${className}`} id={slug?.current}>
       <div
         className="relative"
-        style={{ height: '850px', paddingBottom: `${firstSlideAspectRatio}%` }}
+        style={{ height: 0, paddingBottom: `${firstSlideAspectRatio}%` }}
       >
         <Slider ref={slider => (sliderRef.current = slider)} {...settings}>
           {parsedSlides.map((slide, i) => (

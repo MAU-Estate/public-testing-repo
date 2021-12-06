@@ -38,13 +38,22 @@ const serializers = {
           break
         case 'external':
           result = (
-            <a href={href} target="_blank" rel="noopener noreferrer">
+            <a
+              className="inline-block"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {props.children}
             </a>
           )
           break
         default:
-          result = <Link to={href}>{props.children}</Link>
+          result = (
+            <Link className="inline-block" to={href}>
+              {props.children}
+            </Link>
+          )
           break
       }
       return result

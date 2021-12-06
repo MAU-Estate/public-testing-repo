@@ -268,7 +268,7 @@ const IndexPage = ({ data: { sanityBio: pageData, sanityHomeCarousel } }) => {
           </div>
         </div>
         <div className="container md:grid grid-cols-12">
-          <div className="col-start-3 col-span-10">
+          <div className="col-start-2 col-span-10">
             <Gallery
               slides={section5.gallery3.galleryRef.images}
               slug={section5.gallery3.galleryRef.slug}

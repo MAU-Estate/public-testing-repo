@@ -116,7 +116,7 @@ const Work = ({
     location.search
       ? queryString.parse(location.search, { arrayFormat: 'comma' })
       : {
-          featured: 'true',
+          featured: 'false',
         }
   )
 
