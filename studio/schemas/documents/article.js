@@ -30,7 +30,10 @@ export default {
       name: 'media',
       title: 'PDF or Image',
       type: 'array',
-      of: [{ type: 'image' }, { type: 'file' }],
+      of: [
+        { type: 'image' },
+        { type: 'file', title: 'PDF', options: { accept: '.pdf' } }
+      ],
       inputComponent: ConditionalField,
       options: {
         condition: document => !document.external
@@ -39,7 +42,7 @@ export default {
         Rule.custom((content, context) => {
           if (context.document.external || content?.length) return true
           else {
-            ;('You must add an image or PDF')
+            return 'You must add an image or PDF'
           }
         }).length(1)
     },

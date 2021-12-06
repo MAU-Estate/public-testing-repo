@@ -77,7 +77,7 @@ const PressPage = ({
                     </a>
                   ) : article.media[0]?.asset ? (
                     <a
-                      href={article.media[0].asset.url}
+                      href={`${article.media[0].asset.url}/${article.media[0].asset.originalFilename}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:underline"
@@ -158,11 +158,13 @@ export const query = graphql`
           ... on SanityFile {
             asset {
               url
+              originalFilename
             }
           }
           ... on SanityImage {
             asset {
               url
+              originalFilename
             }
             _type
           }
