@@ -96,13 +96,13 @@ export const SlideCaption = ({
       {inline && galleryLength > 1 && (
         <div className="flex items-center flex-0">
           <button onClick={goToPrev} className="pr-4 hover:underline">
-            <Icon className="h-5 w-5" name="arrowLeft" />
+            <Icon className="h-8 w-8" name="arrowLeft" />
           </button>
           <div className="text-right f-8">
             {index + 1} / {galleryLength}
           </div>
           <button onClick={goToNext} className="pl-4  hover:underline">
-            <Icon className="h-5 w-5" name="arrowRight" />
+            <Icon className="h-8 w-8" name="arrowRight" />
           </button>
         </div>
       )}

@@ -75,7 +75,7 @@ const PressPage = ({
                     >
                       {renderArticlePreview(article)}
                     </a>
-                  ) : article.media.length ? (
+                  ) : article.media[0]?.asset ? (
                     <a
                       href={article.media[0].asset.url}
                       target="_blank"

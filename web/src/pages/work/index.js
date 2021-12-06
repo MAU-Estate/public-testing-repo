@@ -245,22 +245,6 @@ const Work = ({
             <div className="flex uppercase">
               <div
                 className={`radio relative cursor-pointer ${
-                  isFeatured ? 'f-16--medium' : 'f-16'
-                }`}
-              >
-                <input
-                  type="radio"
-                  name="featuredFilter"
-                  id="featured"
-                  className="absolute cursor-pointer opacity-0 h-full w-full"
-                  onChange={() => handleSetActiveFilter('featured', 'true')}
-                  checked={isFeatured}
-                />
-                <label htmlFor="featured">Featured</label>
-              </div>
-              <div className="mx-1 f-16">/</div>
-              <div
-                className={`radio relative cursor-pointer ${
                   !isFeatured ? 'f-16--medium' : 'f-16'
                 }`}
               >
@@ -273,6 +257,22 @@ const Work = ({
                   checked={!isFeatured}
                 />
                 <label htmlFor="all">All</label>
+              </div>
+              <div className="mx-1 f-16">/</div>
+              <div
+                className={`radio relative cursor-pointer ${
+                  isFeatured ? 'f-16--medium' : 'f-16'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="featuredFilter"
+                  id="featured"
+                  className="absolute cursor-pointer opacity-0 h-full w-full"
+                  onChange={() => handleSetActiveFilter('featured', 'true')}
+                  checked={isFeatured}
+                />
+                <label htmlFor="featured">Featured</label>
               </div>
             </div>
             {atMedium && (
