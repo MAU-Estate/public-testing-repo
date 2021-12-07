@@ -69,5 +69,8 @@ module.exports = {
         overlayDrafts: !isProd,
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify`,
+    },
   ],
 }
