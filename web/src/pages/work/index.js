@@ -157,7 +157,9 @@ const Work = ({
   const [filterHeight, setFilterHeight] = useState(0)
 
   useObserver({
-    callback: val => setFilterHeight(val[0].contentRect.bottom),
+    callback: val => {
+      setFilterHeight(val[0].contentRect.bottom)
+    },
     element: filterRef,
   })
 
@@ -228,15 +230,22 @@ const Work = ({
     />,
   ]
 
+  let pinStart = filterContainerRef?.current?.getBoundingClientRect().top || 0
+  pinStart = pinStart + (isSmall ? 68 : 0)
+
   return (
-    <div className="pt-25 relative">
+    <div className="md:pt-25 relative">
       <Seo {...seo} />
       <Helmet bodyAttributes={{ class: 'theme--light' }} />
       <Headroom
-        className="work-filter"
-        pinStart={filterContainerRef?.current?.getBoundingClientRect().top || 0}
+        className="work-filter "
+        pinStart={pinStart}
+        disable={atMedium && isFilterVisible}
       >
-        <div className="container" ref={filterContainerRef}>
+        <div
+          className="container bg-white sm-only:pb-2"
+          ref={filterContainerRef}
+        >
           <div className="pb-a3 md:pt-12 border-b border-grey-b flex justify-between items-end relative z-10 bg-white">
             <h1 className="f-5 xl:ml-[-9px]">{title}</h1>
 
