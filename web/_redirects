@@ -1,7 +1,9 @@
-/free-standing      /work
-/wall-mounted       /work
-/small-bronzes      /work
-/public-art         /work
-/works-on-paper     /work
-/bio                /#intro
-/obituary           /#intro
+/free-standing /work
+/wall-mounted /work
+/small-bronzes /work
+/public-art /work
+/works-on-paper /work
+/bio /#intro
+/obituary /#intro
+https://www.maryannungerestate.com/_ https://www.maryannunger.com/:splat 301!
+https://maryannungerestate.com/_ https://www.maryannunger.com/:splat 301!
