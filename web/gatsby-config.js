@@ -70,6 +70,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `maryannunger.com`,
+        short_name: `maryannunger`,
+        description: 'Website for the estate of Mary Ann Unger.',
+        start_url: `/`,
+        background_color: `#1f1f1f`,
+        theme_color: `#1f1f1f`,
+        display: `minimal-ui`,
+        icon: 'src/assets/images/favicon.png',
+      },
+    },
+    {
       resolve: `gatsby-plugin-netlify`,
     },
   ],

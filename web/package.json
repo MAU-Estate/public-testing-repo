@@ -37,6 +37,7 @@
     "axios": "^0.21.1",
     "gatsby-cli": "^3.4.1",
     "gatsby-plugin-image": "^1.7.1",
+    "gatsby-plugin-manifest": "^4.3.0",
     "gatsby-plugin-modal-routing-3": "^3.0.0",
     "gatsby-plugin-netlify": "^3.14.0",
     "gatsby-plugin-sanity-image": "^0.6.0",
