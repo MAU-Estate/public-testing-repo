@@ -67,8 +67,7 @@ export default {
     {
       name: 'curator',
       title: 'Curator',
-      type: 'string',
-      validation: Rule => Rule.required()
+      type: 'string'
     },
     {
       name: 'location',
