@@ -119,7 +119,7 @@ export const exhibitionQuery = graphql`
       title
       venue
     }
-    allSanityExhibition {
+    allSanityExhibition(sort: { order: DESC, fields: date }) {
       edges {
         next {
           slug {
