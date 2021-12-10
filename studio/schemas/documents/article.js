@@ -56,7 +56,6 @@ export default {
       },
       validation: Rule =>
         Rule.custom((content, context) => {
-          console.log(content)
           if (!context.document.external) return true
           if (!content) {
             return 'You must choose a valid url for an external document'

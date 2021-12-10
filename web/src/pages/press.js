@@ -40,7 +40,6 @@ const PressPage = ({
           >
             {row.map((article, i) => {
               const { id, external } = article
-              console.log(article.media)
               // if (!article.external && !article.gallery) {
               //   return (
               //     <li
