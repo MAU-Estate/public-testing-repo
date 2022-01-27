@@ -125,8 +125,10 @@ const renderFooterLinks = () => (
     </div>
     <div className="mb-12 lg:mb-0">
       <a
+        target="_blank"
+        rel="noopener noreferrer nofollow"
         className="block f-2 hover:underline"
-        href="https://instagram.com"
+        href="https://instagram.com/maryannungerestate"
         style={{ textDecorationThickness: '.5px' }}
       >
         Join us on Instagram
