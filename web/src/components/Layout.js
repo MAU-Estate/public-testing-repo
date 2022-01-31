@@ -49,9 +49,7 @@ const Layout = ({ location, children, className = '' }) => {
         query LayoutQuery {
           sanitySiteSettings {
             menuBgImage {
-              asset {
-                gatsbyImageData(fit: FILLMAX)
-              }
+              ...ImageWithPreview
             }
           }
         }
@@ -65,7 +63,7 @@ const Layout = ({ location, children, className = '' }) => {
             onMenuToggle={value => setIsMenuOpen(value)}
             isOpen={isMenuOpen}
             menuBgClass={menuBgClass}
-            bgImage={sanitySiteSettings.menuBgImage.asset.gatsbyImageData}
+            bgImage={sanitySiteSettings.menuBgImage}
           />
           <div
             className="flex flex-col flex-1 relative"

@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import Helmet from 'react-helmet'
 import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import SanityImage from 'gatsby-plugin-sanity-image'
 
 import Icon from '../components/Icon'
 import useKeyPress from '../hooks/useKeyPress'
@@ -56,21 +56,18 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
 
         <div
           className={`
-            flex flex-col justify-top transition-transform duration-300 transform
+            flex flex-col justify-top transition-transform duration-300 transform relative
             ${atLarge ? 'pl-20 pr-96' : 'flex-1 px-6'}
             ${isOpen ? '' : '-translate-x-full'}
           `}
           style={{ marginLeft: atMedium ? '41px' : '' }}
         >
-          <div className="left-0 top-0 bottom-0 absolute flex">
-            <GatsbyImage image={bgImage} alt="" objectFit="cover" />
-          </div>
           <nav
             className={`
-              relative z-10
-              flex-1
-              flex flex-col
-              ${atMedium ? 'mt-11' : 'mt-6'}
+            relative z-10
+            flex-1
+            flex flex-col
+            ${atMedium ? 'mt-11' : 'mt-6'}
             `}
           >
             {atMedium && (
@@ -78,7 +75,7 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
                 <Icon name="logo" className="text-white" />
               </Link>
             )}
-            <ul className="flex-1 flex flex-col justify-center">
+            <ul className=" flex-1 flex flex-col justify-center">
               {NAV_ITEMS.map(item => (
                 <li key={item.path} className="f-menu">
                   <Link
@@ -96,6 +93,18 @@ export default function Menu({ bgImage, menuBgClass, onMenuToggle, isOpen }) {
               ))}
             </ul>
           </nav>
+          <div className="left-0 top-0 bottom-0 right-0 absolute flex">
+            <SanityImage
+              {...bgImage}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+              className="flex-1"
+            />
+          </div>
         </div>
       </div>
 
