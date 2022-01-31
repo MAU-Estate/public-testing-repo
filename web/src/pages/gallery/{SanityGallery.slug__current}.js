@@ -21,47 +21,49 @@ export default function gallery({
 
   return (
     <ModalRoutingContext.Consumer>
-      {({ modal, closeTo }) => (
-        <>
-          {modal ? (
-            <div className="absolute inset-0 pt-12 pb-8 flex">
-              <button
-                onClick={() => navigate(-1)}
-                className="absolute z-30 top-0 right-0"
-              >
-                <Icon
-                  name="modalClose"
-                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4 md:m-10"
-                />
-              </button>
-              <div className="mx-6 md:container--large flex flex-1">
-                <GalleryModal
-                  location={location}
-                  slides={images}
-                  theme="light"
-                />
+      {({ modal, closeTo }) => {
+        return (
+          <>
+            {modal ? (
+              <div className="absolute inset-0 pt-12 pb-8 flex">
+                <button
+                  onClick={() => navigate(closeTo)}
+                  className="absolute z-30 top-0 right-0"
+                >
+                  <Icon
+                    name="modalClose"
+                    className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4 md:m-10"
+                  />
+                </button>
+                <div className="mx-6 md:container--large flex flex-1">
+                  <GalleryModal
+                    location={location}
+                    slides={images}
+                    theme="light"
+                  />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="fixed inset-0 pt-12 pb-8 z-30 bg-white flex">
-              <Seo {...seo} />
-              <Link to={backPath} className="absolute z-30 top-0 right-0">
-                <Icon
-                  name="modalClose"
-                  className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4"
-                />
-              </Link>
-              <div className="mx-6 md:container--large flex flex-1">
-                <GalleryModal
-                  location={location}
-                  slides={images}
-                  theme="light"
-                />
+            ) : (
+              <div className="fixed inset-0 pt-12 pb-8 z-30 bg-white flex">
+                <Seo {...seo} />
+                <Link to={backPath} className="absolute z-30 top-0 right-0">
+                  <Icon
+                    name="modalClose"
+                    className="sm-only:w-6 sm-only:h-6 w-12 h-12 m-4"
+                  />
+                </Link>
+                <div className="mx-6 md:container--large flex flex-1">
+                  <GalleryModal
+                    location={location}
+                    slides={images}
+                    theme="light"
+                  />
+                </div>
               </div>
-            </div>
-          )}
-        </>
-      )}
+            )}
+          </>
+        )
+      }}
     </ModalRoutingContext.Consumer>
   )
 }

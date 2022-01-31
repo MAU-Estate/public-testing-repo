@@ -9,6 +9,7 @@ import ProjectGallery from '../../components/ProjectGallery'
 import Seo from '../../components/Seo'
 
 export default function Project({
+  location,
   data: {
     sanityProject: {
       title,
@@ -57,6 +58,7 @@ export default function Project({
       <div className="md:grid grid-cols-12 mt-12 md:mt-20 mb-i">
         {gallery && gallery.galleryRef && (
           <ProjectGallery
+            location={location}
             data={gallery}
             className="sm-only:mb-4 col-span-8 grid md:grid-cols-4"
           />

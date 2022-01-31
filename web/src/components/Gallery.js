@@ -95,23 +95,27 @@ export const SlideCaption = ({
       </figcaption>
       {inline && galleryLength > 1 && (
         <div className="flex items-center flex-0">
-          <button
-            onClick={goToPrev}
-            className="pr-4 hover:underline"
-            style={{ lineHeight: 0 }}
-          >
-            <Icon className="h-8 w-8" name="arrowLeft" />
-          </button>
+          {arrows && (
+            <button
+              onClick={goToPrev}
+              className="pr-4 hover:underline"
+              style={{ lineHeight: 0 }}
+            >
+              <Icon className="h-8 w-8" name="arrowLeft" />
+            </button>
+          )}
           <div className="f-8">
             {index + 1} / {galleryLength}
           </div>
-          <button
-            onClick={goToNext}
-            className="pl-4  hover:underline"
-            style={{ lineHeight: 0 }}
-          >
-            <Icon className="h-8 w-8" name="arrowRight" />
-          </button>
+          {arrows && (
+            <button
+              onClick={goToNext}
+              className="pl-4  hover:underline"
+              style={{ lineHeight: 0 }}
+            >
+              <Icon className="h-8 w-8" name="arrowRight" />
+            </button>
+          )}
         </div>
       )}
     </div>
