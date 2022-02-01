@@ -36,7 +36,6 @@ const ProjectGallery = ({
                 to={`/gallery/${slugPath}?index=${i}`}
                 state={{
                   modal: true,
-                  fromPath: location.pathname,
                 }}
                 className="relative group"
               >
@@ -53,7 +52,6 @@ const ProjectGallery = ({
                 to={`/gallery/${slugPath}?index=${i}`}
                 state={{
                   modal: true,
-                  fromPath: location.pathname,
                 }}
                 className="relative group"
               >
@@ -72,7 +70,6 @@ const ProjectGallery = ({
             to={`/gallery/${slugPath}?index=${i}`}
             state={{
               modal: true,
-              fromPath: location.pathname,
             }}
             className={`mb-a relative group ${
               isPortrait ? 'col-span-2' : 'col-span-4'
