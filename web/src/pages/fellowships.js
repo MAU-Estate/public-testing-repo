@@ -119,7 +119,7 @@ export const query = graphql`
       }
       recipientLabel
     }
-    allSanityFellow {
+    allSanityFellow(sort: { fields: year, order: DESC }) {
       nodes {
         year(formatString: "YYYY")
         title
