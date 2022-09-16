@@ -3,7 +3,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import { Link } from 'gatsby'
 
 const parseUrlType = url => {
-  if (url.includes('mailto:')) {
+  if (url?.includes('mailto:')) {
     return 'mailto'
   }
   try {
